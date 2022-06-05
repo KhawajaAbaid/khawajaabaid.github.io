@@ -1,0 +1,10 @@
+@font-face {
+    font-family: dejaVu;
+    src: url("fonts/dejavu.ttf");
+}
+
+
+*{
+    margin-left: 10px;
+    font-family: dejaVu;
+}
