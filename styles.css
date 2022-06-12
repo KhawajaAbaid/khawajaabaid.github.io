@@ -9,6 +9,14 @@
     font-family: dejaVu;
 }
 
+a{
+    text-decoration: wavy;
+    color: #fe5f55;
+}
+a:hover{
+    color: #81b29a;
+}
+
 body{
     background-color: #F4F1DE;
 }
