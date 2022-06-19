@@ -1,12 +1,21 @@
 @font-face {
-    font-family: dejaVu;
-    src: url("fonts/dejavu.ttf");
+    font-family: merryweather-ultrabold;
+    src: url("fonts/Merriweather-UltraBold.ttf");
+}
+@font-face {
+    font-family: merryweather-bold;
+    src: url("fonts/Merriweather-Bold.ttf");
+}
+@font-face {
+    font-family: merryweather-regular;
+    src: url("fonts/Merriweather-Regular.ttf");
 }
 
 
 *{
     margin-left: 10px;
-    font-family: dejaVu;
+    font-family: merryweather-regular;
+    color: #F4F1DE;
 }
 
 a{
@@ -18,6 +27,81 @@ a:hover{
 }
 
 body{
-    background-color: #F4F1DE;
+    background-color: #1d2430;
+    color: white;
 }
-hey, lol
+
+::selection{
+    background-color: #E07A5F;
+    color: white;
+}
+
+.big-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+    margin:0;
+    font-family: merryweather-ultrabold;
+    font-weight: normal;
+    font-size: 4em;
+    margin-top: 4.5em;
+
+    color: #E07A5F;
+}
+
+.tags{
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+    margin:0;
+    margin-top: 0.4em;
+}
+
+.section{
+    padding:0;
+    margin:0;
+    margin-left: 5em;
+}
+
+.sec-header{
+    font-family: merryweather-bold;
+    font-size: 1.5em;
+    font-weight: normal;
+    color: #F2CC8F;
+}
+
+li{ 
+    margin-bottom: 0.8em;
+    margin-right: 8em;
+}
+
+.interests-section{
+    margin-top: 4em;
+}
+
+.education-section{
+    margin-top:0.3em;
+}
+
+.highlight{
+    font-weight: normal;
+    color: #81B29A;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-list{
+    margin-top: 0.5em;
+}
+
+.amplify{
+    font-family: merryweather-bold;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #81B29A;
+    margin: 0;
+    padding: 0;
+}
