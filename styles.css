@@ -64,6 +64,7 @@ body{
     padding:0;
     margin:0;
     margin-left: 5em;
+    margin-top: 4em;
 }
 
 .sec-header{
@@ -83,7 +84,7 @@ li{
 }
 
 .education-section{
-    margin-top:0.3em;
+
 }
 
 .highlight{
@@ -104,4 +105,26 @@ li{
     color: #81B29A;
     margin: 0;
     padding: 0;
+}
+
+.sub-sub-list{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    place-items: center;
+}
+
+.skill-img{
+    margin: 0;
+    padding: 0;
+    height: 30px;
+}
+
+ul.sub-sub-list{
+    list-style: none;
+}
+.sub-sub-list li{
+    margin-right: 2em;
+    place-content: center;
+    place-items: center;
 }
