@@ -15,7 +15,7 @@
 *{
     margin-left: 10px;
     font-family: merryweather-regular;
-    color: #F4F1DE;
+    color: black;
 }
 
 a{
@@ -27,8 +27,7 @@ a:hover{
 }
 
 body{
-    background-color: #1d2430;
-    color: white;
+    background-color: #f1f1f1;
 }
 
 ::selection{
@@ -71,7 +70,7 @@ body{
     font-family: merryweather-bold;
     font-size: 1.5em;
     font-weight: normal;
-    color: #F2CC8F;
+    color: #3d405b;
 }
 
 li{ 
@@ -89,7 +88,7 @@ li{
 
 .highlight{
     font-weight: normal;
-    color: #81B29A;
+    color: #264653;
     margin: 0;
     padding: 0;
 }
@@ -102,15 +101,34 @@ li{
     font-family: merryweather-bold;
     font-size: 1.2em;
     font-weight: normal;
-    color: #81B29A;
+    color: #2a9d8f;
     margin: 0;
     padding: 0;
 }
 
-.sub-sub-list{
+.skills-list-item-header{
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+}
+
+.logox-list{
     display: flex;
     align-items: center;
     /* justify-content: center; */
+    place-items: center;
+    padding: 0;
+    margin: 0;
+    margin-left: 2em;
+    margin-top: 1em;
+}
+
+ul.logox-list{
+    list-style: none;
+}
+.logox-list li{
+    margin-right: 2em;
+    place-content: center;
     place-items: center;
 }
 
@@ -118,13 +136,4 @@ li{
     margin: 0;
     padding: 0;
     height: 30px;
-}
-
-ul.sub-sub-list{
-    list-style: none;
-}
-.sub-sub-list li{
-    margin-right: 2em;
-    place-content: center;
-    place-items: center;
 }
