@@ -137,3 +137,20 @@ ul.logox-list{
     padding: 0;
     height: 30px;
 }
+
+.sidebar{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    margin-top: 4em;
+    margin-left: 0em;
+}
+.content{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    margin-top: 4em;
+    margin-left: 0em;
+}
