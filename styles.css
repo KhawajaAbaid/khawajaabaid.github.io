@@ -35,6 +35,47 @@ body{
     color: white;
 }
 
+
+.nav ul{
+    margin: 0;
+}
+
+.nav li{
+    display: inline;
+}
+
+.nav a{
+    display: inline-block;
+    padding: 0.1em;
+    color: orange;
+    text-decoration: None;
+}
+
+.main-nav{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-nav li{
+    /* padding: 0 5%; */
+    margin-left:auto;
+    align-items: middle;
+    color: #F4F1DE;
+}
+
+.main-nav li:hover{
+    padding: 0 5%;
+    background-color: #212231;
+}
+
+.main-header{
+    background-size: cover;
+    background-blend-mode: multiply;
+    padding-bottom: 5px;
+}
+
 .big-name{
     display: flex;
     align-items: center;
