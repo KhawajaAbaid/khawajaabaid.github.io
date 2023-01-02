@@ -1,0 +1,30 @@
+body{
+  font-family: 'Source Code Pro', monospace;
+}
+
+#welcome{
+  margin-top: 10%;
+  /* text-align: center; */
+}
+
+#terminal{
+  margin-left: 25%;
+}
+
+#hello-world{
+  font-size: 6vw;
+  /* font-weight: bold; */
+}
+
+#intro-text{
+  font-size: 3vw;
+}
+
+h3 {
+  color: red;
+}
+
+div#buttons-section{
+  margin-top: 5%;
+  text-align: center;
+}
