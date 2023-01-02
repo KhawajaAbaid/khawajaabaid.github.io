@@ -20,11 +20,23 @@ body{
   font-size: 3vw;
 }
 
+#socials{
+  margin-top: 2%;
+  margin-bottom: none;
+  text-align: center;
+  color: #262B2B;
+  font-size: 2em;
+}
+
+#socials i{
+  color:#262B2B;
+}
+
 h3 {
   color: red;
 }
 
 div#buttons-section{
-  margin-top: 5%;
+  margin-top: 2%;
   text-align: center;
 }
