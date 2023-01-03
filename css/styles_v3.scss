@@ -1,0 +1,34 @@
+body{
+font-family: 'Source Code Pro', monospace;
+}
+
+.welcome{
+margin-top: 10%;
+    #terminal{
+        margin-left: 25%;
+
+        #hello-world{
+            font-size: 6vw;
+            }
+        
+        #intro-text{
+            font-size: 3vw;
+            }
+        }
+    #socials{
+        margin-top: 2%;
+        margin-bottom: none;
+        text-align: center;
+        color: #262B2B;
+        font-size: 2em;
+
+        i{
+            color:#262B2B;
+            }
+        }
+    
+    div#buttons-section{
+        margin-top: 2%;
+        text-align: center;
+        }
+}

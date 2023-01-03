@@ -1,42 +1,30 @@
-body{
-  font-family: 'Source Code Pro', monospace;
+body {
+  font-family: "Source Code Pro", monospace;
 }
 
-#welcome{
+.welcome {
   margin-top: 10%;
-  /* text-align: center; */
 }
-
-#terminal{
+.welcome #terminal {
   margin-left: 25%;
 }
-
-#hello-world{
+.welcome #terminal #hello-world {
   font-size: 6vw;
-  /* font-weight: bold; */
 }
-
-#intro-text{
+.welcome #terminal #intro-text {
   font-size: 3vw;
 }
-
-#socials{
+.welcome #socials {
   margin-top: 2%;
   margin-bottom: none;
   text-align: center;
   color: #262B2B;
   font-size: 2em;
 }
-
-#socials i{
-  color:#262B2B;
+.welcome #socials i {
+  color: #262B2B;
 }
-
-h3 {
-  color: red;
-}
-
-div#buttons-section{
+.welcome div#buttons-section {
   margin-top: 2%;
   text-align: center;
-}
+}/*# sourceMappingURL=styles_v3.css.map */
