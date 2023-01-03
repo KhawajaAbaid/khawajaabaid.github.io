@@ -2,6 +2,10 @@ body{
 font-family: 'Source Code Pro', monospace;
 }
 
+:root{
+    --color-primary: #262B2B;
+}
+
 .welcome{
 margin-top: 10%;
     #terminal{
@@ -19,11 +23,11 @@ margin-top: 10%;
         margin-top: 2%;
         margin-bottom: none;
         text-align: center;
-        color: #262B2B;
+        color: var(--color-primary);
         font-size: 2em;
 
         i{
-            color:#262B2B;
+            color: var(--color-primary);
             }
         }
     
@@ -31,4 +35,52 @@ margin-top: 10%;
         margin-top: 2%;
         text-align: center;
         }
+}
+
+.controls{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+
+    .control{
+        padding: 1rem;
+        display: flex;
+        margin-top: 2%;
+        align-items: center;
+        text-align: center;
+        font-size: 1.5em;
+        width: 8em;
+        height: 60px;
+        color: var(--color-primary);
+        // transition: all 400ms;
+        
+        .control-title{
+            width: auto;
+            border-radius: 8%;
+            text-align: center;
+            display: none;
+            position: relative;
+        }
+
+        .control-icon{
+            position: relative;
+            margin-right: 4%;
+            display: flex;
+            font-size: 1.3em;
+            cursor: pointer;
+            // justify-items: center;
+            // align-items: middle;
+        }
+        .control-icon:hover~.control-title{
+            display: block;
+            color: white;
+            background-color: var(--color-primary);
+        }
+    }
 }

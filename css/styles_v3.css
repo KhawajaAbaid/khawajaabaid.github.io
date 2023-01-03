@@ -2,6 +2,10 @@ body {
   font-family: "Source Code Pro", monospace;
 }
 
+:root {
+  --color-primary: #262B2B;
+}
+
 .welcome {
   margin-top: 10%;
 }
@@ -18,13 +22,55 @@ body {
   margin-top: 2%;
   margin-bottom: none;
   text-align: center;
-  color: #262B2B;
+  color: var(--color-primary);
   font-size: 2em;
 }
 .welcome #socials i {
-  color: #262B2B;
+  color: var(--color-primary);
 }
 .welcome div#buttons-section {
   margin-top: 2%;
   text-align: center;
+}
+
+.controls {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+}
+.controls .control {
+  padding: 1rem;
+  display: flex;
+  margin-top: 2%;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5em;
+  width: 8em;
+  height: 60px;
+  color: var(--color-primary);
+}
+.controls .control .control-title {
+  width: auto;
+  border-radius: 8%;
+  text-align: center;
+  display: none;
+  position: relative;
+}
+.controls .control .control-icon {
+  position: relative;
+  margin-right: 4%;
+  display: flex;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.controls .control .control-icon:hover ~ .control-title {
+  display: block;
+  color: white;
+  background-color: var(--color-primary);
 }/*# sourceMappingURL=styles_v3.css.map */
