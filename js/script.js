@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     console.log("in");
     var i = 0;
     var j = 0;
-    var hello_world_text = '>Hello World!';
+    var k = 0;
+    var hello_world_text = '> Hello World!';
     var intro_text = "> I'm Khawaja Abaid Ullah!";
+    var email_text = "> reach me at khawaja.abaid@gmail.com"
     var speed = 75;
 
     function typeWriter() {
@@ -20,6 +22,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
             var intro_text_div = document.getElementById("intro-text");
             intro_text_div.innerHTML += intro_text.charAt(j);
             j++;
+        }
+        // followed by printing email
+        else if (k < email_text.length) {
+            var email_div = document.getElementById("email");
+            email_div.innerHTML += email_text.charAt(k);
+            k++;
         }
         setTimeout(typeWriter, speed);
     }
