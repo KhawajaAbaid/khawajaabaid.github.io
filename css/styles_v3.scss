@@ -1,5 +1,10 @@
 body{
 font-family: 'Source Code Pro', monospace;
+
+::selection{
+    background-color: var(--color-primary);
+    color: white;
+}
 }
 
 :root{
@@ -12,12 +17,15 @@ margin-top: 10%;
         margin-left: 25%;
 
         #hello-world{
-            font-size: 6vw;
+            font-size: 4vw;
             }
         
         #intro-text{
-            font-size: 3vw;
+            font-size: 4vw;
             }
+        #email{
+            font-size: 2vw;
+        }
         }
     #socials{
         margin-top: 2%;
@@ -26,9 +34,13 @@ margin-top: 10%;
         color: var(--color-primary);
         font-size: 2em;
 
-        i{
+        i   {
             color: var(--color-primary);
             }
+        
+        :hover{
+            color: #424545;
+        }
         }
     
     div#buttons-section{
@@ -66,6 +78,7 @@ margin-top: 10%;
             text-align: center;
             display: none;
             position: relative;
+            font-size: 1em;
         }
 
         .control-icon{
@@ -83,4 +96,12 @@ margin-top: 10%;
             background-color: var(--color-primary);
         }
     }
+}
+
+.btn{
+    color: var(--color-primary);
+}
+
+.btn:hover{
+    background-color: var(--color-primary);
 }

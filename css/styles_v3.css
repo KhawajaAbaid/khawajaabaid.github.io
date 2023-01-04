@@ -1,6 +1,14 @@
 body {
   font-family: "Source Code Pro", monospace;
 }
+body ::-moz-selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+body ::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
 
 :root {
   --color-primary: #262B2B;
@@ -13,10 +21,13 @@ body {
   margin-left: 25%;
 }
 .welcome #terminal #hello-world {
-  font-size: 6vw;
+  font-size: 4vw;
 }
 .welcome #terminal #intro-text {
-  font-size: 3vw;
+  font-size: 4vw;
+}
+.welcome #terminal #email {
+  font-size: 2vw;
 }
 .welcome #socials {
   margin-top: 2%;
@@ -27,6 +38,9 @@ body {
 }
 .welcome #socials i {
   color: var(--color-primary);
+}
+.welcome #socials :hover {
+  color: #424545;
 }
 .welcome div#buttons-section {
   margin-top: 2%;
@@ -61,6 +75,7 @@ body {
   text-align: center;
   display: none;
   position: relative;
+  font-size: 1em;
 }
 .controls .control .control-icon {
   position: relative;
@@ -72,5 +87,13 @@ body {
 .controls .control .control-icon:hover ~ .control-title {
   display: block;
   color: white;
+  background-color: var(--color-primary);
+}
+
+.btn {
+  color: var(--color-primary);
+}
+
+.btn:hover {
   background-color: var(--color-primary);
 }/*# sourceMappingURL=styles_v3.css.map */
