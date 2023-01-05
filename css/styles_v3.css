@@ -21,13 +21,13 @@ body ::selection {
   margin-left: 25%;
 }
 .welcome #terminal #hello-world {
-  font-size: 4vw;
+  font-size: 2em;
 }
 .welcome #terminal #intro-text {
-  font-size: 4vw;
+  font-size: 2em;
 }
 .welcome #terminal #email {
-  font-size: 2vw;
+  font-size: 1em;
 }
 .welcome #socials {
   margin-top: 2%;
@@ -96,4 +96,17 @@ body ::selection {
 
 .btn:hover {
   background-color: var(--color-primary);
+}
+
+#projects {
+  margin-top: 5%;
+}
+#projects #accordion {
+  width: 80%;
+  display: block;
+  justify-content: center;
+}
+#projects #accordion .card {
+  align-self: center;
+  margin-left: 25%;
 }/*# sourceMappingURL=styles_v3.css.map */

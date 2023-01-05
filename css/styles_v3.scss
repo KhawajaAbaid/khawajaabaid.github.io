@@ -17,14 +17,14 @@ margin-top: 10%;
         margin-left: 25%;
 
         #hello-world{
-            font-size: 4vw;
+            font-size: 2em;
             }
         
         #intro-text{
-            font-size: 4vw;
+            font-size: 2em;
             }
         #email{
-            font-size: 2vw;
+            font-size: 1em;
         }
         }
     #socials{
@@ -104,4 +104,22 @@ margin-top: 10%;
 
 .btn:hover{
     background-color: var(--color-primary);
+}
+
+#projects{
+    margin-top: 5%;
+
+    #accordion{
+        width: 80%;
+        display: block;
+        // align-items: center;
+        // align-content: center;
+        justify-content: center;
+
+        .card{
+            align-self: center;
+            margin-left: 25%;
+        }
+
+    }
 }
