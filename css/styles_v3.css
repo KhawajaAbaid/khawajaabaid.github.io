@@ -109,4 +109,15 @@ body ::selection {
 #projects #accordion .card {
   align-self: center;
   margin-left: 25%;
+}
+#projects #accordion .card .card-header .mb-0 :hover {
+  background-color: black;
+  color: aliceblue;
+}
+#projects #accordion h5 {
+  font-size: 1.1em;
+}
+#projects #accordion li .item-sub-heading {
+  font-size: 1em;
+  font-weight: bold;
 }/*# sourceMappingURL=styles_v3.css.map */

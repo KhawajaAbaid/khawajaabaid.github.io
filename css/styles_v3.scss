@@ -107,7 +107,7 @@ margin-top: 10%;
 }
 
 #projects{
-    margin-top: 5%;
+    margin-top: 5%; 
 
     #accordion{
         width: 80%;
@@ -115,10 +115,29 @@ margin-top: 10%;
         // align-items: center;
         // align-content: center;
         justify-content: center;
+        
 
         .card{
             align-self: center;
             margin-left: 25%;
+
+            .card-header{
+                .mb-0{
+                    :hover{
+                        background-color: black;
+                        color: aliceblue;
+                    }
+                }
+            }
+        }
+        h5{
+            font-size: 1.1em;
+        }
+        li{
+            .item-sub-heading{
+                font-size: 1em;
+                font-weight: bold;
+            }
         }
 
     }
