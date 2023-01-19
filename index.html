@@ -1,131 +1,201 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
     <head>
-        <title>Khawaja Abaid - Machine Learner</title>
-        <link rel="stylesheet" href="styles.css">
+        <!--Bootstrapping-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!--custom styling-->
+        <link href="css/styles_v3.css" rel="stylesheet">
+        <!--font awesome-->
+        <script src="https://kit.fontawesome.com/15cd689df0.js" crossorigin="anonymous"></script>
+        <!--google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <script src="js/script.js"></script>
+        <title>Khawaja Abaid</title>
     </head>
     <body>
-        <!-- <div cass="wrapper">
-            <div class="sidebar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div> -->
-            <header class="main-header">
-                <nav class="nav main-nav">
-                    <ul>
-                        <li><a href="index.html">Interests</a></li>
-                        <li><a href="store.html">Skills</a></li>
-                        <li><a href="about.html">Projects</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-            <div class="content">
-                <h1 class="big-name">Khawaja Abaid Ullah</h1>
-                <h2 class="tags">Machine Learning | Data Science | NLP </h2>
-
-                <div id="interests" class="interests-section section">
-                    <h3 class="interests-header sec-header">Primary Interests:</h3>
-                    <ul class="interests-list">
-                        <li>Inspired by Keras Creator, François Chollet, I aspire to help
-                            democratize Artificial Intelligence, by developing algorithms
-                            and utilities that make AI tech accessible to everyone.</li>
-                        </li>
-                        <li>Building tools and products that create the most value, fun, or both, for users.</li>
-                        <li>Addressing the tech needs of relatively niche and ignored groups of people.</li>
-                        <li>Learning.</li>
-                    </ul>
+        <main>
+            <div class="welcome">
+                <div id="terminal">
+                    <div id="hello-world"></div>
+                    <div id="intro-text"></div>
+                    <div id="email"></div>
                 </div>
-
-                <div class="education-section section">
-                    <h3 class="education-header sec-header">Education:</h3>
-                    <ul class="education-list">
-                        <li>2017-21: <strong class="amplify">Bachelor of Science in Computer Science</strong>
-                            <ul class="sub-list">
-                                <li>Graduated as the <strong class='highlight'>Topper of Class of 2021 </strong></li>
-                            </ul>
-                        </li>
-                        <li>2017: <strong class="amplify">Web Desing and Development (Wordpress)</strong>, Short Course</li>
-                    </ul>
+                <div id="socials">
+                    <a href="https://www.twitter.com/KhawajaAbaid" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.github.com/KhawajaAbaid" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/KhawajaAbaid" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
-
-                <div class="work-section section">
-                    <h3 class="work-header sec-header">Work Experience:</h3>
-                    <ul class="work-list">
-                        <li>Sep, 2021 to Present: <strong class="amplify">Freelance Developer</strong>, Fiverr</li>
-                            <ul class="sub-list">
-                                <li>Web Scraping, Automation, GUI-based Desktop Apps</li>
-                            </ul>
-                        </li>
-                        <li>April, 2021 to Present: <strong class="amplify">Open-Source Developer</strong></li>
-                        <ul class="sub-list">
-                            <li>Been inactive for a long time but getting back in the game now!</li>
-                        </ul>
-                    </li>
-                    </ul>
-                </div>
-
-                <div class="skills-section section">
-                    <h3 class="skills-header sec-header">Skills:</h3>
-                    <ul class="skills-list">
-                        <li class="skill-list-item-header amplify">Programming Langauges:</li>
-                            <ul class="sub-list">
-                                <li>Proficient:</li>
-                                <ul class="sub-sub-list logox-list">
-                                    <!-- <li>Python</li> -->
-                                    <li><img src="images/logos/python.png" class="skill-img"></li>
-                                </ul>
-                                <li>Familiar:</li>
-                                <ul class="sub-sub-list logox-list">
-                                    <!-- <li>C++</li> -->
-                                    <!-- <li><img src="images/logos/cplusplus.png" class="skill-img"> C++</li> -->
-                                    <li><img src="images/logos/cplusplus.png" class="skill-img"></li>
-                                    <!-- <li>JavaScript</li> -->
-                                    <!-- <li><img src="images/logos/javascript.png" class="skill-img"> Javascript</li> -->
-                                    <li><img src="images/logos/javascript.png" class="skill-img"></li>
-                                    <!-- <li>SQL</li> -->
-                                    <!-- <li><img src="images/logos/sql.png" class="skill-img"> SQL</li> -->
-                                    <li><img src="images/logos/sql.png" class="skill-img"></li>
-                                    <!-- <li>C#</li> -->
-                                    <!-- <li><img src="images/logos/csharp.png" class="skill-img"> C#</li> -->
-                                    <li><img src="images/logos/csharp.png" class="skill-img"></li>
-                                    <!-- <li>HTML</li> -->
-                                    <!-- <li><img src="images/logos/html.png" class="skill-img"> HTML</li> -->
-                                    <li><img src="images/logos/html.png" class="skill-img"></li>
-                                    <!-- <li>CSS</li> -->
-                                    <!-- <li><img src="images/logos/css.png" class="skill-img"> CSS</li> -->
-                                    <li><img src="images/logos/css.png" class="skill-img"></li>
-                                </ul>
-                            </li>
-                        </li>
-                    </ul>
-                    
-                    <li class="skills-list-item-header amplify">ML/NLP Frameworks:</li>
-                        <ul class="sub-list logox-list">
-                            <!-- <li>Keras</li> -->
-                            <li><img src="images/logos/keras.png" class="skill-img"></li>
-                            <!-- <li>Scikit-learn</li> -->
-                            <li><img src="images/logos/sklearn.png" class="skill-img"></li>
-                            <!-- <li>AllenNLP</li> -->
-                            <li><img src="images/logos/allennlp.png" class="skill-img" height="20px"></li>
-                        </ul>
-                    
-                    <li class="skills-list-item-header amplify">Data Science Libraries:</li>
-                        <ul class="sub-list logox-list">
-                            <!-- <li>Keras</li> -->
-                            <li><img src="images/logos/keras.png" class="skill-img"></li>
-                            <!-- <li>Scikit-learn</li> -->
-                            <li><img src="images/logos/sklearn.png" class="skill-img"></li>
-                            <!-- <li>AllenNLP</li> -->
-                            <li><img src="images/logos/allennlp.png" class="skill-img" height="20px"></li>
-                        </ul>
+                <div id="buttons-section">
+                    <!-- <a role="button" href="/about.html" class="btn btn-outline-secondary">About</a> -->
+                    <a role="button" href="/projects.html" class="btn btn-outline-secondary">Projects</a>
+                    <a role="button" href="/contact.html" class="btn btn-outline-secondary">Skills</a>
+                    <a role="button" href="/interests.html" class="btn btn-outline-secondary">Education</a>
                 </div>
             </div>
-        </div>
 
+            <!--PROJECTS-->
+            <div id="projects">
+                <h1>PROJECTS</h1>
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Prewordict / A fun little nerdy game (Inspired by Wordle)
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <ol>
+                                    <h5>Try this out in a browser, <a href="https://khawajaabaid.github.io/prewordict" target="_blank">https://khawajaabaid.github.io/prewordict</a></h5>
+                                    <li>
+                                        Processed 180,000 medium articles and clustered the similar words
+                                    </li>
+                                    <li>
+                                        Generated word clouds from these clusters. Given a word cloud, user has to predict one word that best belongs in the word cloud.
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">Scikit-Learn (TFIDF, SVD, KMeans), WordCloud, Numpy, Pandas, Matplotlib, Kaggle</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Gamer Assistant - Addressing the unaddressed needs of gamers | CS50X Project
+                            </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <h5>Consists of three main modules: </h5>
+                                <ol>
+                                    <li>
+                                        <span class="item-sub-heading">FPS Predictor:</span> 
+                                        Predicts the expected amount of FPS for a user-specified video game on a user specified PC configuration.
+                                    </li>
+                                    <li>
+                                        <span class="item-sub-heading">Games Recommender:</span>
+                                        Recommends video games based on user specified PC configuration. Uses a simple yet working ranking algorithm. (currently only CPU and GPU)
+                                    </li>
+                                    <li>
+                                        <span class="item-sub-heading">PC Predictor:</span> 
+                                        Recommends PC components based on user specified video games. Uses pretty much the same ranking algorithm but in reverse. (currently only CPU and GPU)
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">Keras, XGBoost, Pandas, Numpy, Django</span>
+                                <br>
+                                <br>
+                                <a href="https://www.youtube.com/watch?v=b3CYfOyna6M">Project Demo Video Link</a> (which I was required to submit for completing CS50X)
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                PROLEAs - A Crowd Detection and Behavior Analysis System | Final Year Project
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <ol>
+                                    <li>
+                                        Worked on Computer Vision to train Deep Learning models for Person Detection as well as Detection of Certain (similarly attired) Groups among crowd.
+                                    </li>
+                                    <li>
+                                        Developed custom algorithms for Chaos Detection and Crowd Detection
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">TensorFlow Object Detection API, OpenCV, Matplotlib, PyQt5, Google Colab</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Video Games FPS Predictor (v1)
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            <div class="card-body">
+                                <ol>
+                                    <li>
+                                        Scraped games info and their FPS data from the internet (Steam and other sites)
+                                    </li>
+                                    <li>
+                                        Used Random Forest algorithm to build the FPS predictor
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">Scikit-Learn, Pandas, Requests, Beautiful Soup</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Tweets Cloud Bot (Inspired by Spotify Wrapped 2021)
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                            <div class="card-body">
+                                <h5>Check this out here, <a href="https://twitter.com/TweetsCloudBot" target="_blank">https://twitter.com/TweetsCloudBot</a></h5>
+                                <ol>
+                                    <li>
+                                        Uses Twitter API to get 100 most recent user tweets
+                                    </li>
+                                    <li>
+                                        Generate a user-customizable tweets cloud (word cloud of most frequent words) in tweets, filtering the stop words.
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">Twitter API, Tweepy, NLTK, WordCloud, matplotlib</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    
+                </div>
+            </div>
+        </main>
+        
+        <div>
+
+        </div>
+    
+    <!--BOOTSTRAP ending-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
