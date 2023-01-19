@@ -1,192 +1,123 @@
-@font-face {
-    font-family: merryweather-ultrabold;
-    src: url("fonts/Merriweather-UltraBold.ttf");
+body {
+  font-family: "Source Code Pro", monospace;
 }
-@font-face {
-    font-family: merryweather-bold;
-    src: url("fonts/Merriweather-Bold.ttf");
+body ::-moz-selection {
+  background-color: var(--color-primary);
+  color: white;
 }
-@font-face {
-    font-family: merryweather-regular;
-    src: url("fonts/Merriweather-Regular.ttf");
-}
-
-
-*{
-    margin-left: 10px;
-    font-family: merryweather-regular;
-    color: black;
+body ::selection {
+  background-color: var(--color-primary);
+  color: white;
 }
 
-a{
-    text-decoration: wavy;
-    color: #fe5f55;
-}
-a:hover{
-    color: #81b29a;
+:root {
+  --color-primary: #262B2B;
 }
 
-body{
-    background-color: #f1f1f1;
+.welcome {
+  margin-top: 10%;
+}
+.welcome #terminal {
+  margin-left: 25%;
+}
+.welcome #terminal #hello-world {
+  font-size: 2em;
+}
+.welcome #terminal #intro-text {
+  font-size: 2em;
+}
+.welcome #terminal #email {
+  font-size: 1em;
+}
+.welcome #socials {
+  margin-top: 2%;
+  margin-bottom: none;
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 2em;
+}
+.welcome #socials i {
+  color: var(--color-primary);
+}
+.welcome #socials :hover {
+  color: #424545;
+}
+.welcome div#buttons-section {
+  margin-top: 2%;
+  text-align: center;
 }
 
-::selection{
-    background-color: #E07A5F;
-    color: white;
+.controls {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+}
+.controls .control {
+  padding: 1rem;
+  display: flex;
+  margin-top: 2%;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5em;
+  width: 8em;
+  height: 60px;
+  color: var(--color-primary);
+}
+.controls .control .control-title {
+  width: auto;
+  border-radius: 8%;
+  text-align: center;
+  display: none;
+  position: relative;
+  font-size: 1em;
+}
+.controls .control .control-icon {
+  position: relative;
+  margin-right: 4%;
+  display: flex;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.controls .control .control-icon:hover ~ .control-title {
+  display: block;
+  color: white;
+  background-color: var(--color-primary);
 }
 
-
-.nav ul{
-    margin: 0;
+.btn {
+  color: var(--color-primary);
 }
 
-.nav li{
-    display: inline;
+.btn:hover {
+  background-color: var(--color-primary);
 }
 
-.nav a{
-    display: inline-block;
-    padding: 0.5em;
-    color: #f1f1f1;
-    text-decoration: None;
+#projects {
+  margin-top: 5%;
 }
-
-.main-nav{
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: bolder;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+#projects #accordion {
+  width: 80%;
+  display: block;
+  justify-content: center;
 }
-
-.main-nav li{
-    padding: 0 5%;
+#projects #accordion .card {
+  align-self: center;
+  margin-left: 25%;
 }
-
-.nav a:hover{
-    background-color: rgba(179, 177, 173, 0.4);
+#projects #accordion .card .card-header .mb-0 :hover {
+  background-color: black;
+  color: aliceblue;
 }
-
-.main-header{
-    margin-top: 8em;
-    background-color: #E07A5F;
+#projects #accordion h5 {
+  font-size: 1.1em;
 }
-
-.big-name{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:0;
-    margin:0;
-    font-family: merryweather-ultrabold;
-    font-weight: normal;
-    font-size: 4em;
-    margin-top: 2em;
-
-    color: #E07A5F;
-}
-
-.tags{
-    font-weight: normal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:0;
-    margin:0;
-    margin-top: 0.4em;
-}
-
-.section{
-    padding:0;
-    margin:0;
-    margin-left: 5em;
-    margin-top: 4em;
-}
-
-.sec-header{
-    font-family: merryweather-bold;
-    font-size: 1.5em;
-    font-weight: normal;
-    color: #3d405b;
-}
-
-li{ 
-    margin-bottom: 0.8em;
-    margin-right: 8em;
-}
-
-.interests-section{
-    margin-top: 4em;
-}
-
-.education-section{
-
-}
-
-.highlight{
-    font-weight: normal;
-    color: #264653;
-    margin: 0;
-    padding: 0;
-}
-
-.sub-list{
-    margin-top: 0.5em;
-}
-
-.amplify{
-    font-family: merryweather-bold;
-    font-size: 1.2em;
-    font-weight: normal;
-    color: #2a9d8f;
-    margin: 0;
-    padding: 0;
-}
-
-.skills-list-item-header{
-    margin: 0;
-    padding: 0;
-    margin-top: 1em;
-}
-
-.logox-list{
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    place-items: center;
-    padding: 0;
-    margin: 0;
-    margin-left: 2em;
-    margin-top: 1em;
-}
-
-ul.logox-list{
-    list-style: none;
-}
-.logox-list li{
-    margin-right: 2em;
-    place-content: center;
-    place-items: center;
-}
-
-.skill-img{
-    margin: 0;
-    padding: 0;
-    height: 30px;
-}
-
-.sidebar{
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    flex-direction: column;
-    margin-top: 4em;
-    margin-left: 0em;
-}
-.content{
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    flex-direction: column;
-    margin-top: 4em;
-    margin-left: 0em;
-}
+#projects #accordion li .item-sub-heading {
+  font-size: 1em;
+  font-weight: bold;
+}/*# sourceMappingURL=styles_v3.css.map */
