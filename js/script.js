@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
             // console.log(mainBtn.className);
             mainBtn.className += " active-btn";
             var mainBtnDataId = mainBtn.dataset.id;
+
+            // since there's no home button among main btns, so each time user clicks any of these btns
+            // they are going from home/welcome section to some other section, in which case we want to show
+            // the sidebar with controls
+            document.getElementById("controls-sidebar").style.display = "flex";
+
             // hide the current section by removing active-section class from it
             // and add active-section to the newly clicked section to show it
             var selectedSection = document.getElementById(mainBtnDataId);
@@ -72,6 +78,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 // hide the current section by removing active-section class from it
                 // and add active-section to the newly clicked section to show it
                 var controlBtnDataId = controlBtn.dataset.id;
+
+                // if user clicks on home to go back to the welcome/home page, then we'll hide the controls sidebar
+                if (controlBtnDataId === "welcome"){
+                    document.getElementById("controls-sidebar").style.display = "none";
+                }
+                else {
+                    // otherwise we want to display sidebar with every other section
+                    document.getElementById("controls-sidebar").style.display = "flex";
+                }
                 var selectedSection = document.getElementById(controlBtnDataId);
                 var currentActiveSection = document.getElementsByClassName("active-section")[0];
                 currentActiveSection.className = currentActiveSection.className.replace("active-section", "");

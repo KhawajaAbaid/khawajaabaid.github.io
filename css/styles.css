@@ -55,19 +55,37 @@ body ::selection {
   color: white;
 }
 
-.controls-sidebar {
+#controls-sidebar {
   position: absolute;
   z-index: 10;
   top: 50%;
   left: 2%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
   height: 100%;
+  display: none;
+  -webkit-animation: scaleAnim2 1s ease-in-out;
+          animation: scaleAnim2 1s ease-in-out;
 }
-.controls-sidebar .control-btn {
+@-webkit-keyframes scaleAnim2 {
+  0% {
+    transform: translateY(-100%) scaleY(0);
+  }
+  100% {
+    transform: translateY(-50%) scaleY(1);
+  }
+}
+@keyframes scaleAnim2 {
+  0% {
+    transform: translateY(-100%) scaleY(0);
+  }
+  100% {
+    transform: translateY(-50%) scaleY(1);
+  }
+}
+#controls-sidebar .control-btn {
   padding: 1rem;
   display: flex;
   margin-top: 5%;
@@ -78,7 +96,7 @@ body ::selection {
   height: 40px;
   transition: all 400ms;
 }
-.controls-sidebar .control-btn :hover {
+#controls-sidebar .control-btn :hover {
   color: white;
 }
 
@@ -89,6 +107,28 @@ body ::selection {
 
 .section {
   display: none;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 5%;
+  font-weight: bold;
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.not-main-section {
+  margin-top: 10%;
+  justify-content: center;
+  text-align: center;
+  width: 75%;
+  position: absolute;
+  margin-left: 25%;
+}
+
+.highlight {
+  background-color: var(--color-primary);
+  color: white;
 }
 
 .active-section {
@@ -113,9 +153,6 @@ body ::selection {
   }
 }
 
-#projects {
-  margin-top: 5%;
-}
 #projects #accordion {
   width: 80%;
   display: block;
@@ -135,4 +172,15 @@ body ::selection {
 #projects #accordion li .item-sub-heading {
   font-size: 1em;
   font-weight: bold;
+}
+
+#cert-title {
+  text-align: left;
+  background-color: var(--color-primary);
+  color: white;
+  width: 8em;
+}
+
+#certificates {
+  text-align: left;
 }/*# sourceMappingURL=styles.css.map */
