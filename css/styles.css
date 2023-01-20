@@ -17,9 +17,6 @@ body ::selection {
 a {
   color: orangered;
 }
-a :hover {
-  color: orange;
-}
 
 .welcome {
   margin-top: 10%;
