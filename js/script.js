@@ -44,7 +44,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
             }
             // console.log(mainBtn.className);
             mainBtn.className += " active-btn";
-            var controlBtnId = mainBtn.dataset.id + "-control-btn";
+            var mainBtnDataId = mainBtn.dataset.id;
+            // hide the current section by removing active-section class from it
+            // and add active-section to the newly clicked section to show it
+            var selectedSection = document.getElementById(mainBtnDataId);
+            var currentActiveSection = document.getElementsByClassName("active-section")[0];
+            currentActiveSection.className = currentActiveSection.className.replace("active-section", "");
+            selectedSection.className += " active-section";
+            var controlBtnId = mainBtnDataId + "-control-btn";
             
             let controlBtn = document.getElementById(controlBtnId);
             let currentActiveControlBtn = document.getElementsByClassName("active-control-btn")[0];
@@ -58,11 +65,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     controlBtns = document.querySelectorAll(".control-btn")
     controlBtns.forEach((controlBtn)=>{
-        if (controlBtn.id != "resume-control-btn"){         
-            // we don't want to add active btn class to resume control button 
-            // so we implement a check for that 
-
+        // we don't want to add active btn class to resume control button 
+        // so we implement a check for that 
+        if (controlBtn.id != "resume-control-btn"){            
             controlBtn.addEventListener("click", ()=>{
+                // hide the current section by removing active-section class from it
+                // and add active-section to the newly clicked section to show it
+                var controlBtnDataId = controlBtn.dataset.id;
+                var selectedSection = document.getElementById(controlBtnDataId);
+                var currentActiveSection = document.getElementsByClassName("active-section")[0];
+                currentActiveSection.className = currentActiveSection.className.replace("active-section", "");
+                selectedSection.className += " active-section";
+
                 let currentControlBtn = document.getElementsByClassName("active-control-btn")[0];
                 if (currentControlBtn){
                     currentControlBtn.className = currentControlBtn.className.replace("active-control-btn", "");
