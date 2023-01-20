@@ -11,6 +11,14 @@ font-family: 'Source Code Pro', monospace;
     --color-primary: #262B2B;
 }
 
+a{
+    color: orangered;
+    
+    :hover{
+        color: orange;
+    }
+}
+
 .welcome{
     margin-top: 10%;
     text-align: center;
@@ -39,15 +47,19 @@ font-family: 'Source Code Pro', monospace;
             color: var(--color-primary);
             }
         
-        :hover{
-            color: #424545;
+            :hover{
+                color: #424545;
+            }
         }
-        }
-    
+
     div#buttons-section{
         margin-top: 2%;
         text-align: center;
         }
+}
+
+#medium-plug{
+    margin-top: 2%;
 }
 
 
