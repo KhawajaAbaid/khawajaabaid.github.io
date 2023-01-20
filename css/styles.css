@@ -16,9 +16,8 @@ body ::selection {
 
 .welcome {
   margin-top: 10%;
-}
-.welcome #terminal {
-  margin-left: 25%;
+  text-align: center;
+  height: 100%;
 }
 .welcome #terminal #hello-world {
   font-size: 2em;
@@ -47,7 +46,7 @@ body ::selection {
   text-align: center;
 }
 
-.controls {
+.controls-sidebar {
   position: absolute;
   z-index: 10;
   top: 50%;
@@ -57,37 +56,22 @@ body ::selection {
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
+  height: 100%;
 }
-.controls .control {
+.controls-sidebar .control-btn {
   padding: 1rem;
   display: flex;
-  margin-top: 2%;
+  margin-top: 5%;
   align-items: center;
   text-align: center;
-  font-size: 1.5em;
-  width: 8em;
-  height: 60px;
+  font-size: 1.4em;
+  width: 150px;
+  height: 40px;
   color: var(--color-primary);
+  background-color: white;
 }
-.controls .control .control-title {
-  width: auto;
-  border-radius: 8%;
-  text-align: center;
-  display: none;
-  position: relative;
-  font-size: 1em;
-}
-.controls .control .control-icon {
-  position: relative;
-  margin-right: 4%;
-  display: flex;
-  font-size: 1.3em;
-  cursor: pointer;
-}
-.controls .control .control-icon:hover ~ .control-title {
-  display: block;
+.controls-sidebar .control-btn :hover {
   color: white;
-  background-color: var(--color-primary);
 }
 
 .btn {
@@ -96,6 +80,7 @@ body ::selection {
 
 .btn:hover {
   background-color: var(--color-primary);
+  color: aliceblue;
 }
 
 .section {
