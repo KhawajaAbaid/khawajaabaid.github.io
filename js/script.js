@@ -1,7 +1,7 @@
-console.log("out");
+// console.log("out");
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    console.log("in");
+    // console.log("in");
     var i = 0;
     var j = 0;
     var k = 0;
@@ -32,4 +32,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
         setTimeout(typeWriter, speed);
     }
     typeWriter();
+
+
+    // switching b/w sections
+    var welcomeDiv = document.getElementById("welcome");
+    var projectsBtn = document.getElementById("projects-btn");
+    var projectsDiv = document.getElementById("projects");
+    projectsBtn.addEventListener("click", ()=>{
+        welcomeDiv.classList.remove("active");
+        projectsDiv.classList.add("active");
+    })
+
 })
