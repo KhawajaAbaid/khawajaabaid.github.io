@@ -46,6 +46,15 @@ body ::selection {
   text-align: center;
 }
 
+.btn {
+  color: var(--color-primary);
+}
+
+.btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
 .controls-sidebar {
   position: absolute;
   z-index: 10;
@@ -67,27 +76,22 @@ body ::selection {
   font-size: 1.4em;
   width: 150px;
   height: 40px;
-  color: var(--color-primary);
-  background-color: white;
+  transition: all 400ms;
 }
 .controls-sidebar .control-btn :hover {
   color: white;
 }
 
-.btn {
-  color: var(--color-primary);
-}
-
-.btn:hover {
+.active-control-btn {
   background-color: var(--color-primary);
-  color: aliceblue;
+  color: white;
 }
 
 .section {
   display: none;
 }
 
-.active {
+.active-section {
   display: block;
   -webkit-animation: scaleAnim 1s ease-in-out;
           animation: scaleAnim 1s ease-in-out;

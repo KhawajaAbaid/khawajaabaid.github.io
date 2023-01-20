@@ -33,14 +33,48 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     typeWriter();
 
-
     // switching b/w sections
-    var welcomeDiv = document.getElementById("welcome");
-    var projectsBtn = document.getElementById("projects-btn");
-    var projectsDiv = document.getElementById("projects");
-    projectsBtn.addEventListener("click", ()=>{
-        welcomeDiv.classList.remove("active");
-        projectsDiv.classList.add("active");
+    // main btns are buttons that are displayed on the welcome screen
+    mainBtns = document.querySelectorAll(".main-btns");
+    mainBtns.forEach((mainBtn)=>{
+        mainBtn.addEventListener("click", ()=>{
+            let currentBtn = document.getElementsByClassName("active-btn")[0];
+            if (currentBtn){
+                currentBtn.className = currentBtn.className.replace("active-btn", "");
+            }
+            // console.log(mainBtn.className);
+            mainBtn.className += " active-btn";
+            var controlBtnId = mainBtn.dataset.id + "-control-btn";
+            
+            let controlBtn = document.getElementById(controlBtnId);
+            let currentActiveControlBtn = document.getElementsByClassName("active-control-btn")[0];
+            if (currentActiveControlBtn)
+            {
+                currentActiveControlBtn.className = currentActiveControlBtn.className.replace("active-control-btn", "");
+            }
+            controlBtn.className += " active-control-btn";
+        })
     })
+
+    controlBtns = document.querySelectorAll(".control-btn")
+    controlBtns.forEach((controlBtn)=>{
+        if (controlBtn.id != "resume-control-btn"){         
+            // we don't want to add active btn class to resume control button 
+            // so we implement a check for that 
+
+            controlBtn.addEventListener("click", ()=>{
+                let currentControlBtn = document.getElementsByClassName("active-control-btn")[0];
+                if (currentControlBtn){
+                    currentControlBtn.className = currentControlBtn.className.replace("active-control-btn", "");
+                }
+                // console.log(mainBtn.className);
+                controlBtn.className += " active-control-btn";
+                });
+        };
+    })
+    // projectsBtn.addEventListener("click", ()=>{
+    //     welcomeDiv.classList.remove("active");
+    //     projectsDiv.classList.add("active");
+    // })
 
 })

@@ -18,7 +18,7 @@
     </head>
     <body>
         <main>
-            <div id="welcome" class="welcome section active">
+            <div id="welcome" class="welcome section active-section">
                 <div id="terminal">
                     <div id="hello-world"></div>
                     <div id="intro-text"></div>
@@ -31,11 +31,21 @@
                 </div>
                 <div id="buttons-section">
                     <!-- <a role="button" href="/about.html" class="btn btn-outline-secondary">About</a> -->
-                    <a role="button" id="projects-btn" href="#projects" class="btn btn-outline-secondary">Projects</a>
-                    <a role="button" id="skills-btn" href="#skills" class="btn btn-outline-secondary">Skills</a>
-                    <a role="button" id="education-btn" href="#interests" class="btn btn-outline-secondary">Education</a>
-                    <a role="button" href="/data/KhawajaAbaidUllah_resume_v2_4_1.pdf" class="btn btn-outline-secondary">Resume</a>
+                    <a role="button" data-id="projects" id="projects-btn" href="#projects" class="btn btn-outline-secondary main-btns">Projects</a>
+                    <a role="button" data-id="skills" id="skills-btn" href="#skills" class="btn btn-outline-secondary main-btns">Skills</a>
+                    <a role="button" data-id="education" id="education-btn" href="#education" class="btn btn-outline-secondary main-btns">Education</a>
+                    <a role="button" data-id="resume" href="/data/KhawajaAbaidUllah_resume_v2_4_1.pdf" class="btn btn-outline-secondary">Resume</a>
                 </div>
+            </div>
+
+            <!-------------------------CONTOLS SIDEBARRRRR--------------------------->
+
+            <div class="controls-sidebar">
+                <a role="button" id="home-control-btn" href="#welcome" class="btn btn-outline-secondary control-btn active-control-btn">Home</a>
+                <a role="button" id="projects-control-btn" href="#projects" class="btn btn-outline-secondary control-btn">Projects</a>
+                <a role="button" id="skills-control-btn" href="#skills" class="btn btn-outline-secondary control-btn">Skills</a>
+                <a role="button" id="education-control-btn" href="#interests" class="btn btn-outline-secondary control-btn">Education</a>
+                <a role="button" id= "resume-control-btn" href="/data/KhawajaAbaidUllah_resume_v2_4_1.pdf" class="btn btn-outline-secondary control-btn">Resume</a>
             </div>
 
             <!---------------------------------------PROJECTS--------------------------------------------------->
@@ -186,15 +196,21 @@
                     <br>                    
                 </div>
             </div>
+
+            <!----------------------------EDUCATION SECTION------------------------------------->
+
+            <div id="education" class="section">
+                <h1> Education </h1>
+                <ul>
+                    <li>
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        Graduated as the topper of my computer science class!
+                    </li>
+                </ul>
+            </div>
+
         </main>
 
-        <div class="controls-sidebar">
-            <a role="button" id="home-btn" href="#welcome" class="btn btn-outline-secondary control-btn">Home</a>
-            <a role="button" id="projects-btn" href="#projects" class="btn btn-outline-secondary control-btn">Projects</a>
-            <a role="button" id="skills-btn" href="#skills" class="btn btn-outline-secondary control-btn">Skills</a>
-            <a role="button" id="education-btn" href="#interests" class="btn btn-outline-secondary control-btn">Education</a>
-            <a role="button" href="/data/KhawajaAbaidUllah_resume_v2_4_1.pdf" class="btn btn-outline-secondary control-btn">Resume</a>
-        </div>
 
 
     <!--BOOTSTRAP ending-->

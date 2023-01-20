@@ -50,6 +50,16 @@ font-family: 'Source Code Pro', monospace;
         }
 }
 
+
+.btn{
+    color: var(--color-primary);
+}
+
+.btn:hover{
+    background-color: var(--color-primary);
+    color: white;
+}
+
 .controls-sidebar{
     position: absolute;
     z-index: 10;
@@ -72,54 +82,26 @@ font-family: 'Source Code Pro', monospace;
         font-size: 1.4em;
         width: 150px;
         height: 40px;
-        color: var(--color-primary);
-        background-color: white;
-        // transition: all 400ms;
+        transition: all 400ms;
 
         :hover{
             color: white;
         }
-        
-        // .control-title{
-        //     width: auto;
-        //     border-radius: 8%;
-        //     text-align: center;
-        //     display: none;
-        //     position: relative;
-        //     font-size: 1em;
-        // }
-
-        // .control-icon{
-        //     position: relative;
-        //     margin-right: 4%;
-        //     display: flex;
-        //     font-size: 1.3em;
-        //     cursor: pointer;
-        //     // justify-items: center;
-        //     // align-items: middle;
-        // }
-        // .control-icon:hover~.control-title{
-        //     display: block;
-        //     color: white;
-        //     background-color: var(--color-primary);
-        // }
     }
 }
 
-.btn{
-    color: var(--color-primary);
-}
-
-.btn:hover{
+.active-control-btn{
     background-color: var(--color-primary);
-    color: aliceblue;
+    // background-color: red;
+    color: white;
+    // font-size: 10em;
 }
 
 .section{
     display: none;
 }
 
-.active{
+.active-section{
     display: block;
     animation: scaleAnim 1s ease-in-out;
     @keyframes scaleAnim {
@@ -166,6 +148,5 @@ font-family: 'Source Code Pro', monospace;
                 font-weight: bold;
             }
         }
-
     }
 }
