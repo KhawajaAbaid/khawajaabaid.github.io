@@ -136,6 +136,10 @@ font-family: 'Source Code Pro', monospace;
     color: white;
 }
 
+.bold-it{
+    font-weight: bold;
+}
+
 .active-section{
     display: block;
     animation: scaleAnim 1s ease-in-out;
@@ -186,6 +190,10 @@ font-family: 'Source Code Pro', monospace;
     }
 }
 
+#education-list{
+    text-align: left;
+}
+
 #cert-title{
     text-align: left;
     background-color: var(--color-primary);
@@ -193,5 +201,10 @@ font-family: 'Source Code Pro', monospace;
     width: 8em;
 }
 #certificates{
+    text-align: left;
+}
+
+#skills-list{
+    font-size: 1.2em;
     text-align: left;
 }

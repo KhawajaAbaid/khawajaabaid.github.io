@@ -131,6 +131,10 @@ body ::selection {
   color: white;
 }
 
+.bold-it {
+  font-weight: bold;
+}
+
 .active-section {
   display: block;
   -webkit-animation: scaleAnim 1s ease-in-out;
@@ -174,6 +178,10 @@ body ::selection {
   font-weight: bold;
 }
 
+#education-list {
+  text-align: left;
+}
+
 #cert-title {
   text-align: left;
   background-color: var(--color-primary);
@@ -182,5 +190,10 @@ body ::selection {
 }
 
 #certificates {
+  text-align: left;
+}
+
+#skills-list {
+  font-size: 1.2em;
   text-align: left;
 }/*# sourceMappingURL=styles.css.map */
