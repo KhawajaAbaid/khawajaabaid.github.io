@@ -29,6 +29,9 @@ a {
 .welcome #terminal #intro-text {
   font-size: 2em;
 }
+.welcome #terminal #field-text {
+  font-size: 1.2em;
+}
 .welcome #terminal #email {
   font-size: 1em;
 }
