@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var i = 0;
     var j = 0;
     var k = 0;
+    var l = 0;
     var hello_world_text = '> Hello World!';
     var intro_text = "> I'm Khawaja Abaid Ullah!";
+    var field_text = "> I'm a Machine Learning Engineer."
     var email_text = "> reach me at khawaja.abaid@gmail.com"
     var speed = 75;
 
@@ -23,11 +25,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
             intro_text_div.innerHTML += intro_text.charAt(j);
             j++;
         }
-        // followed by printing email
-        else if (k < email_text.length) {
-            var email_div = document.getElementById("email");
-            email_div.innerHTML += email_text.charAt(k);
+
+        // followed by printing field-text
+        else if (k < field_text.length) {
+            var field_text_div = document.getElementById("field-text");
+            field_text_div.innerHTML += field_text.charAt(k);
             k++;
+        }
+        // followed by printing email
+        else if (l < email_text.length) {
+            var email_div = document.getElementById("email");
+            email_div.innerHTML += email_text.charAt(l);
+            l++;
         }
         setTimeout(typeWriter, speed);
     }
