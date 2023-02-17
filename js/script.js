@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var l = 0;
     var hello_world_text = '> Hello World!';
     var intro_text = "> I'm Khawaja Abaid Ullah!";
-    var field_text = "> I'm a Machine Learning Engineer."
+    var field_text = "> I'm a Machine Learning Engineer and Kaggle Expert."
     var email_text = "> reach me at khawaja.abaid@gmail.com"
     var speed = 75;
 
