@@ -53,8 +53,12 @@ a {
   text-align: center;
 }
 
-#medium-plug {
+#teras-plug {
   margin-top: 2%;
+}
+
+#medium-plug {
+  margin-top: 1%;
 }
 
 .btn {
