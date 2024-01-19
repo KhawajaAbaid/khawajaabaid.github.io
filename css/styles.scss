@@ -59,12 +59,14 @@ a{
         }
 }
 
-
-
-#medium-plug{
+#teras-plug{
     margin-top: 2%;
 }
 
+
+#medium-plug{
+    margin-top: 1%;
+}
 
 .btn{
     color: var(--color-primary);
@@ -221,5 +223,9 @@ a{
 
 #skills-list{
     font-size: 1.2em;
+    text-align: left;
+}
+
+#achievements-list{
     text-align: left;
 }

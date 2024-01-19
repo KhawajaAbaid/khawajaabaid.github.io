@@ -81,16 +81,7 @@ a {
   transform: translateY(-50%);
   height: 100%;
   display: none;
-  -webkit-animation: scaleAnim2 1s ease-in-out;
-          animation: scaleAnim2 1s ease-in-out;
-}
-@-webkit-keyframes scaleAnim2 {
-  0% {
-    transform: translateY(-100%) scaleY(0);
-  }
-  100% {
-    transform: translateY(-50%) scaleY(1);
-  }
+  animation: scaleAnim2 1s ease-in-out;
 }
 @keyframes scaleAnim2 {
   0% {
@@ -152,16 +143,7 @@ a {
 
 .active-section {
   display: block;
-  -webkit-animation: scaleAnim 1s ease-in-out;
-          animation: scaleAnim 1s ease-in-out;
-}
-@-webkit-keyframes scaleAnim {
-  0% {
-    transform: translateY(-100%) scaleY(0);
-  }
-  100% {
-    transform: translateY(0) scaleY(1);
-  }
+  animation: scaleAnim 1s ease-in-out;
 }
 @keyframes scaleAnim {
   0% {
@@ -210,5 +192,9 @@ a {
 
 #skills-list {
   font-size: 1.2em;
+  text-align: left;
+}
+
+#achievements-list {
   text-align: left;
 }/*# sourceMappingURL=styles.css.map */
