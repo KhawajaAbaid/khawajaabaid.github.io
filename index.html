@@ -58,6 +58,38 @@
                 <div id="accordion">
 
                     <div class="card">
+                        <div class="card-header" id="headingZERO">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZERO" aria-expanded="false" aria-controls="collapseZERO">
+                                codriver - A efficient LLM based code genration tool.
+                            </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseZERO" class="collapse" aria-labelledby="headingZERO" data-parent="#accordion">
+                            <div class="card-body">
+                                <h5>Basically, Github Copilot that can run locally on a laptop.</h5>
+                                <ol>
+                                    <li>
+                                        Built a custom Gemma 2 270M variant.
+                                    </li>
+                                    <li>
+                                        Utilizing the knowledge distillation, trained the base model first on english dataset (FineWebEdu) using Gemma 2 2B as teacher using the classic next word prediction technique.
+                                    </li>
+                                    <li>
+                                        In the second training phase, used CodeGemma 2B as teacher to train the pretrained 270M base model on codecontest dataset using the Fill in the Middle technique.
+                                    </li>
+                                </ol>
+                                <h5>Technologies Used:</h5>
+                                <span class="tech-used">JAX, Flax, and 8 H100s</span>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
