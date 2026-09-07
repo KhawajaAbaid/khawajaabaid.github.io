@@ -77,7 +77,7 @@ News files need `date`, `text`, optional `href`, and the visibility fields. Use 
 
 The regression test checks private entries, drafts marked selected, private images, public-to-private transitions, and invalid publication metadata. The normal build checks generated pages, local links/fragments, required assets, sitemap, metadata, CV signatures, excluded strings, and a 30 KB compressed JS budget. These tests support careful content review; they cannot identify an unknown confidential phrase that someone manually pastes into a public page.
 
-Fontus is approved **only as a brief class-project overview based on its public README**. Do not add the report, 3D-to-2D account, or detailed failure analysis without separate approval. See `CONTENT_SOURCES.md`.
+The owner has approved the full Fontus story for public use, including the 3D-to-2D pivot and lazy-agent/reward-hacking analysis. Keep the class-project status, distinguish observed behavior from causal diagnosis, and do not present proposed follow-ups as completed results. Add a technical-report link when its URL is available. The separate anonymous-review manuscript remains excluded. See `CONTENT_SOURCES.md`.
 
 ## CV
 

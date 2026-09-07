@@ -21,13 +21,13 @@
 - Existing CV is preserved exactly; it dates from October 2025 and should eventually be replaced by the owner.
 - No suitable portrait in repository: use the specified network motif without a portrait.
 - Google Scholar, unverified paper links, hobbies and teaching/service are omitted until sourced.
-- Fontus detailed content/report/code require public-use approval; requested during implementation.
+- Fontus public-use scope was clarified by the owner: the full project story is approved (September 7, 2026).
 - Specification files and ZIP stay local and are excluded from deployment and new commits.
 
 ## Implementation outcome
 - Eight static pages, four validated collections, local fonts, native BibTeX, responsive navigation, system/manual themes, SVG figures, SEO, and a working CV URL.
 - Public ADS-C and LLM paper metadata/links verified; full author order retained. Only two selected publications are shown because only two independent papers were approved/verified.
-- Owner approved Fontus as a brief class-project page based only on the public README. Detailed failure analysis and the report/modeling-pivot story are excluded.
+- Owner clarified that the full Fontus story is public. The expanded page covers the 3D-to-2D pivot, environment design, PPO setup, lazy-agent diagnosis, lessons, and proposed follow-ups. No report URL is fabricated.
 - A privacy regression exposed draft-image emission through the normal glob loader. Added a small build-only YAML parser and an early public-content loader, plus regression tests; both content and images are now excluded before processing. A second public-only query gate remains in place.
 - Original diagram SVGs are labeled conceptual. No portrait was added because none was supplied.
 - Research features and citation components derive labels from their entries, so adding a new entry does not require component edits.

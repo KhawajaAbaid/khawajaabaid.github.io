@@ -65,3 +65,9 @@ QA_PACKAGE_DIR=/tmp/research-site-qa node scripts/browser-qa.cjs
 - The CV is the supplied October 2025 PDF, preserved byte-for-byte; the owner should provide a current academic CV.
 - LinkedIn blocks automated link verification; the preserved owner-supplied URL needs a normal-browser check if its profile slug changes.
 - These are browser-engine and viewport checks, not physical iPhone/Android testing or a full screen-reader audit.
+
+## Fontus expansion — September 7, 2026
+
+After the owner clarified that the full story is public, the Fontus page was expanded with the modeling pivot, environment/PPO setup, qualitative lazy-agent diagnosis, lessons, and proposed follow-ups. Homepage and project summaries were updated. The two Fontus-specific prohibited-phrase checks were removed; the public-content gate and anonymous-manuscript protections remain intact.
+
+`npm run verify` and `npm run test:content` pass. Targeted Chromium checks on the homepage, projects page, and Fontus page pass at 1440/390 px in light/dark mode, with no overflow, console errors, or axe violations. Updated Fontus screenshots are saved in `artifacts/`. A technical-report URL has not been supplied, so no report link is fabricated.

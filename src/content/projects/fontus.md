@@ -1,13 +1,14 @@
 ---
 {
   "title": "Fontus",
-  "summary": "A class-project environment for exploring reinforcement learning and aerial recharging in UAV networks.",
+  "summary": "A custom aerial-recharging environment and PPO experiments investigating energy constraints, reward shaping, and an idle-agent failure mode.",
   "category": "research-system",
   "selected": false,
   "order": 2,
   "tags": [
     "Multi-agent environment",
-    "Reinforcement learning"
+    "PPO / RLlib",
+    "Reward shaping"
   ],
   "links": [
     {

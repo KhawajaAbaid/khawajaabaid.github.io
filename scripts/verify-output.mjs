@@ -34,8 +34,6 @@ const forbidden = [
   /CONFIDENTIAL_CANARY_[A-Z_]+/i,
   /private-canary/i,
   /anonymous.review.manuscript/i,
-  /3D\s*(?:→|&rarr;|to|[-–])\s*2D/i,
-  /lazy.agent.failure.mode/i,
 ];
 for (const path of files) {
   if (
