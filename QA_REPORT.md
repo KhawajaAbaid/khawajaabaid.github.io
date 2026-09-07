@@ -88,3 +88,9 @@ Local evidence is saved in `artifacts/live-verification.json` and live-site scre
 ## Hero credentials — September 7, 2026
 
 At the owner's request, Fulbright Scholar and Former AWS AI/ML Intern are now emphasized directly below the PhD role in the hero. `npm run verify` passes. Chromium checks confirm both credentials are in the initial viewport at 1440, 768, 390, and 360 px in light/dark mode, with no overflow, console errors, or axe violations. No additional JavaScript or dependencies were added.
+
+## Research biography — September 7, 2026
+
+Replaced the abstract hero statement with machine learning security, model extraction defense, and coordinated multi-agent robots for search-and-rescue. Aligned homepage, About, and Research copy with the owner's supplied RIT biography; kept the credentials as text. Restored the research-direction questions and descriptions in the overview template.
+
+`npm run verify` passes. Targeted Chromium checks cover all three changed pages at 1440, 768, 390, and 360 px in light/dark mode, with no horizontal overflow, console errors, or axe violations. Checks also confirm the advisor's name and all three research-direction headings. Desktop and mobile hero screenshots were visually reviewed.

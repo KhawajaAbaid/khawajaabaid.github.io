@@ -11,15 +11,16 @@ const publications = (await publicEntries("publications")).sort(byDate);
 
 <BaseLayout
   title="Research"
-  description="Research on secure model serving, autonomous multi-agent systems, and emerging LLM-assisted optimization. Public papers, code, and project overviews."
+  description="Research on anti-distillation defenses against model extraction and coordinated multi-agent robots for search-and-rescue. Public papers, code, and projects."
 >
   <header class="page-intro">
     <p class="eyebrow">RESEARCH / OVERVIEW</p><h1>
-      Learning when resources, information, and trust are limited.
+      Machine learning security. Autonomous systems.
     </h1><p>
-      I am interested in what learning systems reveal, how autonomous agents
-      coordinate, and how we can make useful decisions with incomplete
-      information.
+      I work on anti-distillation defenses that protect deployed models against
+      extraction attacks. My autonomous systems research aims to develop
+      coordinated multi-agent robots for search-and-rescue in disaster-struck
+      regions.
     </p>
   </header>
   {
@@ -33,6 +34,8 @@ const publications = (await publicEntries("publications")).sort(byDate);
             {d.status && <span class="status">{d.status}</span>}
           </div>
           <div>
+            <h2 class="direction-question">{d.question}</h2>
+            <p>{d.detail}</p>
             <p class="tagline">{d.tags}</p>
             {i === 0 && (
               <div class="links">

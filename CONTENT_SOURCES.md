@@ -6,6 +6,7 @@ Reviewed September 6, 2026. Only public material and the owner's supplied curren
 | --- | --- |
 | Current PhD role, ECE, KAS Lab, Fulbright/MS chronology and GPA | Owner's revamp specifications. These supersede the older MS wording seen in an institutional search excerpt. |
 | Institutional profile | https://www.rit.edu/kaslab/people/khawaja (verified redirect destination of the former profile URL) |
+| Research profile and advisor | Owner supplied the current RIT biography on September 7, 2026: Graduate Research Assistant under Dr. Mohammad Javad Khojasteh, anti-distillation defenses against extraction, and coordinated multi-agent robots for search-and-rescue as the autonomous-systems goal. Homepage, About, and Research copy follow this biography. |
 | ADS-C title, authors, date, results, scope | https://arxiv.org/abs/2607.15467 and public HTML https://arxiv.org/html/2607.15467v1; owner confirmed URL |
 | ADS-C implementation | https://github.com/the-kas-lab/ADS-C; linked by the public paper |
 | LLM social-attraction publication | https://arxiv.org/abs/2608.09717; full five-author list and 2026-08-10 date; owner confirmed URL |

@@ -6,8 +6,11 @@ export const profile = {
   lab: "Khojasteh Autonomous Systems Laboratory",
   email: "khawaja.abaid@gmail.com",
   credentials: ["Fulbright Scholar", "Former AWS AI/ML Intern"],
+  researchStatement:
+    "I work on machine learning security and autonomous systems—from protecting deployed models against extraction to developing coordinated multi-agent robots for search-and-rescue.",
+  advisor: "Dr. Mohammad Javad Khojasteh",
   description:
-    "PhD researcher at RIT working on machine learning security, reinforcement learning, multi-agent autonomous systems, and LLM-assisted reasoning.",
+    "PhD researcher at RIT working on model extraction defenses and coordinated multi-agent robots for search-and-rescue. Fulbright Scholar and former AWS AI/ML intern.",
   links: {
     rit: "https://www.rit.edu/kaslab/people/khawaja",
     github: "https://github.com/KhawajaAbaid",
@@ -38,11 +41,11 @@ export const directions = [
     id: "multi-agent-systems",
     title: "Autonomous multi-agent systems",
     description:
-      "Learning to coordinate when energy, information, and communication are limited.",
+      "Developing coordinated teams of robots for search-and-rescue in disaster-struck regions.",
     tags: "Reinforcement learning · Coordination",
-    question: "How should autonomous agents coordinate with limited resources?",
+    question: "How can teams of robots coordinate for search-and-rescue?",
     detail:
-      "Long-running autonomous systems have to allocate energy as carefully as they allocate work. I am interested in reinforcement learning, environment design, and policies that account for the constraints shared by a team of agents.",
+      "My work in autonomous systems is driven by the goal of developing highly coordinated multi-agent robots for search-and-rescue in disaster-struck regions. I study reinforcement learning and coordination under energy, information, and communication constraints in support of that goal.",
     href: "/research/#multi-agent-systems",
     linkLabel: "Explore multi-agent systems",
   },

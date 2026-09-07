@@ -7,7 +7,7 @@ import PublicationItem from "../components/PublicationItem.astro";
 import ProjectRow from "../components/ProjectRow.astro";
 import NewsList from "../components/NewsList.astro";
 import { publicEntries, byDate, byOrder } from "../lib/content";
-import { directions } from "../data/profile";
+import { directions, profile } from "../data/profile";
 const research = (await publicEntries("research"))
   .filter((e) => e.data.selected)
   .sort(byOrder)
@@ -28,8 +28,8 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
   <section class="section" aria-label="Research directions">
     <SectionHeader
       eyebrow="01 / RESEARCH"
-      title="Learning systems under constraints."
-      description="My work connects secure learning, resource-aware autonomy, and decision-making with incomplete information."
+      title="Secure models. Coordinated robots."
+      description="I work on model extraction defenses and multi-agent autonomy, with the goal of coordinated robots for search-and-rescue."
     />
     <div class="directions">
       {
@@ -104,19 +104,18 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
     </div><div>
       <p>
         I am a PhD student in Electrical and Computer Engineering at Rochester
-        Institute of Technology, working in the Khojasteh Autonomous Systems
-        Laboratory. I study machine-learning security and autonomous multi-agent
-        systems, with an interest in how useful behavior emerges under limits on
-        information, resources, and trust. That interest runs from the
-        predictions a model exposes to the decisions a team of agents makes.
+        Institute of Technology and a Graduate Research Assistant in the
+        Khojasteh Autonomous Systems Laboratory, supervised by {profile.advisor}.
+        My research spans machine learning security and autonomous systems:
+        anti-distillation defenses against model extraction, and coordinated
+        multi-agent robots for search-and-rescue in disaster-struck regions.
       </p><p>
-        Before my PhD, I completed an M.S. in Artificial Intelligence at RIT as
-        a Fulbright Scholar and interned at Amazon Web Services in AI/ML
-        software engineering. I previously studied computer science at the
-        University of Narowal in Pakistan. Alongside my research, I build and
-        contribute to open-source ML tools, including Teras and Keras. I value
-        the work of turning a research idea into an experiment that can be
-        inspected, reproduced, and improved.
+        I received my M.S. in Artificial Intelligence from RIT in 2026 as a
+        Fulbright Scholar. During my master's, I spent summer 2025 in Palo Alto
+        as a Software Development Engineer Intern for AI/ML at Amazon Web Services.
+        I previously studied computer science at the University of Narowal in
+        Pakistan. Alongside my research, I build and contribute to open-source ML
+        tools, including Teras and Keras.
       </p><div class="links"><a href="/about/">More about me →</a></div>
     </div>
   </section>
