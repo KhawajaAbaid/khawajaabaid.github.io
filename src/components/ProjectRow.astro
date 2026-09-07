@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import LinkList from "./LinkList.astro";
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+const {
+  entry: { data, id },
+} = Astro.props;
+---
+
+<article class="project-row" id={id}>
+  <h3>{data.title}</h3><div>
+    <p>{data.summary}</p><p class="tagline">{data.tags.join(" · ")}</p>
+  </div><LinkList links={data.links} context={data.title} />
+</article>
+<style>
+  .project-row {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    gap: 2.5rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.9rem;
+  }
+  .project-row p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .project-row .tagline {
+    font-size: 0.7rem;
+    margin-top: 0.8rem;
+  }
+  .project-row :global(.links) {
+    justify-content: flex-end;
+    align-content: start;
+    gap: 0.25rem 1rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 720px) {
+    .project-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .project-row :global(.links) {
+      justify-content: flex-start;
+    }
+  }
+</style>

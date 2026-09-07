@@ -1,0 +1,115 @@
+---
+const points = [
+  [35, 165],
+  [88, 74],
+  [95, 270],
+  [157, 155],
+  [169, 355],
+  [226, 59],
+  [233, 246],
+  [284, 142],
+  [305, 334],
+  [347, 51],
+  [369, 228],
+  [408, 132],
+  [423, 362],
+  [480, 58],
+  [477, 263],
+  [540, 170],
+  [550, 344],
+  [590, 85],
+  [606, 250],
+  [359, 410],
+];
+const edges = [
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [1, 3],
+  [1, 5],
+  [2, 3],
+  [2, 4],
+  [2, 6],
+  [3, 5],
+  [3, 6],
+  [3, 7],
+  [4, 6],
+  [4, 8],
+  [5, 7],
+  [5, 9],
+  [6, 7],
+  [6, 8],
+  [6, 10],
+  [7, 9],
+  [7, 10],
+  [7, 11],
+  [8, 10],
+  [8, 12],
+  [8, 19],
+  [9, 11],
+  [9, 13],
+  [10, 11],
+  [10, 12],
+  [10, 14],
+  [11, 13],
+  [11, 15],
+  [12, 14],
+  [12, 16],
+  [12, 19],
+  [13, 15],
+  [13, 17],
+  [14, 15],
+  [14, 16],
+  [14, 18],
+  [15, 17],
+  [15, 18],
+  [16, 18],
+];
+---
+
+<svg viewBox="0 0 640 460" fill="none" aria-hidden="true" class="network">
+  <g stroke="var(--border-strong)" stroke-width=".8" opacity=".6"
+    >{edges.map(([a, b]) => <path d={`M${points[a]} L${points[b]}`} />)}</g
+  >
+  <path
+    class="accent-path"
+    d="M35 165 157 155 233 246 369 228 408 132 480 58 590 85"
+    stroke="var(--accent)"
+    stroke-width="1.7"></path>
+  {
+    points.map(([cx, cy], i) => (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={[0, 3, 6, 10, 11, 13, 17].includes(i) ? 4 : 2.7}
+        fill={
+          [0, 3, 6, 10, 11, 13, 17].includes(i) ? "var(--accent)" : "var(--bg)"
+        }
+        stroke={
+          [0, 3, 6, 10, 11, 13, 17].includes(i)
+            ? "var(--accent)"
+            : "var(--border-strong)"
+        }
+        stroke-width="1"
+      />
+    ))
+  }
+</svg>
+<style>
+  .network {
+    display: block;
+    width: 100%;
+  }
+  .accent-path {
+    animation: breathe 12s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

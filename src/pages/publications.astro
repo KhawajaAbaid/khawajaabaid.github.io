@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import { publicEntries, byDate } from "../lib/content";
+const publications = (await publicEntries("publications")).sort(byDate);
+---
+
+<BaseLayout
+  title="Publications"
+  description="Public papers by Khawaja Abaid Ullah on antidistillation, model extraction, and language-model evaluation, with full author lists, code, and BibTeX."
+>
+  <header class="page-intro">
+    <p class="eyebrow">PAPERS / PREPRINTS</p><h1>Publications</h1><p>
+      Public work on machine-learning security and model evaluation. Papers,
+      implementations, and citations in one place.
+    </p>
+  </header>
+  <div class="publication-index">
+    {
+      publications.map((entry) => (
+        <PublicationItem entry={entry} headingLevel="h2" />
+      ))
+    }
+  </div>
+</BaseLayout>
+<style>
+  .publication-index {
+    padding-bottom: 6rem;
+  }
+</style>

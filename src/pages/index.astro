@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FeaturedResearch from "../components/FeaturedResearch.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import NewsList from "../components/NewsList.astro";
+import { publicEntries, byDate, byOrder } from "../lib/content";
+import { directions } from "../data/profile";
+const research = (await publicEntries("research"))
+  .filter((e) => e.data.selected)
+  .sort(byOrder)
+  .slice(0, 3);
+const publications = (await publicEntries("publications"))
+  .filter((e) => e.data.selected)
+  .sort(byDate)
+  .slice(0, 3);
+const projects = (await publicEntries("projects"))
+  .filter((e) => e.data.selected && e.data.category === "engineering")
+  .sort(byOrder)
+  .slice(0, 2);
+const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
+---
+
+<BaseLayout>
+  <Hero />
+  <section class="section" aria-label="Research directions">
+    <SectionHeader
+      eyebrow="01 / RESEARCH"
+      title="Learning systems under constraints."
+      description="My work connects secure learning, resource-aware autonomy, and decision-making with incomplete information."
+    />
+    <div class="directions">
+      {
+        directions.map((d, i) => (
+          <article class="direction">
+            <span class="number">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{d.title}</h3>
+            {d.status && <span class="status">{d.status}</span>}
+            <p>{d.description}</p>
+            <>
+              <p class="tagline">{d.tags}</p>
+              <a class="direction-link" href={d.href}>
+                {d.linkLabel} <span aria-hidden="true">→</span>
+              </a>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  {
+    research.length > 0 && (
+      <section class="section" aria-label="Selected work">
+        <SectionHeader
+          eyebrow="02 / SELECTED WORK"
+          title="Questions into experiments."
+          href="/research/"
+          linkLabel="All research"
+        />
+        {research.map((entry, i) => (
+          <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
+        ))}
+      </section>
+    )
+  }
+  {
+    publications.length > 0 && (
+      <section class="section" aria-label="Selected publications">
+        <SectionHeader
+          eyebrow="03 / PUBLICATIONS"
+          title="Selected publications"
+          href="/publications/"
+          linkLabel="All publications"
+        />
+        {publications.map((entry) => (
+          <PublicationItem entry={entry} />
+        ))}
+      </section>
+    )
+  }
+  {
+    projects.length > 0 && (
+      <section class="section" aria-label="Selected engineering">
+        <SectionHeader
+          eyebrow="04 / ENGINEERING"
+          title="I also build things."
+          description="Open-source tools and ML infrastructure, informed by work in research and production environments."
+          href="/projects/"
+          linkLabel="All projects"
+        />
+        {projects.map((entry) => (
+          <ProjectRow entry={entry} />
+        ))}
+      </section>
+    )
+  }
+  <section class="section bio-grid" aria-labelledby="about-heading">
+    <div>
+      <p class="eyebrow">05 / ABOUT</p><h2 id="about-heading">
+        Research, with an engineering instinct.
+      </h2>
+    </div><div>
+      <p>
+        I am a PhD student in Electrical and Computer Engineering at Rochester
+        Institute of Technology, working in the Khojasteh Autonomous Systems
+        Laboratory. I study machine-learning security and autonomous multi-agent
+        systems, with an interest in how useful behavior emerges under limits on
+        information, resources, and trust. That interest runs from the
+        predictions a model exposes to the decisions a team of agents makes.
+      </p><p>
+        Before my PhD, I completed an M.S. in Artificial Intelligence at RIT as
+        a Fulbright Scholar and interned at Amazon Web Services in AI/ML
+        software engineering. I previously studied computer science at the
+        University of Narowal in Pakistan. Alongside my research, I build and
+        contribute to open-source ML tools, including Teras and Keras. I value
+        the work of turning a research idea into an experiment that can be
+        inspected, reproduced, and improved.
+      </p><div class="links"><a href="/about/">More about me →</a></div>
+    </div>
+  </section>
+  {
+    news.length > 0 && (
+      <section class="section" aria-label="Recent news">
+        <>
+          <SectionHeader eyebrow="06 / RECENT" title="Along the way" />
+          <NewsList entries={news} />
+        </>
+      </section>
+    )
+  }
+</BaseLayout>

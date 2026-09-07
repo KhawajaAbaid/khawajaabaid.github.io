@@ -1,0 +1,111 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { profile } from "../data/profile";
+import LinkList from "./LinkList.astro";
+interface Props {
+  entry: CollectionEntry<"publications">;
+  headingLevel?: "h2" | "h3";
+}
+const {
+  entry: { data, id },
+  headingLevel: Heading = "h3",
+} = Astro.props;
+---
+
+<article class="publication" id={id}>
+  <time datetime={data.date.toISOString().slice(0, 10)}
+    >{data.date.getUTCFullYear()}</time
+  >
+  <div class="publication-body">
+    <Heading class="publication-title">{data.title}</Heading><p class="authors">
+      {
+        data.authors.map((author, index) => (
+          <>
+            {index > 0 && ", "}
+            {author === profile.name ? <strong>{author}</strong> : author}
+          </>
+        ))
+      }
+    </p><p class="venue">
+      {data.venue} · {data.status === "preprint" ? "Preprint" : data.status}
+    </p><LinkList links={data.links} context={data.title} />
+    {
+      data.bibtex && (
+        <details>
+          <>
+            <summary>
+              BibTeX<span class="sr-only"> for {data.title}</span>
+            </summary>
+            <pre>
+              <code>{data.bibtex}</code>
+            </pre>
+          </>
+        </details>
+      )
+    }
+  </div>
+</article>
+<style>
+  .publication {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 1.5rem;
+    padding-block: 1.8rem;
+    border-top: 1px solid var(--border);
+  }
+  time {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 0.2rem;
+  }
+  .publication-body {
+    min-width: 0;
+  }
+  .publication-title {
+    font-family: var(--font-sans);
+    font-size: 1.04rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.55;
+    text-wrap: pretty;
+    max-width: 88ch;
+  }
+  .authors {
+    font-size: 0.81rem;
+    color: var(--text-muted);
+    margin-top: 0.65rem;
+    max-width: none;
+  }
+  .authors strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .venue {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+  .publication :global(.links) {
+    font-size: 0.75rem;
+    margin-top: 0.35rem;
+  }
+  .publication details {
+    font-size: 0.75rem;
+  }
+  .publication pre {
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 720px) {
+    .publication {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+    .publication-title {
+      font-size: 1.02rem;
+    }
+    time {
+      font-size: 0.75rem;
+    }
+  }
+</style>

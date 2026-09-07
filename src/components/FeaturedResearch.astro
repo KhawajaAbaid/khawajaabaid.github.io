@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import LinkList from "./LinkList.astro";
+interface Props {
+  entry: CollectionEntry<"research">;
+  reverse?: boolean;
+}
+const { entry, reverse = false } = Astro.props;
+const { data } = entry;
+---
+
+<article class:list={["featured-work", { reverse, "no-figure": !data.image }]}>
+  {
+    data.image && (
+      <figure>
+        <>
+          <a href={`/research/${entry.id}/`} aria-label={`Read ${data.title}`}>
+            <Image src={data.image} alt={data.imageAlt!} loading="lazy" />
+          </a>
+          <figcaption>
+            {entry.id.toUpperCase()}{" "}
+            <span>
+              {data.status} · {data.date.getUTCFullYear()}
+            </span>
+          </figcaption>
+        </>
+      </figure>
+    )
+  }
+  <div class="feature-copy">
+    <p class="eyebrow accent">{data.category}</p><h3>
+      <a href={`/research/${entry.id}/`}>{data.title}</a>
+    </h3><p class="summary">{data.summary}</p>
+    {
+      data.metric && (
+        <div class="metric">
+          <p class="metric-value">{data.metric.value}</p>
+          <p>{data.metric.label}</p>
+          {data.metric.context && (
+            <p class="metric-context">{data.metric.context}</p>
+          )}
+        </div>
+      )
+    }
+    <LinkList
+      links={[
+        ...data.links,
+        {
+          label: `Read ${data.shortTitle ?? data.title}`,
+          href: `/research/${entry.id}/`,
+        },
+      ]}
+      context={data.title}
+    />
+  </div>
+</article>
+<style>
+  .featured-work.no-figure { grid-template-columns: 1fr; max-width: 68ch; }
+  .featured-work {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding-block: 1rem 4.5rem;
+  }
+  .featured-work + .featured-work {
+    border-top: 1px solid var(--border);
+    padding-top: 4.5rem;
+  }
+  .featured-work:last-child {
+    padding-bottom: 0;
+  }
+  .featured-work.reverse {
+    grid-template-columns: 1fr 1.1fr;
+  }
+  .reverse figure {
+    order: 2;
+  }
+  .featured-work figure {
+    min-width: 0;
+  }
+  figure img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  figure a {
+    display: block;
+  }
+  figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+  }
+  figcaption span {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+  .feature-copy .eyebrow {
+    font-size: 0.75rem;
+    color: var(--accent-strong);
+  }
+  h3 {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    margin-top: 1.25rem;
+  }
+  h3 a {
+    text-decoration: none;
+  }
+  .summary {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+  }
+  .metric {
+    margin-block: 1.8rem 1rem;
+  }
+  .metric .metric-value {
+    font-family: var(--font-display);
+    font-size: 3.7rem;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--text);
+  }
+  .metric p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .metric .metric-context {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  .feature-copy :global(.links) {
+    margin-top: 1rem;
+    gap: 0.2rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 900px) {
+    .featured-work {
+      gap: 2rem;
+    }
+    .featured-work h3 {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 720px) {
+    .featured-work,
+    .featured-work.reverse {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      padding-bottom: 3rem;
+    }
+    .featured-work + .featured-work {
+      padding-top: 3rem;
+    }
+    .reverse figure {
+      order: 0;
+    }
+    .featured-work h3 {
+      font-size: 2.2rem;
+    }
+    .metric .metric-value {
+      font-size: 3.3rem;
+    }
+  }
+</style>

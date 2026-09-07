@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import { publicEntries, byOrder } from "../lib/content";
+const projects = (await publicEntries("projects")).sort(byOrder);
+const systems = projects.filter((p) => p.data.category === "research-system");
+const engineering = projects.filter((p) => p.data.category === "engineering");
+const archive = projects.filter((p) => p.data.category === "archive");
+---
+
+<BaseLayout
+  title="Projects"
+  description="Research software and selected engineering: ADS-C, Fontus, Teras, Keras contributions, and codriver, with a lightweight archive of earlier projects."
+>
+  <header class="page-intro">
+    <p class="eyebrow">SOFTWARE / EXPERIMENTS</p><h1>I also build things.</h1><p
+    >
+      Tools that turn ideas into working systems, from reproducible research
+      experiments to multi-backend machine-learning libraries.
+    </p>
+  </header>
+  {
+    systems.length > 0 && (
+      <section class="section" aria-label="Research systems">
+        <SectionHeader title="Research systems" />
+        {systems.map((entry) => (
+          <ProjectRow entry={entry} />
+        ))}
+      </section>
+    )
+  }
+  {
+    engineering.length > 0 && (
+      <section class="section" aria-label="Selected engineering">
+        <SectionHeader title="Selected engineering" />
+        {engineering.map((entry) => (
+          <ProjectRow entry={entry} />
+        ))}
+      </section>
+    )
+  }
+  {
+    archive.length > 0 && (
+      <section class="section" aria-label="Earlier projects">
+        <>
+          <SectionHeader
+            title="Earlier work"
+            description="A small archive of student and personal projects."
+          />
+          <ul class="archive">
+            {archive.map(({ data }) => (
+              <li>
+                <strong>{data.title}</strong> — {data.summary}
+                {data.links.map((link) => (
+                  <>
+                    {" "}
+                    <a
+                      href={link.href}
+                      aria-label={`${link.label} — ${data.title}`}
+                    >
+                      {link.label} ↗
+                    </a>
+                  </>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </>
+      </section>
+    )
+  }
+</BaseLayout>

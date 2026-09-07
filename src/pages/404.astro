@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="This page could not be found. Return to Khawaja Abaid Ullah’s research homepage."
+  noindex
+  ><div class="page-intro missing">
+    <p class="eyebrow">404 / PAGE NOT FOUND</p><h1>Nothing here.</h1><p>
+      The page may have moved, or the address may be incomplete.
+    </p><div class="links"><a href="/">Return home →</a></div>
+  </div></BaseLayout
+>
+<style>
+  .missing {
+    min-height: 65vh;
+  }
+</style>

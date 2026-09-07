@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import FeaturedResearch from "../../components/FeaturedResearch.astro";
+import PublicationItem from "../../components/PublicationItem.astro";
+import { publicEntries, byOrder, byDate } from "../../lib/content";
+import { directions, profile } from "../../data/profile";
+const work = (await publicEntries("research")).sort(byOrder);
+const publications = (await publicEntries("publications")).sort(byDate);
+---
+
+<BaseLayout
+  title="Research"
+  description="Research on secure model serving, autonomous multi-agent systems, and emerging LLM-assisted optimization. Public papers, code, and project overviews."
+>
+  <header class="page-intro">
+    <p class="eyebrow">RESEARCH / OVERVIEW</p><h1>
+      Learning when resources, information, and trust are limited.
+    </h1><p>
+      I am interested in what learning systems reveal, how autonomous agents
+      coordinate, and how we can make useful decisions with incomplete
+      information.
+    </p>
+  </header>
+  {
+    directions.map((d, i) => (
+      <section id={d.id} class="direction-detail">
+        <>
+          <div>
+            <p class="eyebrow">
+              0{i + 1} / {d.title}
+            </p>
+            {d.status && <span class="status">{d.status}</span>}
+          </div>
+          <div>
+            <p class="tagline">{d.tags}</p>
+            {i === 0 && (
+              <div class="links">
+                <a href="/research/ads-c/">Read ADS-C →</a>
+              </div>
+            )}
+            {i === 1 && (
+              <div class="links">
+                <a href="/research/fontus/">Fontus class project →</a>
+              </div>
+            )}
+            {i === 2 && (
+              <div class="links">
+                <a href="/publications/#social-attraction">
+                  LLM evaluation study →
+                </a>
+              </div>
+            )}
+          </div>
+        </>
+      </section>
+    ))
+  }
+  <section class="section" aria-label="Research work">
+    <SectionHeader title="Selected work" />{
+      work.map((entry, i) => (
+        <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
+      ))
+    }
+  </section>
+  <section class="section" aria-label="Research publications">
+    <SectionHeader
+      title="Publications"
+      href="/publications/"
+      linkLabel="Publication list"
+    />{publications.map((entry) => <PublicationItem entry={entry} />)}
+  </section>
+  <div class="contact-line">
+    <p>Interested in research, collaboration, or applied ML work?</p><a
+      href={`mailto:${profile.email}`}>Feel free to reach out ↗</a>
+  </div>
+</BaseLayout>
+<style>
+  .direction-question {
+    font-size: 2.25rem;
+  }
+</style>

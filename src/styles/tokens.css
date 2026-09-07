@@ -1,0 +1,72 @@
+@font-face {
+  font-family: Newsreader;
+  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  --bg: #f7f7f3;
+  --surface: #fbfbf8;
+  --text: #171714;
+  --text-muted: #66665f;
+  --text-faint: #8b8b82;
+  --border: #dcdcd4;
+  --border-strong: #bdbdb4;
+  --accent: #b84f22;
+  --accent-strong: #8f3917;
+  --accent-soft: #f1dfd6;
+  --selection-bg: #ead1c4;
+  --font-display:
+    Newsreader, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #11110f;
+  --surface: #171714;
+  --text: #ecece6;
+  --text-muted: #a2a29a;
+  --text-faint: #76766f;
+  --border: #2e2e29;
+  --border-strong: #484840;
+  --accent: #d06a3a;
+  --accent-strong: #e48354;
+  --accent-soft: #2a1c16;
+  --selection-bg: #523120;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11110f;
+    --surface: #171714;
+    --text: #ecece6;
+    --text-muted: #a2a29a;
+    --text-faint: #76766f;
+    --border: #2e2e29;
+    --border-strong: #484840;
+    --accent: #d06a3a;
+    --accent-strong: #e48354;
+    --accent-soft: #2a1c16;
+    --selection-bg: #523120;
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { profile } from "../data/profile";
+---
+
+<BaseLayout
+  title="About"
+  description="Khawaja Abaid Ullah is a PhD student in Electrical and Computer Engineering at RIT, a Fulbright Scholar, and a former AWS AI/ML engineering intern."
+>
+  <header class="page-intro">
+    <p class="eyebrow">ABOUT / KHAWAJA</p><h1>
+      A researcher.<br />An engineer.<br />Always a student.
+    </h1><p>
+      I am a PhD student in Electrical and Computer Engineering at Rochester
+      Institute of Technology and a graduate researcher in the Khojasteh
+      Autonomous Systems Laboratory.
+    </p>
+  </header>
+  <section class="section bio-grid" aria-labelledby="bio-title">
+    <div>
+      <p class="eyebrow">RESEARCH INTERESTS</p><h2 id="bio-title">
+        Useful intelligence, under real constraints.
+      </h2>
+    </div><div>
+      <p>
+        In secure machine learning, I study how deployed models can resist
+        distillation-based extraction while retaining useful predictions for
+        legitimate users. In autonomous systems, I am interested in
+        reinforcement learning and multi-agent coordination under resource,
+        information, and communication constraints.
+      </p><p>
+        I am also exploring how LLM-based agents can assist optimization and
+        reasoning under partial information. These questions connect through a
+        common interest: how systems learn and make decisions when they cannot
+        assume unlimited resources or complete information.
+      </p><div class="links">
+        <a href="/research/">Explore my research →</a><a
+          href={profile.links.rit}>RIT / KAS Lab profile ↗</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-label="Education">
+    <SectionHeader title="Education" />
+    <div class="experience-row">
+      <time>2026 — present</time><div>
+        <h3>PhD · Electrical &amp; Computer Engineering</h3><p>
+          Rochester Institute of Technology · KAS Lab
+        </p>
+      </div>
+    </div>
+    <div class="experience-row">
+      <time>2024 — 2026</time><div>
+        <h3>M.S. · Artificial Intelligence</h3><p>
+          Rochester Institute of Technology · Fulbright Scholar · 4.0 GPA
+        </p><div class="links">
+          <a href="https://repository.rit.edu/theses/12584/"
+            >Master’s thesis ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="experience-row">
+      <span class="eyebrow">UNDERGRADUATE</span><div>
+        <h3>B.S. · Computer Science</h3><p>University of Narowal · Pakistan</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-label="Selected experience">
+    <SectionHeader title="Beyond the paper" />
+    <div class="experience-row">
+      <time>Summer 2025</time><div>
+        <h3>Amazon Web Services</h3><p>
+          AI/ML Software Development Engineer Intern · Palo Alto, California
+        </p><p class="muted">
+          Experience building in a production ML engineering environment,
+          alongside my academic work.
+        </p>
+      </div>
+    </div>
+    <div class="experience-row">
+      <span class="eyebrow">OPEN SOURCE</span><div>
+        <h3>Teras &amp; Keras</h3><p>
+          Multi-backend deep learning for tabular data, random-sampling APIs,
+          and consistent ML tooling across frameworks.
+        </p><div class="links">
+          <a href="/projects/">Selected engineering →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact-line" aria-label="Contact">
+    <p>
+      Interested in research, collaboration, or applied ML work? Feel free to
+      reach out.
+    </p><div class="links">
+      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a><a href="/cv.pdf"
+        >CV ↗</a
+      ><a href={profile.links.github}>GitHub ↗</a><a
+        href={profile.links.linkedin}>LinkedIn ↗</a>
+    </div>
+  </section>
+</BaseLayout>

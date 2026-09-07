@@ -1,0 +1,62 @@
+@media print {
+  html:root {
+    --bg: #fff;
+    --surface: #fff;
+    --text: #000;
+    --text-muted: #333;
+    --border: #bbb;
+    --accent: #000;
+    color-scheme: light;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .theme-toggle,
+  .hero-visual {
+    display: none !important;
+  }
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+  .section {
+    padding-block: 1.5rem;
+  }
+  .hero {
+    min-height: 0 !important;
+    padding: 1rem 0 2rem !important;
+    display: block !important;
+  }
+  .page-intro {
+    padding: 1rem 0 2rem;
+  }
+  h1 {
+    font-size: 38pt;
+  }
+  h2 {
+    font-size: 25pt;
+  }
+  h3 {
+    font-size: 18pt;
+  }
+  a {
+    text-decoration: underline;
+  }
+  img,
+  figure,
+  .publication {
+    break-inside: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

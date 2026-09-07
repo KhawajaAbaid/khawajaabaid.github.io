@@ -1,0 +1,23 @@
+---
+interface Props {
+  links: { label: string; href: string }[];
+  context?: string;
+}
+const { links, context } = Astro.props;
+---
+
+<div class="links">
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        aria-label={context ? `${link.label} — ${context}` : undefined}
+      >
+        {link.label}{" "}
+        <span aria-hidden="true">
+          {link.href.startsWith("https:") ? "↗" : "→"}
+        </span>
+      </a>
+    ))
+  }
+</div>

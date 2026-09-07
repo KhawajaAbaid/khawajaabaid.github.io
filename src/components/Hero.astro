@@ -1,0 +1,140 @@
+---
+import { profile } from "../data/profile";
+import NetworkMotif from "./NetworkMotif.astro";
+---
+
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero-copy">
+    <p class="eyebrow">
+      <span class="accent">RIT</span> / KAS Lab · Rochester, NY
+    </p>
+    <h1 id="hero-name">Khawaja Abaid Ullah<span class="accent">.</span></h1>
+    <p class="hero-role">
+      PhD Student · Machine Learning &amp; Autonomous Systems
+    </p>
+    <p class="hero-statement">
+      I study how learning systems can remain useful, secure, and coordinated
+      under constraints.
+    </p>
+    <p class="hero-affiliation">
+      Rochester Institute of Technology<br />Khojasteh Autonomous Systems
+      Laboratory
+    </p>
+    <div class="links">
+      <a href={`mailto:${profile.email}`}>Email ↗</a><a href="/cv.pdf">CV ↗</a
+      ><a href={profile.links.github}>GitHub ↗</a><a
+        href={profile.links.linkedin}>LinkedIn ↗</a
+      ><a href={profile.links.rit}>RIT Profile ↗</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <NetworkMotif /><p class="eyebrow">Security. Coordination. Autonomy.</p>
+  </div>
+</section>
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 5.5rem 6rem;
+    min-height: 690px;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-copy > .eyebrow {
+    margin-bottom: 2rem;
+    font-size: 0.7rem;
+  }
+  .hero h1 {
+    max-width: 12ch;
+    margin-left: -0.04em;
+  }
+  .hero-role {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 1.8rem;
+    max-width: none;
+  }
+  .hero-statement {
+    font-size: 1.25rem;
+    line-height: 1.55;
+    max-width: 43ch;
+    margin-top: 1.4rem;
+  }
+  .hero-affiliation {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+  }
+  .hero .links {
+    margin-top: 1.3rem;
+    gap: 0.2rem 1.3rem;
+    font-size: 0.8rem;
+  }
+  .hero-visual {
+    margin-right: -2rem;
+    margin-left: -1.5rem;
+  }
+  .hero-visual p {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+  @media (max-width: 1000px) {
+    .hero {
+      min-height: 640px;
+    }
+    .hero-role {
+      max-width: 35ch;
+    }
+    .hero-statement {
+      font-size: 1.15rem;
+    }
+  }
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding-block: 4rem;
+    }
+    .hero h1 {
+      max-width: 12ch;
+      font-size: clamp(3.4rem, 9vw, 5rem);
+    }
+    .hero-visual {
+      display: none;
+    }
+    .hero-role {
+      max-width: none;
+    }
+    .hero-statement {
+      max-width: 46ch;
+    }
+    .hero-copy > .eyebrow {
+      margin-bottom: 1.8rem;
+    }
+  }
+  @media (max-width: 450px) {
+    .hero h1 {
+      font-size: 15vw;
+    }
+    .hero-role {
+      font-size: 0.8rem;
+      max-width: 34ch;
+    }
+    .hero-statement {
+      font-size: 1.1rem;
+    }
+    .hero .links {
+      gap: 0.2rem 1.2rem;
+    }
+    .hero {
+      padding-block: 3.5rem 4rem;
+    }
+  }
+</style>

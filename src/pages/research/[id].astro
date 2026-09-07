@@ -1,0 +1,20 @@
+---
+import { render } from "astro:content";
+import ResearchLayout from "../../layouts/ResearchLayout.astro";
+import { publicEntries } from "../../lib/content";
+export async function getStaticPaths() {
+  return (await publicEntries("research")).map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const publication = (await publicEntries("publications")).find((pub) =>
+  entry.data.relatedPublications.includes(pub.id),
+);
+---
+
+<ResearchLayout entry={entry} publication={publication}
+  ><Content /></ResearchLayout
+>

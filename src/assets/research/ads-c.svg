@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480">
+<rect width="720" height="480" fill="#efefe8"/>
+<g font-family="Arial,sans-serif" fill="#66665f"><text x="40" y="43" font-size="11" letter-spacing="2">ADS-C / INFERENCE-TIME DEFENSE</text><text x="40" y="437" font-size="12">Same top-1 prediction.</text><text x="40" y="455" font-size="12">Less useful supervision for extraction.</text><text x="680" y="452" font-size="10" text-anchor="end">CONCEPTUAL SCHEMATIC</text></g>
+<g stroke="#bdbdb4" stroke-width="1" fill="none"><path d="M65 293H210M495 293H640"/><path d="M226 215H279M440 215H481"/><path d="m270 210 9 5-9 5m202-10 9 5-9 5"/></g>
+<g fill="#bdbdb4"><rect x="80" y="155" width="26" height="137"/><rect x="113" y="235" width="26" height="57"/><rect x="146" y="256" width="26" height="36"/><rect x="179" y="271" width="26" height="21"/></g>
+<g fill="#b84f22"><rect x="80" y="155" width="26" height="137"/><rect x="507" y="184" width="26" height="108"/></g><g fill="#bdbdb4"><rect x="540" y="275" width="26" height="17"/><rect x="573" y="249" width="26" height="43"/><rect x="606" y="263" width="26" height="29"/></g>
+<rect x="288" y="169" width="145" height="91" rx="3" stroke="#b84f22" fill="#f7f7f3"/>
+<g fill="#171714" font-family="Arial,sans-serif" text-anchor="middle"><text x="360" y="203" font-size="30">ADS-C</text><text x="360" y="230" font-size="20" fill="#66665f">margin budget</text><text x="140" y="326" font-size="26">Teacher output</text><text x="574" y="326" font-size="26">Served output</text></g>
+<g stroke="#b84f22" fill="none" stroke-width="1"><path d="M94 142V113H520V172"/><path d="m515 165 5 7 5-7"/></g><rect x="187" y="101" width="243" height="24" fill="#efefe8"/><text x="309" y="117" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#8f3917">TOP CLASS PRESERVED</text>
+</svg>

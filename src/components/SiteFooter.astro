@@ -1,0 +1,46 @@
+---
+import { profile } from "../data/profile";
+---
+
+<footer class="site-footer container">
+  <p>© {new Date().getFullYear()} {profile.name}</p>
+  <nav aria-label="Footer">
+    <a href={`mailto:${profile.email}`}>Email</a><a href={profile.links.github}
+      >GitHub</a
+    ><a href={profile.links.linkedin}>LinkedIn</a><a href={profile.links.rit}
+      >RIT</a
+    ><a href="#top">Back to top ↑</a>
+  </nav>
+</footer>
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.5rem;
+  }
+  nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  @media (max-width: 720px) {
+    .site-footer {
+      align-items: start;
+      flex-direction: column;
+    }
+    nav {
+      gap: 0.3rem 1.3rem;
+    }
+  }
+</style>
