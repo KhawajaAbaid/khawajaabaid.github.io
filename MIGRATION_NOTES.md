@@ -33,7 +33,10 @@
 - Research features and citation components derive labels from their entries, so adding a new entry does not require component edits.
 - No empty notes/direction routes, Scholar placeholder, hobbies, or teaching/service claims were added.
 - Runtime JS is about 650 bytes gzip; no framework/runtime/CDN dependencies from the old site remain in the production artifact.
-- Local verification is recorded in `QA_REPORT.md`. Official workflow validation passes. Remote Pages currently uses legacy deployment; no remote settings or live site were changed.
+- Local verification is recorded in `QA_REPORT.md`. Official workflow validation passes. Pages was subsequently switched to GitHub Actions and published with owner authorization on September 7, 2026; see the production launch record below.
 
 ## Legacy cleanup
 After the replacement passed build, content/privacy, link, responsive, accessibility, and browser checks, the old root HTML, CSS/SCSS, JS, fonts/logo wall, construction image, and experiment folders were removed from the working tree. They remain recoverable at `35ff182`. Older substantive projects are preserved in the structured text archive. The résumé was copied byte-for-byte into the new public directory with its former URL retained.
+
+## Production launch
+On September 7, 2026, the owner authorized publishing. Fast-forwarded `main` to the reviewed migration, set Pages `build_type` to `workflow`, and pushed to `origin/main`. The [first Actions deployment](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610) succeeded. Public routes, CV integrity, SEO assets, custom 404, mobile navigation, and theme behavior were verified on the live site. Future pushes to `main` deploy automatically.

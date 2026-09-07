@@ -60,8 +60,7 @@ QA_PACKAGE_DIR=/tmp/research-site-qa node scripts/browser-qa.cjs
 
 ## Launch limitations
 
-- The remote repository still uses legacy branch-based Pages deployment. No changes have been pushed, merged, or published. Switch Pages to GitHub Actions and merge the reviewed branch for launch.
-- A successful remote deployment and live-site checks remain pending launch.
+- Production was published September 7, 2026 using GitHub Actions; live checks passed as recorded below.
 - The CV is the supplied October 2025 PDF, preserved byte-for-byte; the owner should provide a current academic CV.
 - LinkedIn blocks automated link verification; the preserved owner-supplied URL needs a normal-browser check if its profile slug changes.
 - These are browser-engine and viewport checks, not physical iPhone/Android testing or a full screen-reader audit.
@@ -71,3 +70,17 @@ QA_PACKAGE_DIR=/tmp/research-site-qa node scripts/browser-qa.cjs
 After the owner clarified that the full story is public, the Fontus page was expanded with the modeling pivot, environment/PPO setup, qualitative lazy-agent diagnosis, lessons, and proposed follow-ups. Homepage and project summaries were updated. The two Fontus-specific prohibited-phrase checks were removed; the public-content gate and anonymous-manuscript protections remain intact.
 
 `npm run verify` and `npm run test:content` pass. Targeted Chromium checks on the homepage, projects page, and Fontus page pass at 1440/390 px in light/dark mode, with no overflow, console errors, or axe violations. Updated Fontus screenshots are saved in `artifacts/`. A technical-report URL has not been supplied, so no report link is fabricated.
+
+## Production launch — September 7, 2026
+
+User authorized publication. `main` was fast-forwarded to the reviewed code commit `d409cb7`, and GitHub Pages was switched from legacy branch deployment to Actions. [The launch workflow](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610) completed both build and deploy successfully.
+
+Verified at https://khawajaabaid.github.io:
+
+- All eight HTML routes, both CV URLs, robots, both sitemap files, and OG image return HTTP 200.
+- An unknown route returns HTTP 404 with the custom “Nothing here.” page.
+- Both served PDFs match the supplied CV byte-for-byte by SHA-256.
+- The homepage metric and expanded Fontus story are present; synthetic private markers are absent.
+- Live Chromium smoke checks pass for desktop/mobile, theme persistence, menu navigation, layout overflow, and console errors.
+
+Local evidence is saved in `artifacts/live-verification.json` and live-site screenshots. No unapproved manuscript material or specification files were published.

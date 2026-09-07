@@ -87,14 +87,16 @@ The supplied October 2025 résumé is retained without edits. To update it, repl
 
 The configured site is `https://khawajaabaid.github.io`, with no `base` because this is a GitHub user-site repository. The workflow uses official `actions/checkout@v7`, `withastro/action@v6`, and `actions/deploy-pages@v5`. Node 24 builds, checks, runs privacy regressions, and uploads only `dist/`. Deployments run only from `main`; manual runs from other branches can build without publishing.
 
-For first launch:
+The site was published on September 7, 2026. Pages is configured to use **GitHub Actions**. The first production deployment passed its build, content/privacy checks, and deployment jobs: [launch workflow](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610).
 
-1. Review the migration branch and `QA_REPORT.md`.
-2. Set **Settings → Pages → Build and deployment → Source → GitHub Actions**. The repository was using legacy branch deployment at inspection time.
-3. Merge the reviewed migration into `main` and monitor the Pages workflow.
-4. Verify the live homepage, research pages, CV, sitemap, and 404.
+For future updates:
 
-No live deployment is performed by local development commands. The migration does not change the remote Pages setting automatically. A future custom domain requires updating `site`, robots/sitemap URLs, the output-check origin, and the domain configuration together.
+1. Edit content or code on a working branch and run `npm run verify`.
+2. Review the changes and merge them into `main`.
+3. The Pages workflow checks, builds, tests content privacy, and deploys automatically.
+4. Verify the affected live pages after the workflow succeeds.
+
+Local development commands do not publish changes. A future custom domain requires updating `site`, robots/sitemap URLs, the output-check origin, and the domain configuration together.
 
 ## Design and maintenance
 
