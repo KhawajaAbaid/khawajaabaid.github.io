@@ -84,3 +84,7 @@ Verified at https://khawajaabaid.github.io:
 - Live Chromium smoke checks pass for desktop/mobile, theme persistence, menu navigation, layout overflow, and console errors.
 
 Local evidence is saved in `artifacts/live-verification.json` and live-site screenshots. No unapproved manuscript material or specification files were published.
+
+## Hero credentials — September 7, 2026
+
+At the owner's request, Fulbright Scholar and Former AWS AI/ML Intern are now emphasized directly below the PhD role in the hero. `npm run verify` passes. Chromium checks confirm both credentials are in the initial viewport at 1440, 768, 390, and 360 px in light/dark mode, with no overflow, console errors, or axe violations. No additional JavaScript or dependencies were added.

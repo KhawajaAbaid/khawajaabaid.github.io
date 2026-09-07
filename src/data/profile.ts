@@ -5,6 +5,7 @@ export const profile = {
   institution: "Rochester Institute of Technology",
   lab: "Khojasteh Autonomous Systems Laboratory",
   email: "khawaja.abaid@gmail.com",
+  credentials: ["Fulbright Scholar", "Former AWS AI/ML Intern"],
   description:
     "PhD researcher at RIT working on machine learning security, reinforcement learning, multi-agent autonomous systems, and LLM-assisted reasoning.",
   links: {

@@ -12,6 +12,9 @@ import NetworkMotif from "./NetworkMotif.astro";
     <p class="hero-role">
       PhD Student · Machine Learning &amp; Autonomous Systems
     </p>
+    <p class="hero-credentials">
+      {profile.credentials.map(credential => <span>{credential}</span>)}
+    </p>
     <p class="hero-statement">
       I study how learning systems can remain useful, secure, and coordinated
       under constraints.
@@ -57,6 +60,22 @@ import NetworkMotif from "./NetworkMotif.astro";
     font-weight: 500;
     margin-top: 1.8rem;
     max-width: none;
+  }
+  .hero-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-strong);
+  }
+  .hero-credentials span {
+    white-space: nowrap;
+  }
+  .hero-credentials span + span::before {
+    content: "·";
+    margin-inline: 0.7rem;
   }
   .hero-statement {
     font-size: 1.25rem;
@@ -120,6 +139,13 @@ import NetworkMotif from "./NetworkMotif.astro";
     }
   }
   @media (max-width: 450px) {
+    .hero-credentials {
+      display: grid;
+      font-size: 0.875rem;
+    }
+    .hero-credentials span + span::before {
+      content: none;
+    }
     .hero h1 {
       font-size: 15vw;
     }
