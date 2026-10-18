@@ -97,6 +97,31 @@
         <stop offset="100%" stop-color="#0d0907" stop-opacity="0.42" />
       </radialGradient>
 
+      <!-- Multi-Agent Robotics Gradients (Harmonized to Classic Study Room Palette) -->
+      <linearGradient id="roverChassis" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#434766" />
+        <stop offset="55%" stop-color="#2b2e44" />
+        <stop offset="100%" stop-color="#191b29" />
+      </linearGradient>
+
+      <linearGradient id="lidarScanCone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#81b29a" stop-opacity="0.58" />
+        <stop offset="55%" stop-color="#81b29a" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="#f2cc8f" stop-opacity="0.04" />
+      </linearGradient>
+
+      <linearGradient id="chargingBeamGlow" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#81b29a" stop-opacity="0.65" />
+        <stop offset="50%" stop-color="#f2cc8f" stop-opacity="0.38" />
+        <stop offset="100%" stop-color="#81b29a" stop-opacity="0.06" />
+      </linearGradient>
+
+      <radialGradient id="quarantineShield" cx="50%" cy="50%" r="55%">
+        <stop offset="0%" stop-color="#e07a5f" stop-opacity="0.12" />
+        <stop offset="70%" stop-color="#e07a5f" stop-opacity="0.28" />
+        <stop offset="100%" stop-color="#b54128" stop-opacity="0.55" />
+      </radialGradient>
+
       <!-- Traditional Pakistani Madder-Dyed Wool Qaleen Field (Natural Abrash Gradient) -->
       <linearGradient id="pakistaniQaleenField" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="#8b2b18" />
@@ -564,10 +589,38 @@
         />
       </g>
 
-      <!-- Wooden Window Mullions (Arched Lattice) -->
-      <line x1="148" y1="68" x2="148" y2="274" stroke="#3b2518" stroke-width="5" />
-      <line x1="64" y1="148" x2="232" y2="148" stroke="#3b2518" stroke-width="5" />
-      <line x1="64" y1="212" x2="232" y2="212" stroke="#3b2518" stroke-width="5" />
+      <!-- Upper Arched Fanlight Mullions (Fixed Transom Above y=148) -->
+      <line x1="148" y1="68" x2="148" y2="148" stroke="#3b2518" stroke-width="5" />
+      <line x1="64" y1="148" x2="232" y2="148" stroke="#3b2518" stroke-width="6" />
+
+      <!-- Open Lower Casement Window Sashes (Swung Open Inward to Let Fresh Air & Intruder Mosquitoes In!) -->
+      <g class="open-casement-sashes">
+        <!-- Left Casement Sash Swung Open Inward (Perspective Trapezoid) -->
+        <polygon
+          points="64,148 26,162 26,286 64,274"
+          fill="rgba(216, 232, 228, 0.24)"
+          stroke="#3b2518"
+          stroke-width="4"
+        />
+        <line x1="26" y1="224" x2="64" y2="212" stroke="#3b2518" stroke-width="3.2" />
+        <line x1="34" y1="170" x2="54" y2="262" stroke="#faf8ef" stroke-width="1.4" opacity="0.45" />
+        <!-- Right Casement Sash Swung Open Inward (Perspective Trapezoid) -->
+        <polygon
+          points="232,148 268,162 268,286 232,274"
+          fill="rgba(216, 232, 228, 0.24)"
+          stroke="#3b2518"
+          stroke-width="4"
+        />
+        <line x1="232" y1="212" x2="268" y2="224" stroke="#3b2518" stroke-width="3.2" />
+        <line x1="242" y1="170" x2="258" y2="262" stroke="#faf8ef" stroke-width="1.4" opacity="0.45" />
+        <!-- Brass Casement Handles & Stay Rods -->
+        <circle cx="33" cy="222" r="2.5" fill="url(#brassGold)" />
+        <circle cx="261" cy="222" r="2.5" fill="url(#brassGold)" />
+        <line x1="64" y1="272" x2="36" y2="280" stroke="url(#brassGold)" stroke-width="1.8" />
+        <line x1="232" y1="272" x2="258" y2="280" stroke="url(#brassGold)" stroke-width="1.8" />
+      </g>
+
+      <!-- Carved Walnut Windowsill -->
       <rect x="44" y="274" width="208" height="12" rx="2" fill="url(#walnutSurface)" stroke="#241710" stroke-width="1.2" />
     </g>
 
@@ -1614,6 +1667,305 @@
       </g>
     </g>
 
+    <!-- ==================== 12. OPEN-WINDOW MOSQUITO INTRUSION & MULTI-AGENT SWARM LOOP ==================== -->
+    <g
+      class="multi-agent-study-fleet"
+      data-room-hotspot="robots"
+      data-marl-fleet
+      tabindex="0"
+      role="button"
+      aria-label="Interactive Multi-Agent Mosquito Defense Loop: Watch a mosquito fly in through the open study window, get detected by the windowsill radar robot, and get neutralized by a coordinated swarm of drones and a ground rover before they exit the scene."
+    >
+      <title>Click to inspect Multi-Agent Swarm Coordination (or spawn a new mosquito intruder!)</title>
+
+      <!-- A. DYNAMIC MULTI-AGENT MESH COMMUNICATION LINKS & TARGETING BEAMS (Active Only During Swarm) -->
+      <g data-swarm-network opacity="0" pointer-events="none">
+        <!-- Radar Sentry (218, 254) -> Mosquito Radar Lock Cone -->
+        <polygon
+          data-radar-lock-cone
+          points="218,254 480,190 480,220"
+          fill="url(#lidarScanCone)"
+          opacity="0"
+        />
+
+        <!-- Expanding Radar Broadcast Waves from Windowsill Sentry (218, 254) -->
+        <circle
+          data-broadcast-wave="1"
+          cx="218"
+          cy="254"
+          r="12"
+          fill="none"
+          stroke="#f2cc8f"
+          stroke-width="1.8"
+          stroke-dasharray="5 4"
+          opacity="0"
+        />
+        <circle
+          data-broadcast-wave="2"
+          cx="218"
+          cy="254"
+          r="12"
+          fill="none"
+          stroke="#81b29a"
+          stroke-width="1.5"
+          opacity="0"
+        />
+
+        <!-- Real-Time Inter-Robot Mesh Communication Lines -->
+        <g stroke-dasharray="6 5" fill="none" class="swarm-comm-lines">
+          <!-- Sentry -> UAV-α -->
+          <line data-comm-sentry-uav1 x1="218" y1="254" x2="218" y2="254" stroke="#f2cc8f" stroke-width="1.5" opacity="0.8" />
+          <!-- UAV-α <-> UAV-β (Aerial Consensus Link) -->
+          <line data-comm-uav1-uav2 x1="500" y1="180" x2="500" y2="180" stroke="#81b29a" stroke-width="1.8" />
+          <!-- UAV-α <-> UGV-γ (Left Air-Ground Link) -->
+          <line data-comm-uav1-ugv x1="500" y1="180" x2="500" y2="540" stroke="#81b29a" stroke-width="1.5" opacity="0.85" />
+          <!-- UAV-β <-> UGV-γ (Right Air-Ground Link) -->
+          <line data-comm-uav2-ugv x1="500" y1="180" x2="500" y2="540" stroke="#f2cc8f" stroke-width="1.5" opacity="0.85" />
+        </g>
+
+        <!-- Triangulating Sensor Lock Beams (From 3 Swarm Agents to Mosquito) -->
+        <g data-tracking-beams opacity="0">
+          <line data-track-uav1 x1="0" y1="0" x2="0" y2="0" stroke="#81b29a" stroke-width="1.4" stroke-dasharray="3 3" />
+          <line data-track-uav2 x1="0" y1="0" x2="0" y2="0" stroke="#81b29a" stroke-width="1.4" stroke-dasharray="3 3" />
+          <line data-track-ugv x1="0" y1="0" x2="0" y2="0" stroke="#f2cc8f" stroke-width="1.5" stroke-dasharray="4 3" />
+        </g>
+
+        <!-- Synchronized Neutralization Zap Beams (Flash at Moment of Neutralization) -->
+        <g data-zap-beams opacity="0">
+          <line data-zap-uav1 x1="0" y1="0" x2="0" y2="0" stroke="#faf8ef" stroke-width="3.2" stroke-linecap="round" />
+          <line data-zap-uav2 x1="0" y1="0" x2="0" y2="0" stroke="#f2cc8f" stroke-width="3.2" stroke-linecap="round" />
+          <line data-zap-ugv x1="0" y1="0" x2="0" y2="0" stroke="#81b29a" stroke-width="3.4" stroke-linecap="round" />
+        </g>
+      </g>
+
+      <!-- B. PERMANENT UNOBTRUSIVE WINDOWSILL RADAR SENTRY ROBOT (RADAR-01 at x=218, y=274) -->
+      <g class="windowsill-radar-sentry" transform="translate(218, 274)">
+        <!-- Brass Tripod / Pedestal Base Resting on Right Edge of Walnut Windowsill -->
+        <ellipse cx="0" cy="1" rx="15" ry="3.5" fill="#140c07" opacity="0.55" />
+        <polygon
+          points="-13,0 13,0 9,-8 -9,-8"
+          fill="url(#roverChassis)"
+          stroke="url(#brassGold)"
+          stroke-width="1.3"
+        />
+        <rect x="-4" y="-15" width="8" height="7" rx="1.5" fill="url(#brassGold)" stroke="#191b29" stroke-width="1" />
+        <!-- Glowing Status Core LED -->
+        <circle data-sentry-led cx="0" cy="-4" r="2.2" fill="#81b29a" />
+
+        <!-- Swiveling Parabolic Brass Radar Dish & Feedhorn -->
+        <g data-sentry-dish transform="translate(0, -18) rotate(-25)">
+          <path
+            d="M-9,-8 C-3,4 3,4 9,-8"
+            fill="none"
+            stroke="url(#brassGold)"
+            stroke-width="2.6"
+            stroke-linecap="round"
+          />
+          <line x1="0" y1="-2" x2="0" y2="-12" stroke="#faf8ef" stroke-width="1.3" />
+          <circle cx="0" cy="-12" r="2.2" fill="#e07a5f" />
+        </g>
+
+        <!-- Compact Floating Alert Pill Above Sentry (Visible Only During Detection/Swarm) -->
+        <g data-sentry-badge opacity="0" transform="translate(18, -36)">
+          <rect x="-56" y="-9" width="112" height="15" rx="3" fill="#191b29" stroke="url(#brassGold)" stroke-width="1" />
+          <circle cx="-47" cy="-1.5" r="2.4" fill="#e07a5f" />
+          <text
+            data-sentry-badge-text
+            x="4"
+            y="1"
+            fill="#faf8ef"
+            font-family="var(--font-mono)"
+            font-size="6.3"
+            font-weight="700"
+            letter-spacing="0.6"
+            text-anchor="middle"
+          >
+            INTRUDER DETECTED
+          </text>
+        </g>
+      </g>
+
+      <!-- C. THE INTRUDER MOSQUITO & COOPERATIVE TARGET RETICLE -->
+      <!-- Erratic Dotted Flight Trail Behind Mosquito -->
+      <path
+        data-mosquito-trail
+        d=""
+        fill="none"
+        stroke="#f2cc8f"
+        stroke-width="1.1"
+        stroke-dasharray="2 4"
+        opacity="0"
+        pointer-events="none"
+      />
+
+      <g data-mosquito-group opacity="0" transform="translate(148, 210)">
+        <!-- Cooperative Target Lock Reticle Around Mosquito (Appears Once Detected) -->
+        <g data-mosquito-reticle opacity="0">
+          <circle cx="0" cy="0" r="18" fill="rgba(224, 122, 95, 0.12)" stroke="#e07a5f" stroke-width="1.3" stroke-dasharray="5 3" />
+          <circle cx="0" cy="0" r="11" fill="none" stroke="#f2cc8f" stroke-width="1" />
+          <line x1="-22" y1="0" x2="-14" y2="0" stroke="#e07a5f" stroke-width="1.4" />
+          <line x1="14" y1="0" x2="22" y2="0" stroke="#e07a5f" stroke-width="1.4" />
+          <line x1="0" y1="-22" x2="0" y2="-14" stroke="#e07a5f" stroke-width="1.4" />
+          <line x1="0" y1="14" x2="0" y2="22" stroke="#e07a5f" stroke-width="1.4" />
+        </g>
+
+        <!-- Articulated Mosquito Silhouette & High-Speed Fluttering Wings -->
+        <g data-mosquito-body>
+          <!-- Delicate Spindly Legs -->
+          <path
+            d="M-3,2 L-8,8 M0,2 L-2,9 M3,2 L8,8"
+            stroke="#241710"
+            stroke-width="1"
+            stroke-linecap="round"
+          />
+          <!-- Striped Abdomen & Thorax -->
+          <ellipse cx="-5" cy="1" rx="5.5" ry="2.2" transform="rotate(-12 -5 1)" fill="#3b2518" stroke="#f2cc8f" stroke-width="0.6" />
+          <circle cx="1.5" cy="-0.5" r="2.6" fill="#241710" />
+          <circle cx="4.5" cy="-1" r="1.6" fill="#e07a5f" />
+          <!-- Needle Proboscis -->
+          <line x1="6" y1="-1" x2="12" y2="-2.5" stroke="#241710" stroke-width="1.1" stroke-linecap="round" />
+          <!-- Rapidly Fluttering Translucent Wings -->
+          <ellipse
+            cx="-1"
+            cy="-5.5"
+            rx="6.5"
+            ry="2.6"
+            transform="rotate(-28 -1 -5.5)"
+            fill="rgba(250, 248, 239, 0.78)"
+            stroke="#81b29a"
+            stroke-width="0.7"
+            class="mosquito-wing mw-left"
+          />
+          <ellipse
+            cx="2"
+            cy="-5"
+            rx="5.8"
+            ry="2.2"
+            transform="rotate(24 2 -5)"
+            fill="rgba(250, 248, 239, 0.72)"
+            stroke="#81b29a"
+            stroke-width="0.7"
+            class="mosquito-wing mw-right"
+          />
+        </g>
+      </g>
+
+      <!-- D. NEUTRALIZATION SPARK BURST & POP EFFECT (Appears When Mosquito is Zapped) -->
+      <g data-zap-burst opacity="0" transform="translate(500, 220)" pointer-events="none">
+        <circle data-zap-ring cx="0" cy="0" r="16" fill="none" stroke="#f2cc8f" stroke-width="2.2" />
+        <polygon
+          points="0,-18 4,-5 18,0 4,5 0,18 -4,5 -18,0 -4,-5"
+          fill="#faf8ef"
+          stroke="#e07a5f"
+          stroke-width="1.2"
+        />
+        <rect x="-46" y="-32" width="92" height="15" rx="3" fill="#191b29" stroke="#81b29a" stroke-width="1.1" />
+        <text
+          x="0"
+          y="-22"
+          fill="#81b29a"
+          font-family="var(--font-mono)"
+          font-size="6.6"
+          font-weight="700"
+          letter-spacing="0.8"
+          text-anchor="middle"
+        >
+          ✦ NEUTRALIZED!
+        </text>
+      </g>
+
+      <!-- E. SWARM RESPONDER 1: UAV-α (RECON / INTERCEPTOR QUADROTOR — Off-Screen Until Summoned) -->
+      <g data-agent-uav1 opacity="0" transform="translate(-90, 120)">
+        <g data-uav1-tilt>
+          <!-- Spinning Rotor Discs -->
+          <ellipse cx="-26" cy="-6" rx="13" ry="3" fill="rgba(242, 204, 143, 0.52)" stroke="#faf8ef" stroke-width="0.8" class="rotor-disc" />
+          <ellipse cx="26" cy="-6" rx="13" ry="3" fill="rgba(242, 204, 143, 0.52)" stroke="#faf8ef" stroke-width="0.8" class="rotor-disc" />
+          <!-- Brass Arms & Nacelles -->
+          <line x1="-26" y1="-3" x2="26" y2="-3" stroke="url(#brassGold)" stroke-width="2.6" stroke-linecap="round" />
+          <rect x="-29" y="-6" width="6" height="5.5" rx="1" fill="url(#brassGold)" stroke="#191b29" stroke-width="0.9" />
+          <rect x="23" y="-6" width="6" height="5.5" rx="1" fill="url(#brassGold)" stroke="#191b29" stroke-width="0.9" />
+          <!-- Landing Skids -->
+          <path d="M-12,4 L-16,11 M12,4 L16,11" stroke="url(#brassGold)" stroke-width="1.5" stroke-linecap="round" />
+          <!-- Twilight-Indigo & Brass Avionics Core -->
+          <polygon
+            points="-14,-2 -8,-8 8,-8 14,-2 10,5 -10,5"
+            fill="url(#roverChassis)"
+            stroke="url(#brassGold)"
+            stroke-width="1.3"
+          />
+          <circle cx="0" cy="-8" r="3" fill="#81b29a" />
+          <circle cx="0" cy="5" r="3.5" fill="#e07a5f" stroke="#191b29" stroke-width="0.9" />
+          <!-- Micro Callout Tag -->
+          <rect x="-34" y="-24" width="68" height="12" rx="2.5" fill="#191b29" stroke="url(#brassGold)" stroke-width="0.9" />
+          <text x="0" y="-15.8" fill="#faf8ef" font-family="var(--font-mono)" font-size="5.8" font-weight="700" letter-spacing="0.5" text-anchor="middle">
+            UAV-α · RECON
+          </text>
+        </g>
+      </g>
+
+      <!-- F. SWARM RESPONDER 2: UAV-β (FLANK INTERCEPTOR QUADROTOR — Off-Screen Until Summoned) -->
+      <g data-agent-uav2 opacity="0" transform="translate(1290, 130)">
+        <g data-uav2-tilt>
+          <!-- Spinning Rotor Discs -->
+          <ellipse cx="-26" cy="-6" rx="13" ry="3" fill="rgba(129, 178, 154, 0.52)" stroke="#faf8ef" stroke-width="0.8" class="rotor-disc" />
+          <ellipse cx="26" cy="-6" rx="13" ry="3" fill="rgba(129, 178, 154, 0.52)" stroke="#faf8ef" stroke-width="0.8" class="rotor-disc" />
+          <!-- Brass Arms & Nacelles -->
+          <line x1="-26" y1="-3" x2="26" y2="-3" stroke="url(#brassGold)" stroke-width="2.6" stroke-linecap="round" />
+          <rect x="-29" y="-6" width="6" height="5.5" rx="1" fill="url(#brassGold)" stroke="#191b29" stroke-width="0.9" />
+          <rect x="23" y="-6" width="6" height="5.5" rx="1" fill="url(#brassGold)" stroke="#191b29" stroke-width="0.9" />
+          <path d="M-12,4 L-16,11 M12,4 L16,11" stroke="url(#brassGold)" stroke-width="1.5" stroke-linecap="round" />
+          <!-- Avionics Core -->
+          <polygon
+            points="-14,-2 -8,-8 8,-8 14,-2 10,5 -10,5"
+            fill="url(#roverChassis)"
+            stroke="url(#brassGold)"
+            stroke-width="1.3"
+          />
+          <circle cx="0" cy="-8" r="3" fill="#f2cc8f" />
+          <circle cx="0" cy="5" r="3.5" fill="#81b29a" stroke="#191b29" stroke-width="0.9" />
+          <!-- Micro Callout Tag -->
+          <rect x="-34" y="-24" width="68" height="12" rx="2.5" fill="#191b29" stroke="url(#brassGold)" stroke-width="0.9" />
+          <text x="0" y="-15.8" fill="#faf8ef" font-family="var(--font-mono)" font-size="5.8" font-weight="700" letter-spacing="0.5" text-anchor="middle">
+            UAV-β · FLANK
+          </text>
+        </g>
+      </g>
+
+      <!-- G. SWARM RESPONDER 3: UGV-γ (GROUND LASER-LOCK ROVER ON CARPET — Off-Screen Until Summoned) -->
+      <g data-agent-ugv opacity="0" transform="translate(1290, 548)">
+        <ellipse cx="0" cy="10" rx="30" ry="6" fill="#0d0704" opacity="0.58" />
+        <!-- Armored Brass & Twilight-Indigo Rover Chassis -->
+        <polygon
+          points="-24,3 -17,-8 17,-8 24,3"
+          fill="url(#roverChassis)"
+          stroke="url(#brassGold)"
+          stroke-width="1.5"
+        />
+        <rect x="-12" y="-12" width="24" height="5" rx="1.5" fill="#2d5a47" stroke="url(#brassGold)" stroke-width="1" />
+        <!-- Swiveling Ground-to-Air Optical Turret -->
+        <g data-ugv-turret transform="translate(0, -12)">
+          <line x1="0" y1="0" x2="0" y2="-12" stroke="url(#brassGold)" stroke-width="2.8" stroke-linecap="round" />
+          <circle cx="0" cy="-12" r="3.2" fill="#81b29a" stroke="#191b29" stroke-width="0.9" />
+        </g>
+        <!-- 3 Brass-Rimmed Wheels -->
+        <g fill="#191b29" stroke="url(#brassGold)" stroke-width="1.5">
+          <circle cx="-15" cy="5" r="5.8" />
+          <circle cx="0" cy="6" r="5.8" />
+          <circle cx="15" cy="5" r="5.8" />
+        </g>
+        <g fill="#f2cc8f">
+          <circle cx="-15" cy="5" r="1.8" />
+          <circle cx="0" cy="6" r="1.8" />
+          <circle cx="15" cy="5" r="1.8" />
+        </g>
+        <!-- Micro Callout Tag -->
+        <rect x="-38" y="14" width="76" height="12" rx="2.5" fill="#191b29" stroke="url(#brassGold)" stroke-width="0.9" />
+        <text x="0" y="22.2" fill="#faf8ef" font-family="var(--font-mono)" font-size="5.8" font-weight="700" letter-spacing="0.5" text-anchor="middle">
+          UGV-γ · TURRET
+        </text>
+      </g>
+    </g>
+
     <!-- Subtle Cozy Study Room Vignette -->
     <rect
       x="0"
@@ -1625,6 +1977,442 @@
     />
   </svg>
 </div>
+
+<script>
+  const sceneRoot = document.querySelector<HTMLElement>("[data-study-scene]");
+  if (sceneRoot) {
+    const fleetGroup = sceneRoot.querySelector<SVGGElement>("[data-marl-fleet]");
+    const networkLayer = sceneRoot.querySelector<SVGGElement>("[data-swarm-network]");
+    const radarCone = sceneRoot.querySelector<SVGPolygonElement>("[data-radar-lock-cone]");
+    const wave1 = sceneRoot.querySelector<SVGCircleElement>('[data-broadcast-wave="1"]');
+    const wave2 = sceneRoot.querySelector<SVGCircleElement>('[data-broadcast-wave="2"]');
+
+    const sentryDish = sceneRoot.querySelector<SVGGElement>("[data-sentry-dish]");
+    const sentryLed = sceneRoot.querySelector<SVGCircleElement>("[data-sentry-led]");
+    const sentryBadge = sceneRoot.querySelector<SVGGElement>("[data-sentry-badge]");
+    const sentryBadgeText = sceneRoot.querySelector<SVGTextElement>("[data-sentry-badge-text]");
+
+    const mosquitoGroup = sceneRoot.querySelector<SVGGElement>("[data-mosquito-group]");
+    const mosquitoBody = sceneRoot.querySelector<SVGGElement>("[data-mosquito-body]");
+    const mosquitoReticle = sceneRoot.querySelector<SVGGElement>("[data-mosquito-reticle]");
+    const mosquitoTrail = sceneRoot.querySelector<SVGPathElement>("[data-mosquito-trail]");
+    const zapBurst = sceneRoot.querySelector<SVGGElement>("[data-zap-burst]");
+    const zapRing = sceneRoot.querySelector<SVGCircleElement>("[data-zap-ring]");
+
+    const uav1 = sceneRoot.querySelector<SVGGElement>("[data-agent-uav1]");
+    const uav1Tilt = sceneRoot.querySelector<SVGGElement>("[data-uav1-tilt]");
+    const uav2 = sceneRoot.querySelector<SVGGElement>("[data-agent-uav2]");
+    const uav2Tilt = sceneRoot.querySelector<SVGGElement>("[data-uav2-tilt]");
+    const ugv = sceneRoot.querySelector<SVGGElement>("[data-agent-ugv]");
+    const ugvTurret = sceneRoot.querySelector<SVGGElement>("[data-ugv-turret]");
+
+    const commSentryUav1 = sceneRoot.querySelector<SVGLineElement>("[data-comm-sentry-uav1]");
+    const commUav1Uav2 = sceneRoot.querySelector<SVGLineElement>("[data-comm-uav1-uav2]");
+    const commUav1Ugv = sceneRoot.querySelector<SVGLineElement>("[data-comm-uav1-ugv]");
+    const commUav2Ugv = sceneRoot.querySelector<SVGLineElement>("[data-comm-uav2-ugv]");
+
+    const trackingBeams = sceneRoot.querySelector<SVGGElement>("[data-tracking-beams]");
+    const trackUav1 = sceneRoot.querySelector<SVGLineElement>("[data-track-uav1]");
+    const trackUav2 = sceneRoot.querySelector<SVGLineElement>("[data-track-uav2]");
+    const trackUgv = sceneRoot.querySelector<SVGLineElement>("[data-track-ugv]");
+
+    const zapBeams = sceneRoot.querySelector<SVGGElement>("[data-zap-beams]");
+    const zapUav1 = sceneRoot.querySelector<SVGLineElement>("[data-zap-uav1]");
+    const zapUav2 = sceneRoot.querySelector<SVGLineElement>("[data-zap-uav2]");
+    const zapUgv = sceneRoot.querySelector<SVGLineElement>("[data-zap-ugv]");
+
+    const SENTRY_X = 218;
+    const SENTRY_Y = 256;
+
+    const rand = (min: number, max: number) => min + Math.random() * (max - min);
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - Math.min(1, Math.max(0, t)), 3);
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    interface SortieConfig {
+      winX: number;
+      winY: number;
+      targetX: number;
+      targetY: number;
+      freqX: number;
+      freqY: number;
+      ampX: number;
+      ampY: number;
+      uav1StartX: number;
+      uav1StartY: number;
+      uav2StartX: number;
+      uav2StartY: number;
+      ugvStartX: number;
+      ugvTargetX: number;
+      waitDuration: number;
+    }
+
+    function createRandomSortie(customTarget?: { x: number; y: number }): SortieConfig {
+      const targetX = customTarget ? customTarget.x : rand(380, 910);
+      const targetY = customTarget ? customTarget.y : rand(135, 300);
+      const ugvFromRight = targetX > 580 ? true : Math.random() > 0.35;
+      return {
+        winX: rand(105, 190),
+        winY: rand(172, 248),
+        targetX,
+        targetY,
+        freqX: rand(2.6, 4.2),
+        freqY: rand(3.4, 5.2),
+        ampX: rand(22, 42),
+        ampY: rand(16, 32),
+        uav1StartX: -85,
+        uav1StartY: rand(50, 210),
+        uav2StartX: 1285,
+        uav2StartY: rand(50, 210),
+        ugvStartX: ugvFromRight ? 1290 : -90,
+        ugvTargetX: Math.min(970, Math.max(250, targetX + rand(-55, 55))),
+        waitDuration: rand(1.8, 3.2),
+      };
+    }
+
+    let sortie = createRandomSortie();
+    let phase: "WAIT" | "FLY_IN" | "DETECT" | "SWARM" | "ZAP" | "EGRESS" = "WAIT";
+    let phaseStart = performance.now();
+    // Start the very first mosquito quickly (0.7s after page load) so visitors see it right away!
+    sortie.waitDuration = 0.7;
+
+    let trailPoints: Array<{ x: number; y: number }> = [];
+    let lastMosqX = sortie.winX;
+    let lastMosqY = sortie.winY;
+    let uav1Pos = { x: sortie.uav1StartX, y: sortie.uav1StartY };
+    let uav2Pos = { x: sortie.uav2StartX, y: sortie.uav2StartY };
+    let ugvPos = { x: sortie.ugvStartX, y: 548 };
+    let zapCoords = { x: sortie.targetX, y: sortie.targetY };
+    let neutralizedCount = 0;
+
+    function notifyPhase(newPhase: string) {
+      window.dispatchEvent(
+        new CustomEvent("study:swarm-state", {
+          detail: { phase: newPhase, count: neutralizedCount },
+        }),
+      );
+    }
+
+    function setPhase(next: typeof phase, now: number) {
+      phase = next;
+      phaseStart = now;
+      notifyPhase(next);
+    }
+
+    function computeMosquitoPos(totalFlySec: number): { x: number; y: number } {
+      const travelT = easeOutCubic(Math.min(1, totalFlySec / 2.2));
+      const baseX = lerp(sortie.winX, sortie.targetX, travelT);
+      const baseY = lerp(sortie.winY, sortie.targetY, travelT);
+      const env = Math.min(1, totalFlySec / 0.6);
+      const wobbleX =
+        Math.sin(totalFlySec * sortie.freqX) * sortie.ampX * env +
+        Math.cos(totalFlySec * 7.5) * 6;
+      const wobbleY =
+        Math.cos(totalFlySec * sortie.freqY) * sortie.ampY * env +
+        Math.sin(totalFlySec * 8.5) * 5;
+      return { x: baseX + wobbleX, y: baseY + wobbleY };
+    }
+
+    let flyInOriginTime = performance.now();
+
+    function step(now: number) {
+      const elapsed = (now - phaseStart) / 1000;
+
+      if (phase === "WAIT") {
+        // Gentle idle radar dish sweep watching the open window
+        const idleAngle = -35 + Math.sin(now / 650) * 28;
+        sentryDish?.setAttribute("transform", `translate(0, -18) rotate(${idleAngle.toFixed(1)})`);
+        sentryLed?.setAttribute("fill", "#81b29a");
+        sentryBadge?.setAttribute("opacity", "0");
+        networkLayer?.setAttribute("opacity", "0");
+        mosquitoGroup?.setAttribute("opacity", "0");
+        mosquitoTrail?.setAttribute("opacity", "0");
+        zapBurst?.setAttribute("opacity", "0");
+        uav1?.setAttribute("opacity", "0");
+        uav2?.setAttribute("opacity", "0");
+        ugv?.setAttribute("opacity", "0");
+
+        if (elapsed >= sortie.waitDuration) {
+          flyInOriginTime = now;
+          trailPoints = [];
+          setPhase("FLY_IN", now);
+        }
+      } else if (phase === "FLY_IN") {
+        const totalFly = (now - flyInOriginTime) / 1000;
+        const pos = computeMosquitoPos(totalFly);
+        const dx = pos.x - lastMosqX;
+        const dy = pos.y - lastMosqY;
+        const facingAngle = Math.max(-35, Math.min(35, Math.atan2(dy, Math.abs(dx) + 0.1) * (180 / Math.PI)));
+        const flipX = dx < -0.2 ? -1 : 1;
+
+        lastMosqX = pos.x;
+        lastMosqY = pos.y;
+
+        mosquitoGroup?.setAttribute("opacity", String(Math.min(1, elapsed / 0.25)));
+        mosquitoGroup?.setAttribute("transform", `translate(${pos.x.toFixed(1)}, ${pos.y.toFixed(1)})`);
+        mosquitoBody?.setAttribute("transform", `scale(${flipX}, 1) rotate(${facingAngle.toFixed(1)})`);
+        mosquitoReticle?.setAttribute("opacity", "0");
+
+        trailPoints.push({ x: pos.x, y: pos.y });
+        if (trailPoints.length > 26) trailPoints.shift();
+        if (trailPoints.length > 2) {
+          const d = trailPoints.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+          mosquitoTrail?.setAttribute("d", d);
+          mosquitoTrail?.setAttribute("opacity", "0.55");
+        }
+
+        // Radar dish begins turning toward intruder
+        const dishAngle = Math.atan2(pos.y - SENTRY_Y, pos.x - SENTRY_X) * (180 / Math.PI) + 90;
+        sentryDish?.setAttribute("transform", `translate(0, -18) rotate(${(dishAngle * 0.45).toFixed(1)})`);
+
+        if (elapsed >= 1.55) {
+          setPhase("DETECT", now);
+        }
+      } else if (phase === "DETECT") {
+        const totalFly = (now - flyInOriginTime) / 1000;
+        const pos = computeMosquitoPos(totalFly);
+        lastMosqX = pos.x;
+        lastMosqY = pos.y;
+
+        mosquitoGroup?.setAttribute("transform", `translate(${pos.x.toFixed(1)}, ${pos.y.toFixed(1)})`);
+        trailPoints.push({ x: pos.x, y: pos.y });
+        if (trailPoints.length > 26) trailPoints.shift();
+        mosquitoTrail?.setAttribute(
+          "d",
+          trailPoints.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" "),
+        );
+
+        // Lock radar dish & cone onto mosquito
+        sentryDish?.setAttribute("transform", `translate(0, -18) rotate(38)`);
+        sentryLed?.setAttribute("fill", "#e07a5f");
+        sentryBadge?.setAttribute("opacity", "1");
+        if (sentryBadgeText) sentryBadgeText.textContent = "! INTRUDER · BROADCASTING";
+
+        networkLayer?.setAttribute("opacity", "1");
+        radarCone?.setAttribute("opacity", "0.85");
+        radarCone?.setAttribute(
+          "points",
+          `${SENTRY_X},${SENTRY_Y} ${(pos.x - 16).toFixed(1)},${(pos.y - 22).toFixed(1)} ${(pos.x + 16).toFixed(1)},${(pos.y + 22).toFixed(1)}`,
+        );
+
+        // Expanding broadcast waves
+        const w1Progress = (elapsed % 0.85) / 0.85;
+        const w2Progress = ((elapsed + 0.42) % 0.85) / 0.85;
+        wave1?.setAttribute("r", String(14 + w1Progress * 165));
+        wave1?.setAttribute("opacity", String((1 - w1Progress) * 0.85));
+        wave2?.setAttribute("r", String(14 + w2Progress * 165));
+        wave2?.setAttribute("opacity", String((1 - w2Progress) * 0.75));
+
+        // Snap target reticle around mosquito
+        mosquitoReticle?.setAttribute("opacity", "1");
+        mosquitoReticle?.setAttribute("transform", `rotate(${(elapsed * 140).toFixed(1)}) scale(${(1.35 - Math.min(0.35, elapsed * 0.3)).toFixed(2)})`);
+
+        trackingBeams?.setAttribute("opacity", "0");
+        zapBeams?.setAttribute("opacity", "0");
+
+        if (elapsed >= 1.1) {
+          setPhase("SWARM", now);
+        }
+      } else if (phase === "SWARM") {
+        const totalFly = (now - flyInOriginTime) / 1000;
+        const pos = computeMosquitoPos(totalFly);
+        lastMosqX = pos.x;
+        lastMosqY = pos.y;
+
+        mosquitoGroup?.setAttribute("transform", `translate(${pos.x.toFixed(1)}, ${pos.y.toFixed(1)})`);
+        mosquitoReticle?.setAttribute("opacity", "1");
+        mosquitoReticle?.setAttribute("transform", `rotate(${(elapsed * 220).toFixed(1)}) scale(0.92)`);
+
+        trailPoints.push({ x: pos.x, y: pos.y });
+        if (trailPoints.length > 24) trailPoints.shift();
+        mosquitoTrail?.setAttribute(
+          "d",
+          trailPoints.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" "),
+        );
+
+        if (sentryBadgeText) sentryBadgeText.textContent = "SWARM COORDINATING";
+        wave1?.setAttribute("opacity", "0");
+        wave2?.setAttribute("opacity", "0");
+        radarCone?.setAttribute(
+          "points",
+          `${SENTRY_X},${SENTRY_Y} ${(pos.x - 14).toFixed(1)},${(pos.y - 18).toFixed(1)} ${(pos.x + 14).toFixed(1)},${(pos.y + 18).toFixed(1)}`,
+        );
+
+        // Smooth swarm entry & tracking interpolation (0 -> 2.3s)
+        const swarmT = easeOutCubic(Math.min(1, elapsed / 1.45));
+        const desiredUav1 = { x: pos.x - 96, y: pos.y - 42 };
+        const desiredUav2 = { x: pos.x + 96, y: pos.y - 36 };
+        const desiredUgv = { x: sortie.ugvTargetX, y: 548 };
+
+        const prevUav1X = uav1Pos.x;
+        const prevUav2X = uav2Pos.x;
+
+        uav1Pos = {
+          x: lerp(sortie.uav1StartX, desiredUav1.x, swarmT),
+          y: lerp(sortie.uav1StartY, desiredUav1.y, swarmT),
+        };
+        uav2Pos = {
+          x: lerp(sortie.uav2StartX, desiredUav2.x, swarmT),
+          y: lerp(sortie.uav2StartY, desiredUav2.y, swarmT),
+        };
+        ugvPos = {
+          x: lerp(sortie.ugvStartX, desiredUgv.x, swarmT),
+          y: 548,
+        };
+
+        const tilt1 = Math.max(-18, Math.min(18, (uav1Pos.x - prevUav1X) * 2.2));
+        const tilt2 = Math.max(-18, Math.min(18, (uav2Pos.x - prevUav2X) * 2.2));
+
+        uav1?.setAttribute("opacity", "1");
+        uav1?.setAttribute("transform", `translate(${uav1Pos.x.toFixed(1)}, ${uav1Pos.y.toFixed(1)})`);
+        uav1Tilt?.setAttribute("transform", `rotate(${tilt1.toFixed(1)})`);
+
+        uav2?.setAttribute("opacity", "1");
+        uav2?.setAttribute("transform", `translate(${uav2Pos.x.toFixed(1)}, ${uav2Pos.y.toFixed(1)})`);
+        uav2Tilt?.setAttribute("transform", `rotate(${tilt2.toFixed(1)})`);
+
+        ugv?.setAttribute("opacity", "1");
+        ugv?.setAttribute("transform", `translate(${ugvPos.x.toFixed(1)}, ${ugvPos.y.toFixed(1)})`);
+
+        // Aim UGV turret toward mosquito
+        const turretAngle = Math.atan2(pos.y - ugvPos.y, pos.x - ugvPos.x) * (180 / Math.PI) + 90;
+        ugvTurret?.setAttribute("transform", `translate(0, -12) rotate(${turretAngle.toFixed(1)})`);
+
+        // Update Mesh Comm Lines between moving agents
+        commSentryUav1?.setAttribute("x1", String(SENTRY_X));
+        commSentryUav1?.setAttribute("y1", String(SENTRY_Y));
+        commSentryUav1?.setAttribute("x2", uav1Pos.x.toFixed(1));
+        commSentryUav1?.setAttribute("y2", uav1Pos.y.toFixed(1));
+
+        commUav1Uav2?.setAttribute("x1", uav1Pos.x.toFixed(1));
+        commUav1Uav2?.setAttribute("y1", uav1Pos.y.toFixed(1));
+        commUav1Uav2?.setAttribute("x2", uav2Pos.x.toFixed(1));
+        commUav1Uav2?.setAttribute("y2", uav2Pos.y.toFixed(1));
+
+        commUav1Ugv?.setAttribute("x1", uav1Pos.x.toFixed(1));
+        commUav1Ugv?.setAttribute("y1", uav1Pos.y.toFixed(1));
+        commUav1Ugv?.setAttribute("x2", ugvPos.x.toFixed(1));
+        commUav1Ugv?.setAttribute("y2", (ugvPos.y - 18).toFixed(1));
+
+        commUav2Ugv?.setAttribute("x1", uav2Pos.x.toFixed(1));
+        commUav2Ugv?.setAttribute("y1", uav2Pos.y.toFixed(1));
+        commUav2Ugv?.setAttribute("x2", ugvPos.x.toFixed(1));
+        commUav2Ugv?.setAttribute("y2", (ugvPos.y - 18).toFixed(1));
+
+        // Activate Triangulating Sensor Beams once drones enter the room
+        if (elapsed > 0.55) {
+          trackingBeams?.setAttribute("opacity", String(Math.min(0.9, (elapsed - 0.55) * 1.5)));
+          trackUav1?.setAttribute("x1", uav1Pos.x.toFixed(1));
+          trackUav1?.setAttribute("y1", (uav1Pos.y + 5).toFixed(1));
+          trackUav1?.setAttribute("x2", pos.x.toFixed(1));
+          trackUav1?.setAttribute("y2", pos.y.toFixed(1));
+
+          trackUav2?.setAttribute("x1", uav2Pos.x.toFixed(1));
+          trackUav2?.setAttribute("y1", (uav2Pos.y + 5).toFixed(1));
+          trackUav2?.setAttribute("x2", pos.x.toFixed(1));
+          trackUav2?.setAttribute("y2", pos.y.toFixed(1));
+
+          trackUgv?.setAttribute("x1", ugvPos.x.toFixed(1));
+          trackUgv?.setAttribute("y1", (ugvPos.y - 22).toFixed(1));
+          trackUgv?.setAttribute("x2", pos.x.toFixed(1));
+          trackUgv?.setAttribute("y2", pos.y.toFixed(1));
+        }
+
+        if (elapsed >= 2.35) {
+          zapCoords = { x: pos.x, y: pos.y };
+          neutralizedCount += 1;
+          setPhase("ZAP", now);
+        }
+      } else if (phase === "ZAP") {
+        // Flash synchronized neutralization pulse & pop the mosquito!
+        mosquitoGroup?.setAttribute("opacity", "0");
+        mosquitoTrail?.setAttribute("opacity", "0");
+        radarCone?.setAttribute("opacity", "0");
+        trackingBeams?.setAttribute("opacity", "0");
+        sentryLed?.setAttribute("fill", "#81b29a");
+        if (sentryBadgeText) sentryBadgeText.textContent = "TARGET NEUTRALIZED";
+
+        const zapFade = Math.max(0, 1 - elapsed / 0.55);
+        zapBeams?.setAttribute("opacity", String(zapFade));
+        zapUav1?.setAttribute("x1", uav1Pos.x.toFixed(1));
+        zapUav1?.setAttribute("y1", (uav1Pos.y + 5).toFixed(1));
+        zapUav1?.setAttribute("x2", zapCoords.x.toFixed(1));
+        zapUav1?.setAttribute("y2", zapCoords.y.toFixed(1));
+
+        zapUav2?.setAttribute("x1", uav2Pos.x.toFixed(1));
+        zapUav2?.setAttribute("y1", (uav2Pos.y + 5).toFixed(1));
+        zapUav2?.setAttribute("x2", zapCoords.x.toFixed(1));
+        zapUav2?.setAttribute("y2", zapCoords.y.toFixed(1));
+
+        zapUgv?.setAttribute("x1", ugvPos.x.toFixed(1));
+        zapUgv?.setAttribute("y1", (ugvPos.y - 22).toFixed(1));
+        zapUgv?.setAttribute("x2", zapCoords.x.toFixed(1));
+        zapUgv?.setAttribute("y2", zapCoords.y.toFixed(1));
+
+        zapBurst?.setAttribute("opacity", String(Math.min(1, zapFade * 1.3)));
+        zapBurst?.setAttribute(
+          "transform",
+          `translate(${zapCoords.x.toFixed(1)}, ${zapCoords.y.toFixed(1)}) scale(${(0.85 + elapsed * 0.6).toFixed(2)})`,
+        );
+        zapRing?.setAttribute("r", String(10 + elapsed * 42));
+
+        if (elapsed >= 0.65) {
+          setPhase("EGRESS", now);
+        }
+      } else if (phase === "EGRESS") {
+        // Drones & UGV fly/drive cleanly back out of the scene
+        networkLayer?.setAttribute("opacity", "0");
+        zapBurst?.setAttribute("opacity", "0");
+        sentryBadge?.setAttribute("opacity", "0");
+
+        const egressT = easeInOutCubic(Math.min(1, elapsed / 1.55));
+        const curUav1X = lerp(uav1Pos.x, sortie.uav1StartX, egressT);
+        const curUav1Y = lerp(uav1Pos.y, sortie.uav1StartY - 30, egressT);
+        const curUav2X = lerp(uav2Pos.x, sortie.uav2StartX, egressT);
+        const curUav2Y = lerp(uav2Pos.y, sortie.uav2StartY - 30, egressT);
+        const curUgvX = lerp(ugvPos.x, sortie.ugvStartX, egressT);
+
+        uav1?.setAttribute("transform", `translate(${curUav1X.toFixed(1)}, ${curUav1Y.toFixed(1)})`);
+        uav1Tilt?.setAttribute("transform", "rotate(-14)");
+
+        uav2?.setAttribute("transform", `translate(${curUav2X.toFixed(1)}, ${curUav2Y.toFixed(1)})`);
+        uav2Tilt?.setAttribute("transform", "rotate(14)");
+
+        ugv?.setAttribute("transform", `translate(${curUgvX.toFixed(1)}, 548)`);
+        ugvTurret?.setAttribute("transform", "translate(0, -12) rotate(0)");
+
+        if (elapsed >= 1.6) {
+          sortie = createRandomSortie();
+          setPhase("WAIT", now);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // Allow manual mosquito spawn from custom event or clicking the fleet/sentry
+    window.addEventListener("study:spawn-mosquito", () => {
+      sortie = createRandomSortie();
+      flyInOriginTime = performance.now();
+      trailPoints = [];
+      setPhase("FLY_IN", performance.now());
+    });
+
+    fleetGroup?.addEventListener("click", () => {
+      if (phase === "WAIT" || phase === "EGRESS") {
+        sortie = createRandomSortie();
+        flyInOriginTime = performance.now();
+        trailPoints = [];
+        setPhase("FLY_IN", performance.now());
+      }
+    });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      requestAnimationFrame(step);
+    }
+  }
+</script>
 
 <style>
   .study-room-stage {
@@ -1851,6 +2639,59 @@
     100% {
       opacity: 0;
       transform: translateY(-8px);
+    }
+  }
+
+  /* ==================== MOSQUITO & SWARM MICRO-ANIMATIONS ==================== */
+  .multi-agent-study-fleet {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .mosquito-wing {
+    animation: wingBuzz 65ms linear infinite alternate;
+  }
+
+  @keyframes wingBuzz {
+    0% {
+      opacity: 0.35;
+    }
+    100% {
+      opacity: 0.92;
+    }
+  }
+
+  .rotor-disc {
+    animation: rotorShimmer 160ms linear infinite alternate;
+  }
+
+  @keyframes rotorShimmer {
+    0% {
+      opacity: 0.35;
+    }
+    100% {
+      opacity: 0.88;
+    }
+  }
+
+  .swarm-comm-lines line {
+    animation: commDashFlow 6s linear infinite;
+  }
+
+  @keyframes commDashFlow {
+    from {
+      stroke-dashoffset: 60;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mosquito-wing,
+    .rotor-disc,
+    .swarm-comm-lines line {
+      animation: none;
     }
   }
 

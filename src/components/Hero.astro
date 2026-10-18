@@ -66,6 +66,22 @@ import NetworkMotif from "./NetworkMotif.astro";
         <span class="plaque-kicker">WALL PORTRAIT III</span>
         <span class="plaque-title">KAS Lab Ph.D. &amp; Open-Source ML</span>
       </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="room-tab-robots"
+        aria-controls="room-panel-robots"
+        aria-selected="false"
+        data-plaque-tab="robots"
+        class="plaque-tab plaque-tab-robots"
+      >
+        <span class="plaque-kicker">
+          <span class="plaque-live-dot" aria-hidden="true"></span>
+          OPEN-WINDOW SWARM
+        </span>
+        <span class="plaque-title">Mosquito Intercept · MARL</span>
+      </button>
     </div>
 
     <!-- Desk Blotter Inspection Surface -->
@@ -178,15 +194,24 @@ import NetworkMotif from "./NetworkMotif.astro";
             <a class="wax-seal-btn" href="/cv.pdf">
               Curriculum Vitae (PDF) ↗
             </a>
+            <button
+              type="button"
+              class="robot-sim-trigger-btn"
+              data-jump-robots
+            >
+              <span class="plaque-live-dot" aria-hidden="true"></span>
+              Mosquito Swarm Defense (MARL) →
+            </button>
             <a href={profile.links.github}>GitHub ↗</a>
             <a href={profile.links.linkedin}>LinkedIn ↗</a>
             <a href={profile.links.rit}>RIT / KAS Lab ↗</a>
             <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
           </div>
           <p class="room-hint">
-            Tip: Select a <strong>shelf on the mahogany bookcase</strong> to
-            navigate, click the <strong>framed wall portraits</strong>, or pull
-            the <strong>brass lamp chain</strong>.
+            Tip: Watch the <strong>open window</strong> for mosquito intruders &amp;
+            autonomous swarm intercepts, select a{" "}
+            <strong>bookcase shelf</strong>, or pull the{" "}
+            <strong>brass lamp chain</strong>.
           </p>
         </div>
       </div>
@@ -329,6 +354,128 @@ import NetworkMotif from "./NetworkMotif.astro";
           </div>
         </div>
       </div>
+
+      <!-- PANEL 5: OPEN-WINDOW MOSQUITO SWARM INTERCEPT (MARL) CONSOLE -->
+      <div
+        role="tabpanel"
+        id="room-panel-robots"
+        aria-labelledby="room-tab-robots"
+        data-plaque-panel="robots"
+        class="blotter-panel"
+        hidden
+      >
+        <div class="portrait-detail-view marl-console-view">
+          <div class="marl-console-top">
+            <div>
+              <div class="portrait-detail-header">
+                <span class="brass-tag">
+                  OPEN-WINDOW SWARM LOOP // DECENTRALIZED MULTI-AGENT INTERCEPT
+                </span>
+                <span class="brass-tag teal" data-swarm-live-phase>
+                  SENTRY WATCH · READY
+                </span>
+              </div>
+              <h2>
+                Autonomous Detection, Mesh Broadcast &amp; Cooperative Task
+                Neutralization
+              </h2>
+            </div>
+
+            <div class="marl-mode-switcher">
+              <span class="mode-switcher-label">
+                INTERACTIVE SORTIE CONTROL ·{" "}
+                <strong data-swarm-count>0 NEUTRALIZED</strong>
+              </span>
+              <div class="mode-btn-row">
+                <button
+                  type="button"
+                  class="marl-mode-btn active"
+                  data-spawn-mosquito-btn
+                >
+                  ⚡ Spawn Mosquito in Open Window
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p class="blotter-lead">
+            To keep the study room serene while illustrating my{" "}
+            <strong>multi-agent systems (MARL)</strong> research at RIT’s{" "}
+            <strong>KAS Lab</strong>, the lower casement sashes of the study
+            window are swung open: whenever an uninvited{" "}
+            <strong>mosquito</strong> flies in on a randomized trajectory, the
+            windowsill <strong>Radar Sentry</strong> detects it and broadcasts
+            target coordinates over a constrained mesh network. Two aerial
+            quadrotors (<strong>UAV-α</strong>, <strong>UAV-β</strong>) and a
+            ground turret rover (<strong>UGV-γ</strong>) swarm in from off-scene,
+            triangulate and neutralize the intruder, and exit cleanly back to
+            base.
+          </p>
+
+          <div class="marl-agent-cards">
+            <div class="marl-agent-card">
+              <div class="agent-card-head">
+                <span class="agent-id-badge teal">RADAR-01 · WINDOWSILL</span>
+                <span class="agent-state-pill">PERIMETER SENTRY</span>
+              </div>
+              <strong>Detection &amp; Broadcast</strong>
+              <p>
+                Continuously scans the open casement window, locks onto incoming
+                mosquito trajectories, and broadcasts sparse alert packets.
+              </p>
+            </div>
+
+            <div class="marl-agent-card">
+              <div class="agent-card-head">
+                <span class="agent-id-badge brass">UAV-α · LEFT INTERCEPT</span>
+                <span class="agent-state-pill">AERIAL RECON</span>
+              </div>
+              <strong>Upper-Left Flank Drone</strong>
+              <p>
+                Deploys from off-scene upon receiving the sentry broadcast,
+                banking into an upper-left triangulation vector.
+              </p>
+            </div>
+
+            <div class="marl-agent-card">
+              <div class="agent-card-head">
+                <span class="agent-id-badge indigo">
+                  UAV-β · RIGHT INTERCEPT
+                </span>
+                <span class="agent-state-pill">CONSENSUS PAIR</span>
+              </div>
+              <strong>Upper-Right Flank Drone</strong>
+              <p>
+                Coordinates over the inter-drone mesh link with UAV-α to bracket
+                erratic target motion in 3D study airspace.
+              </p>
+            </div>
+
+            <div class="marl-agent-card">
+              <div class="agent-card-head">
+                <span class="agent-id-badge peach">UGV-γ · QALEEN CARPET</span>
+                <span class="agent-state-pill">GROUND TURRET</span>
+              </div>
+              <strong>Cooperative Ground Rover</strong>
+              <p>
+                Rolls onto the Pakistani Bokhara carpet below the target,
+                completing 3-agent lock for synchronized neutralization and
+                clean egress.
+              </p>
+            </div>
+          </div>
+
+          <div class="blotter-footer">
+            <div class="links">
+              <a class="wax-seal-btn" href="/research/fontus/">
+                Fontus MARL Case Study →
+              </a>
+              <a href="/research/">All KAS Lab Research Directions →</a>
+              <a href="/publications/">MARL &amp; Security Publications →</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -345,6 +492,42 @@ import NetworkMotif from "./NetworkMotif.astro";
     const svgHotspots = heroRoot.querySelectorAll<SVGElement>(
       "[data-room-hotspot]",
     );
+    const jumpRobotsBtn =
+      heroRoot.querySelector<HTMLButtonElement>("[data-jump-robots]");
+    const spawnMosquitoBtn = heroRoot.querySelector<HTMLButtonElement>(
+      "[data-spawn-mosquito-btn]",
+    );
+    const swarmLivePhase = heroRoot.querySelector<HTMLElement>(
+      "[data-swarm-live-phase]",
+    );
+    const swarmCountEl =
+      heroRoot.querySelector<HTMLElement>("[data-swarm-count]");
+
+    const PHASE_LABELS: Record<string, string> = {
+      WAIT: "SENTRY WATCH · WINDOW OPEN",
+      FLY_IN: "MOSQUITO ENTERING WINDOW",
+      DETECT: "RADAR LOCK & MESH BROADCAST",
+      SWARM: "SWARM CONVERGING & LOCKING",
+      ZAP: "✦ TARGET NEUTRALIZED!",
+      EGRESS: "SWARM RETURNING TO BASE",
+    };
+
+    window.addEventListener("study:swarm-state", (e: Event) => {
+      const custom = e as CustomEvent<{ phase: string; count: number }>;
+      if (swarmLivePhase && custom.detail?.phase) {
+        swarmLivePhase.textContent =
+          PHASE_LABELS[custom.detail.phase] || custom.detail.phase;
+      }
+      if (swarmCountEl && typeof custom.detail?.count === "number") {
+        swarmCountEl.textContent = `${custom.detail.count} NEUTRALIZED`;
+      }
+    });
+
+    if (spawnMosquitoBtn) {
+      spawnMosquitoBtn.addEventListener("click", () => {
+        window.dispatchEvent(new CustomEvent("study:spawn-mosquito"));
+      });
+    }
 
     function activateStudyObject(key: string) {
       tabs.forEach((tab) => {
@@ -382,6 +565,12 @@ import NetworkMotif from "./NetworkMotif.astro";
       });
     });
 
+    if (jumpRobotsBtn) {
+      jumpRobotsBtn.addEventListener("click", () => {
+        activateStudyObject("robots");
+      });
+    }
+
     activateStudyObject("identity");
   }
 </script>
@@ -404,7 +593,7 @@ import NetworkMotif from "./NetworkMotif.astro";
   /* Brass Plaque Selector Tabs along the Desk Ledge */
   .room-plaque-tabs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     background: #2b1b11;
     border-bottom: 2px solid var(--brass);
     gap: 1px;
@@ -605,6 +794,186 @@ import NetworkMotif from "./NetworkMotif.astro";
     color: #faf8ef !important;
   }
 
+  /* Live Pulsing Emerald Indicator Dot on Robot Plaque & Trigger Button */
+  .plaque-live-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #81b29a;
+    box-shadow: 0 0 8px rgba(129, 178, 154, 0.85);
+    margin-right: 0.32rem;
+    vertical-align: middle;
+  }
+
+  .robot-sim-trigger-btn {
+    padding: 0.42rem 0.9rem;
+    background: var(--bg);
+    color: var(--heading);
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .robot-sim-trigger-btn:hover {
+    background: var(--surface-alt, #f0ead8);
+    border-color: var(--accent-strong);
+    transform: translateY(-1px);
+  }
+
+  /* Multi-Agent Robotics (MARL) Console & Scenario Switcher */
+  .marl-console-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem 1.5rem;
+  }
+
+  .marl-mode-switcher {
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--brass);
+    border-radius: 5px;
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .mode-switcher-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    color: var(--accent-strong);
+  }
+
+  .mode-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .marl-mode-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.36rem 0.68rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .marl-mode-btn:hover {
+    color: var(--heading);
+    border-color: var(--brass);
+  }
+
+  .marl-mode-btn.active {
+    background: #241710;
+    color: #faf8ef;
+    border-color: var(--brass);
+    box-shadow: 0 2px 6px rgba(24, 15, 10, 0.22);
+  }
+
+  /* 4 Live Agent Telemetry Cards */
+  .marl-agent-cards {
+    margin-top: 1.15rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .marl-agent-card {
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-top: 3px solid var(--brass);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    transition:
+      border-color 220ms ease,
+      background-color 220ms ease;
+  }
+
+  .marl-agent-card.quarantined-card {
+    border-color: #e07a5f;
+    border-top-color: #b54128;
+    background: rgba(224, 122, 95, 0.08);
+  }
+
+  .agent-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .agent-id-badge {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.14rem 0.4rem;
+    border-radius: 3px;
+    background: #232536;
+    color: #faf8ef;
+  }
+
+  .agent-id-badge.teal {
+    background: #2d5a47;
+  }
+
+  .agent-id-badge.peach {
+    background: #8b3420;
+  }
+
+  .agent-id-badge.brass {
+    background: #4a3020;
+  }
+
+  .agent-state-pill {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+  }
+
+  .marl-agent-card strong {
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .marl-agent-card p {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
   .room-hint {
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -624,6 +993,9 @@ import NetworkMotif from "./NetworkMotif.astro";
       grid-template-columns: 1fr;
       gap: 1.35rem;
     }
+    .marl-agent-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 640px) {
@@ -632,6 +1004,9 @@ import NetworkMotif from "./NetworkMotif.astro";
     }
     .blotter-surface {
       padding: 1.35rem 1.2rem;
+    }
+    .marl-agent-cards {
+      grid-template-columns: 1fr;
     }
     .room-hint {
       display: none;
