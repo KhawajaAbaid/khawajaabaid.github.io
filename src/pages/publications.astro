@@ -7,12 +7,15 @@ const publications = (await publicEntries("publications")).sort(byDate);
 
 <BaseLayout
   title="Publications"
-  description="Public papers by Khawaja Abaid Ullah on antidistillation, model extraction, and language-model evaluation, with full author lists, code, and BibTeX."
+  description="Papers and preprints by Khawaja Abaid Ullah on test-time antidistillation defenses (ADS-C, matched-cost review) and large-scale human-LLM social judgment alignment."
 >
   <header class="page-intro">
-    <p class="eyebrow">PAPERS / PREPRINTS</p><h1>Publications</h1><p>
-      Public work on machine-learning security and model evaluation. Papers,
-      implementations, and citations in one place.
+    <p class="eyebrow">THE STUDY READING TABLE // PAPERS &amp; PREPRINTS</p>
+    <h1>Selected Manuscripts &amp; Preprints</h1>
+    <p>
+      Research manuscripts on margin-aware inference-time antidistillation
+      defenses against model extraction (ADS-C and matched-cost benchmark review)
+      and theory-grounded evaluation across 34 LLMs and 198 human participants.
     </p>
   </header>
   <div class="publication-index">
@@ -23,8 +26,9 @@ const publications = (await publicEntries("publications")).sort(byDate);
     }
   </div>
 </BaseLayout>
+
 <style>
   .publication-index {
-    padding-bottom: 6rem;
+    padding-bottom: 5rem;
   }
 </style>

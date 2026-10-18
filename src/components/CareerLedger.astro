@@ -1,0 +1,357 @@
+---
+import {
+  experienceLedger,
+  educationLedger,
+  apparatusSkills,
+} from "../data/profile";
+---
+
+<div class="study-desk-register-spread">
+  <!-- LEFT WING: LEATHER-BOUND STUDY DESK REGISTER -->
+  <div class="register-column study-panel">
+    <div class="register-bar">
+      <span>STUDY DESK REGISTER // INDUSTRY, RESEARCH &amp; ACADEMIC RECORD</span>
+      <span>VERIFIED CV</span>
+    </div>
+
+    <div class="ledger-group">
+      <p class="group-heading">
+        I. Research, Industry, Teaching &amp; Academic Service
+      </p>
+      <div class="entries-stack">
+        {
+          experienceLedger.map((item) => (
+            <div class:list={["ledger-entry", { featured: item.featured }]}>
+              <div class="entry-top">
+                <time>{item.period}</time>
+                <span class:list={["brass-tag", { teal: !item.featured }]}>
+                  {item.badge}
+                </span>
+              </div>
+              <h3>{item.role}</h3>
+              <p class="entry-org">
+                {item.organization} · <span>{item.location}</span>
+              </p>
+              <ul class="entry-bullets">
+                {item.highlights.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="ledger-group">
+      <p class="group-heading">II. Academic Degrees &amp; Distinctions</p>
+      <div class="entries-stack">
+        {
+          educationLedger.map((edu) => (
+            <div class="ledger-entry">
+              <div class="entry-top">
+                <time>{edu.period}</time>
+                <span class="brass-tag">{edu.stamp}</span>
+              </div>
+              <h3>{edu.degree}</h3>
+              <p class="entry-org">
+                {edu.institution} · <span>{edu.location}</span>
+              </p>
+              <p class="entry-detail">{edu.details}</p>
+              {edu.thesisHref && (
+                <div class="links">
+                  <a href={edu.thesisHref}>
+                    Master’s Thesis (RIT Repository) ↗
+                  </a>
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT WING: WALNUT INSTRUMENT CABINET & LEATHER FOLIO POCKET -->
+  <div class="apparatus-column">
+    <div class="study-panel apparatus-card">
+      <div class="register-bar">
+        <span>STUDY INSTRUMENT CABINET // TECHNICAL STACK</span>
+        <span>APPARATUS</span>
+      </div>
+
+      <div class="apparatus-groups">
+        {
+          apparatusSkills.map((group) => (
+            <div class="apparatus-block">
+              <p class="eyebrow">{group.callNo}</p>
+              <h3>{group.label}</h3>
+              <div class="skill-slips">
+                {group.items.map((skill) => (
+                  <span class="skill-slip">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="honors-strip">
+        <p class="eyebrow">FRAMED STUDY DISTINCTIONS</p>
+        <ul>
+          <li>
+            <strong>U.S. Fulbright Scholar</strong> (U.S. Department of State ·
+            4.0/4.0 M.S. GPA)
+          </li>
+          <li>
+            <strong>AWS AI/ML Full-Time Return Offer</strong> (East Palo Alto ·
+            Summer 2025)
+          </li>
+          <li>
+            <strong>1st in Computer Science Class of 2021</strong> (University
+            of Narowal)
+          </li>
+          <li>
+            <strong>Reviewer</strong>, <em>IEEE Signal Processing Letters</em> ·
+            <strong>Kaggle Expert</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Leather Desk Portfolio Sleeve -->
+    <div class="leather-desk-sleeve" aria-label="Curriculum Vitae Portfolio Sleeve">
+      <div class="sleeve-top">
+        <span>ENGRAVED DESK PORTFOLIO // K. A. ULLAH</span>
+        <a class="sleeve-link" href="/cv.pdf">Download Full CV (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .study-desk-register-spread {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .register-column {
+    padding: 1.35rem 2rem 2.25rem;
+  }
+
+  .register-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--heading);
+  }
+
+  .register-bar span:last-child {
+    color: var(--teal-strong);
+  }
+
+  .ledger-group + .ledger-group {
+    margin-top: 2rem;
+    padding-top: 1.65rem;
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .group-heading {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin-bottom: 1rem;
+  }
+
+  .entries-stack {
+    display: grid;
+    gap: 1.15rem;
+  }
+
+  .ledger-entry {
+    padding: 1rem 1.25rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--wood-mid);
+    border-radius: 4px;
+  }
+
+  .ledger-entry.featured {
+    border-left-width: 4px;
+    border-left-color: var(--brass);
+    background:
+      linear-gradient(
+        to right,
+        rgba(242, 204, 143, 0.12),
+        transparent 60%
+      ),
+      var(--bg);
+  }
+
+  .entry-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .entry-top time {
+    font-family: var(--font-mono);
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent-strong);
+  }
+
+  .ledger-entry h3 {
+    font-size: 1.3rem;
+    color: var(--heading);
+  }
+
+  .entry-org {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--text);
+    margin-top: 0.2rem;
+  }
+
+  .entry-org span {
+    color: var(--text-muted);
+  }
+
+  .entry-bullets {
+    margin: 0.65rem 0 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .entry-detail {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+
+  .apparatus-column {
+    display: grid;
+    gap: 1.35rem;
+  }
+
+  .apparatus-card {
+    padding: 1.35rem 1.75rem 1.75rem;
+  }
+
+  .apparatus-groups {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .apparatus-block h3 {
+    font-size: 1.15rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .skill-slips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-slip {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.22rem 0.55rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-bottom: 2px solid var(--brass);
+    border-radius: 3px;
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  .honors-strip {
+    margin-top: 1.4rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .honors-strip ul {
+    margin: 0.6rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+  }
+
+  .honors-strip strong {
+    color: var(--heading);
+  }
+
+  .leather-desk-sleeve {
+    background: linear-gradient(135deg, #3b2518, #241710);
+    border: 1.5px solid var(--brass);
+    border-radius: 6px;
+    padding: 1rem 1.35rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .sleeve-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f2cc8f;
+  }
+
+  .sleeve-link {
+    color: #faf8ef !important;
+    text-decoration: none;
+    padding: 0.32rem 0.75rem;
+    background: rgba(242, 204, 143, 0.16);
+    border: 1px solid var(--brass);
+    border-radius: 3px;
+  }
+
+  .sleeve-link:hover {
+    background: var(--accent-strong);
+  }
+
+  @media (max-width: 1020px) {
+    .study-desk-register-spread {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .register-column,
+    .apparatus-card {
+      padding-inline: 1.2rem;
+    }
+  }
+</style>

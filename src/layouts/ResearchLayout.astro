@@ -9,7 +9,7 @@ interface Props {
   publication?: CollectionEntry<"publications">;
 }
 const {
-  entry: { data },
+  entry: { data, id },
   publication,
 } = Astro.props;
 const pub = publication?.data;
@@ -27,8 +27,8 @@ const article = pub
 ---
 
 <BaseLayout title={data.title} description={data.summary}>
-  <Fragment slot="head"
-    >{
+  <Fragment slot="head">
+    {
       pub && (
         <>
           <meta name="citation_title" content={pub.title} />
@@ -48,16 +48,21 @@ const article = pub
           />
         </>
       )
-    }</Fragment
-  >
-  <header class="research-header">
-    <a class="breadcrumb" href="/research/">← Research</a><p
-      class="eyebrow accent"
-    >
-      {data.category}
-    </p><h1>{data.title}</h1><p class="research-dek">{data.summary}</p><p
-      class="research-authors"
-    >
+    }
+  </Fragment>
+
+  <header class="research-header study-panel">
+    <div class="folio-top-bar">
+      <a class="breadcrumb" href="/research/">← Return to Research Wing</a>
+      <span class="call-stamp">
+        STUDY PLATE // {id.toUpperCase()} · {data.date.getUTCFullYear()}
+      </span>
+    </div>
+
+    <p class="eyebrow accent">{data.category}</p>
+    <h1>{data.title}</h1>
+    <p class="research-dek">{data.summary}</p>
+    <p class="research-authors">
       {
         data.authors.map((author, i) => (
           <>
@@ -66,118 +71,169 @@ const article = pub
           </>
         ))
       }
-    </p><p class="research-meta">
-      {data.status} · {data.date.getUTCFullYear()}{
-        data.venue && ` · ${data.venue}`
-      }
-    </p><LinkList links={data.links} context={data.title} /><p class="tagline">
-      {data.tags.join(" · ")}
     </p>
+    <div class="meta-bar">
+      <span class="brass-tag teal">
+        {data.status} · {data.date.getUTCFullYear()}
+        {data.venue && ` · ${data.venue}`}
+      </span>
+      <LinkList links={data.links} context={data.title} />
+    </div>
+    <p class="tagline">{data.tags.join(" · ")}</p>
   </header>
+
   {
     data.image && (
       <figure class="research-figure">
-        <Image src={data.image} alt={data.imageAlt!} loading="eager" />
+        <div class="figure-matting">
+          <Image src={data.image} alt={data.imageAlt!} loading="eager" />
+        </div>
         {data.figureCaption && <figcaption>{data.figureCaption}</figcaption>}
       </figure>
     )
   }
+
   <div class="prose">
-    <slot />{
+    <slot />
+    {
       pub?.bibtex && (
         <section aria-label="Citation">
-          <>
-            <h2>Citation</h2>
-            <details>
-              <>
-                <summary>BibTeX for {pub.title}</summary>
-                <pre>
-                  <code>{pub.bibtex}</code>
-                </pre>
-              </>
-            </details>
-          </>
+          <h2>Citation</h2>
+          <details open>
+            <summary>BibTeX for {pub.title}</summary>
+            <pre><code>{pub.bibtex}</code></pre>
+          </details>
         </section>
       )
-    }<div class="research-back"><a href="/research/">← All research</a></div>
+    }
+    <div class="research-back">
+      <a href="/research/">← Return to Research Wing</a>
+    </div>
   </div>
 </BaseLayout>
+
 <style>
   .research-header {
-    padding-block: 3rem;
-    max-width: 980px;
+    padding: 1.5rem 2.5rem 2.25rem;
+    margin-block: 2.25rem 2rem;
   }
+
+  .folio-top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
   .breadcrumb {
-    font-size: 0.8rem;
-    display: inline-block;
-    margin-bottom: 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--heading);
   }
+
+  .call-stamp {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
   .research-header .eyebrow {
     color: var(--accent-strong);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
   }
+
   .research-header h1 {
-    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-size: clamp(2.25rem, 4.4vw, 3.85rem);
     line-height: 1.08;
   }
+
   .research-dek {
-    font-size: 1.2rem;
+    font-size: 1.08rem;
     color: var(--text-muted);
-    margin-top: 2rem;
+    margin-top: 1.15rem;
     max-width: 66ch;
   }
+
   .research-authors {
-    font-size: 0.85rem;
-    margin-top: 1.8rem;
+    font-size: 0.88rem;
+    margin-top: 1.15rem;
     color: var(--text-muted);
   }
+
   .research-authors strong {
-    font-weight: 500;
-    color: var(--text);
+    font-weight: 600;
+    color: var(--heading);
+    text-decoration: underline;
+    text-decoration-color: var(--brass);
+    text-underline-offset: 3px;
   }
-  .research-meta {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
+
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.85rem;
   }
-  .research-header :global(.links) {
-    margin-top: 0.7rem;
-  }
-  .research-header .tagline {
-    font-size: 0.7rem;
-  }
+
   .research-figure {
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
+    padding: 0.9rem;
+    background: linear-gradient(145deg, #4a3020, #2b1b11);
+    border: 2px solid var(--brass);
+    border-radius: 6px;
+    box-shadow: var(--card-shadow);
   }
+
+  .figure-matting {
+    background: #faf8ef;
+    padding: 0.5rem;
+    border: 1px solid #c49240;
+    border-radius: 3px;
+  }
+
   .research-figure img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 2px;
   }
+
   .research-figure figcaption {
     max-width: 75ch;
-    margin-top: 1rem;
-    color: var(--text-muted);
-    font-size: 0.75rem;
+    margin-top: 0.75rem;
+    padding-inline: 0.35rem;
+    color: #f2cc8f;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    line-height: 1.55;
   }
+
   .research-back {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
+    margin-top: 2.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-strong);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
+
   @media (max-width: 720px) {
     .research-header {
-      padding-top: 2rem;
-    }
-    .breadcrumb {
-      margin-bottom: 2rem;
+      padding: 1.25rem 1.25rem 1.75rem;
+      margin-top: 1.5rem;
     }
     .research-dek {
-      font-size: 1.05rem;
-    }
-    .research-figure {
-      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
     }
   }
 </style>

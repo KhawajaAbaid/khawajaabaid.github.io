@@ -1,108 +1,228 @@
 ---
 import { profile, navigation } from "../data/profile";
 const path = Astro.url.pathname;
+const roman = ["I.", "II.", "III.", "IV."];
 ---
 
 <header class="site-header container" id="top">
-  <a class="site-name" href="/"
-    ><span class="full-name">{profile.name}</span><span class="short-name"
-      >{profile.shortName}</span
-    ></a
-  >
+  <div class="brand-block">
+    <a class="site-name" href="/">
+      <span class="desk-plaque-tag" aria-hidden="true">
+        THE STUDY OF // RIT · KAS LAB
+      </span>
+      <span class="full-name">{profile.name}</span>
+      <span class="short-name">{profile.shortName}</span>
+    </a>
+  </div>
+
   <div class="header-controls">
     <button
       class="menu-toggle"
       aria-expanded="false"
       aria-controls="primary-navigation"
-      hidden>Menu <span aria-hidden="true">+</span></button
+      hidden
     >
+      Study Map <span aria-hidden="true">+</span>
+    </button>
     <nav id="primary-navigation" aria-label="Primary">
       {
-        navigation.map((item) => (
+        navigation.map((item, idx) => (
           <a
             href={item.href}
             aria-current={path.startsWith(item.href) ? "page" : undefined}
           >
-            {item.label}
+            {idx < roman.length && (
+              <span class="roman-num" aria-hidden="true">
+                {roman[idx]}
+              </span>
+            )}
+            <span>{item.label}</span>
           </a>
         ))
       }
       <a class="mobile-email" href={`mailto:${profile.email}`}>Email</a>
     </nav>
+
     <button
       class="theme-toggle"
       type="button"
-      aria-label="Use dark theme"
+      data-lamp-toggle
+      aria-label="Pull Banker's Lamp chain to switch room lighting"
       aria-pressed="false"
-      hidden
+      title="Pull brass chain to switch study room lighting"
     >
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"
-        ><circle
-          cx="12"
-          cy="12"
-          r="7"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.4"></circle><path
-          d="M12 5a7 7 0 0 1 0 14Z"
-          fill="currentColor"></path></svg
-      >
+      <span class="lamp-badge" aria-hidden="true">
+        <svg width="24" height="42" viewBox="0 0 24 42" fill="none">
+          <path
+            d="M3 12 C4.8 4.5, 19.2 4.5, 21 12 Z"
+            fill="var(--teal)"
+            stroke="var(--wood-dark)"
+            stroke-width="1.3"
+          />
+          <line
+            x1="12"
+            y1="12"
+            x2="12"
+            y2="19"
+            stroke="var(--brass)"
+            stroke-width="1.8"
+          />
+          <path
+            d="M7 19 H17"
+            stroke="var(--brass)"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <g class="pull-chain-cord">
+            <circle cx="16.5" cy="14" r="1.1" fill="var(--brass)" />
+            <circle cx="16.5" cy="17.5" r="1.1" fill="var(--brass)" />
+            <circle cx="16.5" cy="21" r="1.1" fill="var(--brass)" />
+            <circle cx="16.5" cy="24.5" r="1.1" fill="var(--brass)" />
+            <path
+              d="M14.5 27.5 C14.5 25.8, 18.5 25.8, 18.5 27.5 L17.9 33 C17.7 34.4, 15.3 34.4, 15.1 33 Z"
+              fill="var(--brass)"
+              stroke="var(--wood-dark)"
+              stroke-width="1"
+            />
+          </g>
+        </svg>
+      </span>
+      <span class="lamp-state-text">
+        <span class="state-day">Daylight</span>
+        <span class="state-night">Lamplight</span>
+      </span>
     </button>
   </div>
 </header>
+
 <script>
   const root = document.documentElement;
-  const theme = document.querySelector<HTMLButtonElement>(".theme-toggle");
+  const metaScheme = document.querySelector<HTMLMetaElement>(
+    'meta[name="color-scheme"]',
+  );
+  const toggles = document.querySelectorAll<HTMLElement>("[data-lamp-toggle]");
   const media = window.matchMedia("(prefers-color-scheme: dark)");
-  let manual = root.dataset.theme === "light" || root.dataset.theme === "dark";
-  function syncTheme() {
-    const dark =
-      root.dataset.theme === "dark" || (!root.dataset.theme && media.matches);
-    theme?.setAttribute("aria-pressed", String(dark));
-    theme?.setAttribute(
-      "aria-label",
-      dark ? "Use light theme" : "Use dark theme",
-    );
+
+  function getStoredScheme(): "light" | "dark" | null {
+    try {
+      const val = localStorage.getItem("theme");
+      return val === "light" || val === "dark" ? val : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function isDarkActive(): boolean {
+    const stored = getStoredScheme();
+    if (stored) return stored === "dark";
+    if (root.dataset.theme === "light" || root.dataset.theme === "dark") {
+      return root.dataset.theme === "dark";
+    }
+    return media.matches;
+  }
+
+  function applySchemeState(stored: "light" | "dark" | null) {
+    if (stored) {
+      root.dataset.theme = stored;
+      metaScheme?.setAttribute("content", stored);
+    } else {
+      delete root.dataset.theme;
+      metaScheme?.setAttribute("content", "light dark");
+    }
+    const dark = isDarkActive();
+    toggles.forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(dark));
+      btn.setAttribute(
+        "aria-label",
+        dark
+          ? "Pull lamp chain for Golden-Hour Daylight study"
+          : "Pull lamp chain for Nocturnal Banker's Lamp study",
+      );
+    });
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", dark ? "#11110f" : "#f7f7f3");
+      ?.setAttribute("content", dark ? "#181924" : "#f4f1de");
   }
-  if (theme) {
-    theme.hidden = false;
-    syncTheme();
-    theme.addEventListener("click", () => {
-      const next =
-        theme.getAttribute("aria-pressed") === "true" ? "light" : "dark";
-      root.dataset.theme = next;
-      manual = true;
-      try {
-        localStorage.setItem("theme", next);
-      } catch {
-        /* Optional persistence. */
+
+  function toggleTheme(triggerEl?: Element) {
+    const currentlyDark = isDarkActive();
+    const target: "light" | "dark" = currentlyDark ? "light" : "dark";
+    const systemScheme: "light" | "dark" = media.matches ? "dark" : "light";
+
+    /* Per modern-web-guidance `dark-mode-toggle`: check divergence at storage time only */
+    const nextStored = target === systemScheme ? null : target;
+    try {
+      if (nextStored === null) {
+        localStorage.removeItem("theme");
+      } else {
+        localStorage.setItem("theme", nextStored);
       }
-      syncTheme();
-    });
+    } catch {
+      /* Storage blocked; still apply in-memory */
+    }
+
+    if (nextStored === null) {
+      delete root.dataset.theme;
+      metaScheme?.setAttribute("content", "light dark");
+    } else {
+      root.dataset.theme = nextStored;
+      metaScheme?.setAttribute("content", nextStored);
+    }
+
+    if (triggerEl) {
+      triggerEl.classList.remove("chain-pulled");
+      void (triggerEl as HTMLElement).offsetWidth;
+      triggerEl.classList.add("chain-pulled");
+    }
+
+    const roomScene = document.querySelector(".study-room-stage");
+    if (roomScene) {
+      roomScene.classList.remove("lamp-switching");
+      void (roomScene as HTMLElement).offsetWidth;
+      roomScene.classList.add("lamp-switching");
+    }
+
+    applySchemeState(nextStored);
   }
-  media.addEventListener("change", () => {
-    if (!manual) syncTheme();
+
+  applySchemeState(getStoredScheme());
+
+  toggles.forEach((btn) => {
+    btn.addEventListener("click", () => toggleTheme(btn));
   });
+
+  media.addEventListener("change", () => {
+    /* Keep stored override intact; only re-sync UI state */
+    applySchemeState(getStoredScheme());
+  });
+
+  window.addEventListener("storage", (e) => {
+    if (e.key === "theme" || e.key === null) {
+      applySchemeState(getStoredScheme());
+    }
+  });
+
   const menu = document.querySelector<HTMLButtonElement>(".menu-toggle");
   const nav = document.querySelector<HTMLElement>("#primary-navigation");
-  const narrow = window.matchMedia("(max-width: 720px)");
+  const narrow = window.matchMedia("(max-width: 760px)");
+
   function closeMenu(returnFocus = false) {
     menu?.setAttribute("aria-expanded", "false");
     if (nav) nav.hidden = narrow.matches;
     if (returnFocus) menu?.focus();
   }
+
   function syncMenu() {
     if (menu) menu.hidden = !narrow.matches;
     closeMenu();
   }
+
   menu?.addEventListener("click", () => {
     const open = menu.getAttribute("aria-expanded") !== "true";
     menu.setAttribute("aria-expanded", String(open));
     if (nav) nav.hidden = !open;
   });
+
   document.addEventListener("keydown", (event) => {
     if (
       event.key === "Escape" &&
@@ -110,93 +230,284 @@ const path = Astro.url.pathname;
     )
       closeMenu(true);
   });
+
   nav?.addEventListener("click", (event) => {
     if ((event.target as Element).closest("a") && narrow.matches) closeMenu();
   });
+
   narrow.addEventListener("change", syncMenu);
   syncMenu();
 </script>
+
 <style>
   .site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
-    min-height: 102px;
-    border-bottom: 1px solid var(--border);
+    min-height: 84px;
+    padding-block: 0.65rem;
+    border-bottom: 2px solid var(--border-strong);
+    position: relative;
   }
+
+  .site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--brass) 20%,
+      var(--wood-warm) 50%,
+      var(--brass) 80%,
+      transparent
+    );
+    pointer-events: none;
+  }
+
   .site-name {
-    font-size: 0.95rem;
-    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
     text-decoration: none;
-    white-space: nowrap;
+    padding: 0.35rem 0.75rem;
+    background: linear-gradient(
+      135deg var(--in-oklab),
+      rgba(242, 204, 143, 0.16),
+      transparent 80%
+    );
+    border-left: 3px solid var(--brass);
+    border-radius: 2px 4px 4px 2px;
   }
+
+  .desk-plaque-tag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--brass-dark);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  :root[data-theme="dark"] .desk-plaque-tag,
+  :root:has(> head > meta[name="color-scheme"][content="dark"])
+    .desk-plaque-tag {
+    color: var(--brass-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not(
+        :has(> head > meta[name="color-scheme"][content="light"])
+      )
+      .desk-plaque-tag {
+      color: var(--brass-light);
+    }
+  }
+
+  .full-name,
+  .short-name {
+    font-family: var(--font-display);
+    font-size: 1.24rem;
+    font-weight: 500;
+    color: var(--heading);
+    letter-spacing: -0.015em;
+  }
+
   .header-controls {
     display: flex;
     align-items: center;
-    gap: 1.8rem;
+    gap: 1.35rem;
   }
+
   nav {
     display: flex;
-    gap: 1.8rem;
+    gap: 1.35rem;
     align-items: center;
   }
+
   nav a {
-    min-height: 44px;
-    display: flex;
+    min-height: 42px;
+    display: inline-flex;
     align-items: center;
+    gap: 0.32rem;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-family: var(--font-display);
+    font-size: 0.98rem;
     color: var(--text-muted);
+    padding-inline: 0.2rem;
+    position: relative;
   }
+
+  .roman-num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent-strong);
+    letter-spacing: 0.04em;
+  }
+
+  nav a:hover {
+    color: var(--heading);
+  }
+
   nav a[aria-current="page"] {
-    color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
+    color: var(--heading);
+    font-weight: 500;
   }
+
+  nav a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    height: 2px;
+    background: var(--brass);
+    border-radius: 1px;
+  }
+
   .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 44px;
+    padding: 0 0.75rem 0 0.45rem;
+    background: var(--surface);
+    border: 1px solid var(--brass);
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(36, 23, 16, 0.08);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(224, 122, 95, 0.18);
+  }
+
+  .lamp-badge {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 50%;
   }
+
+  .lamp-state-text {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--heading);
+  }
+
+  /* Branching via CSS selectors so no JS is required for initial label display */
+  .state-night {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .state-day,
+  :root:has(> head > meta[name="color-scheme"][content="dark"]) .state-day {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .state-night,
+  :root:has(> head > meta[name="color-scheme"][content="dark"]) .state-night {
+    display: inline;
+    color: var(--brass-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not(
+        :has(> head > meta[name="color-scheme"][content="light"])
+      )
+      .state-day {
+      display: none;
+    }
+    :root:not([data-theme="light"]):not(
+        :has(> head > meta[name="color-scheme"][content="light"])
+      )
+      .state-night {
+      display: inline;
+      color: var(--brass-light);
+    }
+  }
+
+  .pull-chain-cord {
+    transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .theme-toggle:hover .pull-chain-cord {
+    transform: translateY(3px);
+  }
+
+  .theme-toggle.chain-pulled .pull-chain-cord {
+    animation: pullChainSpring 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes pullChainSpring {
+    0% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(6px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
   .short-name,
   nav .mobile-email {
     display: none;
   }
+
   .menu-toggle {
-    background: none;
-    border: 0;
-    padding: 0 8px;
-    min-height: 44px;
-    font-size: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 0 0.75rem;
+    min-height: 40px;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
+
   .menu-toggle span {
-    margin-left: 8px;
+    margin-left: 6px;
+    color: var(--accent);
   }
+
   .menu-toggle[aria-expanded="true"] span {
     transform: rotate(45deg);
     display: inline-block;
   }
-  @media (max-width: 900px) {
+
+  @media (max-width: 960px) {
     nav {
-      gap: 1.1rem;
+      gap: 0.9rem;
     }
     .header-controls {
-      gap: 1rem;
+      gap: 0.85rem;
+    }
+    .lamp-state-text {
+      display: none;
     }
   }
-  @media (max-width: 720px) {
+
+  @media (max-width: 760px) {
     .site-header {
-      min-height: 82px;
-      position: relative;
+      min-height: 74px;
       flex-wrap: wrap;
       gap: 0;
-      padding-block: 18px;
+      padding-block: 12px;
+    }
+    .desk-plaque-tag {
+      font-size: 0.56rem;
     }
     .full-name {
       display: none;
@@ -205,30 +516,32 @@ const path = Astro.url.pathname;
       display: inline;
     }
     .header-controls {
-      gap: 0.6rem;
+      gap: 0.5rem;
       display: contents;
     }
     .theme-toggle {
-      margin-left: 0.7rem;
-      width: 40px;
+      margin-left: 0.6rem;
+      padding-inline: 0.45rem;
       height: 40px;
     }
     .menu-toggle {
       margin-left: auto;
     }
     nav .mobile-email {
-      display: flex;
+      display: inline-flex;
     }
     nav {
       order: 4;
       flex-basis: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.2rem 1.5rem;
-      padding: 1rem 0 0.2rem;
+      gap: 0.25rem 1.25rem;
+      padding: 1rem 0 0.35rem;
+      margin-top: 0.75rem;
+      border-top: 1px solid var(--border-strong);
     }
     nav a {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
   }
 </style>

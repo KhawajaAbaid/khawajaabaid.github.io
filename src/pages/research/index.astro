@@ -11,75 +11,98 @@ const publications = (await publicEntries("publications")).sort(byDate);
 
 <BaseLayout
   title="Research"
-  description="Research on anti-distillation defenses against model extraction and coordinated multi-agent robots for search-and-rescue. Public papers, code, and projects."
+  description="Research at RIT's Khojasteh Autonomous Systems Laboratory (KAS Lab) on multi-agent robot coordination for disaster search-and-rescue and test-time antidistillation defenses against model extraction."
 >
   <header class="page-intro">
-    <p class="eyebrow">RESEARCH / OVERVIEW</p><h1>
-      Machine learning security. Autonomous systems.
-    </h1><p>
-      I work on anti-distillation defenses that protect deployed models against
-      extraction attacks. My autonomous systems research aims to develop
-      coordinated multi-agent robots for search-and-rescue in disaster-struck
-      regions.
+    <p class="eyebrow">THE STUDY BOOKSHELF // KAS LAB · RIT RESEARCH PROGRAM</p>
+    <h1>
+      Multi-Agent Coordination for Search-and-Rescue &amp; Test-Time
+      Antidistillation
+    </h1>
+    <p>
+      As a Ph.D. Graduate Research Assistant in the Khojasteh Autonomous Systems
+      Laboratory (advised by {profile.advisor}), I research multi-agent
+      coordination, dynamic resource allocation, constrained communication, and
+      compromised-agent containment for disaster search-and-rescue robot teams,
+      alongside inference-time defenses against unauthorized model distillation.
     </p>
   </header>
+
   {
     directions.map((d, i) => (
       <section id={d.id} class="direction-detail">
-        <>
-          <div>
-            <p class="eyebrow">
-              0{i + 1} / {d.title}
-            </p>
-            {d.status && <span class="status">{d.status}</span>}
-          </div>
-          <div>
-            <h2 class="direction-question">{d.question}</h2>
-            <p>{d.detail}</p>
-            <p class="tagline">{d.tags}</p>
-            {i === 0 && (
-              <div class="links">
-                <a href="/research/ads-c/">Read ADS-C →</a>
-              </div>
-            )}
-            {i === 1 && (
-              <div class="links">
-                <a href="/research/fontus/">Fontus class project →</a>
-              </div>
-            )}
-            {i === 2 && (
-              <div class="links">
-                <a href="/publications/#social-attraction">
-                  LLM evaluation study →
-                </a>
-              </div>
-            )}
-          </div>
-        </>
+        <div>
+          <p class="eyebrow">
+            VOLUME 0{i + 1} // {d.title}
+          </p>
+          <p class="tagline">{d.tags}</p>
+        </div>
+        <div>
+          <h2 class="direction-question">{d.question}</h2>
+          <p>{d.detail}</p>
+          {i === 0 && (
+            <div class="links">
+              <a href="/research/fontus/">
+                Inspect Fontus Study Plate (PettingZoo Parallel &amp; Ray RLlib) →
+              </a>
+            </div>
+          )}
+          {i === 1 && (
+            <div class="links">
+              <a href="/research/ads-c/">
+                Inspect ADS-C Study Plate (arXiv:2607.15467) →
+              </a>
+            </div>
+          )}
+          {i === 2 && (
+            <div class="links">
+              <a href="/publications/#social-attraction">
+                LLM Social-Judgment Study (34 LLMs · 198 Humans) →
+              </a>
+            </div>
+          )}
+        </div>
       </section>
     ))
   }
+
   <section class="section" aria-label="Research work">
-    <SectionHeader title="Selected work" />{
+    <SectionHeader
+      eyebrow="FRAMED STUDY WALL PLATES"
+      title="Technical Case Studies &amp; Schematics"
+      description="Detailed problem formulations, per-input confidence margin bounds, and multi-agent reinforcement learning diagnostics."
+    />
+    {
       work.map((entry, i) => (
         <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
       ))
     }
   </section>
+
   <section class="section" aria-label="Research publications">
     <SectionHeader
-      title="Publications"
+      eyebrow="STUDY DESK MANUSCRIPTS"
+      title="Papers &amp; Preprints"
       href="/publications/"
-      linkLabel="Publication list"
-    />{publications.map((entry) => <PublicationItem entry={entry} />)}
+      linkLabel="All Manuscripts"
+    />
+    {publications.map((entry) => <PublicationItem entry={entry} />)}
   </section>
+
   <div class="contact-line">
-    <p>Interested in research, collaboration, or applied ML work?</p><a
-      href={`mailto:${profile.email}`}>Feel free to reach out ↗</a>
+    <p>
+      Interested in collaborating on multi-agent autonomy, ML security, or
+      open-source ML infrastructure?
+    </p>
+    <div class="links">
+      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+      <a href="/cv.pdf">Curriculum Vitae (PDF) ↗</a>
+    </div>
   </div>
 </BaseLayout>
+
 <style>
   .direction-question {
-    font-size: 2.25rem;
+    font-size: 1.95rem;
   }
 </style>

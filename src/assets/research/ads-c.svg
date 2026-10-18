@@ -1,10 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480">
-<rect width="720" height="480" fill="#efefe8"/>
-<g font-family="Arial,sans-serif" fill="#66665f"><text x="40" y="43" font-size="11" letter-spacing="2">ADS-C / INFERENCE-TIME DEFENSE</text><text x="40" y="437" font-size="12">Same top-1 prediction.</text><text x="40" y="455" font-size="12">Less useful supervision for extraction.</text><text x="680" y="452" font-size="10" text-anchor="end">CONCEPTUAL SCHEMATIC</text></g>
-<g stroke="#bdbdb4" stroke-width="1" fill="none"><path d="M65 293H210M495 293H640"/><path d="M226 215H279M440 215H481"/><path d="m270 210 9 5-9 5m202-10 9 5-9 5"/></g>
-<g fill="#bdbdb4"><rect x="80" y="155" width="26" height="137"/><rect x="113" y="235" width="26" height="57"/><rect x="146" y="256" width="26" height="36"/><rect x="179" y="271" width="26" height="21"/></g>
-<g fill="#b84f22"><rect x="80" y="155" width="26" height="137"/><rect x="507" y="184" width="26" height="108"/></g><g fill="#bdbdb4"><rect x="540" y="275" width="26" height="17"/><rect x="573" y="249" width="26" height="43"/><rect x="606" y="263" width="26" height="29"/></g>
-<rect x="288" y="169" width="145" height="91" rx="3" stroke="#b84f22" fill="#f7f7f3"/>
-<g fill="#171714" font-family="Arial,sans-serif" text-anchor="middle"><text x="360" y="203" font-size="30">ADS-C</text><text x="360" y="230" font-size="20" fill="#66665f">margin budget</text><text x="140" y="326" font-size="26">Teacher output</text><text x="574" y="326" font-size="26">Served output</text></g>
-<g stroke="#b84f22" fill="none" stroke-width="1"><path d="M94 142V113H520V172"/><path d="m515 165 5 7 5-7"/></g><rect x="187" y="101" width="243" height="24" fill="#efefe8"/><text x="309" y="117" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#8f3917">TOP CLASS PRESERVED</text>
+  <rect width="720" height="480" fill="#f4f1de"/>
+  <rect x="14" y="14" width="692" height="452" rx="4" fill="#faf8ef" stroke="#c4bc9d" stroke-width="1.5"/>
+  <rect x="20" y="20" width="680" height="440" rx="2" fill="none" stroke="#dcd6bc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <line x1="20" y1="58" x2="700" y2="58" stroke="#e07a5f" stroke-width="1.2" opacity="0.55"/>
+  <g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" fill="#555873">
+    <text x="40" y="43" font-size="11" letter-spacing="2" font-weight="600" fill="#3d405b">ADS-C / INFERENCE-TIME DEFENSE</text>
+    <text x="680" y="43" font-size="10" letter-spacing="1.5" text-anchor="end">FIG. 01 // QA76.9</text>
+    <text x="40" y="433" font-size="11.5">Same top-1 prediction.</text>
+    <text x="40" y="451" font-size="11.5">Less useful supervision for extraction.</text>
+    <text x="680" y="448" font-size="10" letter-spacing="1.4" text-anchor="end">CONCEPTUAL SCHEMATIC</text>
+  </g>
+  <g stroke="#81b29a" stroke-width="1.4" fill="none">
+    <path d="M65 293H210M495 293H640" stroke="#3d405b"/>
+    <path d="M226 215H279M440 215H481"/>
+    <path d="m270 210 9 5-9 5m202-10 9 5-9 5"/>
+  </g>
+  <!-- Teacher non-top classes -->
+  <g fill="#81b29a" opacity="0.78">
+    <rect x="113" y="235" width="26" height="57" stroke="#3d405b" stroke-width="1"/>
+    <rect x="146" y="256" width="26" height="36" stroke="#3d405b" stroke-width="1"/>
+    <rect x="179" y="271" width="26" height="21" stroke="#3d405b" stroke-width="1"/>
+  </g>
+  <!-- Preserved top-1 class bars in Burnt Peach (#e07a5f) -->
+  <g fill="#e07a5f" stroke="#3d405b" stroke-width="1.2">
+    <rect x="80" y="155" width="26" height="137"/>
+    <rect x="507" y="184" width="26" height="108"/>
+  </g>
+  <!-- Perturbed non-top classes in Apricot Cream (#f2cc8f) & Muted Teal (#81b29a) -->
+  <g fill="#f2cc8f" stroke="#3d405b" stroke-width="1">
+    <rect x="540" y="275" width="26" height="17"/>
+    <rect x="573" y="249" width="26" height="43"/>
+    <rect x="606" y="263" width="26" height="29"/>
+  </g>
+  <!-- Central ADS-C Constrained Optimizer Box -->
+  <rect x="286" y="166" width="149" height="96" rx="4" stroke="#3d405b" stroke-width="1.8" fill="#f4f1de"/>
+  <rect x="291" y="171" width="139" height="86" rx="2" stroke="#e07a5f" stroke-width="1" fill="none"/>
+  <g fill="#3d405b" font-family="Georgia,serif" text-anchor="middle">
+    <text x="360" y="205" font-size="28" font-weight="600">ADS-C</text>
+    <text x="360" y="232" font-size="16" font-style="italic" fill="#555873">margin budget</text>
+    <text x="140" y="328" font-size="22">Teacher output</text>
+    <text x="574" y="328" font-size="22">Served output</text>
+  </g>
+  <g stroke="#e07a5f" fill="none" stroke-width="1.4" stroke-dasharray="4 3">
+    <path d="M94 142V113H520V172"/>
+    <path d="m515 165 5 7 5-7" stroke-dasharray="none"/>
+  </g>
+  <rect x="187" y="99" width="243" height="26" rx="3" fill="#f2cc8f" stroke="#3d405b" stroke-width="1"/>
+  <text x="309" y="116" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="13" font-weight="700" letter-spacing="1.4" text-anchor="middle" fill="#232536">TOP CLASS PRESERVED</text>
 </svg>

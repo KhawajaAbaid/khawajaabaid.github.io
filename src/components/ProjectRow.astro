@@ -9,42 +9,106 @@ const {
 } = Astro.props;
 ---
 
-<article class="project-row" id={id}>
-  <h3>{data.title}</h3><div>
-    <p>{data.summary}</p><p class="tagline">{data.tags.join(" · ")}</p>
-  </div><LinkList links={data.links} context={data.title} />
+<article class="project-row study-panel" id={id}>
+  <div class="project-call-bar">
+    <span class="call-label">STUDY APPARATUS // {id.toUpperCase()}</span>
+    <span class="brass-tag teal">{data.category.replace("-", " ")}</span>
+  </div>
+
+  <div class="project-grid">
+    <div class="project-title-col">
+      <h3>{data.title}</h3>
+    </div>
+
+    <div class="project-desc-col">
+      <p>{data.summary}</p>
+      <div class="subject-tags" aria-label="Technical tags">
+        {data.tags.map((tag) => <span class="subject-tag">{tag}</span>)}
+      </div>
+    </div>
+
+    <div class="project-links-col">
+      <LinkList links={data.links} context={data.title} />
+    </div>
+  </div>
 </article>
+
 <style>
   .project-row {
+    padding: 1.15rem 1.85rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-call-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .call-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--heading);
+  }
+
+  .project-grid {
     display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr;
-    gap: 2.5rem;
-    padding-block: 2rem;
-    border-top: 1px solid var(--border);
+    grid-template-columns: 1.1fr 2.4fr 1fr;
+    gap: 2rem;
+    align-items: start;
   }
+
   h3 {
-    font-size: 1.9rem;
+    font-size: 1.65rem;
   }
-  .project-row p {
-    font-size: 0.9rem;
+
+  .project-desc-col p {
+    font-size: 0.92rem;
     color: var(--text-muted);
   }
-  .project-row .tagline {
-    font-size: 0.7rem;
+
+  .subject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
     margin-top: 0.8rem;
   }
-  .project-row :global(.links) {
+
+  .subject-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    padding: 0.16rem 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    color: var(--text-muted);
+  }
+
+  .project-links-col :global(.links) {
     justify-content: flex-end;
     align-content: start;
     gap: 0.25rem 1rem;
-    font-size: 0.8rem;
   }
-  @media (max-width: 720px) {
+
+  @media (max-width: 780px) {
     .project-row {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      padding: 1rem 1.25rem 1.35rem;
     }
-    .project-row :global(.links) {
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    .project-links-col :global(.links) {
       justify-content: flex-start;
     }
   }

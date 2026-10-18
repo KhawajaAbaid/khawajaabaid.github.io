@@ -46,11 +46,15 @@ const person = {
       name="viewport"
       content="width=device-width, initial-scale=1"
     />
+    <meta name="color-scheme" content="light dark" />
     <script is:inline>
       try {
         const t = localStorage.getItem("theme");
-        if (t === "light" || t === "dark")
+        if (t === "light" || t === "dark") {
           document.documentElement.dataset.theme = t;
+          const m = document.querySelector('meta[name="color-scheme"]');
+          if (m) m.setAttribute("content", t);
+        }
       } catch {}
     </script>
     <title>{pageTitle}</title><meta name="description" content={description} />
@@ -73,7 +77,7 @@ const person = {
       type="font/woff2"
       crossorigin
     />
-    <meta name="theme-color" content="#f7f7f3" />
+    <meta name="theme-color" content="#f4f1de" />
     <meta property="og:type" content="website" /><meta
       property="og:site_name"
       content={profile.name}

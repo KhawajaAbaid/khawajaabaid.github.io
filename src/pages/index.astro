@@ -2,62 +2,41 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import DirectionsShelf from "../components/DirectionsShelf.astro";
+import CardCatalogCabinet from "../components/CardCatalogCabinet.astro";
 import FeaturedResearch from "../components/FeaturedResearch.astro";
-import PublicationItem from "../components/PublicationItem.astro";
-import ProjectRow from "../components/ProjectRow.astro";
 import NewsList from "../components/NewsList.astro";
 import { publicEntries, byDate, byOrder } from "../lib/content";
-import { directions, profile } from "../data/profile";
+
 const research = (await publicEntries("research"))
   .filter((e) => e.data.selected)
-  .sort(byOrder)
-  .slice(0, 3);
-const publications = (await publicEntries("publications"))
-  .filter((e) => e.data.selected)
-  .sort(byDate)
-  .slice(0, 3);
-const projects = (await publicEntries("projects"))
-  .filter((e) => e.data.selected && e.data.category === "engineering")
-  .sort(byOrder)
-  .slice(0, 2);
+  .sort(byOrder);
 const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
 ---
 
 <BaseLayout>
   <Hero />
-  <section class="section" aria-label="Research directions">
+
+  <section class="section" aria-label="The Study Bookshelf and Research Lectern">
     <SectionHeader
-      eyebrow="01 / RESEARCH"
-      title="Secure models. Coordinated robots."
-      description="I work on model extraction defenses and multi-agent autonomy, with the goal of coordinated robots for search-and-rescue."
+      eyebrow="STATION I // THE MAHOGANY BOOKSHELF &amp; BLUEPRINT LECTERN"
+      title="Research Domains at RIT’s KAS Lab"
+      description="Hover or select a clothbound volume on the study shelf to illuminate its schematic blueprint and empirical findings on the reading lectern."
+      href="/research/"
+      linkLabel="Enter Research Wing"
     />
-    <div class="directions">
-      {
-        directions.map((d, i) => (
-          <article class="direction">
-            <span class="number">{String(i + 1).padStart(2, "0")}</span>
-            <h3>{d.title}</h3>
-            {d.status && <span class="status">{d.status}</span>}
-            <p>{d.description}</p>
-            <>
-              <p class="tagline">{d.tags}</p>
-              <a class="direction-link" href={d.href}>
-                {d.linkLabel} <span aria-hidden="true">→</span>
-              </a>
-            </>
-          </article>
-        ))
-      }
-    </div>
+    <DirectionsShelf />
   </section>
+
   {
     research.length > 0 && (
-      <section class="section" aria-label="Selected work">
+      <section class="section" aria-label="Framed Study Wall Plates">
         <SectionHeader
-          eyebrow="02 / SELECTED WORK"
-          title="Questions into experiments."
+          eyebrow="STATION II // FRAMED STUDY WALL PLATES"
+          title="Flagship Technical Case Studies"
+          description="Detailed formulations and experimental evaluations for ADS-C (arXiv:2607.15467) and Fontus (Multi-Agent UAV Recharging in PettingZoo &amp; Ray RLlib)."
           href="/research/"
-          linkLabel="All research"
+          linkLabel="All Research Plates"
         />
         {research.map((entry, i) => (
           <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
@@ -65,67 +44,22 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
       </section>
     )
   }
-  {
-    publications.length > 0 && (
-      <section class="section" aria-label="Selected publications">
-        <SectionHeader
-          eyebrow="03 / PUBLICATIONS"
-          title="Selected publications"
-          href="/publications/"
-          linkLabel="All publications"
-        />
-        {publications.map((entry) => (
-          <PublicationItem entry={entry} />
-        ))}
-      </section>
-    )
-  }
-  {
-    projects.length > 0 && (
-      <section class="section" aria-label="Selected engineering">
-        <SectionHeader
-          eyebrow="04 / ENGINEERING"
-          title="I also build things."
-          description="Open-source tools and ML infrastructure, informed by work in research and production environments."
-          href="/projects/"
-          linkLabel="All projects"
-        />
-        {projects.map((entry) => (
-          <ProjectRow entry={entry} />
-        ))}
-      </section>
-    )
-  }
-  <section class="section bio-grid" aria-labelledby="about-heading">
-    <div>
-      <p class="eyebrow">05 / ABOUT</p><h2 id="about-heading">
-        Research, with an engineering instinct.
-      </h2>
-    </div><div>
-      <p>
-        I am a PhD student in Electrical and Computer Engineering at Rochester
-        Institute of Technology and a Graduate Research Assistant in the
-        Khojasteh Autonomous Systems Laboratory, supervised by {profile.advisor}.
-        My research spans machine learning security and autonomous systems:
-        anti-distillation defenses against model extraction, and coordinated
-        multi-agent robots for search-and-rescue in disaster-struck regions.
-      </p><p>
-        I received my M.S. in Artificial Intelligence from RIT in 2026 as a
-        Fulbright Scholar. During my master's, I spent summer 2025 in Palo Alto
-        as a Software Development Engineer Intern for AI/ML at Amazon Web Services.
-        I previously studied computer science at the University of Narowal in
-        Pakistan. Alongside my research, I build and contribute to open-source ML
-        tools, including Teras and Keras.
-      </p><div class="links"><a href="/about/">More about me →</a></div>
-    </div>
+
+  <section class="section" aria-label="Mahogany Writing Bureau Drawers">
+    <CardCatalogCabinet />
   </section>
+
   {
     news.length > 0 && (
-      <section class="section" aria-label="Recent news">
-        <>
-          <SectionHeader eyebrow="06 / RECENT" title="Along the way" />
-          <NewsList entries={news} />
-        </>
+      <section class="section" aria-label="Study Mantelpiece Dispatches">
+        <SectionHeader
+          eyebrow="STATION III // STUDY MANTELPIECE CHRONICLE"
+          title="Recent Milestones &amp; Dispatches"
+          description="Chronological log across RIT’s KAS Lab, Amazon Web Services (East Palo Alto), and the U.S. Fulbright Program."
+          href="/about/"
+          linkLabel="Open Full CV &amp; Dossier"
+        />
+        <NewsList entries={news} />
       </section>
     )
   }

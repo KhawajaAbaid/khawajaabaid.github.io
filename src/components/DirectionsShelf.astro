@@ -1,0 +1,854 @@
+---
+import { directions } from "../data/profile";
+const romanVol = ["VOL. I", "VOL. II", "VOL. III"];
+const spineThemes = ["spine-indigo", "spine-teal", "spine-peach"];
+
+const domainProofChips = [
+  [
+    { val: "Fontus MARL", label: "PettingZoo Parallel & Ray RLlib" },
+    { val: "KAS Lab", label: "Search-and-Rescue UAV Teams" },
+    { val: "Containment", label: "Compromised-Agent Resilience" },
+  ],
+  [
+    { val: "−29.6 pp", label: "CIFAR-10 Student Accuracy (ADS-C)" },
+    { val: "0.0 pp", label: "Served Top-1 Accuracy Cost" },
+    { val: "−47.7 pp", label: "CIFAR-100 Matched-Cost Benchmark" },
+  ],
+  [
+    { val: "260M NNX", label: "Distilled Gemma 2 Code Model" },
+    { val: "34 LLMs", label: "Evaluated vs. 198 Human Raters" },
+    { val: "8× H100", label: "Two-Stage Flax NNX Pipeline" },
+  ],
+];
+---
+
+<div class="study-bookshelf-unit" data-shelf>
+  <!-- Left: Carved Walnut Bookshelf Bay with Interactive Clothbound Spines -->
+  <div class="walnut-shelf-bay">
+    <div class="shelf-cornice">
+      <span>MAHOGANY BOOKCASE // SELECT A VOLUME</span>
+    </div>
+
+    <div
+      class="book-spines"
+      role="tablist"
+      aria-label="Research Volume Spines"
+    >
+      {
+        directions.map((d, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`spine-tab-${d.id}`}
+            aria-controls={`folio-panel-${d.id}`}
+            aria-selected={i === 0 ? "true" : "false"}
+            data-spine-index={i}
+            class:list={["book-spine", spineThemes[i], { active: i === 0 }]}
+          >
+            <span class="spine-band top" aria-hidden="true" />
+            <span class="spine-vol">{romanVol[i]}</span>
+            <span class="spine-title">{d.title}</span>
+            <span class="spine-call" aria-hidden="true">
+              0{i + 1}
+            </span>
+            <span class="spine-band bottom" aria-hidden="true" />
+          </button>
+        ))
+      }
+
+      <!-- Decorative Brass Study Bookend on the Shelf -->
+      <div class="brass-globe-bookend" aria-hidden="true">
+        <svg viewBox="0 0 54 120" width="44" height="98" fill="none">
+          <circle
+            cx="27"
+            cy="58"
+            r="17"
+            fill="#81b29a"
+            stroke="#3d405b"
+            stroke-width="1.5"
+          />
+          <ellipse
+            cx="27"
+            cy="58"
+            rx="8"
+            ry="17"
+            stroke="#232536"
+            stroke-width="1.1"
+          />
+          <line
+            x1="10"
+            y1="58"
+            x2="44"
+            y2="58"
+            stroke="#232536"
+            stroke-width="1.1"
+          />
+          <path
+            d="M15 41 A22 22 0 0 1 39 75"
+            stroke="#f2cc8f"
+            stroke-width="2.5"
+            fill="none"
+          />
+          <line
+            x1="27"
+            y1="78"
+            x2="27"
+            y2="98"
+            stroke="#f2cc8f"
+            stroke-width="3"
+          />
+          <rect
+            x="10"
+            y="98"
+            width="34"
+            height="10"
+            rx="2"
+            fill="#c49240"
+            stroke="#241710"
+            stroke-width="1.2"
+          />
+          <rect
+            x="4"
+            y="108"
+            width="46"
+            height="8"
+            rx="1.5"
+            fill="#4a3020"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="walnut-shelf-plank" aria-hidden="true"></div>
+  </div>
+
+  <!-- Right: Illuminated Walnut & Brass Study Lectern & Blueprint Stage -->
+  <div class="study-lectern-stage">
+    <!-- Overhead Brass Picture Sconce Illuminating the Active Domain -->
+    <div class="lectern-brass-sconce" aria-hidden="true">
+      <span class="sconce-bar"></span>
+    </div>
+
+    {
+      directions.map((d, i) => (
+        <article
+          role="tabpanel"
+          id={`folio-panel-${d.id}`}
+          aria-labelledby={`spine-tab-${d.id}`}
+          data-folio-panel={i}
+          class:list={["lectern-panel", { active: i === 0 }]}
+        >
+          <!-- Left: Animated Architectural Schematic Slate -->
+          <div class="blueprint-slate">
+            <div class="slate-top-tag">
+              <span>SCHEMATIC PLATE 0{i + 1}</span>
+              <span>{romanVol[i]}</span>
+            </div>
+
+            {i === 0 && (
+              <svg
+                viewBox="0 0 280 210"
+                fill="none"
+                aria-hidden="true"
+                class="domain-schematic-svg"
+              >
+                <!-- Tactical Search & Rescue Grid -->
+                <rect
+                  x="12"
+                  y="12"
+                  width="256"
+                  height="186"
+                  rx="4"
+                  fill="#1b2234"
+                  stroke="#81b29a"
+                  stroke-width="1.2"
+                />
+                <g stroke="rgba(129,178,154,0.16)" stroke-width="1">
+                  <line x1="12" y1="58" x2="268" y2="58" />
+                  <line x1="12" y1="105" x2="268" y2="105" />
+                  <line x1="12" y1="152" x2="268" y2="152" />
+                  <line x1="76" y1="12" x2="76" y2="198" />
+                  <line x1="140" y1="12" x2="140" y2="198" />
+                  <line x1="204" y1="12" x2="204" y2="198" />
+                </g>
+                <!-- Recharging Base Hub (Fontus) -->
+                <circle
+                  cx="140"
+                  cy="105"
+                  r="34"
+                  stroke="#f2cc8f"
+                  stroke-width="1.2"
+                  stroke-dasharray="4 3"
+                  class="pulse-ring"
+                />
+                <circle
+                  cx="140"
+                  cy="105"
+                  r="11"
+                  fill="#f2cc8f"
+                  stroke="#241710"
+                  stroke-width="1.5"
+                />
+                <!-- Multi-Agent Coordination Links -->
+                <path
+                  d="M62 54 L140 105 L218 56"
+                  stroke="#81b29a"
+                  stroke-width="1.8"
+                  stroke-dasharray="4 3"
+                />
+                <path
+                  d="M72 158 L140 105"
+                  stroke="#81b29a"
+                  stroke-width="1.8"
+                />
+                <!-- Compromised Agent Containment Quarantine Ring -->
+                <circle
+                  cx="214"
+                  cy="156"
+                  r="18"
+                  fill="rgba(224,122,95,0.18)"
+                  stroke="#e07a5f"
+                  stroke-width="1.6"
+                  stroke-dasharray="3 2"
+                />
+                <circle cx="62" cy="54" r="7" fill="#81b29a" />
+                <circle cx="218" cy="56" r="7" fill="#81b29a" />
+                <circle cx="72" cy="158" r="7" fill="#81b29a" />
+                <circle cx="214" cy="156" r="6" fill="#e07a5f" />
+                <text
+                  x="140"
+                  y="186"
+                  fill="#f2cc8f"
+                  font-family="var(--font-mono)"
+                  font-size="8.5"
+                  letter-spacing="1.1"
+                  text-anchor="middle"
+                >
+                  MARL COORDINATION &amp; CONTAINMENT
+                </text>
+              </svg>
+            )}
+
+            {i === 1 && (
+              <svg
+                viewBox="0 0 280 210"
+                fill="none"
+                aria-hidden="true"
+                class="domain-schematic-svg"
+              >
+                <rect
+                  x="12"
+                  y="12"
+                  width="256"
+                  height="186"
+                  rx="4"
+                  fill="#1b2234"
+                  stroke="#e07a5f"
+                  stroke-width="1.2"
+                />
+                <!-- Top-1 Decision Margin Boundary -->
+                <line
+                  x1="140"
+                  y1="26"
+                  x2="140"
+                  y2="168"
+                  stroke="#f2cc8f"
+                  stroke-width="2"
+                  stroke-dasharray="5 3"
+                />
+                <!-- Protected Margin Cone -->
+                <polygon
+                  points="52,102 140,46 140,158"
+                  fill="rgba(129,178,154,0.2)"
+                  stroke="#81b29a"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="88"
+                  cy="102"
+                  r="9"
+                  fill="#81b29a"
+                  stroke="#faf8ef"
+                  stroke-width="1.5"
+                />
+                <!-- Deflected Extraction Vectors -->
+                <path
+                  d="M152 72 C182 72, 196 54, 224 48"
+                  stroke="#e07a5f"
+                  stroke-width="2"
+                />
+                <path
+                  d="M152 132 C182 132, 196 150, 224 156"
+                  stroke="#e07a5f"
+                  stroke-width="2"
+                />
+                <circle cx="224" cy="48" r="5.5" fill="#e07a5f" />
+                <circle cx="224" cy="156" r="5.5" fill="#e07a5f" />
+                <text
+                  x="140"
+                  y="186"
+                  fill="#f2cc8f"
+                  font-family="var(--font-mono)"
+                  font-size="8.5"
+                  letter-spacing="1.1"
+                  text-anchor="middle"
+                >
+                  ADS-C MARGIN BUDGET // 0 PP TOP-1 COST
+                </text>
+              </svg>
+            )}
+
+            {i === 2 && (
+              <svg
+                viewBox="0 0 280 210"
+                fill="none"
+                aria-hidden="true"
+                class="domain-schematic-svg"
+              >
+                <rect
+                  x="12"
+                  y="12"
+                  width="256"
+                  height="186"
+                  rx="4"
+                  fill="#1b2234"
+                  stroke="#f2cc8f"
+                  stroke-width="1.2"
+                />
+                <!-- Two-Stage Teacher -> Student Distillation Nodes -->
+                <rect
+                  x="32"
+                  y="42"
+                  width="76"
+                  height="34"
+                  rx="3"
+                  fill="#2d324a"
+                  stroke="#f2cc8f"
+                  stroke-width="1.4"
+                />
+                <text
+                  x="70"
+                  y="63"
+                  fill="#faf8ef"
+                  font-family="var(--font-mono)"
+                  font-size="8"
+                  text-anchor="middle"
+                >
+                  GEMMA 2 2B
+                </text>
+                <rect
+                  x="32"
+                  y="112"
+                  width="76"
+                  height="34"
+                  rx="3"
+                  fill="#2d324a"
+                  stroke="#81b29a"
+                  stroke-width="1.4"
+                />
+                <text
+                  x="70"
+                  y="133"
+                  fill="#faf8ef"
+                  font-family="var(--font-mono)"
+                  font-size="8"
+                  text-anchor="middle"
+                >
+                  CODEGEMMA 2B
+                </text>
+                <path
+                  d="M108 59 C138 59, 142 94, 172 94"
+                  stroke="#f2cc8f"
+                  stroke-width="2"
+                />
+                <path
+                  d="M108 129 C138 129, 142 94, 172 94"
+                  stroke="#81b29a"
+                  stroke-width="2"
+                />
+                <rect
+                  x="172"
+                  y="72"
+                  width="78"
+                  height="44"
+                  rx="4"
+                  fill="#e07a5f"
+                  stroke="#faf8ef"
+                  stroke-width="1.5"
+                />
+                <text
+                  x="211"
+                  y="92"
+                  fill="#faf8ef"
+                  font-family="var(--font-mono)"
+                  font-size="8.5"
+                  font-weight="700"
+                  text-anchor="middle"
+                >
+                  260M NNX
+                </text>
+                <text
+                  x="211"
+                  y="105"
+                  fill="#faf8ef"
+                  font-family="var(--font-mono)"
+                  font-size="7"
+                  text-anchor="middle"
+                >
+                  CODRIVER
+                </text>
+                <text
+                  x="140"
+                  y="186"
+                  fill="#f2cc8f"
+                  font-family="var(--font-mono)"
+                  font-size="8.5"
+                  letter-spacing="1.1"
+                  text-anchor="middle"
+                >
+                  FLAX NNX &amp; 34-LLM ALIGNMENT
+                </text>
+              </svg>
+            )}
+
+            <!-- 3 Brass Proof Chips Under the Schematic -->
+            <div class="proof-chip-grid">
+              {domainProofChips[i]?.map((chip) => (
+                <div class="domain-chip">
+                  <strong>{chip.val}</strong>
+                  <span>{chip.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Right: Engraved Study Lectern Description -->
+          <div class="lectern-copy">
+            <div class="lectern-header">
+              <span class="brass-tag">{romanVol[i]} // STUDY DOMAIN</span>
+              {d.status && <span class="brass-tag teal">{d.status}</span>}
+            </div>
+
+            <h3>{d.title}</h3>
+            <p class="lectern-question">“{d.question}”</p>
+            <p class="lectern-detail">{d.detail}</p>
+
+            <div class="lectern-footer">
+              <span class="lectern-tags">{d.tags}</span>
+              <a class="lectern-cta" href={d.href}>
+                {d.linkLabel} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const shelves = document.querySelectorAll<HTMLElement>("[data-shelf]");
+  shelves.forEach((shelf) => {
+    const spines = shelf.querySelectorAll<HTMLButtonElement>(
+      "[data-spine-index]",
+    );
+    const panels = shelf.querySelectorAll<HTMLElement>("[data-folio-panel]");
+
+    function activateVolume(index: number) {
+      spines.forEach((s, idx) => {
+        const active = idx === index;
+        s.classList.toggle("active", active);
+        s.setAttribute("aria-selected", String(active));
+      });
+      panels.forEach((p, idx) => {
+        const active = idx === index;
+        p.classList.toggle("active", active);
+      });
+    }
+
+    spines.forEach((spine, idx) => {
+      spine.addEventListener("click", () => activateVolume(idx));
+      spine.addEventListener("mouseenter", () => activateVolume(idx));
+      spine.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          const next = (idx + 1) % spines.length;
+          spines[next]?.focus();
+          activateVolume(next);
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const prev = (idx - 1 + spines.length) % spines.length;
+          spines[prev]?.focus();
+          activateVolume(prev);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .study-bookshelf-unit {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  /* Left: Carved Walnut Bookshelf Bay */
+  .walnut-shelf-bay {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #342015 0%, #24160e 100%);
+    border: 2px solid #593a27;
+    border-radius: 6px;
+    padding: 0.85rem 1.15rem 0;
+    box-shadow:
+      inset 0 4px 12px rgba(0, 0, 0, 0.45),
+      var(--card-shadow);
+  }
+
+  .shelf-cornice {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--brass-light);
+    text-align: center;
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(242, 204, 143, 0.25);
+  }
+
+  .book-spines {
+    display: flex;
+    gap: 0.55rem;
+    align-items: flex-end;
+    flex: 1;
+    padding: 0.5rem 0.25rem 0;
+  }
+
+  .book-spine {
+    width: 62px;
+    min-height: 315px;
+    border-radius: 4px 4px 2px 2px;
+    border: 1.5px solid #1a110b;
+    padding: 0.9rem 0.35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transform-origin: bottom left;
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 280ms ease;
+    box-shadow:
+      inset 4px 0 6px rgba(255, 255, 255, 0.16),
+      inset -4px 0 8px rgba(0, 0, 0, 0.3),
+      3px 4px 10px rgba(0, 0, 0, 0.35);
+  }
+
+  .spine-indigo {
+    background: #3d405b;
+    color: #f2cc8f;
+  }
+
+  .spine-teal {
+    background: #81b29a;
+    color: #1f2232;
+  }
+
+  .spine-peach {
+    background: #e07a5f;
+    color: #faf8ef;
+  }
+
+  .book-spine:hover,
+  .book-spine.active {
+    transform: rotate(6.5deg) translateY(-8px);
+    z-index: 2;
+    filter: drop-shadow(0 8px 16px rgba(242, 204, 143, 0.28));
+  }
+
+  .spine-band {
+    width: 82%;
+    height: 3px;
+    border-block: 1px solid currentColor;
+    opacity: 0.72;
+  }
+
+  .spine-vol {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .spine-title {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .spine-call {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    opacity: 0.85;
+  }
+
+  .brass-globe-bookend {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 0.25rem;
+  }
+
+  .walnut-shelf-plank {
+    height: 16px;
+    margin-inline: -1.15rem;
+    background: linear-gradient(90deg, #5c3c28, #7c5338 50%, #4d3220);
+    border-top: 2px solid #c49240;
+    border-radius: 0 0 4px 4px;
+  }
+
+  /* Right: Illuminated Walnut & Brass Study Lectern Stage */
+  .study-lectern-stage {
+    position: relative;
+    background:
+      radial-gradient(
+        ellipse 60% 45% at 50% 0%,
+        rgba(242, 204, 143, 0.22),
+        transparent 70%
+      ),
+      var(--surface);
+    border: 2px solid var(--wood-mid);
+    border-top: 5px solid var(--wood-warm);
+    border-radius: 6px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .lectern-brass-sconce {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.45rem;
+  }
+
+  .sconce-bar {
+    width: 140px;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #9c7228, #f7dca4 50%, #9c7228);
+    box-shadow: 0 4px 16px rgba(242, 204, 143, 0.75);
+  }
+
+  .lectern-panel {
+    display: none;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 1.35rem 2rem 1.85rem;
+    align-items: center;
+    flex: 1;
+  }
+
+  .lectern-panel.active {
+    display: grid;
+    animation: lecternReveal 240ms ease-out;
+  }
+
+  @keyframes lecternReveal {
+    from {
+      opacity: 0.55;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Blueprint Schematic Slate */
+  .blueprint-slate {
+    background: #232638;
+    border: 1.5px solid var(--brass);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: #faf8ef;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .slate-top-tag {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--brass-light);
+    margin-bottom: 0.45rem;
+  }
+
+  .domain-schematic-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .proof-chip-grid {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.65rem;
+  }
+
+  .domain-chip {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.32rem 0.55rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(242, 204, 143, 0.25);
+    border-radius: 3px;
+  }
+
+  .domain-chip strong {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #f2cc8f;
+    white-space: nowrap;
+  }
+
+  .domain-chip span {
+    font-size: 0.68rem;
+    color: #d6d3c4;
+    text-align: right;
+  }
+
+  /* Right Copy Column */
+  .lectern-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lectern-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lectern-copy h3 {
+    font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+    line-height: 1.15;
+  }
+
+  .lectern-question {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.18rem;
+    color: var(--accent-strong);
+    line-height: 1.38;
+    margin-top: 0.55rem;
+  }
+
+  .lectern-detail {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-top: 0.85rem;
+  }
+
+  .lectern-footer {
+    margin-top: 1.25rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .lectern-tags {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-faint);
+  }
+
+  .lectern-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.42rem 0.9rem;
+    background: var(--wood-dark);
+    color: #faf8ef !important;
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+  }
+
+  .lectern-cta:hover {
+    background: var(--accent-strong);
+    color: #faf8ef !important;
+  }
+
+  @media (max-width: 1020px) {
+    .study-bookshelf-unit {
+      grid-template-columns: 1fr;
+    }
+    .book-spines {
+      justify-content: center;
+      padding-bottom: 0.5rem;
+    }
+    .book-spine {
+      width: auto;
+      flex: 1;
+      min-height: 78px;
+      flex-direction: row;
+      padding: 0.65rem 0.9rem;
+    }
+    .book-spine:hover,
+    .book-spine.active {
+      transform: translateY(-4px);
+    }
+    .spine-title {
+      writing-mode: horizontal-tb;
+      transform: none;
+      white-space: normal;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    .spine-band,
+    .spine-call,
+    .brass-globe-bookend {
+      display: none;
+    }
+    .lectern-panel.active {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .book-spines {
+      flex-direction: column;
+    }
+    .book-spine {
+      width: 100%;
+      min-height: 52px;
+      justify-content: flex-start;
+      gap: 0.75rem;
+    }
+    .lectern-panel {
+      padding: 1.15rem 1.25rem 1.5rem;
+    }
+  }
+</style>

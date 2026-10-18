@@ -12,22 +12,96 @@
   font-weight: 100 900;
   font-display: swap;
 }
+
 :root {
-  --bg: #f7f7f3;
-  --surface: #fbfbf8;
-  --text: #171714;
-  --text-muted: #66665f;
-  --text-faint: #8b8b82;
-  --border: #dcdcd4;
-  --border-strong: #bdbdb4;
-  --accent: #b84f22;
-  --accent-strong: #8f3917;
-  --accent-soft: #f1dfd6;
-  --selection-bg: #ead1c4;
+  /* MANDATORY per modern-web-guidance `dark-mode`: viewport-wide color-scheme with meta override reflection */
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+
+  /* Gradient interpolation token per modern-web-guidance `visual-effects` */
+  --in-oklab: ;
+  --in-oklch: ;
+
+  /* Core 5 colors from colors/palette.txt */
+  --palette-eggshell: #f4f1de;
+  --palette-burnt-peach: #e07a5f;
+  --palette-twilight-indigo: #3d405b;
+  --palette-muted-teal: #81b29a;
+  --palette-apricot-cream: #f2cc8f;
+
+  /* Classic Study Woodwork & Brass Hardware Tokens */
+  --wood-darkest: #241710;
+  --wood-dark: #382418;
+  --wood-mid: #593a27;
+  --wood-warm: #7a5136;
+  --wood-light: #9c6b49;
+  --wood-trim: #6b472f;
+
+  /* Daylight Study Room ("Golden-Hour Classic Study") */
+  --bg: #f4f1de;
+  --bg-recessed: #e8e2c8;
+  --surface: #fbf9f0;
+  --surface-elevated: #ffffff;
+  --manila: #f2cc8f;
+  --manila-soft: #f6e3c1;
+  --text: #232536;
+  --heading: #2c2e43;
+  --text-muted: #52556e;
+  --text-faint: #767994;
+  --border: #d8d0b5;
+  --border-strong: #b8ad8e;
+  --accent: #e07a5f;
+  --accent-strong: #b85035;
+  --accent-soft: #f8e5df;
+  --teal: #81b29a;
+  --teal-strong: #3c6953;
+  --teal-soft: #e2efe8;
+  --brass: #c49240;
+  --brass-bright: #e5b968;
+  --brass-light: #f2cc8f;
+  --brass-dark: #8a6220;
+  --rule-line: rgba(196, 146, 64, 0.32);
+  --ledger-line: rgba(61, 64, 91, 0.06);
+  --selection-bg: #f2cc8f;
+
+  /* Room Lighting & Atmosphere Variables */
+  --sunbeam-opacity: 1;
+  --lamp-cone-opacity: 0.15;
+  --room-wall-top: #e8e1c5;
+  --room-wall-bottom: #dcd3b2;
+  --room-wainscot: #4a3121;
+  --room-wainscot-panel: #3b2619;
+  --room-floor-1: #6b472e;
+  --room-floor-2: #593924;
+  --room-ambient-glow: rgba(242, 204, 143, 0.28);
+
+  --card-shadow:
+    0 2px 4px rgba(36, 23, 16, 0.06),
+    0 12px 28px -8px rgba(36, 23, 16, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  --card-shadow-hover:
+    0 6px 14px rgba(36, 23, 16, 0.1),
+    0 20px 38px -10px rgba(36, 23, 16, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* Browser UI customization tokens */
+  --scrollbar-thumb: #9c7a54;
+  --scrollbar-track: #e8e2c8;
+  accent-color: var(--accent);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
   --font-display:
     Newsreader, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, monospace;
+  --font-mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -38,35 +112,131 @@
   --space-8: 4.5rem;
   --space-9: 6rem;
   --space-10: 8rem;
-  color-scheme: light;
 }
-:root[data-theme="dark"] {
-  --bg: #11110f;
-  --surface: #171714;
-  --text: #ecece6;
-  --text-muted: #a2a29a;
-  --text-faint: #76766f;
-  --border: #2e2e29;
-  --border-strong: #484840;
-  --accent: #d06a3a;
-  --accent-strong: #e48354;
-  --accent-soft: #2a1c16;
-  --selection-bg: #523120;
-  color-scheme: dark;
+
+@supports (background: linear-gradient(in oklab, white, black)) {
+  :root {
+    --in-oklab: in oklab;
+    --in-oklch: in oklch;
+  }
 }
+
+/* Nocturnal Study Room ("After-Hours Banker's Lamp Mode") */
+:root[data-theme="dark"],
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  --bg: #181924;
+  --bg-recessed: #12131c;
+  --surface: #222434;
+  --surface-elevated: #2a2d40;
+  --manila: #3d332a;
+  --manila-soft: #2e2824;
+  --text: #f4f1de;
+  --heading: #faf8ef;
+  --text-muted: #c4c0ae;
+  --text-faint: #8e8b7c;
+  --border: #383b52;
+  --border-strong: #565a78;
+  --accent: #e07a5f;
+  --accent-strong: #f2cc8f;
+  --accent-soft: #38282c;
+  --teal: #81b29a;
+  --teal-strong: #a3d5bc;
+  --teal-soft: #213335;
+  --brass: #deb05b;
+  --brass-bright: #f5d38e;
+  --brass-light: #f2cc8f;
+  --brass-dark: #9c7228;
+  --rule-line: rgba(242, 204, 143, 0.28);
+  --ledger-line: rgba(244, 241, 222, 0.05);
+  --selection-bg: #593b37;
+
+  --sunbeam-opacity: 0;
+  --lamp-cone-opacity: 1;
+  --room-wall-top: #1a1c2b;
+  --room-wall-bottom: #141622;
+  --room-wainscot: #291a11;
+  --room-wainscot-panel: #1f130c;
+  --room-floor-1: #3b2618;
+  --room-floor-2: #2d1c11;
+  --room-ambient-glow: rgba(242, 204, 143, 0.55);
+
+  --card-shadow:
+    0 4px 10px rgba(6, 7, 12, 0.45),
+    0 16px 36px -8px rgba(6, 7, 12, 0.6),
+    inset 0 1px 0 rgba(242, 204, 143, 0.14);
+  --card-shadow-hover:
+    0 8px 18px rgba(6, 7, 12, 0.55),
+    0 24px 48px -8px rgba(6, 7, 12, 0.72),
+    inset 0 1px 0 rgba(242, 204, 143, 0.28);
+
+  --scrollbar-thumb: #7a5d3e;
+  --scrollbar-track: #181924;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #11110f;
-    --surface: #171714;
-    --text: #ecece6;
-    --text-muted: #a2a29a;
-    --text-faint: #76766f;
-    --border: #2e2e29;
-    --border-strong: #484840;
-    --accent: #d06a3a;
-    --accent-strong: #e48354;
-    --accent-soft: #2a1c16;
-    --selection-bg: #523120;
-    color-scheme: dark;
+  :root:not([data-theme="light"]):not(
+      :has(> head > meta[name="color-scheme"][content="light"])
+    ) {
+    --bg: #181924;
+    --bg-recessed: #12131c;
+    --surface: #222434;
+    --surface-elevated: #2a2d40;
+    --manila: #3d332a;
+    --manila-soft: #2e2824;
+    --text: #f4f1de;
+    --heading: #faf8ef;
+    --text-muted: #c4c0ae;
+    --text-faint: #8e8b7c;
+    --border: #383b52;
+    --border-strong: #565a78;
+    --accent: #e07a5f;
+    --accent-strong: #f2cc8f;
+    --accent-soft: #38282c;
+    --teal: #81b29a;
+    --teal-strong: #a3d5bc;
+    --teal-soft: #213335;
+    --brass: #deb05b;
+    --brass-bright: #f5d38e;
+    --brass-light: #f2cc8f;
+    --brass-dark: #9c7228;
+    --rule-line: rgba(242, 204, 143, 0.28);
+    --ledger-line: rgba(244, 241, 222, 0.05);
+    --selection-bg: #593b37;
+
+    --sunbeam-opacity: 0;
+    --lamp-cone-opacity: 1;
+    --room-wall-top: #1a1c2b;
+    --room-wall-bottom: #141622;
+    --room-wainscot: #291a11;
+    --room-wainscot-panel: #1f130c;
+    --room-floor-1: #3b2618;
+    --room-floor-2: #2d1c11;
+    --room-ambient-glow: rgba(242, 204, 143, 0.55);
+
+    --card-shadow:
+      0 4px 10px rgba(6, 7, 12, 0.45),
+      0 16px 36px -8px rgba(6, 7, 12, 0.6),
+      inset 0 1px 0 rgba(242, 204, 143, 0.14);
+    --card-shadow-hover:
+      0 8px 18px rgba(6, 7, 12, 0.55),
+      0 24px 48px -8px rgba(6, 7, 12, 0.72),
+      inset 0 1px 0 rgba(242, 204, 143, 0.28);
+
+    --scrollbar-thumb: #7a5d3e;
+    --scrollbar-track: #181924;
+  }
+}
+
+/* Legacy fallback for WebKit/Blink browsers without standard scrollbar-color */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
   }
 }

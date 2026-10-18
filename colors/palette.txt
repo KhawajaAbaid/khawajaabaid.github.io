@@ -1,0 +1,31 @@
+/* Prewordict | Guess the word in the cloud - https://coolors.co/f4f1de-e07a5f-3d405b-81b29a-f2cc8f */
+
+- CSV
+
+f4f1de,e07a5f,3d405b,81b29a,f2cc8f
+
+- With #
+
+#f4f1de, #e07a5f, #3d405b, #81b29a, #f2cc8f
+
+- Array
+
+["f4f1de","e07a5f","3d405b","81b29a","f2cc8f"]
+
+- Object
+
+{"Eggshell":"f4f1de","Burnt Peach":"e07a5f","Twilight Indigo":"3d405b","Muted Teal":"81b29a","Apricot Cream":"f2cc8f"}
+
+- Extended Array
+
+[{"name":"Eggshell","hex":"f4f1de","rgb":[244,241,222],"cmyk":[0,1,9,4],"hsb":[52,9,96],"hsl":[52,50,91],"lab":[95,-2,10]},{"name":"Burnt Peach","hex":"e07a5f","rgb":[224,122,95],"cmyk":[0,46,58,12],"hsb":[13,58,88],"hsl":[13,68,63],"lab":[62,37,32]},{"name":"Twilight Indigo","hex":"3d405b","rgb":[61,64,91],"cmyk":[33,30,0,64],"hsb":[234,33,36],"hsl":[234,20,30],"lab":[28,6,-16]},{"name":"Muted Teal","hex":"81b29a","rgb":[129,178,154],"cmyk":[28,0,13,30],"hsb":[151,28,70],"hsl":[151,24,60],"lab":[69,-21,7]},{"name":"Apricot Cream","hex":"f2cc8f","rgb":[242,204,143],"cmyk":[0,16,41,5],"hsb":[37,41,95],"hsl":[37,79,75],"lab":[84,5,35]}]
+
+- XML
+
+<palette>
+  <color name="Eggshell" hex="f4f1de" r="244" g="241" b="222" />
+  <color name="Burnt Peach" hex="e07a5f" r="224" g="122" b="95" />
+  <color name="Twilight Indigo" hex="3d405b" r="61" g="64" b="91" />
+  <color name="Muted Teal" hex="81b29a" r="129" g="178" b="154" />
+  <color name="Apricot Cream" hex="f2cc8f" r="242" g="204" b="143" />
+</palette>

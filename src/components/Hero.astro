@@ -3,163 +3,572 @@ import { profile } from "../data/profile";
 import NetworkMotif from "./NetworkMotif.astro";
 ---
 
-<section class="hero" aria-labelledby="hero-name">
-  <div class="hero-copy">
-    <p class="eyebrow">
-      <span class="accent">RIT</span> / KAS Lab · Rochester, NY
-    </p>
-    <h1 id="hero-name">Khawaja Abaid Ullah<span class="accent">.</span></h1>
-    <p class="hero-role">
-      PhD Student · Machine Learning &amp; Autonomous Systems
-    </p>
-    <p class="hero-credentials">
-      {profile.credentials.map(credential => <span>{credential}</span>)}
-    </p>
-    <p class="hero-statement">
-      {profile.researchStatement}
-    </p>
-    <p class="hero-affiliation">
-      Rochester Institute of Technology<br />Khojasteh Autonomous Systems
-      Laboratory
-    </p>
-    <div class="links">
-      <a href={`mailto:${profile.email}`}>Email ↗</a><a href="/cv.pdf">CV ↗</a
-      ><a href={profile.links.github}>GitHub ↗</a><a
-        href={profile.links.linkedin}>LinkedIn ↗</a
-      ><a href={profile.links.rit}>RIT Profile ↗</a>
+<section class="study-hero" aria-labelledby="hero-name" data-hero-study>
+  <!-- TOP: THE ANIMATED OLD-SCHOOL CLASSIC STUDY ROOM PANORAMA -->
+  <NetworkMotif />
+
+  <!-- BOTTOM: THE CARVED WALNUT DESK LEDGE & INTERACTIVE SCHOLAR'S BLOTTER -->
+  <div class="desk-blotter-console">
+    <!-- Tactile Brass Plaque Selector Rail (Synced with Wall Portraits & Desk Nameplate in Room) -->
+    <div
+      class="room-plaque-tabs"
+      role="tablist"
+      aria-label="Inspect objects in the study room"
+    >
+      <button
+        type="button"
+        role="tab"
+        id="room-tab-identity"
+        aria-controls="room-panel-identity"
+        aria-selected="true"
+        data-plaque-tab="identity"
+        class="plaque-tab active"
+      >
+        <span class="plaque-kicker">DESK NAMEPLATE</span>
+        <span class="plaque-title">Khawaja Abaid Ullah</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="room-tab-fulbright"
+        aria-controls="room-panel-fulbright"
+        aria-selected="false"
+        data-plaque-tab="fulbright"
+        class="plaque-tab"
+      >
+        <span class="plaque-kicker">WALL PORTRAIT I</span>
+        <span class="plaque-title">U.S. Fulbright Scholar · 4.0 GPA</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="room-tab-aws"
+        aria-controls="room-panel-aws"
+        aria-selected="false"
+        data-plaque-tab="aws"
+        class="plaque-tab"
+      >
+        <span class="plaque-kicker">WALL PORTRAIT II</span>
+        <span class="plaque-title">AWS AI/ML · ★ Return Offer</span>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        id="room-tab-kaslab"
+        aria-controls="room-panel-kaslab"
+        aria-selected="false"
+        data-plaque-tab="kaslab"
+        class="plaque-tab"
+      >
+        <span class="plaque-kicker">WALL PORTRAIT III</span>
+        <span class="plaque-title">KAS Lab Ph.D. &amp; Open-Source ML</span>
+      </button>
+    </div>
+
+    <!-- Desk Blotter Inspection Surface -->
+    <div class="blotter-surface">
+      <!-- PANEL 1: DESK NAMEPLATE (PRIMARY IDENTITY & OVERVIEW) -->
+      <div
+        role="tabpanel"
+        id="room-panel-identity"
+        aria-labelledby="room-tab-identity"
+        data-plaque-panel="identity"
+        class="blotter-panel active"
+      >
+        <div class="blotter-grid">
+          <div class="blotter-main">
+            <div class="engraved-badge-row">
+              <span class="brass-tag">
+                ENGRAVED DESK PLATE // RIT · KAS LAB · ROCHESTER, NY
+              </span>
+              <span class="brass-tag teal">PH.D. GRA · FULL FELLOWSHIP</span>
+            </div>
+
+            <h1 id="hero-name">
+              Khawaja Abaid Ullah<span class="accent">.</span>
+            </h1>
+
+            <p class="blotter-lead">
+              Ph.D. researcher at RIT’s{" "}
+              <strong>
+                Khojasteh Autonomous Systems Laboratory (KAS Lab)
+              </strong>{" "}
+              investigating{" "}
+              <strong>
+                multi-agent coordination, dynamic resource allocation,
+                constrained communication, and compromised-agent containment
+              </strong>{" "}
+              for autonomous disaster search-and-rescue robot teams—alongside{" "}
+              <strong>test-time antidistillation defenses</strong> against model
+              extraction.
+            </p>
+          </div>
+
+          <div class="blotter-aside">
+            <div class="study-distinctions-summary">
+              <div class="mini-plaque">
+                <span class="mini-label">U.S. DEPT. OF STATE</span>
+                <strong>Fulbright Scholar (4.0 / 4.0 GPA)</strong>
+                <span>M.S. in AI at RIT · 1st in B.S. CS Class of 2021</span>
+              </div>
+              <div class="mini-plaque">
+                <span class="mini-label">AMAZON WEB SERVICES (AWS)</span>
+                <strong>AI/ML SDE Intern · Return Offer</strong>
+                <span>East Palo Alto, CA · Apache Spark Benchmarking</span>
+              </div>
+              <div class="mini-plaque">
+                <span class="mini-label">OPEN-SOURCE ML &amp; SECURITY</span>
+                <strong>Creator of Teras · Keras 3 · ADS-C</strong>
+                <span>−29.6 pp CIFAR-10 distillation at 0 pp top-1 cost</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blotter-footer">
+          <div class="links hero-links">
+            <a class="wax-seal-btn" href="/cv.pdf">
+              Curriculum Vitae (PDF) ↗
+            </a>
+            <a href={profile.links.github}>GitHub ↗</a>
+            <a href={profile.links.linkedin}>LinkedIn ↗</a>
+            <a href={profile.links.rit}>RIT / KAS Lab ↗</a>
+            <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+          </div>
+          <p class="room-hint">
+            Tip: Click the <strong>framed portraits on the study wall</strong>{" "}
+            or pull the <strong>Banker’s Lamp chain</strong> above.
+          </p>
+        </div>
+      </div>
+
+      <!-- PANEL 2: PORTRAIT I — U.S. FULBRIGHT SCHOLAR -->
+      <div
+        role="tabpanel"
+        id="room-panel-fulbright"
+        aria-labelledby="room-tab-fulbright"
+        data-plaque-panel="fulbright"
+        class="blotter-panel"
+        hidden
+      >
+        <div class="portrait-detail-view">
+          <div class="portrait-detail-header">
+            <span class="brass-tag">
+              WALL PORTRAIT I // U.S. DEPARTMENT OF STATE FULBRIGHT SCHOLAR
+            </span>
+            <span class="brass-tag teal">AUG 2024 – MAY 2026 · 4.0 / 4.0 GPA</span>
+          </div>
+
+          <h2>
+            M.S. in Artificial Intelligence · Rochester Institute of Technology
+          </h2>
+
+          <p class="blotter-lead">
+            Selected for the flagship U.S. Department of State{" "}
+            <strong>Fulbright Foreign Student Fellowship</strong> to pursue
+            graduate research in Artificial Intelligence at RIT, graduating with
+            a <strong>perfect 4.0 / 4.0 GPA</strong> and defending the Master’s
+            thesis <em>“Antidistillation Sampling for Classification”</em>{" "}
+            before continuing into a fully funded Ph.D. GRA in ECE at RIT’s KAS
+            Lab. Previously graduated{" "}
+            <strong>1st in the Computer Science class of 2021</strong> at the
+            University of Narowal.
+          </p>
+
+          <div class="blotter-footer">
+            <div class="links">
+              <a class="wax-seal-btn" href="https://repository.rit.edu/theses/12584/">
+                RIT Master’s Thesis ↗
+              </a>
+              <a href="/research/ads-c/">Open ADS-C Research Plate →</a>
+              <a href="/about/">Full Academic Record →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 3: PORTRAIT II — AMAZON WEB SERVICES (AWS) -->
+      <div
+        role="tabpanel"
+        id="room-panel-aws"
+        aria-labelledby="room-tab-aws"
+        data-plaque-panel="aws"
+        class="blotter-panel"
+        hidden
+      >
+        <div class="portrait-detail-view">
+          <div class="portrait-detail-header">
+            <span class="brass-tag">
+              WALL PORTRAIT II // AMAZON WEB SERVICES (AWS) · EAST PALO ALTO, CA
+            </span>
+            <span class="brass-tag teal">★ FULL-TIME RETURN OFFER EARNED</span>
+          </div>
+
+          <h2>
+            Software Development Engineer Intern, AI/ML · May – Aug 2025
+          </h2>
+
+          <p class="blotter-lead">
+            Engineered core <strong>Apache Spark</strong> testing and
+            evaluation modules for a next-generation internal benchmarking
+            platform at <strong>Amazon Web Services (AWS)</strong> in East Palo
+            Alto, closing feature-parity gaps with its legacy predecessor across
+            targeted benchmarking workflows. Independently identified and
+            delivered additional benchmarking capabilities beyond original
+            project scope, earning strong leadership recognition and a{" "}
+            <strong>full-time return offer</strong>.
+          </p>
+
+          <div class="blotter-footer">
+            <div class="links">
+              <a class="wax-seal-btn" href="/cv.pdf">
+                Full Resume (PDF) ↗
+              </a>
+              <a href="/about/">Complete Industry &amp; Academic Dossier →</a>
+              <a href="/projects/">Explore Open-Source ML Systems →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 4: PORTRAIT III — KAS LAB PH.D. & OPEN-SOURCE ML -->
+      <div
+        role="tabpanel"
+        id="room-panel-kaslab"
+        aria-labelledby="room-tab-kaslab"
+        data-plaque-panel="kaslab"
+        class="blotter-panel"
+        hidden
+      >
+        <div class="portrait-detail-view">
+          <div class="portrait-detail-header">
+            <span class="brass-tag">
+              WALL PORTRAIT III // KHOJASTEH AUTONOMOUS SYSTEMS LAB (KAS LAB)
+            </span>
+            <span class="brass-tag teal">
+              MARL · ANTIDISTILLATION · TERAS &amp; KERAS 3
+            </span>
+          </div>
+
+          <h2>
+            Autonomous Disaster Search-and-Rescue, ML Security &amp; Open-Source
+            Engines
+          </h2>
+
+          <p class="blotter-lead">
+            Advised by <strong>Dr. Mohammad Javad Khojasteh</strong> at RIT’s
+            KAS Lab, my Ph.D. research develops multi-agent reinforcement
+            learning and coordination algorithms under energy, bandwidth, and
+            adversarial constraints (<strong>Fontus</strong> in PettingZoo &amp;
+            Ray RLlib), alongside inference-time antidistillation defenses (
+            <strong>ADS-C</strong>: <strong>−29.6 pp</strong> student accuracy
+            on CIFAR-10 at <strong>0 pp</strong> top-1 cost;{" "}
+            <strong>−47.7 pp</strong> on CIFAR-100 in matched-cost review).
+            Creator of <strong>Teras</strong> and official contributor to{" "}
+            <strong>Keras 3</strong> across JAX, PyTorch, and TensorFlow.
+          </p>
+
+          <div class="blotter-footer">
+            <div class="links">
+              <a class="wax-seal-btn" href="/research/">
+                Explore Research Wing →
+              </a>
+              <a href="/research/fontus/">Fontus MARL Study →</a>
+              <a href="/research/ads-c/">ADS-C Security Study →</a>
+              <a href="/projects/">Teras &amp; Keras 3 Code →</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <NetworkMotif /><p class="eyebrow">Security. Coordination. Autonomy.</p>
-  </div>
 </section>
+
+<script>
+  const heroRoot = document.querySelector<HTMLElement>("[data-hero-study]");
+  if (heroRoot) {
+    const tabs = heroRoot.querySelectorAll<HTMLButtonElement>(
+      "[data-plaque-tab]",
+    );
+    const panels = heroRoot.querySelectorAll<HTMLElement>(
+      "[data-plaque-panel]",
+    );
+    const svgHotspots = heroRoot.querySelectorAll<SVGElement>(
+      "[data-room-hotspot]",
+    );
+
+    function activateStudyObject(key: string) {
+      tabs.forEach((tab) => {
+        const isMatch = tab.dataset.plaqueTab === key;
+        tab.classList.toggle("active", isMatch);
+        tab.setAttribute("aria-selected", String(isMatch));
+      });
+
+      panels.forEach((panel) => {
+        const isMatch = panel.dataset.plaquePanel === key;
+        panel.classList.toggle("active", isMatch);
+        panel.hidden = !isMatch;
+      });
+
+      svgHotspots.forEach((spot) => {
+        const isMatch = spot.getAttribute("data-room-hotspot") === key;
+        spot.classList.toggle("active-hotspot", isMatch);
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        activateStudyObject(tab.dataset.plaqueTab || "identity");
+      });
+    });
+
+    svgHotspots.forEach((spot) => {
+      const key = spot.getAttribute("data-room-hotspot") || "identity";
+      spot.addEventListener("click", () => activateStudyObject(key));
+      spot.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activateStudyObject(key);
+        }
+      });
+    });
+
+    activateStudyObject("identity");
+  }
+</script>
+
 <style>
-  .hero {
+  .study-hero {
+    padding-block: 1.5rem 3.25rem;
+  }
+
+  /* Carved Walnut Desk Ledge Console Connected to the Study Room Panorama */
+  .desk-blotter-console {
+    background: var(--surface);
+    border: 2px solid var(--wood-mid);
+    border-top: 6px solid #4a3020;
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+  }
+
+  /* Brass Plaque Selector Tabs along the Desk Ledge */
+  .room-plaque-tabs {
     display: grid;
-    grid-template-columns: 7fr 5fr;
-    gap: 1rem;
-    align-items: center;
-    padding-block: 5.5rem 6rem;
-    min-height: 690px;
+    grid-template-columns: repeat(4, 1fr);
+    background: #2b1b11;
+    border-bottom: 2px solid var(--brass);
+    gap: 1px;
   }
-  .hero-copy {
+
+  .plaque-tab {
+    background: linear-gradient(180deg, #3b2619 0%, #2a1a10 100%);
+    border: 0;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    color: #e6dec8;
     position: relative;
-    z-index: 1;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
   }
-  .hero-copy > .eyebrow {
-    margin-bottom: 2rem;
-    font-size: 0.7rem;
+
+  .plaque-tab:hover {
+    background: #4c3221;
+    color: #faf8ef;
   }
-  .hero h1 {
-    max-width: 12ch;
-    margin-left: -0.04em;
+
+  .plaque-tab.active {
+    background: linear-gradient(180deg, #5c3c28 0%, #3d2618 100%);
+    color: #faf8ef;
+    box-shadow: inset 0 3px 0 var(--brass-light);
   }
-  .hero-role {
-    font-size: 0.85rem;
+
+  .plaque-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--brass-light);
+    text-transform: uppercase;
+  }
+
+  .plaque-title {
+    font-family: var(--font-display);
+    font-size: 0.96rem;
     font-weight: 500;
-    margin-top: 1.8rem;
-    max-width: none;
+    line-height: 1.2;
   }
-  .hero-credentials {
+
+  /* Blotter Surface */
+  .blotter-surface {
+    padding: 1.75rem 2.25rem 1.65rem;
+    background:
+      radial-gradient(
+        ellipse 65% 70% at 25% 0%,
+        rgba(242, 204, 143, calc(0.2 * var(--lamp-cone-opacity))),
+        transparent 70%
+      ),
+      var(--surface);
+  }
+
+  .blotter-panel {
+    animation: blotterFadeIn 220ms ease-out;
+  }
+
+  @keyframes blotterFadeIn {
+    from {
+      opacity: 0.55;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .blotter-grid {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 2.25rem;
+    align-items: center;
+  }
+
+  .engraved-badge-row,
+  .portrait-detail-header {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem 0;
-    margin-top: 0.75rem;
-    font-size: 0.95rem;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .study-hero h1 {
+    font-size: clamp(2.5rem, 4.4vw, 3.85rem);
+    line-height: 1.03;
+    letter-spacing: -0.022em;
+  }
+
+  .portrait-detail-view h2 {
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    line-height: 1.15;
+  }
+
+  .blotter-lead {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-top: 0.85rem;
+    max-width: 66ch;
+  }
+
+  .blotter-lead strong {
+    color: var(--heading);
     font-weight: 600;
+  }
+
+  /* Compact Brass Mini-Plaques on the Right of Desk Blotter */
+  .study-distinctions-summary {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .mini-plaque {
+    padding: 0.6rem 0.9rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--brass);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.08rem;
+  }
+
+  .mini-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     color: var(--accent-strong);
   }
-  .hero-credentials span {
-    white-space: nowrap;
+
+  .mini-plaque strong {
+    font-family: var(--font-display);
+    font-size: 1.06rem;
+    font-weight: 500;
+    color: var(--heading);
   }
-  .hero-credentials span + span::before {
-    content: "·";
-    margin-inline: 0.7rem;
-  }
-  .hero-statement {
-    font-size: 1.25rem;
-    line-height: 1.55;
-    max-width: 43ch;
-    margin-top: 1.4rem;
-  }
-  .hero-affiliation {
-    font-size: 0.8rem;
-    line-height: 1.7;
+
+  .mini-plaque span:last-child {
+    font-size: 0.74rem;
     color: var(--text-muted);
-    margin-top: 1.5rem;
   }
-  .hero .links {
-    margin-top: 1.3rem;
-    gap: 0.2rem 1.3rem;
-    font-size: 0.8rem;
+
+  .blotter-footer {
+    margin-top: 1.35rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
   }
-  .hero-visual {
-    margin-right: -2rem;
-    margin-left: -1.5rem;
+
+  .wax-seal-btn {
+    padding: 0.42rem 0.95rem;
+    background: var(--wood-dark);
+    color: #faf8ef !important;
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+    text-decoration: none !important;
+    font-weight: 600;
+    min-height: 38px !important;
+    box-shadow: 0 2px 6px rgba(36, 23, 16, 0.18);
   }
-  .hero-visual p {
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-align: center;
-    margin-top: 0.8rem;
+
+  .wax-seal-btn:hover {
+    background: var(--accent-strong);
+    border-color: var(--brass-light);
+    color: #faf8ef !important;
   }
-  @media (max-width: 1000px) {
-    .hero {
-      min-height: 640px;
+
+  .room-hint {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .room-hint strong {
+    color: var(--heading);
+  }
+
+  @media (max-width: 1020px) {
+    .room-plaque-tabs {
+      grid-template-columns: repeat(2, 1fr);
     }
-    .hero-role {
-      max-width: 35ch;
-    }
-    .hero-statement {
-      font-size: 1.15rem;
-    }
-  }
-  @media (max-width: 860px) {
-    .hero {
+    .blotter-grid {
       grid-template-columns: 1fr;
-      min-height: 0;
-      padding-block: 4rem;
-    }
-    .hero h1 {
-      max-width: 12ch;
-      font-size: clamp(3.4rem, 9vw, 5rem);
-    }
-    .hero-visual {
-      display: none;
-    }
-    .hero-role {
-      max-width: none;
-    }
-    .hero-statement {
-      max-width: 46ch;
-    }
-    .hero-copy > .eyebrow {
-      margin-bottom: 1.8rem;
+      gap: 1.35rem;
     }
   }
-  @media (max-width: 450px) {
-    .hero-credentials {
-      display: grid;
-      font-size: 0.875rem;
+
+  @media (max-width: 640px) {
+    .room-plaque-tabs {
+      grid-template-columns: 1fr;
     }
-    .hero-credentials span + span::before {
-      content: none;
+    .blotter-surface {
+      padding: 1.35rem 1.2rem;
     }
-    .hero h1 {
-      font-size: 15vw;
-    }
-    .hero-role {
-      font-size: 0.8rem;
-      max-width: 34ch;
-    }
-    .hero-statement {
-      font-size: 1.1rem;
-    }
-    .hero .links {
-      gap: 0.2rem 1.2rem;
-    }
-    .hero {
-      padding-block: 3.5rem 4rem;
+    .room-hint {
+      display: none;
     }
   }
 </style>

@@ -12,12 +12,19 @@ const {
 } = Astro.props;
 ---
 
-<article class="publication" id={id}>
-  <time datetime={data.date.toISOString().slice(0, 10)}
-    >{data.date.getUTCFullYear()}</time
-  >
+<article class="publication study-panel" id={id}>
+  <div class="pub-header-bar">
+    <span class="pub-call">
+      STUDY MANUSCRIPT // {id.toUpperCase()}
+    </span>
+    <time datetime={data.date.toISOString().slice(0, 10)}>
+      {data.venue} · {data.date.getUTCFullYear()}
+    </time>
+  </div>
+
   <div class="publication-body">
-    <Heading class="publication-title">{data.title}</Heading><p class="authors">
+    <Heading class="publication-title">{data.title}</Heading>
+    <p class="authors">
       {
         data.authors.map((author, index) => (
           <>
@@ -26,86 +33,176 @@ const {
           </>
         ))
       }
-    </p><p class="venue">
-      {data.venue} · {data.status === "preprint" ? "Preprint" : data.status}
-    </p><LinkList links={data.links} context={data.title} />
+    </p>
+
+    {
+      data.metric && (
+        <div class="pub-metric-box">
+          <span class="pub-metric-val">{data.metric.value}</span>
+          <div>
+            <strong>{data.metric.label}</strong>
+            {data.metric.context && <span> — {data.metric.context}</span>}
+          </div>
+        </div>
+      )
+    }
+
+    <p class="pub-summary">{data.summary}</p>
+
+    <div class="venue-row">
+      <span class="brass-tag">
+        {data.venue} · {data.status}
+      </span>
+      {data.links.length > 0 && (
+        <LinkList links={data.links} context={data.title} />
+      )}
+    </div>
+
     {
       data.bibtex && (
-        <details>
-          <>
-            <summary>
-              BibTeX<span class="sr-only"> for {data.title}</span>
-            </summary>
-            <pre>
-              <code>{data.bibtex}</code>
-            </pre>
-          </>
+        <details class="citation-slip">
+          <summary>
+            <span>Open BibTeX Citation</span>
+            <span class="sr-only"> for {data.title}</span>
+          </summary>
+          <div class="slip-drawer">
+            <pre><code>{data.bibtex}</code></pre>
+          </div>
         </details>
       )
     }
   </div>
 </article>
+
 <style>
   .publication {
-    display: grid;
-    grid-template-columns: 75px 1fr;
-    gap: 1.5rem;
-    padding-block: 1.8rem;
-    border-top: 1px solid var(--border);
+    padding: 1.25rem 1.85rem 1.65rem;
+    margin-bottom: 1.35rem;
   }
+
+  .publication:last-child {
+    margin-bottom: 0;
+  }
+
+  .pub-header-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pub-call,
   time {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    padding-top: 0.2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+    color: var(--heading);
+    font-weight: 700;
   }
+
+  time {
+    color: var(--accent-strong);
+  }
+
   .publication-body {
     min-width: 0;
   }
+
   .publication-title {
-    font-family: var(--font-sans);
-    font-size: 1.04rem;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
     font-weight: 500;
     letter-spacing: -0.015em;
-    line-height: 1.55;
-    text-wrap: pretty;
-    max-width: 88ch;
+    line-height: 1.28;
+    color: var(--heading);
+    max-width: 78ch;
   }
+
   .authors {
-    font-size: 0.81rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    margin-top: 0.65rem;
+    margin-top: 0.5rem;
     max-width: none;
   }
+
   .authors strong {
     font-weight: 600;
     color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--brass);
+    text-underline-offset: 3px;
   }
-  .venue {
-    font-size: 0.75rem;
+
+  .pub-metric-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.8rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--brass);
+    border-radius: 4px;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.5rem;
   }
-  .publication :global(.links) {
-    font-size: 0.75rem;
-    margin-top: 0.35rem;
+
+  .pub-metric-val {
+    font-family: var(--font-display);
+    font-size: 1.48rem;
+    font-weight: 500;
+    color: var(--heading);
   }
-  .publication details {
-    font-size: 0.75rem;
+
+  .pub-metric-box strong {
+    color: var(--heading);
   }
-  .publication pre {
-    margin-top: 0.5rem;
+
+  .pub-summary {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-top: 0.7rem;
   }
+
+  .venue-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .citation-slip {
+    margin-top: 0.65rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.35rem;
+  }
+
+  .slip-drawer {
+    margin-top: 0.45rem;
+    padding: 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+  }
+
+  .slip-drawer pre {
+    margin: 0;
+    background: var(--surface);
+  }
+
   @media (max-width: 720px) {
     .publication {
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
+      padding: 1rem 1.25rem 1.4rem;
     }
     .publication-title {
-      font-size: 1.02rem;
-    }
-    time {
-      font-size: 0.75rem;
+      font-size: 1.22rem;
     }
   }
 </style>

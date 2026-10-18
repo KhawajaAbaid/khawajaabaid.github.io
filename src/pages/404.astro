@@ -4,16 +4,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Page not found"
-  description="This page could not be found. Return to Khawaja Abaid Ullah’s research homepage."
+  description="This page could not be found. Return to Khawaja Abaid Ullah’s study."
   noindex
-  ><div class="page-intro missing">
-    <p class="eyebrow">404 / PAGE NOT FOUND</p><h1>Nothing here.</h1><p>
-      The page may have moved, or the address may be incomplete.
-    </p><div class="links"><a href="/">Return home →</a></div>
-  </div></BaseLayout
 >
+  <div class="missing">
+    <div class="study-panel missing-card">
+      <p class="eyebrow">404 // UNLISTED STUDY FOLIO</p>
+      <h1>Nothing on this shelf.</h1>
+      <p>
+        The requested manuscript or study plate may have been moved, or the
+        address may be incomplete.
+      </p>
+      <div class="links">
+        <a href="/">Return to the Study Room →</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
 <style>
   .missing {
-    min-height: 65vh;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    padding-block: 3rem;
+  }
+  .missing-card {
+    padding: 2.25rem 2.75rem;
+    width: 100%;
+    max-width: 680px;
+  }
+  .missing-card h1 {
+    margin-top: 0.85rem;
+  }
+  .missing-card p:not(.eyebrow) {
+    margin-top: 1rem;
+    color: var(--text-muted);
+  }
+  .missing-card .links {
+    margin-top: 1.35rem;
   }
 </style>

@@ -3,44 +3,126 @@ import { profile } from "../data/profile";
 ---
 
 <footer class="site-footer container">
-  <p>© {new Date().getFullYear()} {profile.name}</p>
-  <nav aria-label="Footer">
-    <a href={`mailto:${profile.email}`}>Email</a><a href={profile.links.github}
-      >GitHub</a
-    ><a href={profile.links.linkedin}>LinkedIn</a><a href={profile.links.rit}
-      >RIT</a
-    ><a href="#top">Back to top ↑</a>
-  </nav>
+  <div class="carpet-runner-border" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="colophon">
+      <p class="colophon-mark">
+        <span class="seal-dot" aria-hidden="true">❖</span>
+        THE STUDY OF {profile.name.toUpperCase()} · © {new Date().getFullYear()}
+      </p>
+      <p class="colophon-sub">
+        Khojasteh Autonomous Systems Laboratory (KAS Lab) · Rochester Institute
+        of Technology
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <a href={`mailto:${profile.email}`}>Email</a>
+      <a href="/cv.pdf">CV (PDF)</a>
+      <a href={profile.links.github}>GitHub</a>
+      <a href={profile.links.linkedin}>LinkedIn</a>
+      <a href={profile.links.rit}>RIT Profile</a>
+      <a href="#top">Return to Study ↑</a>
+    </nav>
+  </div>
 </footer>
+
 <style>
   .site-footer {
-    border-top: 1px solid var(--border);
-    padding-block: 2rem 2.5rem;
+    padding-block: 0 3rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    position: relative;
+  }
+
+  /* Artistic Woven Carpet Runner Border */
+  .carpet-runner-border {
+    height: 8px;
+    width: 100%;
+    border-radius: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      #e07a5f 0 24px,
+      #f2cc8f 0 32px,
+      #3d405b 0 56px,
+      #81b29a 0 76px,
+      #f2cc8f 0 84px,
+      #593a27 0 108px
+    );
+    border: 1px solid var(--wood-mid);
+    box-shadow: 0 2px 6px rgba(36, 23, 16, 0.12);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+  }
+
+  .footer-inner {
+    padding-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.75rem;
-    color: var(--text-muted);
+    gap: 1.5rem;
   }
+
+  .colophon-mark {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--heading);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .seal-dot {
+    color: var(--brass);
+  }
+
+  .colophon-sub {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem 1.5rem;
+    gap: 0.3rem 1.35rem;
   }
+
   nav a {
-    min-height: 44px;
+    min-height: 40px;
     display: inline-flex;
     align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    letter-spacing: 0.05em;
     text-decoration: none;
   }
-  @media (max-width: 720px) {
-    .site-footer {
+
+  nav a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 760px) {
+    .footer-inner {
       align-items: start;
       flex-direction: column;
     }
     nav {
-      gap: 0.3rem 1.3rem;
+      gap: 0.25rem 1.15rem;
     }
   }
 </style>

@@ -1,19 +1,20 @@
 ---
 {
   "title": "Teras",
-  "summary": "A multi-backend library for deep learning on tabular data, built on Keras 3. Architectures for prediction, imputation, and synthetic-data generation across JAX, PyTorch, and TensorFlow.",
+  "summary": "Created a Keras 3-based tabular deep-learning library supporting JAX, PyTorch, and TensorFlow backends. Implemented state-of-the-art research architectures (SAINT, TabNet, TabTransformer, FT-Transformer, CTGAN, TVAE, GAIN, PCGAIN) for classification, regression, data imputation, and synthetic-data generation.",
   "category": "engineering",
   "selected": true,
   "order": 1,
   "tags": [
-    "Keras",
+    "Keras 3",
     "JAX",
     "PyTorch",
-    "TensorFlow"
+    "TensorFlow",
+    "Tabular Deep Learning"
   ],
   "links": [
     {
-      "label": "GitHub",
+      "label": "GitHub Repository",
       "href": "https://github.com/KhawajaAbaid/teras"
     }
   ],

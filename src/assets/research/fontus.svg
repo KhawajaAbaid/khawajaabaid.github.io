@@ -1,8 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480">
-<rect width="720" height="480" fill="#efefe8"/><g font-family="Arial,sans-serif" fill="#66665f"><text x="40" y="43" font-size="11" letter-spacing="2">FONTUS / AERIAL RECHARGING</text><text x="40" y="449" font-size="12">A custom multi-agent environment.</text><text x="680" y="449" font-size="10" text-anchor="end">CONCEPTUAL SCHEMATIC</text></g>
-<g stroke="#d4d4cc" stroke-width="1"><path d="M70 100V380M150 100V380M230 100V380M310 100V380M390 100V380M470 100V380M550 100V380M630 100V380M70 140H650M70 220H650M70 300H650M70 380H650"/></g>
-<path d="M144 315 283 225 420 165 560 245" fill="none" stroke="#b84f22" stroke-width="1.5" stroke-dasharray="6 6"/><circle cx="420" cy="165" r="55" fill="none" stroke="#bdbdb4" stroke-dasharray="3 5"/>
-<g fill="#f7f7f3" stroke="#66665f" stroke-width="1.4"><path d="M127 297H161V331H127Z"/><path d="M134 309H154M144 301V325"/><circle cx="410" cy="155" r="7"/><circle cx="430" cy="155" r="7"/><circle cx="410" cy="175" r="7"/><circle cx="430" cy="175" r="7"/><path d="m410 155 20 20m0-20-20 20"/><circle cx="550" cy="235" r="7"/><circle cx="570" cy="235" r="7"/><circle cx="550" cy="255" r="7"/><circle cx="570" cy="255" r="7"/><path d="m550 235 20 20m0-20-20 20"/></g>
-<g fill="#f7f7f3" stroke="#b84f22" stroke-width="1.8"><circle cx="271" cy="213" r="8"/><circle cx="295" cy="213" r="8"/><circle cx="271" cy="237" r="8"/><circle cx="295" cy="237" r="8"/><path d="m271 213 24 24m0-24-24 24"/></g>
-<g font-family="Arial,sans-serif" font-size="24" fill="#171714"><text x="78" y="364">Base station</text><text x="206" y="283" fill="#8f3917">Charging UAV</text><text x="460" y="114">Mission UAVs</text></g><path d="M504 134 450 149M539 135 560 214" stroke="#bdbdb4" fill="none"/>
+  <rect width="720" height="480" fill="#f4f1de"/>
+  <rect x="14" y="14" width="692" height="452" rx="4" fill="#faf8ef" stroke="#c4bc9d" stroke-width="1.5"/>
+  <rect x="20" y="20" width="680" height="440" rx="2" fill="none" stroke="#dcd6bc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <line x1="20" y1="58" x2="700" y2="58" stroke="#81b29a" stroke-width="1.2" opacity="0.65"/>
+  <g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" fill="#555873">
+    <text x="40" y="43" font-size="11" letter-spacing="2" font-weight="600" fill="#3d405b">FONTUS / AERIAL RECHARGING</text>
+    <text x="680" y="43" font-size="10" letter-spacing="1.5" text-anchor="end">FIG. 02 // TJ211.4</text>
+    <text x="40" y="446" font-size="11.5">A custom multi-agent environment.</text>
+    <text x="680" y="446" font-size="10" letter-spacing="1.4" text-anchor="end">CONCEPTUAL SCHEMATIC</text>
+  </g>
+  <!-- Archival Coordinate Grid -->
+  <g stroke="#e3dec6" stroke-width="1">
+    <path d="M70 96V384M150 96V384M230 96V384M310 96V384M390 96V384M470 96V384M550 96V384M630 96V384M70 140H650M70 220H650M70 300H650M70 380H650"/>
+  </g>
+  <!-- Rendezvous Flight Path & Radius -->
+  <path d="M144 315 283 225 420 165 560 245" fill="none" stroke="#e07a5f" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="420" cy="165" r="56" fill="#81b29a" fill-opacity="0.14" stroke="#81b29a" stroke-width="1.4" stroke-dasharray="4 4"/>
+  <!-- Base Station & Mission UAVs -->
+  <g fill="#f2cc8f" stroke="#3d405b" stroke-width="1.6">
+    <path d="M126 296H162V332H126Z"/>
+    <path d="M134 314H154M144 304V324"/>
+  </g>
+  <g fill="#81b29a" stroke="#3d405b" stroke-width="1.5">
+    <circle cx="410" cy="155" r="7.5"/><circle cx="430" cy="155" r="7.5"/><circle cx="410" cy="175" r="7.5"/><circle cx="430" cy="175" r="7.5"/>
+    <path d="m410 155 20 20m0-20-20 20"/>
+    <circle cx="550" cy="235" r="7.5"/><circle cx="570" cy="235" r="7.5"/><circle cx="550" cy="255" r="7.5"/><circle cx="570" cy="255" r="7.5"/>
+    <path d="m550 235 20 20m0-20-20 20"/>
+  </g>
+  <!-- Charging UAV in Burnt Peach (#e07a5f) -->
+  <g fill="#e07a5f" stroke="#3d405b" stroke-width="1.8">
+    <circle cx="271" cy="213" r="8.5"/><circle cx="295" cy="213" r="8.5"/><circle cx="271" cy="237" r="8.5"/><circle cx="295" cy="237" r="8.5"/>
+    <path d="m271 213 24 24m0-24-24 24"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="22" fill="#3d405b">
+    <text x="82" y="362">Base station</text>
+    <text x="206" y="282" fill="#b8533a" font-weight="600">Charging UAV</text>
+    <text x="462" y="116">Mission UAVs</text>
+  </g>
+  <path d="M504 128 450 148M539 128 560 214" stroke="#3d405b" stroke-width="1.1" opacity="0.65" fill="none"/>
 </svg>

@@ -1,115 +1,1270 @@
 ---
-const points = [
-  [35, 165],
-  [88, 74],
-  [95, 270],
-  [157, 155],
-  [169, 355],
-  [226, 59],
-  [233, 246],
-  [284, 142],
-  [305, 334],
-  [347, 51],
-  [369, 228],
-  [408, 132],
-  [423, 362],
-  [480, 58],
-  [477, 263],
-  [540, 170],
-  [550, 344],
-  [590, 85],
-  [606, 250],
-  [359, 410],
-];
-const edges = [
-  [0, 1],
-  [0, 2],
-  [0, 3],
-  [1, 3],
-  [1, 5],
-  [2, 3],
-  [2, 4],
-  [2, 6],
-  [3, 5],
-  [3, 6],
-  [3, 7],
-  [4, 6],
-  [4, 8],
-  [5, 7],
-  [5, 9],
-  [6, 7],
-  [6, 8],
-  [6, 10],
-  [7, 9],
-  [7, 10],
-  [7, 11],
-  [8, 10],
-  [8, 12],
-  [8, 19],
-  [9, 11],
-  [9, 13],
-  [10, 11],
-  [10, 12],
-  [10, 14],
-  [11, 13],
-  [11, 15],
-  [12, 14],
-  [12, 16],
-  [12, 19],
-  [13, 15],
-  [13, 17],
-  [14, 15],
-  [14, 16],
-  [14, 18],
-  [15, 17],
-  [15, 18],
-  [16, 18],
-];
+/* Animated Old-School Classic Study Room Panorama:
+   - Tall Arched Window (Golden-Hour Sunbeams & Dust Motes vs. Starry Night & Crescent Moon)
+   - Paneled Wainscoting Wall with Built-in Mahogany Bookshelf & Brass Globe
+   - Three Interactive Framed Wall Portraits with Brass Picture Sconces (Fulbright, AWS, KAS Lab)
+   - Tufted Leather Wingback Study Chair & Carved Walnut Executive Study Desk
+   - Interactive Emeralite Green-Glass Banker's Lamp with Pull-Chain (Light / Dark Mode)
+   - Engraved Walnut & Brushed Brass Desk Nameplate ("KHAWAJA ABAID ULLAH")
+   - Hardwood Plank Floor & Artistic Woven Persian/Kilim Carpet
+*/
 ---
 
-<svg viewBox="0 0 640 460" fill="none" aria-hidden="true" class="network">
-  <g stroke="var(--border-strong)" stroke-width=".8" opacity=".6"
-    >{edges.map(([a, b]) => <path d={`M${points[a]} L${points[b]}`} />)}</g
+<div class="study-room-stage" data-study-scene>
+  <svg
+    viewBox="0 0 1200 600"
+    fill="none"
+    role="img"
+    aria-label="Interactive animated old-school study room of Khawaja Abaid Ullah featuring a walnut desk with an engraved brass nameplate, an Emeralite banker's lamp that switches between daylight and lamplight, a tufted leather chair, wooden floors with an artistic Persian carpet, a wall bookshelf, and framed portraits for U.S. Fulbright Scholar, Amazon Web Services AI/ML, and RIT KAS Lab."
+    class="study-room-svg"
   >
-  <path
-    class="accent-path"
-    d="M35 165 157 155 233 246 369 228 408 132 480 58 590 85"
-    stroke="var(--accent)"
-    stroke-width="1.7"></path>
-  {
-    points.map(([cx, cy], i) => (
-      <circle
-        cx={cx}
-        cy={cy}
-        r={[0, 3, 6, 10, 11, 13, 17].includes(i) ? 4 : 2.7}
-        fill={
-          [0, 3, 6, 10, 11, 13, 17].includes(i) ? "var(--accent)" : "var(--bg)"
-        }
-        stroke={
-          [0, 3, 6, 10, 11, 13, 17].includes(i)
-            ? "var(--accent)"
-            : "var(--border-strong)"
-        }
+    <defs>
+      <!-- Rich Walnut & Mahogany Wood Gradients -->
+      <linearGradient id="walnutDark" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4e3322" />
+        <stop offset="50%" stop-color="#3b2518" />
+        <stop offset="100%" stop-color="#26170e" />
+      </linearGradient>
+
+      <linearGradient id="walnutSurface" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#5c3c28" />
+        <stop offset="35%" stop-color="#7c5338" />
+        <stop offset="65%" stop-color="#6e4830" />
+        <stop offset="100%" stop-color="#4d3220" />
+      </linearGradient>
+
+      <linearGradient id="mahoganyPanel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#63412c" />
+        <stop offset="100%" stop-color="#3d2618" />
+      </linearGradient>
+
+      <!-- Polished & Aged Brass Hardware Gradient -->
+      <linearGradient id="brassGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#b8842f" />
+        <stop offset="35%" stop-color="#f7dca4" />
+        <stop offset="55%" stop-color="#d9a648" />
+        <stop offset="80%" stop-color="#f2cc8f" />
+        <stop offset="100%" stop-color="#8f631c" />
+      </linearGradient>
+
+      <linearGradient id="brassPlaqueFace" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#d4a149" />
+        <stop offset="25%" stop-color="#f5dba3" />
+        <stop offset="50%" stop-color="#e3b660" />
+        <stop offset="75%" stop-color="#f7e2b5" />
+        <stop offset="100%" stop-color="#c28e38" />
+      </linearGradient>
+
+      <!-- Emeralite Cased Green Glass Shade -->
+      <linearGradient id="emeraliteShade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a8d5be" />
+        <stop offset="48%" stop-color="#81b29a" />
+        <stop offset="100%" stop-color="#3f6e57" />
+      </linearGradient>
+
+      <!-- Tufted Leather Study Chair Gradient -->
+      <linearGradient id="tuftedLeather" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7c3629" />
+        <stop offset="55%" stop-color="#57231a" />
+        <stop offset="100%" stop-color="#38150f" />
+      </linearGradient>
+
+      <!-- Daylight Volumetric Cathedral Sunbeams -->
+      <linearGradient id="windowSunbeam" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f7e1b5" stop-opacity="0.52" />
+        <stop offset="45%" stop-color="#f2cc8f" stop-opacity="0.24" />
+        <stop offset="100%" stop-color="#f2cc8f" stop-opacity="0" />
+      </linearGradient>
+
+      <!-- Nocturnal Banker's Lamp Volumetric Light Cone -->
+      <radialGradient id="deskLampGlow" cx="38%" cy="22%" r="68%">
+        <stop offset="0%" stop-color="#fae3b4" stop-opacity="0.88" />
+        <stop offset="32%" stop-color="#f2cc8f" stop-opacity="0.45" />
+        <stop offset="68%" stop-color="#e07a5f" stop-opacity="0.14" />
+        <stop offset="100%" stop-color="#181924" stop-opacity="0" />
+      </radialGradient>
+
+      <!-- Brass Picture Sconce Warm Wash -->
+      <radialGradient id="sconceGlow" cx="50%" cy="10%" r="80%">
+        <stop offset="0%" stop-color="#f7dfa8" stop-opacity="0.78" />
+        <stop offset="48%" stop-color="#f2cc8f" stop-opacity="0.28" />
+        <stop offset="100%" stop-color="#f2cc8f" stop-opacity="0" />
+      </radialGradient>
+
+      <!-- Room Vignette for Cozy Study Depth -->
+      <radialGradient id="roomVignette" cx="50%" cy="48%" r="65%">
+        <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+        <stop offset="100%" stop-color="#0d0907" stop-opacity="0.42" />
+      </radialGradient>
+    </defs>
+
+    <!-- ==================== 1. STUDY ROOM BACK WALL & WAINSCOTING ==================== -->
+    <rect
+      x="0"
+      y="0"
+      width="1200"
+      height="408"
+      class="room-wall-bg"
+    />
+
+    <!-- Subtle Heritage Boiserie Wall Molding Panels -->
+    <g class="wall-boiserie" opacity="0.32">
+      <rect x="30" y="24" width="235" height="250" rx="2" stroke="var(--border-strong)" stroke-width="1.5" />
+      <rect x="285" y="24" width="260" height="250" rx="2" stroke="var(--border-strong)" stroke-width="1.5" />
+      <rect x="565" y="24" width="605" height="250" rx="2" stroke="var(--border-strong)" stroke-width="1.5" />
+    </g>
+
+    <!-- Upper Crown Molding Cornice -->
+    <rect x="0" y="0" width="1200" height="14" fill="url(#walnutDark)" />
+    <line x1="0" y1="14" x2="1200" y2="14" stroke="#c49240" stroke-width="1.2" opacity="0.55" />
+
+    <!-- Lower Carved Walnut Wainscoting (y: 286 -> 408) -->
+    <rect x="0" y="286" width="1200" height="122" fill="var(--room-wainscot)" />
+    <rect x="0" y="282" width="1200" height="7" fill="url(#walnutSurface)" stroke="#241710" stroke-width="1" />
+    <!-- Recessed Wainscot Wood Panels -->
+    <g fill="var(--room-wainscot-panel)" stroke="#63412c" stroke-width="1.2">
+      <rect x="28" y="302" width="130" height="84" rx="2" />
+      <rect x="178" y="302" width="130" height="84" rx="2" />
+      <rect x="328" y="302" width="130" height="84" rx="2" />
+      <rect x="478" y="302" width="130" height="84" rx="2" />
+      <rect x="628" y="302" width="130" height="84" rx="2" />
+      <rect x="778" y="302" width="130" height="84" rx="2" />
+      <rect x="928" y="302" width="130" height="84" rx="2" />
+      <rect x="1078" y="302" width="94" height="84" rx="2" />
+    </g>
+    <!-- Baseboard Molding -->
+    <rect x="0" y="396" width="1200" height="14" fill="#241710" />
+
+    <!-- ==================== 2. WOODEN FLOORS & ARTISTIC PERSIAN CARPET ==================== -->
+    <!-- Hardwood Floor Background -->
+    <rect x="0" y="408" width="1200" height="192" class="room-floor-bg" />
+
+    <!-- Perspective Wooden Floor Planks & Grain Lines -->
+    <g stroke="#241710" stroke-width="1.2" opacity="0.45">
+      <line x1="0" y1="432" x2="1200" y2="432" />
+      <line x1="0" y1="460" x2="1200" y2="460" />
+      <line x1="0" y1="494" x2="1200" y2="494" />
+      <line x1="0" y1="536" x2="1200" y2="536" />
+      <line x1="0" y1="584" x2="1200" y2="584" />
+      <!-- Perspective Plank Joints -->
+      <line x1="180" y1="408" x2="60" y2="600" />
+      <line x1="360" y1="408" x2="270" y2="600" />
+      <line x1="540" y1="408" x2="500" y2="600" />
+      <line x1="680" y1="408" x2="720" y2="600" />
+      <line x1="860" y1="408" x2="950" y2="600" />
+      <line x1="1040" y1="408" x2="1160" y2="600" />
+    </g>
+
+    <!-- ARTISTIC WOVEN PERSIAN / KILIM STUDY CARPET (In Perspective) -->
+    <g class="artistic-study-carpet">
+      <!-- Carpet Drop Shadow on Wooden Floor -->
+      <polygon
+        points="148,456 1052,456 1138,592 62,592"
+        fill="#140c07"
+        opacity="0.45"
+      />
+      <!-- Carpet Fringe Tassels (Left & Right) -->
+      <path
+        d="M144,458 L130,458 M136,472 L120,472 M126,486 L110,486 M116,502 L98,502 M104,518 L86,518 M94,534 L74,534 M82,552 L62,552 M72,570 L50,570 M64,586 L42,586"
+        stroke="#f4f1de"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        opacity="0.8"
+      />
+      <path
+        d="M1056,458 L1070,458 M1064,472 L1080,472 M1074,486 L1090,486 M1084,502 L1102,502 M1096,518 L1114,518 M1106,534 L1126,534 M1118,552 L1138,552 M1128,570 L1150,570 M1136,586 L1158,586"
+        stroke="#f4f1de"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        opacity="0.8"
+      />
+
+      <!-- Outer Crimson / Burnt Peach Woven Field -->
+      <polygon
+        points="146,452 1054,452 1134,588 66,588"
+        fill="#b85035"
+        stroke="#f2cc8f"
+        stroke-width="2.2"
+      />
+      <!-- Guard Border in Twilight Indigo -->
+      <polygon
+        points="168,462 1032,462 1102,578 98,578"
+        fill="#3d405b"
+        stroke="#f2cc8f"
+        stroke-width="1.6"
+      />
+      <!-- Inner Muted Teal & Terracotta Sanctuary Field -->
+      <polygon
+        points="196,472 1004,472 1064,568 136,568"
+        fill="#e07a5f"
+        stroke="#81b29a"
+        stroke-width="2"
+      />
+      <!-- Corner Geometric Spandrels -->
+      <polygon points="196,472 285,472 165,568 136,568" fill="#81b29a" opacity="0.85" />
+      <polygon points="1004,472 915,472 1035,568 1064,568" fill="#81b29a" opacity="0.85" />
+
+      <!-- Central Persian Medallion & Geometric Kilim Motifs -->
+      <polygon
+        points="600,478 755,520 600,562 445,520"
+        fill="#3d405b"
+        stroke="#f2cc8f"
+        stroke-width="2.2"
+      />
+      <polygon
+        points="600,490 700,520 600,550 500,520"
+        fill="#81b29a"
+        stroke="#faf8ef"
+        stroke-width="1.5"
+      />
+      <polygon
+        points="600,502 648,520 600,538 552,520"
+        fill="#f2cc8f"
+        stroke="#3d405b"
+        stroke-width="1.4"
+      />
+      <!-- Side Geometric Diamond Motifs on Carpet -->
+      <polygon points="345,504 390,520 345,536 300,520" fill="#f2cc8f" stroke="#3d405b" stroke-width="1.3" />
+      <polygon points="855,504 900,520 855,536 810,520" fill="#f2cc8f" stroke="#3d405b" stroke-width="1.3" />
+    </g>
+
+    <!-- ==================== 3. TALL ARCHED STUDY WINDOW (LEFT WALL) ==================== -->
+    <g class="study-window">
+      <!-- Outer Carved Walnut Window Frame -->
+      <path
+        d="M52 282 V112 C52 54, 244 54, 244 112 V282 Z"
+        fill="#241710"
+        stroke="url(#brassGold)"
+        stroke-width="2"
+      />
+      <!-- Window Sky Canvas (Daylight vs. Nighttime) -->
+      <path
+        d="M64 274 V114 C64 66, 232 66, 232 114 V274 Z"
+        class="window-sky-fill"
+      />
+
+      <!-- DAYLIGHT SKY DETAILS: Golden Sun & Soft Clouds -->
+      <g class="daylight-window-scene">
+        <circle cx="122" cy="118" r="24" fill="#f2cc8f" opacity="0.92" />
+        <circle cx="122" cy="118" r="36" fill="#f2cc8f" opacity="0.28" />
+        <path
+          d="M82 175 C95 165, 118 165, 130 175 C144 168, 168 170, 178 182 H76 Z"
+          fill="#faf8ef"
+          opacity="0.7"
+        />
+        <!-- Distant Campus Spire / Tree Silhouette -->
+        <path
+          d="M64 274 L95 235 L118 258 L155 215 L188 252 L212 232 L232 274 Z"
+          fill="#81b29a"
+          opacity="0.38"
+        />
+      </g>
+
+      <!-- NOCTURNAL SKY DETAILS: Crescent Moon & Twinkling Stars -->
+      <g class="nocturnal-window-scene">
+        <!-- Glowing Crescent Moon -->
+        <path
+          d="M132 96 A20 20 0 1 0 154 126 A16 16 0 1 1 132 96 Z"
+          fill="#f2cc8f"
+        />
+        <!-- Animated Twinkling Stars -->
+        <circle class="star s1" cx="92" cy="108" r="1.8" fill="#faf8ef" />
+        <circle class="star s2" cx="188" cy="98" r="2.1" fill="#f2cc8f" />
+        <circle class="star s3" cx="204" cy="146" r="1.5" fill="#faf8ef" />
+        <circle class="star s4" cx="88" cy="168" r="1.7" fill="#81b29a" />
+        <circle class="star s5" cx="152" cy="162" r="1.9" fill="#faf8ef" />
+        <circle class="star s6" cx="115" cy="208" r="1.4" fill="#f2cc8f" />
+        <circle class="star s7" cx="192" cy="212" r="1.8" fill="#faf8ef" />
+        <!-- Distant Night Silhouette -->
+        <path
+          d="M64 274 L95 238 L118 258 L155 218 L188 252 L212 235 L232 274 Z"
+          fill="#111320"
+          opacity="0.85"
+        />
+      </g>
+
+      <!-- Wooden Window Mullions (Arched Lattice) -->
+      <line x1="148" y1="68" x2="148" y2="274" stroke="#3b2518" stroke-width="5" />
+      <line x1="64" y1="148" x2="232" y2="148" stroke="#3b2518" stroke-width="5" />
+      <line x1="64" y1="212" x2="232" y2="212" stroke="#3b2518" stroke-width="5" />
+      <rect x="44" y="274" width="208" height="12" rx="2" fill="url(#walnutSurface)" stroke="#241710" stroke-width="1.2" />
+    </g>
+
+    <!-- ==================== 4. BUILT-IN WALL BOOKSHELF (CENTER-LEFT WALL) ==================== -->
+    <g class="wall-bookshelf">
+      <!-- Recessed Mahogany Bookcase Frame -->
+      <rect
+        x="294"
+        y="46"
+        width="232"
+        height="228"
+        rx="3"
+        fill="#26170e"
+        stroke="url(#walnutSurface)"
+        stroke-width="6"
+      />
+      <!-- Shelf Boards -->
+      <rect x="294" y="124" width="232" height="8" fill="url(#walnutSurface)" />
+      <rect x="294" y="198" width="232" height="8" fill="url(#walnutSurface)" />
+      <rect x="286" y="270" width="248" height="10" rx="2" fill="url(#walnutSurface)" />
+
+      <!-- Top Shelf: Brass Terrestrial Globe, Hourglass & Volumes -->
+      <!-- Brass Globe -->
+      <circle cx="336" cy="92" r="18" fill="#81b29a" stroke="#3d405b" stroke-width="1.4" />
+      <path d="M322 78 A22 22 0 0 1 350 108" stroke="url(#brassGold)" stroke-width="2.5" fill="none" />
+      <line x1="336" y1="112" x2="336" y2="124" stroke="url(#brassGold)" stroke-width="3" />
+      <rect x="324" y="120" width="24" height="4" fill="url(#brassGold)" />
+      <!-- Top Shelf Books -->
+      <rect x="372" y="68" width="18" height="56" rx="1.5" fill="#e07a5f" stroke="#241710" stroke-width="1" />
+      <rect x="391" y="62" width="22" height="62" rx="1.5" fill="#3d405b" stroke="#241710" stroke-width="1" />
+      <rect x="414" y="70" width="16" height="54" rx="1.5" fill="#f2cc8f" stroke="#241710" stroke-width="1" />
+      <rect x="431" y="64" width="20" height="60" rx="1.5" fill="#81b29a" stroke="#241710" stroke-width="1" />
+      <g transform="translate(462, 68) rotate(10)">
+        <rect x="0" y="0" width="18" height="56" rx="1.5" fill="#b85035" stroke="#241710" stroke-width="1" />
+      </g>
+
+      <!-- Middle Shelf: Bound Research Volumes (MARL, ADS-C, LLMs) -->
+      <rect x="308" y="140" width="22" height="58" rx="1.5" fill="#3d405b" stroke="#241710" stroke-width="1" />
+      <rect x="331" y="136" width="24" height="62" rx="1.5" fill="#e07a5f" stroke="#241710" stroke-width="1" />
+      <rect x="356" y="142" width="19" height="56" rx="1.5" fill="#81b29a" stroke="#241710" stroke-width="1" />
+      <rect x="376" y="138" width="25" height="60" rx="1.5" fill="#6e4830" stroke="#241710" stroke-width="1" />
+      <rect x="402" y="144" width="18" height="54" rx="1.5" fill="#f2cc8f" stroke="#241710" stroke-width="1" />
+      <rect x="421" y="136" width="22" height="62" rx="1.5" fill="#3d405b" stroke="#241710" stroke-width="1" />
+      <!-- Brass Hourglass on Middle Shelf -->
+      <polygon points="468,152 492,152 480,174 492,196 468,196 480,174" fill="#f2cc8f" opacity="0.75" stroke="url(#brassGold)" stroke-width="1.6" />
+
+      <!-- Bottom Shelf: Large Folio Ledgers & Teras/Keras Boxes -->
+      <rect x="310" y="212" width="26" height="58" rx="1.5" fill="#81b29a" stroke="#241710" stroke-width="1" />
+      <rect x="338" y="210" width="28" height="60" rx="1.5" fill="#e07a5f" stroke="#241710" stroke-width="1" />
+      <rect x="368" y="214" width="22" height="56" rx="1.5" fill="#3d405b" stroke="#241710" stroke-width="1" />
+      <!-- Horizontal Stacked Folios -->
+      <rect x="406" y="252" width="96" height="16" rx="2" fill="#e07a5f" stroke="#241710" stroke-width="1" />
+      <rect x="412" y="236" width="86" height="15" rx="2" fill="#f2cc8f" stroke="#241710" stroke-width="1" />
+      <rect x="418" y="221" width="76" height="14" rx="2" fill="#81b29a" stroke="#241710" stroke-width="1" />
+    </g>
+
+    <!-- ==================== 5. THREE INTERACTIVE FRAMED PORTRAITS ON STUDY WALL ==================== -->
+    <!-- PORTRAIT I: U.S. FULBRIGHT SCHOLAR CHARTER (x: 565 -> 740) -->
+    <g
+      class="wall-portrait-group"
+      data-room-hotspot="fulbright"
+      tabindex="0"
+      role="button"
+      aria-label="Inspect U.S. Fulbright Scholar wall portrait (4.0 GPA at RIT)"
+    >
+      <!-- Brass Picture Light Above Portrait I -->
+      <rect x="622" y="34" width="60" height="7" rx="3" fill="url(#brassGold)" stroke="#241710" stroke-width="1" />
+      <line x1="652" y1="41" x2="652" y2="54" stroke="url(#brassGold)" stroke-width="3" />
+      <!-- Warm Picture Light Cone -->
+      <polygon
+        class="portrait-light-cone"
+        points="622,41 555,255 750,255 682,41"
+        fill="url(#sconceGlow)"
+      />
+
+      <!-- Ornate Walnut & Gilt Portrait Frame -->
+      <rect
+        x="568"
+        y="54"
+        width="168"
+        height="196"
+        rx="4"
+        fill="url(#walnutDark)"
+        stroke="url(#brassGold)"
+        stroke-width="3"
+        class="portrait-frame-box"
+      />
+      <!-- Cream Museum Matting -->
+      <rect
+        x="580"
+        y="66"
+        width="144"
+        height="152"
+        rx="2"
+        fill="#faf8ef"
+        stroke="#c49240"
+        stroke-width="1.2"
+      />
+      <!-- Fulbright Globe & Torch Medallion Artwork -->
+      <circle cx="652" cy="118" r="28" fill="#e07a5f" opacity="0.16" />
+      <circle cx="652" cy="118" r="22" fill="none" stroke="#b85035" stroke-width="1.6" />
+      <ellipse cx="652" cy="118" rx="11" ry="22" fill="none" stroke="#b85035" stroke-width="1.2" />
+      <line x1="630" y1="118" x2="674" y2="118" stroke="#b85035" stroke-width="1.2" />
+      <line x1="652" y1="96" x2="652" y2="140" stroke="#b85035" stroke-width="1.2" />
+      <!-- Calligraphic Charter Title inside Portrait -->
+      <text
+        x="652"
+        y="162"
+        fill="#232536"
+        font-family="var(--font-mono)"
+        font-size="9.5"
+        font-weight="700"
+        letter-spacing="1.4"
+        text-anchor="middle"
+      >
+        U.S. FULBRIGHT
+      </text>
+      <text
+        x="652"
+        y="177"
+        fill="#b85035"
+        font-family="var(--font-display)"
+        font-size="11.5"
+        font-weight="600"
+        text-anchor="middle"
+      >
+        4.0 / 4.0 M.S. AI · RIT
+      </text>
+      <text
+        x="652"
+        y="194"
+        fill="#52556e"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        letter-spacing="0.8"
+        text-anchor="middle"
+      >
+        1ST RANK B.S. CS ’21
+      </text>
+      <!-- Wax Seal on Charter -->
+      <circle cx="702" cy="196" r="9" fill="#e07a5f" stroke="#f2cc8f" stroke-width="1.2" />
+      <!-- Brass Curator Plaque on Bottom Frame -->
+      <rect x="594" y="226" width="116" height="16" rx="2" fill="url(#brassPlaqueFace)" stroke="#241710" stroke-width="1" />
+      <text
+        x="652"
+        y="237"
+        fill="#241710"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        font-weight="700"
+        letter-spacing="0.9"
+        text-anchor="middle"
+      >
+        FULBRIGHT SCHOLAR
+      </text>
+    </g>
+
+    <!-- PORTRAIT II: AMAZON WEB SERVICES (AWS) AI/ML COMMENDATION (x: 766 -> 942) -->
+    <g
+      class="wall-portrait-group"
+      data-room-hotspot="aws"
+      tabindex="0"
+      role="button"
+      aria-label="Inspect Amazon Web Services AI/ML Intern wall portrait (Full-Time Return Offer)"
+    >
+      <!-- Brass Picture Light Above Portrait II -->
+      <rect x="824" y="34" width="60" height="7" rx="3" fill="url(#brassGold)" stroke="#241710" stroke-width="1" />
+      <line x1="854" y1="41" x2="854" y2="54" stroke="url(#brassGold)" stroke-width="3" />
+      <polygon
+        class="portrait-light-cone"
+        points="824,41 757,255 952,255 884,41"
+        fill="url(#sconceGlow)"
+      />
+
+      <!-- Ornate Walnut & Brass Portrait Frame -->
+      <rect
+        x="770"
+        y="54"
+        width="168"
+        height="196"
+        rx="4"
+        fill="url(#walnutDark)"
+        stroke="url(#brassGold)"
+        stroke-width="3"
+        class="portrait-frame-box"
+      />
+      <!-- Deep Indigo & Gold Museum Matting -->
+      <rect
+        x="782"
+        y="66"
+        width="144"
+        height="152"
+        rx="2"
+        fill="#2b2e44"
+        stroke="#f2cc8f"
+        stroke-width="1.2"
+      />
+      <!-- AWS Spark Cluster & Return Offer Star Emblem -->
+      <circle cx="854" cy="116" r="25" fill="rgba(242, 204, 143, 0.14)" stroke="#f2cc8f" stroke-width="1.5" />
+      <polygon
+        points="854,97 860,110 874,111 863,120 866,134 854,126 842,134 845,120 834,111 848,110"
+        fill="#f2cc8f"
+      />
+      <text
+        x="854"
+        y="161"
+        fill="#faf8ef"
+        font-family="var(--font-mono)"
+        font-size="9.5"
+        font-weight="700"
+        letter-spacing="1.4"
+        text-anchor="middle"
+      >
+        AWS AI/ML · SDE
+      </text>
+      <text
+        x="854"
+        y="177"
+        fill="#f2cc8f"
+        font-family="var(--font-display)"
+        font-size="11.5"
+        font-weight="600"
+        text-anchor="middle"
+      >
+        ★ Full-Time Return Offer
+      </text>
+      <text
+        x="854"
+        y="194"
+        fill="#81b29a"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        letter-spacing="0.8"
+        text-anchor="middle"
+      >
+        EAST PALO ALTO · SPARK
+      </text>
+      <!-- Brass Curator Plaque on Bottom Frame -->
+      <rect x="796" y="226" width="116" height="16" rx="2" fill="url(#brassPlaqueFace)" stroke="#241710" stroke-width="1" />
+      <text
+        x="854"
+        y="237"
+        fill="#241710"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        font-weight="700"
+        letter-spacing="0.9"
+        text-anchor="middle"
+      >
+        AWS AI/ML INTERN
+      </text>
+    </g>
+
+    <!-- PORTRAIT III: RIT KAS LAB & OPEN-SOURCE ML PORTRAIT (x: 968 -> 1144) -->
+    <g
+      class="wall-portrait-group"
+      data-room-hotspot="kaslab"
+      tabindex="0"
+      role="button"
+      aria-label="Inspect RIT KAS Lab Ph.D. research and Open-Source ML wall portrait"
+    >
+      <!-- Brass Picture Light Above Portrait III -->
+      <rect x="1026" y="34" width="60" height="7" rx="3" fill="url(#brassGold)" stroke="#241710" stroke-width="1" />
+      <line x1="1056" y1="41" x2="1056" y2="54" stroke="url(#brassGold)" stroke-width="3" />
+      <polygon
+        class="portrait-light-cone"
+        points="1026,41 959,255 1154,255 1086,41"
+        fill="url(#sconceGlow)"
+      />
+
+      <!-- Ornate Walnut & Brass Portrait Frame -->
+      <rect
+        x="972"
+        y="54"
+        width="168"
+        height="196"
+        rx="4"
+        fill="url(#walnutDark)"
+        stroke="url(#brassGold)"
+        stroke-width="3"
+        class="portrait-frame-box"
+      />
+      <!-- Sage / Blueprint Museum Matting -->
+      <rect
+        x="984"
+        y="66"
+        width="144"
+        height="152"
+        rx="2"
+        fill="#faf8ef"
+        stroke="#81b29a"
+        stroke-width="1.4"
+      />
+      <!-- Multi-Agent Network Constellation Emblem -->
+      <circle cx="1056" cy="116" r="24" fill="rgba(129, 178, 154, 0.2)" stroke="#3c6953" stroke-width="1.4" />
+      <line x1="1042" y1="108" x2="1070" y2="106" stroke="#3d405b" stroke-width="1.5" />
+      <line x1="1042" y1="108" x2="1056" y2="130" stroke="#3d405b" stroke-width="1.5" />
+      <line x1="1070" y1="106" x2="1056" y2="130" stroke="#3d405b" stroke-width="1.5" />
+      <circle cx="1042" cy="108" r="4.5" fill="#e07a5f" />
+      <circle cx="1070" cy="106" r="4.5" fill="#3d405b" />
+      <circle cx="1056" cy="130" r="4.5" fill="#81b29a" stroke="#232536" stroke-width="1" />
+      <text
+        x="1056"
+        y="161"
+        fill="#232536"
+        font-family="var(--font-mono)"
+        font-size="9.5"
+        font-weight="700"
+        letter-spacing="1.2"
+        text-anchor="middle"
+      >
+        KAS LAB · RIT PH.D.
+      </text>
+      <text
+        x="1056"
+        y="177"
+        fill="#3c6953"
+        font-family="var(--font-display)"
+        font-size="11.5"
+        font-weight="600"
+        text-anchor="middle"
+      >
+        MARL &amp; Antidistillation
+      </text>
+      <text
+        x="1056"
+        y="194"
+        fill="#52556e"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        letter-spacing="0.8"
+        text-anchor="middle"
+      >
+        TERAS · KERAS 3 · ADS-C
+      </text>
+      <!-- Brass Curator Plaque on Bottom Frame -->
+      <rect x="998" y="226" width="116" height="16" rx="2" fill="url(#brassPlaqueFace)" stroke="#241710" stroke-width="1" />
+      <text
+        x="1056"
+        y="237"
+        fill="#241710"
+        font-family="var(--font-mono)"
+        font-size="7.5"
+        font-weight="700"
+        letter-spacing="0.9"
+        text-anchor="middle"
+      >
+        KAS LAB · OPEN ML
+      </text>
+    </g>
+
+    <!-- ==================== 6. VOLUMETRIC DAYLIGHT SUNBEAMS (WINDOW -> DESK/FLOOR) ==================== -->
+    <g class="daylight-volumetric-rays" style="mix-blend-mode: soft-light;">
+      <polygon points="68,90 228,90 790,585 410,585" fill="url(#windowSunbeam)" />
+      <polygon points="68,165 228,165 620,585 260,585" fill="url(#windowSunbeam)" />
+    </g>
+
+    <!-- Floating Golden Dust Motes in Sunlight -->
+    <g class="daylight-dust-motes">
+      <circle class="mote m1" cx="210" cy="210" r="2.6" fill="#faf8ef" opacity="0.75" />
+      <circle class="mote m2" cx="295" cy="265" r="2.2" fill="#f2cc8f" opacity="0.7" />
+      <circle class="mote m3" cx="380" cy="310" r="3" fill="#faf8ef" opacity="0.65" />
+      <circle class="mote m4" cx="465" cy="275" r="2" fill="#f2cc8f" opacity="0.75" />
+      <circle class="mote m5" cx="535" cy="340" r="2.5" fill="#faf8ef" opacity="0.6" />
+      <circle class="mote m6" cx="335" cy="390" r="2.2" fill="#f2cc8f" opacity="0.7" />
+      <circle class="mote m7" cx="630" cy="420" r="2.8" fill="#faf8ef" opacity="0.55" />
+    </g>
+
+    <!-- ==================== 7. TUFTED LEATHER WINGBACK STUDY CHAIR ==================== -->
+    <g class="study-chair">
+      <!-- Carved Mahogany Top Crest Rail -->
+      <path
+        d="M518 258 C535 232, 665 232, 682 258 L674 374 H526 Z"
+        fill="url(#walnutDark)"
+        stroke="#241710"
+        stroke-width="2"
+      />
+      <!-- Tufted Oxblood/Cognac Leather Backrest -->
+      <path
+        d="M528 264 C544 242, 656 242, 672 264 L664 370 H536 Z"
+        fill="url(#tuftedLeather)"
+        stroke="#c49240"
+        stroke-width="1.2"
+      />
+      <!-- Diamond Leather Tufting Lines & Brass Buttons -->
+      <g stroke="#2b0e0a" stroke-width="1.2" opacity="0.7">
+        <line x1="555" y1="265" x2="645" y2="355" />
+        <line x1="645" y1="265" x2="555" y2="355" />
+        <line x1="540" y1="305" x2="660" y2="305" />
+      </g>
+      <circle cx="575" cy="285" r="2.5" fill="#f2cc8f" />
+      <circle cx="625" cy="285" r="2.5" fill="#f2cc8f" />
+      <circle cx="600" cy="305" r="2.5" fill="#f2cc8f" />
+      <circle cx="575" cy="328" r="2.5" fill="#f2cc8f" />
+      <circle cx="625" cy="328" r="2.5" fill="#f2cc8f" />
+      <!-- Curved Scroll Armrests (peeking at desk level) -->
+      <rect x="504" y="344" width="28" height="24" rx="10" fill="url(#tuftedLeather)" stroke="#241710" stroke-width="1.5" />
+      <rect x="668" y="344" width="28" height="24" rx="10" fill="url(#tuftedLeather)" stroke="#241710" stroke-width="1.5" />
+      <!-- Lower Chair Pedestal & Casters Under Desk Kneehole -->
+      <rect x="592" y="458" width="16" height="58" fill="#26170e" />
+      <path d="M548 526 L600 508 L652 526" stroke="#3b2518" stroke-width="8" stroke-linecap="round" fill="none" />
+      <circle cx="548" cy="531" r="5" fill="url(#brassGold)" />
+      <circle cx="652" cy="531" r="5" fill="url(#brassGold)" />
+    </g>
+
+    <!-- ==================== 8. CARVED WALNUT EXECUTIVE STUDY DESK (TABLE) ==================== -->
+    <g class="executive-study-desk">
+      <!-- Floor Shadow Under Desk -->
+      <ellipse cx="600" cy="552" rx="390" ry="18" fill="#0f0906" opacity="0.55" />
+
+      <!-- Left & Right Carved Walnut Pedestal Cabinets -->
+      <rect
+        x="248"
+        y="386"
+        width="196"
+        height="156"
+        rx="2"
+        fill="url(#walnutDark)"
+        stroke="#1c110a"
+        stroke-width="2"
+      />
+      <rect
+        x="756"
+        y="386"
+        width="196"
+        height="156"
+        rx="2"
+        fill="url(#walnutDark)"
+        stroke="#1c110a"
+        stroke-width="2"
+      />
+      <!-- Center Kneehole Modesty Panel & Drawer Apron -->
+      <rect
+        x="444"
+        y="386"
+        width="312"
+        height="48"
+        fill="url(#mahoganyPanel)"
+        stroke="#1c110a"
+        stroke-width="1.8"
+      />
+      <!-- Center Drawer Face & Brass Keyhole Escutcheon -->
+      <rect x="462" y="395" width="276" height="30" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <circle cx="600" cy="410" r="5" fill="url(#brassGold)" />
+      <path d="M582 410 C586 418, 614 418, 618 410" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+
+      <!-- Left Pedestal Drawers & Brass Bail Handles -->
+      <rect x="264" y="396" width="164" height="40" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M332 414 C336 422, 356 422, 360 414" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+      <rect x="264" y="444" width="164" height="40" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M332 462 C336 470, 356 470, 360 462" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+      <rect x="264" y="492" width="164" height="38" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M332 510 C336 518, 356 518, 360 510" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+
+      <!-- Right Pedestal Drawers & Brass Bail Handles -->
+      <rect x="772" y="396" width="164" height="40" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M840 414 C844 422, 864 422, 868 414" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+      <rect x="772" y="444" width="164" height="40" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M840 462 C844 470, 864 470, 868 462" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+      <rect x="772" y="492" width="164" height="38" rx="2" fill="#4a3020" stroke="#7c5338" stroke-width="1.2" />
+      <path d="M840 510 C844 518, 864 518, 868 510" stroke="url(#brassGold)" stroke-width="2.2" fill="none" />
+
+      <!-- Carved Brass-Tipped Desk Feet -->
+      <rect x="254" y="542" width="26" height="12" rx="2" fill="url(#brassGold)" />
+      <rect x="412" y="542" width="26" height="12" rx="2" fill="url(#brassGold)" />
+      <rect x="762" y="542" width="26" height="12" rx="2" fill="url(#brassGold)" />
+      <rect x="920" y="542" width="26" height="12" rx="2" fill="url(#brassGold)" />
+
+      <!-- Perspective Beveled Mahogany Desk Top Surface -->
+      <polygon
+        points="265,346 935,346 978,376 222,376"
+        fill="url(#walnutSurface)"
+        stroke="#241710"
+        stroke-width="1.6"
+      />
+      <!-- Green Baize Leather Writing Inlay on Desk Top -->
+      <polygon
+        points="310,351 890,351 922,372 278,372"
+        fill="#355847"
+        stroke="#c49240"
         stroke-width="1"
       />
-    ))
-  }
-</svg>
+      <!-- Front Beveled Walnut Desk Edge -->
+      <rect
+        x="220"
+        y="374"
+        width="760"
+        height="14"
+        rx="3"
+        fill="url(#walnutSurface)"
+        stroke="#1c110a"
+        stroke-width="1.8"
+      />
+    </g>
+
+    <!-- ==================== 9. DESK ITEMS: OPEN FOLIO, FOUNTAIN PEN, TEACUP & VOLUMES ==================== -->
+    <!-- Left Desk Stack of Clothbound Monographs -->
+    <g class="desk-books">
+      <rect x="430" y="346" width="86" height="14" rx="2" fill="#e07a5f" stroke="#241710" stroke-width="1.2" />
+      <rect x="436" y="333" width="76" height="13" rx="2" fill="#3d405b" stroke="#241710" stroke-width="1.2" />
+      <rect x="442" y="321" width="66" height="12" rx="2" fill="#81b29a" stroke="#241710" stroke-width="1.2" />
+    </g>
+
+    <!-- Center Desk Open Scholar's Ledger & Brass Inkwell + Fountain Pen -->
+    <g class="desk-open-ledger">
+      <polygon
+        points="535,342 630,342 642,368 523,368"
+        fill="#faf8ef"
+        stroke="#3d405b"
+        stroke-width="1.3"
+      />
+      <line x1="582" y1="342" x2="582" y2="368" stroke="#c49240" stroke-width="1.2" />
+      <!-- Brass Inkwell & Gold-Nib Fountain Pen -->
+      <rect x="648" y="345" width="16" height="16" rx="2" fill="url(#brassGold)" stroke="#241710" stroke-width="1.1" />
+      <line x1="656" y1="345" x2="676" y2="318" stroke="#e07a5f" stroke-width="3" stroke-linecap="round" />
+      <line x1="656" y1="345" x2="661" y2="338" stroke="#f2cc8f" stroke-width="2" />
+    </g>
+
+    <!-- Steaming Porcelain Study Cup on Saucer (with Animated Rising Steam!) -->
+    <g class="desk-teacup">
+      <ellipse cx="404" cy="364" rx="14" ry="4" fill="#faf8ef" stroke="#3d405b" stroke-width="1" />
+      <path d="M394 350 H414 L411 363 H397 Z" fill="#faf8ef" stroke="#3d405b" stroke-width="1.1" />
+      <path d="M414 353 C419 353, 419 360, 412 360" stroke="#3d405b" stroke-width="1.2" fill="none" />
+      <!-- Animated Steam Wisps -->
+      <path class="steam-wisp w1" d="M400 346 C397 338, 404 332, 400 324" stroke="#faf8ef" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+      <path class="steam-wisp w2" d="M407 344 C410 336, 403 330, 407 321" stroke="#faf8ef" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+    </g>
+
+    <!-- ==================== 10. ENGRAVED WALNUT & BRASS DESK NAMEPLATE ==================== -->
+    <g
+      class="desk-nameplate-group"
+      data-room-hotspot="identity"
+      tabindex="0"
+      role="button"
+      aria-label="Engraved Desk Nameplate: Khawaja Abaid Ullah, Ph.D. Researcher at RIT KAS Lab"
+    >
+      <!-- Sculpted Walnut Wedge Base -->
+      <polygon
+        points="688,370 936,370 924,316 700,316"
+        fill="url(#walnutDark)"
+        stroke="#1c110a"
+        stroke-width="1.8"
+      />
+      <!-- Brushed Brass Engraved Faceplate -->
+      <rect
+        x="702"
+        y="321"
+        width="220"
+        height="43"
+        rx="2.5"
+        fill="url(#brassPlaqueFace)"
+        stroke="#3b2518"
+        stroke-width="1.4"
+        class="nameplate-brass-rect"
+      />
+      <!-- Corner Brass Rivets -->
+      <circle cx="709" cy="328" r="1.8" fill="#5c3c28" />
+      <circle cx="915" cy="328" r="1.8" fill="#5c3c28" />
+      <circle cx="709" cy="357" r="1.8" fill="#5c3c28" />
+      <circle cx="915" cy="357" r="1.8" fill="#5c3c28" />
+
+      <!-- Engraved Name & Title on the Desk Nameplate -->
+      <text
+        x="812"
+        y="342"
+        fill="#1e140c"
+        font-family="var(--font-display)"
+        font-size="16"
+        font-weight="700"
+        letter-spacing="0.6"
+        text-anchor="middle"
+      >
+        KHAWAJA ABAID ULLAH
+      </text>
+      <text
+        x="812"
+        y="357"
+        fill="#4a3020"
+        font-family="var(--font-mono)"
+        font-size="7.8"
+        font-weight="700"
+        letter-spacing="1.2"
+        text-anchor="middle"
+      >
+        PH.D. GRA · RIT KAS LAB
+      </text>
+    </g>
+
+    <!-- ==================== 11. ICONIC EMERALITE BANKER'S DESK LAMP & VOLUMETRIC CONE ==================== -->
+    <!-- Nocturnal Volumetric Illumination Cone Cast Across the Desk & Nameplate -->
+    <g class="nocturnal-lamp-cone">
+      <polygon
+        points="312,248 165,575 945,575 384,248"
+        fill="url(#deskLampGlow)"
+      />
+      <ellipse
+        cx="348"
+        cy="250"
+        rx="44"
+        ry="11"
+        fill="#fae3b4"
+        opacity="0.9"
+      />
+    </g>
+
+    <!-- Interactive Banker's Lamp Structure -->
+    <g class="bankers-desk-lamp">
+      <!-- Curved Brass Gooseneck Stem -->
+      <path
+        d="M348 248 C328 282, 332 322, 348 352"
+        stroke="url(#brassGold)"
+        stroke-width="7.5"
+        stroke-linecap="round"
+        fill="none"
+      />
+      <!-- Stepped Heavy Brass Base on Desk -->
+      <rect
+        x="324"
+        y="350"
+        width="48"
+        height="10"
+        rx="2"
+        fill="url(#brassGold)"
+        stroke="#241710"
+        stroke-width="1.3"
+      />
+      <rect
+        x="308"
+        y="360"
+        width="80"
+        height="12"
+        rx="3"
+        fill="url(#brassGold)"
+        stroke="#241710"
+        stroke-width="1.4"
+      />
+
+      <!-- Swinging Beaded Brass Pull-Chain -->
+      <g class="lamp-pull-chain">
+        <line
+          x1="376"
+          y1="250"
+          x2="376"
+          y2="314"
+          stroke="#f2cc8f"
+          stroke-width="2.4"
+          stroke-dasharray="2.5 3.5"
+          stroke-linecap="round"
+        />
+        <!-- Acorn Brass Pull Finial -->
+        <path
+          d="M370 314 C370 309, 382 309, 382 314 L380 327 C379 331, 373 331, 372 327 Z"
+          fill="url(#brassGold)"
+          stroke="#241710"
+          stroke-width="1.3"
+        />
+      </g>
+
+      <!-- Emeralite Cased Green Glass Shade (#81b29a) -->
+      <path
+        d="M288 250 C294 208, 312 198, 348 198 C384 198, 402 208, 408 250 Z"
+        fill="url(#emeraliteShade)"
+        stroke="#241710"
+        stroke-width="1.8"
+      />
+      <!-- Glass Shade Specular Highlight & Brass Rim -->
+      <path
+        d="M306 210 C324 204, 372 204, 390 210"
+        stroke="#faf8ef"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        opacity="0.6"
+      />
+      <line
+        x1="286"
+        y1="250"
+        x2="410"
+        y2="250"
+        stroke="url(#brassGold)"
+        stroke-width="3.2"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Subtle Cozy Study Room Vignette -->
+    <rect
+      x="0"
+      y="0"
+      width="1200"
+      height="600"
+      fill="url(#roomVignette)"
+      pointer-events="none"
+    />
+  </svg>
+
+  <!-- Interactive Pull-Chain Button Overlaid Directly on the Banker's Lamp -->
+  <button
+    type="button"
+    class="room-lamp-trigger"
+    data-lamp-toggle
+    aria-label="Pull Banker's Lamp chain to toggle Daylight and After-Hours Lamplight"
+  >
+    <span class="lamp-pulse-dot" aria-hidden="true"></span>
+    <span class="lamp-trigger-text">Pull Lamp Chain</span>
+  </button>
+</div>
+
 <style>
-  .network {
+  .study-room-stage {
+    position: relative;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    border: 2px solid var(--wood-mid);
+    border-bottom: 0;
+    background: var(--room-wall-top);
+    box-shadow:
+      0 18px 44px -12px rgba(24, 15, 10, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    isolation: isolate;
+  }
+
+  .study-room-svg {
     display: block;
     width: 100%;
+    height: auto;
   }
-  .accent-path {
-    animation: breathe 12s ease-in-out infinite;
+
+  /* Wall & Floor Dynamic Lighting Surfaces */
+  .room-wall-bg {
+    fill: var(--room-wall-top);
+    transition: fill 480ms ease;
   }
-  @keyframes breathe {
-    0%,
-    100% {
-      opacity: 0.6;
+
+  .room-floor-bg {
+    fill: var(--room-floor-1);
+    transition: fill 480ms ease;
+  }
+
+  /* Window Sky Day/Night Transition */
+  .window-sky-fill {
+    fill: #d8e8e4;
+    transition: fill 480ms ease;
+  }
+
+  :root[data-theme="dark"] .window-sky-fill,
+  :root:has(> head > meta[name="color-scheme"][content="dark"])
+    .window-sky-fill {
+    fill: #131629;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not(
+        :has(> head > meta[name="color-scheme"][content="light"])
+      )
+      .window-sky-fill {
+      fill: #131629;
+    }
+  }
+
+  .daylight-window-scene,
+  .daylight-volumetric-rays,
+  .daylight-dust-motes {
+    opacity: var(--sunbeam-opacity);
+    transition: opacity 480ms ease;
+    pointer-events: none;
+  }
+
+  .nocturnal-window-scene {
+    opacity: calc(1 - var(--sunbeam-opacity));
+    transition: opacity 480ms ease;
+    pointer-events: none;
+  }
+
+  .nocturnal-lamp-cone {
+    opacity: var(--lamp-cone-opacity);
+    transition: opacity 480ms ease;
+    pointer-events: none;
+  }
+
+  /* Picture Sconce Cones Over the 3 Framed Portraits */
+  .portrait-light-cone {
+    opacity: calc(0.22 + 0.65 * var(--lamp-cone-opacity));
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  /* Interactive Framed Wall Portraits & Desk Nameplate Hotspots */
+  .wall-portrait-group,
+  .desk-nameplate-group {
+    cursor: pointer;
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 280ms ease;
+  }
+
+  .wall-portrait-group:hover,
+  .wall-portrait-group:focus-visible,
+  .wall-portrait-group.active-hotspot {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 8px 18px rgba(242, 204, 143, 0.42));
+    outline: none;
+  }
+
+  .wall-portrait-group:hover .portrait-light-cone,
+  .wall-portrait-group.active-hotspot .portrait-light-cone {
+    opacity: 1;
+  }
+
+  .desk-nameplate-group:hover,
+  .desk-nameplate-group:focus-visible,
+  .desk-nameplate-group.active-hotspot {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 6px 16px rgba(242, 204, 143, 0.5));
+    outline: none;
+  }
+
+  /* Floating Dust Motes Animation in Sunbeams */
+  .mote {
+    animation: driftMote 9s ease-in-out infinite alternate;
+  }
+  .m2 {
+    animation-duration: 11s;
+    animation-delay: -2s;
+  }
+  .m3 {
+    animation-duration: 8s;
+    animation-delay: -4s;
+  }
+  .m4 {
+    animation-duration: 12s;
+    animation-delay: -1s;
+  }
+  .m5 {
+    animation-duration: 10s;
+    animation-delay: -5s;
+  }
+  .m6 {
+    animation-duration: 9.5s;
+    animation-delay: -3s;
+  }
+  .m7 {
+    animation-duration: 11.5s;
+    animation-delay: -6s;
+  }
+
+  @keyframes driftMote {
+    0% {
+      transform: translate(0, 0);
     }
     50% {
+      transform: translate(8px, -10px);
+    }
+    100% {
+      transform: translate(-6px, 6px);
+    }
+  }
+
+  /* Twinkling Night Stars in Window */
+  .star {
+    animation: twinkleStar 4s ease-in-out infinite alternate;
+  }
+  .s2,
+  .s5 {
+    animation-duration: 5.5s;
+    animation-delay: -1.5s;
+  }
+  .s3,
+  .s6 {
+    animation-duration: 3.5s;
+    animation-delay: -2.8s;
+  }
+
+  @keyframes twinkleStar {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.85);
+    }
+    100% {
       opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+
+  /* Rising Steam from Teacup on Desk */
+  .steam-wisp {
+    animation: riseSteam 5s ease-in-out infinite;
+  }
+  .w2 {
+    animation-delay: -2.5s;
+  }
+
+  @keyframes riseSteam {
+    0% {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    50% {
+      opacity: 0.65;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Lamp Pull-Chain Spring Animation */
+  .lamp-pull-chain {
+    transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .study-room-stage:hover .lamp-pull-chain {
+    transform: translateY(3px);
+  }
+
+  .study-room-stage.lamp-switching .lamp-pull-chain {
+    animation: roomChainBounce 460ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes roomChainBounce {
+    0% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(12px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  /* Interactive Lamp Trigger Pill Positioned by the Banker's Lamp */
+  .room-lamp-trigger {
+    position: absolute;
+    left: 29%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.36rem 0.78rem;
+    background: rgba(36, 23, 16, 0.9);
+    color: #faf8ef;
+    border: 1.5px solid var(--brass);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .room-lamp-trigger:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    background: var(--accent-strong);
+    border-color: #faf8ef;
+    color: #faf8ef;
+  }
+
+  .lamp-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brass-light);
+    box-shadow: 0 0 8px var(--brass-light);
+  }
+
+  @media (max-width: 720px) {
+    .room-lamp-trigger {
+      left: 26%;
+      top: 48%;
+      padding: 0.28rem 0.58rem;
+      font-size: 0.56rem;
     }
   }
 </style>

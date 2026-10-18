@@ -1,105 +1,194 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import CareerLedger from "../components/CareerLedger.astro";
 import { profile } from "../data/profile";
 ---
 
 <BaseLayout
-  title="About"
-  description="Khawaja Abaid Ullah is a PhD student in Electrical and Computer Engineering at RIT, a Fulbright Scholar, and a former AWS AI/ML engineering intern."
+  title="Dossier & CV"
+  description="Complete academic, research, and industry dossier of Khawaja Abaid Ullah: PhD Researcher at RIT KAS Lab, U.S. Fulbright Scholar (4.0 GPA), former AWS AI/ML SDE Intern, Creator of Teras, and Keras 3 contributor."
 >
   <header class="page-intro">
-    <p class="eyebrow">ABOUT / KHAWAJA</p><h1>
-      A researcher.<br />An engineer.<br />Always a student.
-    </h1><p>
-      I am a PhD student in Electrical and Computer Engineering at Rochester
-      Institute of Technology. I work as a Graduate Research Assistant in the
-      Khojasteh Autonomous Systems Laboratory under the supervision of
-      {profile.advisor}.
+    <p class="eyebrow">THE STUDY WALL &amp; DESK REGISTER // CURRICULUM VITAE</p>
+    <h1>Khawaja Abaid Ullah — Research &amp; Engineering Record</h1>
+    <p>
+      Ph.D. researcher in Electrical &amp; Computer Engineering at RIT’s
+      Khojasteh Autonomous Systems Laboratory (KAS Lab), U.S. Department of
+      State Fulbright Scholar (4.0/4.0 GPA), former AWS AI/ML Software
+      Development Engineer Intern in East Palo Alto, creator of Teras, and
+      official contributor to Keras 3.
     </p>
   </header>
-  <section class="section bio-grid" aria-labelledby="bio-title">
-    <div>
-      <p class="eyebrow">RESEARCH INTERESTS</p><h2 id="bio-title">
-        Protecting models. Coordinating robots.
-      </h2>
-    </div><div>
-      <p>
-        My research spans machine learning security and autonomous systems.
-        In machine learning security, I work on anti-distillation defenses that
-        protect deployed models against extraction attacks.
-      </p><p>
-        My work in autonomous systems is driven by the goal of developing
-        highly coordinated multi-agent robots for search-and-rescue in
-        disaster-struck regions.
-      </p><p>
-        I received my M.S. in Artificial Intelligence from RIT in 2026 as a
-        Fulbright Scholar. During my master's, I worked as a Software Development
-        Engineer Intern for AI/ML at Amazon Web Services in Palo Alto in summer
-        2025.
-      </p><div class="links">
-        <a href="/research/">Explore my research →</a><a
-          href={profile.links.rit}>RIT / KAS Lab profile ↗</a>
-      </div>
-    </div>
-  </section>
-  <section class="section" aria-label="Education">
-    <SectionHeader title="Education" />
-    <div class="experience-row">
-      <time>2026 — present</time><div>
-        <h3>PhD · Electrical &amp; Computer Engineering</h3><p>
-          Rochester Institute of Technology · KAS Lab
-        </p>
-      </div>
-    </div>
-    <div class="experience-row">
-      <time>2024 — 2026</time><div>
-        <h3>M.S. · Artificial Intelligence</h3><p>
-          Rochester Institute of Technology · Fulbright Scholar · 4.0 GPA
-        </p><div class="links">
-          <a href="https://repository.rit.edu/theses/12584/"
-            >Master’s thesis ↗</a>
+
+  <!-- FRAMED STUDY WALL PORTRAITS: FULBRIGHT & AWS -->
+  <section class="section" aria-label="Framed Study Wall Portraits">
+    <SectionHeader
+      eyebrow="FRAMED STUDY WALL PORTRAITS // FLAGSHIP APPOINTMENTS"
+      title="U.S. Fulbright Fellowship &amp; Amazon Web Services (AWS)"
+      description="Detailed records from the framed commendations hanging on the study wall: my graduate fellowship at RIT and AI/ML engineering internship in Silicon Valley."
+      href="/cv.pdf"
+      linkLabel="Download Official CV (PDF)"
+    />
+
+    <div class="commendations-grid">
+      <article class="study-panel commendation-card">
+        <div class="commendation-bar">
+          <span>WALL PORTRAIT I // U.S. DEPARTMENT OF STATE FULBRIGHT SCHOLAR</span>
+          <span class="brass-tag">AUG 2024 – MAY 2026 · 4.0 GPA</span>
         </div>
-      </div>
-    </div>
-    <div class="experience-row">
-      <span class="eyebrow">UNDERGRADUATE</span><div>
-        <h3>B.S. · Computer Science</h3><p>University of Narowal · Pakistan</p>
-      </div>
-    </div>
-  </section>
-  <section class="section" aria-label="Selected experience">
-    <SectionHeader title="Beyond the paper" />
-    <div class="experience-row">
-      <time>Summer 2025</time><div>
-        <h3>Amazon Web Services</h3><p>
-          AI/ML Software Development Engineer Intern · Palo Alto, California
-        </p><p class="muted">
-          Experience building in a production ML engineering environment,
-          alongside my academic work.
+        <h2>M.S. in Artificial Intelligence · RIT (4.0 / 4.0 GPA)</h2>
+        <p class="commendation-sub">
+          Fulbright Foreign Student Scholarship · Rochester, NY
         </p>
-      </div>
-    </div>
-    <div class="experience-row">
-      <span class="eyebrow">OPEN SOURCE</span><div>
-        <h3>Teras &amp; Keras</h3><p>
-          Multi-backend deep learning for tabular data, random-sampling APIs,
-          and consistent ML tooling across frameworks.
-        </p><div class="links">
-          <a href="/projects/">Selected engineering →</a>
+        <ul class="commendation-list">
+          <li>
+            <strong>Full U.S. Department of State Fellowship:</strong> Selected through
+            the flagship international academic exchange program to complete the M.S.
+            in Artificial Intelligence at Rochester Institute of Technology, graduating
+            with a perfect <strong>4.0 / 4.0 GPA</strong>.
+          </li>
+          <li>
+            <strong>Master’s Thesis on Antidistillation:</strong> Authored and defended
+            <em>“Antidistillation Sampling for Classification”</em>, developing closed-form
+            confidence-margin bounds for inference-time model extraction defense.
+          </li>
+          <li>
+            <strong>Ph.D. Continuation &amp; Undergraduate 1st Rank:</strong> Continued
+            into a fully funded Ph.D. Graduate Research Assistantship in ECE at RIT’s
+            KAS Lab (advised by {profile.advisor}); previously graduated
+            <strong>1st in the Computer Science class of 2021</strong> at the University
+            of Narowal.
+          </li>
+        </ul>
+        <div class="links">
+          <a href="https://repository.rit.edu/theses/12584/">
+            Master’s Thesis (RIT Repository) ↗
+          </a>
+          <a href="/research/ads-c/">ADS-C Research Plate →</a>
         </div>
-      </div>
+      </article>
+
+      <article class="study-panel commendation-card">
+        <div class="commendation-bar">
+          <span>WALL PORTRAIT II // AMAZON WEB SERVICES (AWS) · AI/ML</span>
+          <span class="brass-tag teal">★ FULL-TIME RETURN OFFER</span>
+        </div>
+        <h2>Software Development Engineer, AI/ML Intern · AWS</h2>
+        <p class="commendation-sub">
+          May 2025 – Aug 2025 · East Palo Alto, California
+        </p>
+        <ul class="commendation-list">
+          <li>
+            <strong>Core Apache Spark Benchmarking Modules:</strong> Engineered core
+            <strong>Apache Spark</strong> testing modules for a next-generation internal
+            benchmarking platform at AWS in East Palo Alto, closing feature-parity
+            gaps with its legacy predecessor across targeted benchmarking workflows.
+          </li>
+          <li>
+            <strong>Independent Scope Expansion &amp; Return Offer:</strong> Exceeded
+            the original project scope by independently identifying and implementing
+            additional benchmarking capabilities, earning strong recognition from
+            team leadership and a <strong>full-time return offer</strong>.
+          </li>
+        </ul>
+        <div class="links">
+          <a href="/projects/">Explore Open-Source ML Engineering →</a>
+          <a href="/cv.pdf">View Full Resume (PDF) ↗</a>
+        </div>
+      </article>
     </div>
   </section>
+
+  <section class="section" aria-label="Complete Career and Education Register">
+    <SectionHeader
+      eyebrow="THE DESK REGISTER &amp; INSTRUMENT CABINET"
+      title="Experience, Education, Teaching &amp; Technical Stack"
+      description="Complete chronological record across research, industry, teaching, peer review, and open-source ML systems."
+    />
+    <CareerLedger />
+  </section>
+
   <section class="contact-line" aria-label="Contact">
     <p>
-      Interested in research, collaboration, or applied ML work? Feel free to
-      reach out.
-    </p><div class="links">
-      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a><a href="/cv.pdf"
-        >CV ↗</a
-      ><a href={profile.links.github}>GitHub ↗</a><a
-        href={profile.links.linkedin}>LinkedIn ↗</a>
+      Available for research collaboration in multi-agent autonomy, ML security,
+      and open-source ML systems.
+    </p>
+    <div class="links">
+      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+      <a href="/cv.pdf">Curriculum Vitae (PDF) ↗</a>
+      <a href={profile.links.github}>GitHub ↗</a>
+      <a href={profile.links.linkedin}>LinkedIn ↗</a>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .commendations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .commendation-card {
+    padding: 1.35rem 1.85rem 1.85rem;
+  }
+
+  .commendation-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    color: var(--heading);
+  }
+
+  .commendation-card h2 {
+    font-size: 1.6rem;
+    line-height: 1.22;
+  }
+
+  .commendation-sub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-strong);
+    margin-top: 0.35rem;
+  }
+
+  .commendation-list {
+    margin: 0.95rem 0 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.55rem;
+    font-size: 0.89rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .commendation-list strong {
+    color: var(--heading);
+  }
+
+  .commendation-card .links {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .commendations-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .commendation-card {
+      padding-inline: 1.25rem;
+    }
+  }
+</style>

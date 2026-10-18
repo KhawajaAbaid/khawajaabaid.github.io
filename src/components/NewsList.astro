@@ -7,57 +7,103 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<ul class="news-list">
-  {
-    entries.map(({ data }) => (
-      <li>
-        <>
+<div class="mantelpiece-chronicle study-panel">
+  <div class="chronicle-header">
+    <span>STUDY MANTELPIECE // CHRONOLOGICAL DISPATCHES</span>
+    <span>RIT · AWS · FULBRIGHT</span>
+  </div>
+  <ul class="news-list">
+    {
+      entries.map(({ data }) => (
+        <li>
           <time datetime={data.date.toISOString().slice(0, 10)}>
             {monthYear(data.date)}
           </time>
           <p>{data.href ? <a href={data.href}>{data.text}</a> : data.text}</p>
-        </>
-      </li>
-    ))
-  }
-</ul>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
 <style>
+  .mantelpiece-chronicle {
+    overflow: hidden;
+  }
+
+  .chronicle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(90deg, #3b2518, #4d3220);
+    border-bottom: 1.5px solid var(--brass);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #f2cc8f;
+  }
+
   .news-list {
     padding: 0;
     margin: 0;
     list-style: none;
   }
+
   .news-list li {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 140px 1fr;
     gap: 1.5rem;
-    padding-block: 1rem;
+    padding: 0.9rem 1.5rem;
     border-top: 1px solid var(--border);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    align-items: baseline;
   }
+
+  .news-list li:first-child {
+    border-top: 0;
+  }
+
   .news-list time {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    padding-top: 0.2rem;
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    border-right: 1px solid var(--rule-line);
+    padding-right: 1rem;
   }
+
   .news-list p {
     max-width: none;
+    color: var(--text);
   }
+
   .news-list a {
-    text-decoration: none;
-  }
-  .news-list a:hover {
     text-decoration: underline;
+    text-decoration-color: var(--brass);
   }
+
+  .news-list a:hover {
+    color: var(--accent-strong);
+    text-decoration-color: var(--accent);
+  }
+
   @media (max-width: 720px) {
+    .chronicle-header span:last-child {
+      display: none;
+    }
     .news-list li {
-      grid-template-columns: 80px 1fr;
-      gap: 1rem;
-      font-size: 0.82rem;
+      grid-template-columns: 95px 1fr;
+      gap: 0.85rem;
+      padding: 0.8rem 1rem;
+      font-size: 0.84rem;
     }
     .news-list time {
-      font-size: 0.75rem;
+      font-size: 0.68rem;
+      padding-right: 0.5rem;
     }
   }
 </style>
