@@ -12,7 +12,7 @@ function walk(dir) {
 const files = walk(root);
 const fail = [];
 const html = files.filter((path) => path.endsWith(".html"));
-const origin = "https://khawajaabaid.github.io";
+const origin = "https://khawajaabaid.com";
 const required = [
   "index.html",
   "research/index.html",
@@ -20,6 +20,7 @@ const required = [
   "projects/index.html",
   "about/index.html",
   "404.html",
+  "CNAME",
   "cv.pdf",
   "og/default.png",
   "sitemap-index.xml",
