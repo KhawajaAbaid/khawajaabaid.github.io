@@ -64,6 +64,10 @@ export const directions = [
     ],
     links: [
       {
+        label: "Decentralized Teams Preprint (arXiv)",
+        href: "https://arxiv.org/abs/2610.41044",
+      },
+      {
         label: "Fontus Environment (GitHub)",
         href: "https://github.com/KhawajaAbaid/fontus2d",
       },

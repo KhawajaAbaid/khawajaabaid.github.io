@@ -8,7 +8,7 @@ venue: arXiv:2608.09717
 public: true
 draft: false
 selected: true
-order: 3
+order: 4
 tags: ['LLM evaluation', 'Human-LLM alignment']
 arxiv: '2608.09717'
 pdf: https://arxiv.org/pdf/2608.09717

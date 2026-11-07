@@ -8,7 +8,7 @@ venue: arXiv:2607.15467
 public: true
 draft: false
 selected: true
-order: 1
+order: 2
 tags: ['ML security', 'Antidistillation', 'Model extraction', 'PyTorch']
 arxiv: '2607.15467'
 pdf: https://arxiv.org/pdf/2607.15467
