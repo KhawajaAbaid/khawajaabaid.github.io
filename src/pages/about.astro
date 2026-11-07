@@ -6,189 +6,148 @@ import { profile } from "../data/profile";
 ---
 
 <BaseLayout
-  title="Dossier & CV"
-  description="Complete academic, research, and industry dossier of Khawaja Abaid Ullah: PhD Researcher at RIT KAS Lab, U.S. Fulbright Scholar (4.0 GPA), former AWS AI/ML SDE Intern, Creator of Teras, and Keras 3 contributor."
+  title="Experience & CV"
+  description="Academic, research, and industry record of Khawaja Abaid Ullah: Ph.D. Researcher at RIT KAS Lab, U.S. Fulbright Scholar (4.0 GPA), former AWS AI/ML SDE Intern, Creator of Teras, and Keras 3 contributor."
 >
   <header class="page-intro">
-    <p class="eyebrow">THE STUDY WALL &amp; DESK REGISTER // CURRICULUM VITAE</p>
-    <h1>Khawaja Abaid Ullah — Research &amp; Engineering Record</h1>
+    <p class="eyebrow">Curriculum Vitae &amp; Dossier</p>
+    <h1>{profile.name} — Research &amp; Engineering Record</h1>
     <p>
       Ph.D. researcher in Electrical &amp; Computer Engineering at RIT’s
       Khojasteh Autonomous Systems Laboratory (KAS Lab), U.S. Department of
-      State Fulbright Scholar (4.0/4.0 GPA), former AWS AI/ML Software
+      State Fulbright Scholar (4.0 / 4.0 GPA), former AWS AI/ML Software
       Development Engineer Intern in East Palo Alto, creator of Teras, and
       official contributor to Keras 3.
     </p>
   </header>
 
-  <!-- FRAMED STUDY WALL PORTRAITS: FULBRIGHT & AWS -->
-  <section class="section" aria-label="Framed Study Wall Portraits">
-    <SectionHeader
-      eyebrow="FRAMED STUDY WALL PORTRAITS // FLAGSHIP APPOINTMENTS"
-      title="U.S. Fulbright Fellowship &amp; Amazon Web Services (AWS)"
-      description="Detailed records from the framed commendations hanging on the study wall: my graduate fellowship at RIT and AI/ML engineering internship in Silicon Valley."
-      href="/cv.pdf"
-      linkLabel="Download Official CV (PDF)"
-    />
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="01 / Highlights"
+        title="Fellowship & Industry"
+        href="/cv.pdf"
+        linkLabel="Download CV (PDF)"
+      />
+      <div class="monograph-body">
+        <div class="highlights-pair">
+          <article class="dossier-highlight warm">
+            <p class="highlight-kicker">
+              U.S. Department of State · Aug 2024 – May 2026
+            </p>
+            <h3>U.S. Fulbright Scholar — M.S. in AI at RIT (4.0 / 4.0 GPA)</h3>
+            <p>
+              Selected through the flagship international academic exchange
+              program to complete the M.S. in Artificial Intelligence at
+              Rochester Institute of Technology, graduating with a 4.0 GPA and
+              defending my thesis on margin-bounded antidistillation sampling
+              before continuing into a fully funded Ph.D. at KAS Lab.
+            </p>
+            <div class="links">
+              <a href="https://repository.rit.edu/theses/12584/">
+                Master’s Thesis (RIT Repository){" "}
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href="https://arxiv.org/abs/2607.15467">
+                ADS-C Preprint (arXiv) <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
 
-    <div class="commendations-grid">
-      <article class="study-panel commendation-card">
-        <div class="commendation-bar">
-          <span>WALL PORTRAIT I // U.S. DEPARTMENT OF STATE FULBRIGHT SCHOLAR</span>
-          <span class="brass-tag">AUG 2024 – MAY 2026 · 4.0 GPA</span>
+          <article class="dossier-highlight teal">
+            <p class="highlight-kicker">
+              East Palo Alto, CA · May 2025 – Aug 2025 · Full-Time Return Offer
+            </p>
+            <h3>Software Development Engineer Intern, AI/ML — AWS</h3>
+            <p>
+              Engineered core Apache Spark testing and evaluation modules for a
+              next-generation internal benchmarking platform at Amazon Web
+              Services, closing feature-parity gaps with its legacy predecessor
+              and independently delivering additional benchmarking capabilities
+              that earned a full-time return offer.
+            </p>
+            <div class="links">
+              <a href="/projects/">
+                Open-Source ML Engineering <span aria-hidden="true">→</span>
+              </a>
+              <a href="/cv.pdf">
+                Full Resume / CV (PDF) <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
         </div>
-        <h2>M.S. in Artificial Intelligence · RIT (4.0 / 4.0 GPA)</h2>
-        <p class="commendation-sub">
-          Fulbright Foreign Student Scholarship · Rochester, NY
-        </p>
-        <ul class="commendation-list">
-          <li>
-            <strong>Full U.S. Department of State Fellowship:</strong> Selected through
-            the flagship international academic exchange program to complete the M.S.
-            in Artificial Intelligence at Rochester Institute of Technology, graduating
-            with a perfect <strong>4.0 / 4.0 GPA</strong>.
-          </li>
-          <li>
-            <strong>Master’s Thesis on Antidistillation:</strong> Authored and defended
-            <em>“Antidistillation Sampling for Classification”</em>, developing closed-form
-            confidence-margin bounds for inference-time model extraction defense.
-          </li>
-          <li>
-            <strong>Ph.D. Continuation &amp; Undergraduate 1st Rank:</strong> Continued
-            into a fully funded Ph.D. Graduate Research Assistantship in ECE at RIT’s
-            KAS Lab (advised by {profile.advisor}); previously graduated
-            <strong>1st in the Computer Science class of 2021</strong> at the University
-            of Narowal.
-          </li>
-        </ul>
-        <div class="links">
-          <a href="https://repository.rit.edu/theses/12584/">
-            Master’s Thesis (RIT Repository) ↗
-          </a>
-          <a href="/research/ads-c/">ADS-C Research Plate →</a>
-        </div>
-      </article>
-
-      <article class="study-panel commendation-card">
-        <div class="commendation-bar">
-          <span>WALL PORTRAIT II // AMAZON WEB SERVICES (AWS) · AI/ML</span>
-          <span class="brass-tag teal">★ FULL-TIME RETURN OFFER</span>
-        </div>
-        <h2>Software Development Engineer, AI/ML Intern · AWS</h2>
-        <p class="commendation-sub">
-          May 2025 – Aug 2025 · East Palo Alto, California
-        </p>
-        <ul class="commendation-list">
-          <li>
-            <strong>Core Apache Spark Benchmarking Modules:</strong> Engineered core
-            <strong>Apache Spark</strong> testing modules for a next-generation internal
-            benchmarking platform at AWS in East Palo Alto, closing feature-parity
-            gaps with its legacy predecessor across targeted benchmarking workflows.
-          </li>
-          <li>
-            <strong>Independent Scope Expansion &amp; Return Offer:</strong> Exceeded
-            the original project scope by independently identifying and implementing
-            additional benchmarking capabilities, earning strong recognition from
-            team leadership and a <strong>full-time return offer</strong>.
-          </li>
-        </ul>
-        <div class="links">
-          <a href="/projects/">Explore Open-Source ML Engineering →</a>
-          <a href="/cv.pdf">View Full Resume (PDF) ↗</a>
-        </div>
-      </article>
+      </div>
     </div>
   </section>
 
-  <section class="section" aria-label="Complete Career and Education Register">
-    <SectionHeader
-      eyebrow="THE DESK REGISTER &amp; INSTRUMENT CABINET"
-      title="Experience, Education, Teaching &amp; Technical Stack"
-      description="Complete chronological record across research, industry, teaching, peer review, and open-source ML systems."
-    />
-    <CareerLedger />
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="02 / Chronology"
+        title="Full Record & Stack"
+        description="Appointments, degrees, teaching, academic service, and technical stack."
+      />
+      <div class="monograph-body">
+        <CareerLedger />
+      </div>
+    </div>
   </section>
 
-  <section class="contact-line" aria-label="Contact">
+  <div class="contact-strip">
     <p>
-      Available for research collaboration in multi-agent autonomy, ML security,
+      Available for research collaboration in cooperative autonomy, ML security,
       and open-source ML systems.
     </p>
     <div class="links">
-      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
-      <a href="/cv.pdf">Curriculum Vitae (PDF) ↗</a>
-      <a href={profile.links.github}>GitHub ↗</a>
-      <a href={profile.links.linkedin}>LinkedIn ↗</a>
+      <a href={`mailto:${profile.email}`}>
+        {profile.email} <span aria-hidden="true">↗</span>
+      </a>
+      <a href="/cv.pdf">
+        CV (PDF) <span aria-hidden="true">↗</span>
+      </a>
+      <a href={profile.links.github}>
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+      <a href={profile.links.linkedin}>
+        LinkedIn <span aria-hidden="true">↗</span>
+      </a>
     </div>
-  </section>
+  </div>
 </BaseLayout>
 
 <style>
-  .commendations-grid {
+  .highlights-pair {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
-  .commendation-card {
-    padding: 1.35rem 1.85rem 1.85rem;
+  .dossier-highlight {
+    padding-inline-start: 1.15rem;
+    border-inline-start: 2px solid var(--border-strong);
   }
 
-  .commendation-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
+  .dossier-highlight.warm {
+    border-inline-start-color: var(--brass-vivid);
+  }
+
+  .dossier-highlight.teal {
+    border-inline-start-color: var(--teal-vivid);
+  }
+
+  .highlight-kicker {
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    color: var(--heading);
+    font-size: 0.71rem;
+    color: var(--brass);
+    margin-block-end: 0.25rem;
   }
 
-  .commendation-card h2 {
-    font-size: 1.6rem;
-    line-height: 1.22;
-  }
-
-  .commendation-sub {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent-strong);
-    margin-top: 0.35rem;
-  }
-
-  .commendation-list {
-    margin: 0.95rem 0 0;
-    padding-left: 1.15rem;
-    display: grid;
-    gap: 0.55rem;
-    font-size: 0.89rem;
-    line-height: 1.6;
+  .dossier-highlight p:not(.highlight-kicker) {
+    margin-block-start: 0.45rem;
+    font-size: 0.92rem;
     color: var(--text-muted);
   }
 
-  .commendation-list strong {
-    color: var(--heading);
-  }
-
-  .commendation-card .links {
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 900px) {
-    .commendations-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 720px) {
-    .commendation-card {
-      padding-inline: 1.25rem;
-    }
+  .dossier-highlight .links {
+    margin-block-start: 0.55rem;
   }
 </style>

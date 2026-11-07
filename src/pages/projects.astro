@@ -3,85 +3,132 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ProjectRow from "../components/ProjectRow.astro";
 import { publicEntries, byOrder } from "../lib/content";
+
 const projects = (await publicEntries("projects")).sort(byOrder);
-const systems = projects.filter((p) => p.data.category === "research-system");
 const engineering = projects.filter((p) => p.data.category === "engineering");
+const systems = projects.filter((p) => p.data.category === "research-system");
 const archive = projects.filter((p) => p.data.category === "archive");
 ---
 
 <BaseLayout
   title="Projects"
-  description="Open-source machine learning libraries and research systems by Khawaja Abaid Ullah: Teras (Keras 3 tabular DL), official Keras 3 random-sampling APIs, codriver (260M Gemma 2 Flax NNX), micrograd_c, ADS-C, and Fontus."
+  description="Open-source machine learning libraries and research systems by Khawaja Abaid Ullah: Teras, official Keras 3 contributions, codriver (260M Gemma 2 Flax NNX), micrograd_c, Fontus, and ADS-C."
 >
   <header class="page-intro">
-    <p class="eyebrow">THE MAHOGANY WRITING BUREAU // OPEN-SOURCE &amp; RESEARCH CODE</p>
-    <h1>Open-Source Libraries, Distilled Models &amp; Multi-Agent Systems</h1>
+    <p class="eyebrow">Systems &amp; Open-Source Engineering</p>
+    <h1>Libraries, Distilled Models &amp; Multi-Agent Environments</h1>
     <p>
       From creating <strong>Teras</strong> (multi-backend tabular deep learning
       across JAX, PyTorch, and TensorFlow) and contributing random-sampling APIs
-      to official <strong>Keras 3</strong>, to porting <strong>Gemma 2</strong>
-      from Flax Linen to NNX for staged distillation (<strong>codriver</strong>)
-      and writing an autograd engine from scratch in <strong>pure C</strong> (<strong>micrograd_c</strong>).
+      to official <strong>Keras 3</strong>, to building <strong>Fontus</strong>
+      for multi-agent UAV recharging, porting <strong>Gemma 2</strong> to Flax
+      NNX (<strong>codriver</strong>), and writing a scalar autograd engine in
+      pure C (<strong>micrograd_c</strong>).
     </p>
   </header>
 
   {
     engineering.length > 0 && (
-      <section class="section" aria-label="Open-source ML and systems">
-        <SectionHeader
-          eyebrow="BUREAU DRAWER I // OPEN-SOURCE LIBRARIES &amp; DISTILLED MODELS"
-          title="Multi-Backend ML Infrastructure &amp; Engines"
-          description="Production-grade open-source libraries, official framework contributions, and low-level neural network implementations."
-        />
-        {engineering.map((entry) => (
-          <ProjectRow entry={entry} />
-        ))}
+      <section class="monograph-section">
+        <div class="monograph-grid">
+          <SectionHeader
+            eyebrow="01 / Open Source"
+            title="ML Libraries & Engines"
+            description="Multi-backend frameworks, upstream contributions, distilled models, and low-level engines."
+          />
+          <div class="monograph-body">
+            {engineering.map((entry) => (
+              <ProjectRow entry={entry} />
+            ))}
+          </div>
+        </div>
       </section>
     )
   }
 
   {
     systems.length > 0 && (
-      <section class="section" aria-label="Research systems">
-        <SectionHeader
-          eyebrow="BUREAU DRAWER II // RESEARCH ENVIRONMENTS &amp; HARNESSES"
-          title="Multi-Agent RL &amp; Antidistillation Codebases"
-          description="Open-source PyTorch evaluation harnesses and PettingZoo Parallel / Ray RLlib multi-agent simulation environments."
-        />
-        {systems.map((entry) => (
-          <ProjectRow entry={entry} />
-        ))}
+      <section class="monograph-section">
+        <div class="monograph-grid">
+          <SectionHeader
+            eyebrow="02 / Research"
+            title="Environments & Harnesses"
+            description="Multi-agent reinforcement learning simulation environments and PyTorch evaluation code."
+          />
+          <div class="monograph-body">
+            {systems.map((entry) => (
+              <ProjectRow entry={entry} />
+            ))}
+          </div>
+        </div>
       </section>
     )
   }
 
   {
     archive.length > 0 && (
-      <section class="section" aria-label="Earlier projects">
-        <SectionHeader
-          eyebrow="BUREAU DRAWER III // UNDERGRADUATE &amp; EARLY ARCHIVE"
-          title="Earlier Student &amp; Personal Projects"
-          description="Early work in computer vision, scikit-learn forecasting, Harvard CS50x, and NLP bots (2021–2023)."
-        />
-        <ul class="archive">
-          {archive.map(({ data }) => (
-            <li>
-              <strong>{data.title}</strong> — {data.summary}
-              {data.links.map((link) => (
-                <>
-                  {" "}
-                  <a
-                    href={link.href}
-                    aria-label={`${link.label} — ${data.title}`}
-                  >
-                    {link.label} ↗
-                  </a>
-                </>
+      <section class="monograph-section">
+        <div class="monograph-grid">
+          <SectionHeader
+            eyebrow="03 / Archive"
+            title="Earlier Work"
+            description="Student and personal projects in computer vision, forecasting, and NLP (2021–2023)."
+          />
+          <div class="monograph-body">
+            <ul class="archive-list" role="list">
+              {archive.map(({ data }) => (
+                <li>
+                  <strong>{data.title}</strong> — {data.summary}
+                  {data.links.map((link) => (
+                    <>
+                      {" "}
+                      <a
+                        href={link.href}
+                        aria-label={`${link.label} — ${data.title}`}
+                      >
+                        {link.label} <span aria-hidden="true">↗</span>
+                      </a>
+                    </>
+                  ))}
+                </li>
               ))}
-            </li>
-          ))}
-        </ul>
+            </ul>
+          </div>
+        </div>
       </section>
     )
   }
 </BaseLayout>
+
+<style>
+  .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .archive-list li {
+    padding-block-end: 0.75rem;
+    border-block-end: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .archive-list li:last-child {
+    padding-block-end: 0;
+    border-block-end: 0;
+  }
+
+  .archive-list strong {
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  .archive-list a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--heading);
+  }
+</style>

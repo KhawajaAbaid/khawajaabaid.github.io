@@ -2,207 +2,159 @@
 import type { CollectionEntry } from "astro:content";
 import { profile } from "../data/profile";
 import LinkList from "./LinkList.astro";
+
 interface Props {
   entry: CollectionEntry<"publications">;
   headingLevel?: "h2" | "h3";
 }
+
 const {
   entry: { data, id },
   headingLevel: Heading = "h3",
 } = Astro.props;
+
+const primaryHref = data.arxiv
+  ? `https://arxiv.org/abs/${data.arxiv}`
+  : data.pdf;
+const metaParts = [data.venue, data.status, String(data.date.getUTCFullYear())]
+  .filter(Boolean)
+  .filter((v, idx, arr) => arr.indexOf(v) === idx);
 ---
 
-<article class="publication study-panel" id={id}>
-  <div class="pub-header-bar">
-    <span class="pub-call">
-      STUDY MANUSCRIPT // {id.toUpperCase()}
-    </span>
-    <time datetime={data.date.toISOString().slice(0, 10)}>
-      {data.venue} · {data.date.getUTCFullYear()}
-    </time>
-  </div>
+<article class="publication-entry" id={id}>
+  <p class="pub-meta">
+    {metaParts.join(" · ")}
+  </p>
 
-  <div class="publication-body">
-    <Heading class="publication-title">{data.title}</Heading>
-    <p class="authors">
-      {
-        data.authors.map((author, index) => (
-          <>
-            {index > 0 && ", "}
-            {author === profile.name ? <strong>{author}</strong> : author}
-          </>
-        ))
-      }
-    </p>
-
+  <Heading class="pub-title">
     {
-      data.metric && (
-        <div class="pub-metric-box">
-          <span class="pub-metric-val">{data.metric.value}</span>
-          <div>
-            <strong>{data.metric.label}</strong>
-            {data.metric.context && <span> — {data.metric.context}</span>}
-          </div>
-        </div>
+      primaryHref ? (
+        <a href={primaryHref} class="pub-title-link">
+          {data.title}
+        </a>
+      ) : (
+        data.title
       )
     }
+  </Heading>
 
-    <p class="pub-summary">{data.summary}</p>
+  <p class="pub-authors">
+    {
+      data.authors.map((author, index) => (
+        <>
+          {index > 0 && ", "}
+          {author === profile.name ? <strong>{author}</strong> : author}
+        </>
+      ))
+    }
+  </p>
 
-    <div class="venue-row">
-      <span class="brass-tag">
-        {data.venue} · {data.status}
-      </span>
-      {data.links.length > 0 && (
-        <LinkList links={data.links} context={data.title} />
-      )}
-    </div>
+  <p class="pub-summary">{data.summary}</p>
+
+  <div class="pub-actions">
+    {data.links.length > 0 && <LinkList links={data.links} context={data.title} />}
 
     {
       data.bibtex && (
-        <details class="citation-slip">
-          <summary>
-            <span>Open BibTeX Citation</span>
-            <span class="sr-only"> for {data.title}</span>
-          </summary>
-          <div class="slip-drawer">
-            <pre><code>{data.bibtex}</code></pre>
-          </div>
-        </details>
+        <button
+          type="button"
+          class="inline-action copy-trigger"
+          data-copy={data.bibtex.trim()}
+          data-copy-announce={`BibTeX copied for ${data.title}`}
+        >
+          <span data-copy-label>Copy BibTeX</span>
+        </button>
       )
     }
   </div>
+
+  {
+    data.bibtex && (
+      <details class="citation-details">
+        <summary>
+          <span>BibTeX</span>
+          <span class="visually-hidden"> for {data.title}</span>
+        </summary>
+        <pre tabindex="0"><code>{data.bibtex.trim()}</code></pre>
+      </details>
+    )
+  }
 </article>
 
 <style>
-  .publication {
-    padding: 1.25rem 1.85rem 1.65rem;
-    margin-bottom: 1.35rem;
+  .publication-entry {
+    min-inline-size: 0;
+    padding-block: 1.5rem;
+    border-block-start: 1px solid var(--border);
   }
 
-  .publication:last-child {
-    margin-bottom: 0;
+  .publication-entry:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
   }
 
-  .pub-header-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem 1rem;
-    padding-bottom: 0.65rem;
-    margin-bottom: 0.9rem;
-    border-bottom: 1px solid var(--border);
+  .publication-entry:last-child {
+    padding-block-end: 0;
   }
 
-  .pub-call,
-  time {
+  .pub-meta {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.09em;
-    color: var(--heading);
-    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--brass);
+    letter-spacing: 0.02em;
   }
 
-  time {
-    color: var(--accent-strong);
+  .pub-title {
+    margin-block-start: 0.3rem;
+    font-size: clamp(1.18rem, 1.08rem + 0.4vw, 1.36rem);
+    line-height: 1.3;
+    max-inline-size: 62ch;
   }
 
-  .publication-body {
-    min-width: 0;
+  .pub-title-link {
+    text-decoration: none;
   }
 
-  .publication-title {
-    font-family: var(--font-display);
-    font-size: 1.45rem;
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.28;
-    color: var(--heading);
-    max-width: 78ch;
+  .pub-title-link:hover {
+    color: var(--accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
   }
 
-  .authors {
-    font-size: 0.85rem;
+  .pub-authors {
+    margin-block-start: 0.35rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
-    margin-top: 0.5rem;
-    max-width: none;
   }
 
-  .authors strong {
+  .pub-authors strong {
     font-weight: 600;
     color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--brass);
-    text-underline-offset: 3px;
-  }
-
-  .pub-metric-box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.85rem;
-    margin-top: 0.8rem;
-    padding: 0.55rem 0.9rem;
-    background: var(--bg);
-    border: 1px solid var(--border-strong);
-    border-left: 3px solid var(--brass);
-    border-radius: 4px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .pub-metric-val {
-    font-family: var(--font-display);
-    font-size: 1.48rem;
-    font-weight: 500;
-    color: var(--heading);
-  }
-
-  .pub-metric-box strong {
-    color: var(--heading);
+    text-decoration-line: underline;
+    text-decoration-color: var(--brass-vivid);
+    text-underline-offset: 0.22em;
   }
 
   .pub-summary {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    margin-block-start: 0.55rem;
+    font-size: 0.92rem;
     color: var(--text-muted);
-    margin-top: 0.7rem;
   }
 
-  .venue-row {
+  .pub-actions {
+    margin-block-start: 0.6rem;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1.5rem;
-    margin-top: 0.8rem;
+    align-items: safe center;
+    gap: 0.25rem 1.15rem;
   }
 
-  .citation-slip {
-    margin-top: 0.65rem;
-    border-top: 1px solid var(--border);
-    padding-top: 0.35rem;
+  .citation-details {
+    margin-block-start: 0.35rem;
   }
 
-  .slip-drawer {
-    margin-top: 0.45rem;
-    padding: 0.75rem;
-    background: var(--bg);
-    border: 1px solid var(--brass);
-    border-radius: 4px;
-  }
-
-  .slip-drawer pre {
-    margin: 0;
-    background: var(--surface);
-  }
-
-  @media (max-width: 720px) {
-    .publication {
-      padding: 1rem 1.25rem 1.4rem;
-    }
-    .publication-title {
-      font-size: 1.22rem;
-    }
+  .citation-details pre {
+    margin-block-start: 0.45rem;
   }
 </style>

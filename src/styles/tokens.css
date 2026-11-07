@@ -5,6 +5,7 @@
   font-weight: 200 800;
   font-display: swap;
 }
+
 @font-face {
   font-family: Inter;
   src: url("/fonts/inter-latin.woff2") format("woff2");
@@ -14,7 +15,6 @@
 }
 
 :root {
-  /* MANDATORY per modern-web-guidance `dark-mode`: viewport-wide color-scheme with meta override reflection */
   color-scheme: light dark;
 
   &:has(> head > meta[name="color-scheme"][content="dark"]) {
@@ -24,10 +24,6 @@
     color-scheme: light;
   }
 
-  /* Gradient interpolation token per modern-web-guidance `visual-effects` */
-  --in-oklab: ;
-  --in-oklch: ;
-
   /* Core 5 colors from colors/palette.txt */
   --palette-eggshell: #f4f1de;
   --palette-burnt-peach: #e07a5f;
@@ -35,141 +31,106 @@
   --palette-muted-teal: #81b29a;
   --palette-apricot-cream: #f2cc8f;
 
-  /* Classic Study Woodwork & Brass Hardware Tokens */
+  /* Study Room Woodwork & Brass Tokens (used by the Hero Study Room & Blotter) */
   --wood-darkest: #241710;
   --wood-dark: #382418;
   --wood-mid: #593a27;
   --wood-warm: #7a5136;
-  --wood-light: #9c6b49;
-  --wood-trim: #6b472f;
 
-  /* Daylight Study Room ("Golden-Hour Classic Study") */
+  /* Daylight Study Palette */
   --bg: #f4f1de;
-  --bg-recessed: #e8e2c8;
+  --bg-subtle: #eae4cc;
   --surface: #fbf9f0;
-  --surface-elevated: #ffffff;
-  --manila: #f2cc8f;
-  --manila-soft: #f6e3c1;
   --text: #232536;
-  --heading: #2c2e43;
-  --text-muted: #52556e;
-  --text-faint: #767994;
+  --heading: #1c1e2e;
+  --text-muted: #4d5068;
+  --text-faint: #626680;
   --border: #d8d0b5;
-  --border-strong: #b8ad8e;
-  --accent: #e07a5f;
-  --accent-strong: #b85035;
-  --accent-soft: #f8e5df;
-  --teal: #81b29a;
-  --teal-strong: #3c6953;
-  --teal-soft: #e2efe8;
-  --brass: #c49240;
-  --brass-bright: #e5b968;
-  --brass-light: #f2cc8f;
-  --brass-dark: #8a6220;
-  --rule-line: rgba(196, 146, 64, 0.32);
-  --ledger-line: rgba(61, 64, 91, 0.06);
-  --selection-bg: #f2cc8f;
+  --border-strong: #9c9274;
 
-  /* Room Lighting & Atmosphere Variables */
+  --accent: #b84c32;
+  --accent-vivid: #e07a5f;
+  --teal: #2d6651;
+  --teal-vivid: #81b29a;
+  --brass: #7f5819;
+  --brass-vivid: #c49240;
+  --brass-light: #f2cc8f;
+
+  --pill-bg: #382418;
+  --pill-fg: #faf8ef;
+  --pill-hover: #593a27;
+
+  --selection-bg: #f2cc8f;
+  --selection-fg: #1c1e2e;
+
+  /* Study Room Panorama Lighting Variables */
   --sunbeam-opacity: 1;
-  --lamp-cone-opacity: 0.15;
+  --lamp-cone-opacity: 0.14;
   --room-wall-top: #e8e1c5;
-  --room-wall-bottom: #dcd3b2;
   --room-wainscot: #4a3121;
   --room-wainscot-panel: #3b2619;
   --room-floor-1: #6b472e;
-  --room-floor-2: #593924;
-  --room-ambient-glow: rgba(242, 204, 143, 0.28);
+  --window-sky: #d8e8e4;
 
-  --card-shadow:
-    0 2px 4px rgba(36, 23, 16, 0.06),
-    0 12px 28px -8px rgba(36, 23, 16, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
-  --card-shadow-hover:
-    0 6px 14px rgba(36, 23, 16, 0.1),
-    0 20px 38px -10px rgba(36, 23, 16, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --room-shadow:
+    0 14px 36px -12px rgba(24, 15, 10, 0.24),
+    0 2px 6px rgba(24, 15, 10, 0.08);
 
-  /* Browser UI customization tokens */
+  /* Native UI & Scrollbar (never transition scrollbar-color) */
   --scrollbar-thumb: #9c7a54;
-  --scrollbar-track: #e8e2c8;
+  --scrollbar-track: #eae4cc;
   accent-color: var(--accent);
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 
   --font-display:
     Newsreader, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
-
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4.5rem;
-  --space-9: 6rem;
-  --space-10: 8rem;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:
+    "SFMono-Regular", ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
 }
 
-@supports (background: linear-gradient(in oklab, white, black)) {
-  :root {
-    --in-oklab: in oklab;
-    --in-oklch: in oklch;
-  }
-}
-
-/* Nocturnal Study Room ("After-Hours Banker's Lamp Mode") */
+/* Nocturnal Study ("After-Hours Banker's Lamp Mode") */
 :root[data-theme="dark"],
 :root:has(> head > meta[name="color-scheme"][content="dark"]) {
   --bg: #181924;
-  --bg-recessed: #12131c;
-  --surface: #222434;
-  --surface-elevated: #2a2d40;
-  --manila: #3d332a;
-  --manila-soft: #2e2824;
-  --text: #f4f1de;
+  --bg-subtle: #13141d;
+  --surface: #212332;
+  --text: #f0ecd8;
   --heading: #faf8ef;
-  --text-muted: #c4c0ae;
-  --text-faint: #8e8b7c;
-  --border: #383b52;
-  --border-strong: #565a78;
-  --accent: #e07a5f;
-  --accent-strong: #f2cc8f;
-  --accent-soft: #38282c;
-  --teal: #81b29a;
-  --teal-strong: #a3d5bc;
-  --teal-soft: #213335;
-  --brass: #deb05b;
-  --brass-bright: #f5d38e;
+  --text-muted: #bdb9a7;
+  --text-faint: #959180;
+  --border: #32354a;
+  --border-strong: #666b88;
+
+  --accent: #f09a82;
+  --accent-vivid: #e07a5f;
+  --teal: #a1d3ba;
+  --teal-vivid: #81b29a;
+  --brass: #f2cc8f;
+  --brass-vivid: #deb05b;
   --brass-light: #f2cc8f;
-  --brass-dark: #9c7228;
-  --rule-line: rgba(242, 204, 143, 0.28);
-  --ledger-line: rgba(244, 241, 222, 0.05);
-  --selection-bg: #593b37;
+
+  --pill-bg: #f2cc8f;
+  --pill-fg: #181924;
+  --pill-hover: #f7dcb0;
+
+  --selection-bg: #4d3633;
+  --selection-fg: #faf8ef;
 
   --sunbeam-opacity: 0;
   --lamp-cone-opacity: 1;
   --room-wall-top: #1a1c2b;
-  --room-wall-bottom: #141622;
   --room-wainscot: #291a11;
   --room-wainscot-panel: #1f130c;
   --room-floor-1: #3b2618;
-  --room-floor-2: #2d1c11;
-  --room-ambient-glow: rgba(242, 204, 143, 0.55);
+  --window-sky: #131629;
 
-  --card-shadow:
-    0 4px 10px rgba(6, 7, 12, 0.45),
-    0 16px 36px -8px rgba(6, 7, 12, 0.6),
-    inset 0 1px 0 rgba(242, 204, 143, 0.14);
-  --card-shadow-hover:
-    0 8px 18px rgba(6, 7, 12, 0.55),
-    0 24px 48px -8px rgba(6, 7, 12, 0.72),
-    inset 0 1px 0 rgba(242, 204, 143, 0.28);
+  --room-shadow:
+    0 18px 42px -12px rgba(6, 7, 12, 0.65),
+    0 4px 10px rgba(6, 7, 12, 0.4);
 
-  --scrollbar-thumb: #7a5d3e;
+  --scrollbar-thumb: #6f583f;
   --scrollbar-track: #181924;
 }
 
@@ -178,56 +139,83 @@
       :has(> head > meta[name="color-scheme"][content="light"])
     ) {
     --bg: #181924;
-    --bg-recessed: #12131c;
-    --surface: #222434;
-    --surface-elevated: #2a2d40;
-    --manila: #3d332a;
-    --manila-soft: #2e2824;
-    --text: #f4f1de;
+    --bg-subtle: #13141d;
+    --surface: #212332;
+    --text: #f0ecd8;
     --heading: #faf8ef;
-    --text-muted: #c4c0ae;
-    --text-faint: #8e8b7c;
-    --border: #383b52;
-    --border-strong: #565a78;
-    --accent: #e07a5f;
-    --accent-strong: #f2cc8f;
-    --accent-soft: #38282c;
-    --teal: #81b29a;
-    --teal-strong: #a3d5bc;
-    --teal-soft: #213335;
-    --brass: #deb05b;
-    --brass-bright: #f5d38e;
+    --text-muted: #bdb9a7;
+    --text-faint: #959180;
+    --border: #32354a;
+    --border-strong: #666b88;
+
+    --accent: #f09a82;
+    --accent-vivid: #e07a5f;
+    --teal: #a1d3ba;
+    --teal-vivid: #81b29a;
+    --brass: #f2cc8f;
+    --brass-vivid: #deb05b;
     --brass-light: #f2cc8f;
-    --brass-dark: #9c7228;
-    --rule-line: rgba(242, 204, 143, 0.28);
-    --ledger-line: rgba(244, 241, 222, 0.05);
-    --selection-bg: #593b37;
+
+    --pill-bg: #f2cc8f;
+    --pill-fg: #181924;
+    --pill-hover: #f7dcb0;
+
+    --selection-bg: #4d3633;
+    --selection-fg: #faf8ef;
 
     --sunbeam-opacity: 0;
     --lamp-cone-opacity: 1;
     --room-wall-top: #1a1c2b;
-    --room-wall-bottom: #141622;
     --room-wainscot: #291a11;
     --room-wainscot-panel: #1f130c;
     --room-floor-1: #3b2618;
-    --room-floor-2: #2d1c11;
-    --room-ambient-glow: rgba(242, 204, 143, 0.55);
+    --window-sky: #131629;
 
-    --card-shadow:
-      0 4px 10px rgba(6, 7, 12, 0.45),
-      0 16px 36px -8px rgba(6, 7, 12, 0.6),
-      inset 0 1px 0 rgba(242, 204, 143, 0.14);
-    --card-shadow-hover:
-      0 8px 18px rgba(6, 7, 12, 0.55),
-      0 24px 48px -8px rgba(6, 7, 12, 0.72),
-      inset 0 1px 0 rgba(242, 204, 143, 0.28);
+    --room-shadow:
+      0 18px 42px -12px rgba(6, 7, 12, 0.65),
+      0 4px 10px rgba(6, 7, 12, 0.4);
 
-    --scrollbar-thumb: #7a5d3e;
+    --scrollbar-thumb: #6f583f;
     --scrollbar-track: #181924;
   }
 }
 
-/* Legacy fallback for WebKit/Blink browsers without standard scrollbar-color */
+/* Progressive enhancement with native CSS light-dark() */
+@supports (color: light-dark(white, black)) {
+  :root {
+    --bg: light-dark(#f4f1de, #181924);
+    --bg-subtle: light-dark(#eae4cc, #13141d);
+    --surface: light-dark(#fbf9f0, #212332);
+    --text: light-dark(#232536, #f0ecd8);
+    --heading: light-dark(#1c1e2e, #faf8ef);
+    --text-muted: light-dark(#4d5068, #bdb9a7);
+    --text-faint: light-dark(#626680, #959180);
+    --border: light-dark(#d8d0b5, #32354a);
+    --border-strong: light-dark(#9c9274, #666b88);
+
+    --accent: light-dark(#b84c32, #f09a82);
+    --teal: light-dark(#2d6651, #a1d3ba);
+    --brass: light-dark(#7f5819, #f2cc8f);
+    --brass-vivid: light-dark(#c49240, #deb05b);
+
+    --pill-bg: light-dark(#382418, #f2cc8f);
+    --pill-fg: light-dark(#faf8ef, #181924);
+    --pill-hover: light-dark(#593a27, #f7dcb0);
+
+    --selection-bg: light-dark(#f2cc8f, #4d3633);
+    --selection-fg: light-dark(#1c1e2e, #faf8ef);
+
+    --room-wall-top: light-dark(#e8e1c5, #1a1c2b);
+    --room-wainscot: light-dark(#4a3121, #291a11);
+    --room-wainscot-panel: light-dark(#3b2619, #1f130c);
+    --room-floor-1: light-dark(#6b472e, #3b2618);
+    --window-sky: light-dark(#d8e8e4, #131629);
+
+    --scrollbar-thumb: light-dark(#9c7a54, #6f583f);
+    --scrollbar-track: light-dark(#eae4cc, #181924);
+  }
+}
+
 @supports not (scrollbar-color: auto) {
   ::-webkit-scrollbar {
     width: 10px;

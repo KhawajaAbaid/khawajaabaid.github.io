@@ -1,115 +1,107 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import LinkList from "./LinkList.astro";
+
 interface Props {
   entry: CollectionEntry<"projects">;
 }
+
 const {
   entry: { data, id },
 } = Astro.props;
+
+const primaryHref = data.links[0]?.href;
+const categoryLabel =
+  data.category === "research-system" ? "Research System" : "Open-Source ML";
 ---
 
-<article class="project-row study-panel" id={id}>
-  <div class="project-call-bar">
-    <span class="call-label">STUDY APPARATUS // {id.toUpperCase()}</span>
-    <span class="brass-tag teal">{data.category.replace("-", " ")}</span>
+<article class="project-entry" id={id}>
+  <div class="project-head">
+    <div class="project-title-group">
+      <h3>
+        {
+          primaryHref ? (
+            <a href={primaryHref} class="project-title-link">
+              {data.title}
+            </a>
+          ) : (
+            data.title
+          )
+        }
+      </h3>
+      <span class="project-kind">{categoryLabel}</span>
+    </div>
+
+    {data.links.length > 0 && <LinkList links={data.links} context={data.title} />}
   </div>
 
-  <div class="project-grid">
-    <div class="project-title-col">
-      <h3>{data.title}</h3>
-    </div>
+  <p class="project-summary">{data.summary}</p>
 
-    <div class="project-desc-col">
-      <p>{data.summary}</p>
-      <div class="subject-tags" aria-label="Technical tags">
-        {data.tags.map((tag) => <span class="subject-tag">{tag}</span>)}
-      </div>
-    </div>
-
-    <div class="project-links-col">
-      <LinkList links={data.links} context={data.title} />
-    </div>
-  </div>
+  {
+    data.tags.length > 0 && (
+      <ul class="tag-line project-tags" role="list">
+        {data.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )
+  }
 </article>
 
 <style>
-  .project-row {
-    padding: 1.15rem 1.85rem 1.5rem;
-    margin-bottom: 1.25rem;
+  .project-entry {
+    min-inline-size: 0;
+    padding-block: 1.35rem;
+    border-block-start: 1px solid var(--border);
   }
 
-  .project-row:last-child {
-    margin-bottom: 0;
+  .project-entry:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
   }
 
-  .project-call-bar {
+  .project-entry:last-child {
+    padding-block-end: 0;
+  }
+
+  .project-head {
     display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
     justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.65rem;
-    margin-bottom: 0.9rem;
-    border-bottom: 1px solid var(--border);
+    gap: 0.25rem 1.25rem;
   }
 
-  .call-label {
+  .project-title-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+  }
+
+  .project-title-link {
+    text-decoration: none;
+  }
+
+  .project-title-link:hover {
+    color: var(--accent);
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .project-kind {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--heading);
+    font-size: 0.69rem;
+    color: var(--text-faint);
   }
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 2.4fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  h3 {
-    font-size: 1.65rem;
-  }
-
-  .project-desc-col p {
+  .project-summary {
+    margin-block-start: 0.4rem;
     font-size: 0.92rem;
     color: var(--text-muted);
   }
 
-  .subject-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.8rem;
-  }
-
-  .subject-tag {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.04em;
-    padding: 0.16rem 0.5rem;
-    background: var(--bg);
-    border: 1px solid var(--border-strong);
-    border-radius: 3px;
-    color: var(--text-muted);
-  }
-
-  .project-links-col :global(.links) {
-    justify-content: flex-end;
-    align-content: start;
-    gap: 0.25rem 1rem;
-  }
-
-  @media (max-width: 780px) {
-    .project-row {
-      padding: 1rem 1.25rem 1.35rem;
-    }
-    .project-grid {
-      grid-template-columns: 1fr;
-      gap: 0.85rem;
-    }
-    .project-links-col :global(.links) {
-      justify-content: flex-start;
-    }
+  .project-tags {
+    margin-block-start: 0.55rem;
   }
 </style>

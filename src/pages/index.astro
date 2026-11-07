@@ -3,64 +3,153 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import DirectionsShelf from "../components/DirectionsShelf.astro";
-import CardCatalogCabinet from "../components/CardCatalogCabinet.astro";
-import FeaturedResearch from "../components/FeaturedResearch.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import CareerLedger from "../components/CareerLedger.astro";
 import NewsList from "../components/NewsList.astro";
 import { publicEntries, byDate, byOrder } from "../lib/content";
 
-const research = (await publicEntries("research"))
-  .filter((e) => e.data.selected)
-  .sort(byOrder);
+const publications = (await publicEntries("publications")).sort(byOrder);
+const allProjects = (await publicEntries("projects")).sort(byOrder);
+const selectedProjects = allProjects.filter((p) => p.data.selected);
+const archiveProjects = allProjects.filter(
+  (p) => p.data.category === "archive",
+);
 const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
 ---
 
 <BaseLayout>
   <Hero />
 
-  <section class="section" aria-label="The Study Bookshelf and Research Lectern">
-    <SectionHeader
-      eyebrow="STATION I // THE MAHOGANY BOOKSHELF &amp; BLUEPRINT LECTERN"
-      title="Research Domains at RIT’s KAS Lab"
-      description="Hover or select a clothbound volume on the study shelf to illuminate its schematic blueprint and empirical findings on the reading lectern."
-      href="/research/"
-      linkLabel="Enter Research Wing"
-    />
-    <DirectionsShelf />
+  <section id="research" class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="01 / Research"
+        title="Research Focus"
+        description="Cooperative search-and-rescue autonomy and inference-time ML security at RIT’s KAS Lab."
+        href="/research/"
+        linkLabel="Research overview"
+      />
+      <div class="monograph-body">
+        <DirectionsShelf />
+      </div>
+    </div>
   </section>
 
-  {
-    research.length > 0 && (
-      <section class="section" aria-label="Framed Study Wall Plates">
-        <SectionHeader
-          eyebrow="STATION II // FRAMED STUDY WALL PLATES"
-          title="Flagship Technical Case Studies"
-          description="Detailed formulations and experimental evaluations for ADS-C (arXiv:2607.15467) and Fontus (Multi-Agent UAV Recharging in PettingZoo &amp; Ray RLlib)."
-          href="/research/"
-          linkLabel="All Research Plates"
-        />
-        {research.map((entry, i) => (
-          <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
-        ))}
-      </section>
-    )
-  }
+  <section id="publications" class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="02 / Papers"
+        title="Publications"
+        description="Concise summaries with direct links to arXiv preprints, PDFs, code, and BibTeX."
+        href="/publications/"
+        linkLabel="Standalone list"
+      />
+      <div class="monograph-body">
+        {publications.map((entry) => <PublicationItem entry={entry} />)}
+      </div>
+    </div>
+  </section>
 
-  <section class="section" aria-label="Mahogany Writing Bureau Drawers">
-    <CardCatalogCabinet />
+  <section id="projects" class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="03 / Projects"
+        title="Projects & Code"
+        description="Open-source libraries, official Keras 3 contributions, distilled models, and RL environments."
+        href="/projects/"
+        linkLabel="All projects"
+      />
+      <div class="monograph-body">
+        <div>
+          {selectedProjects.map((entry) => <ProjectRow entry={entry} />)}
+        </div>
+
+        {
+          archiveProjects.length > 0 && (
+            <details class="archive-disclosure">
+              <summary>
+                Earlier student &amp; personal projects ({archiveProjects.length})
+              </summary>
+              <ul class="archive-compact" role="list">
+                {archiveProjects.map(({ data }) => (
+                  <li>
+                    <strong>{data.title}</strong> — {data.summary}
+                    {data.links.map((link) => (
+                      <>
+                        {" "}
+                        <a
+                          href={link.href}
+                          aria-label={`${link.label} — ${data.title}`}
+                        >
+                          {link.label} <span aria-hidden="true">↗</span>
+                        </a>
+                      </>
+                    ))}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="04 / Record"
+        title="Experience & CV"
+        description="Appointments across RIT’s KAS Lab and AWS AI/ML, academic degrees, and technical stack."
+        href="/about/"
+        linkLabel="Full CV dossier"
+      />
+      <div class="monograph-body">
+        <CareerLedger />
+      </div>
+    </div>
   </section>
 
   {
     news.length > 0 && (
-      <section class="section" aria-label="Study Mantelpiece Dispatches">
-        <SectionHeader
-          eyebrow="STATION III // STUDY MANTELPIECE CHRONICLE"
-          title="Recent Milestones &amp; Dispatches"
-          description="Chronological log across RIT’s KAS Lab, Amazon Web Services (East Palo Alto), and the U.S. Fulbright Program."
-          href="/about/"
-          linkLabel="Open Full CV &amp; Dossier"
-        />
-        <NewsList entries={news} />
+      <section id="notes" class="monograph-section">
+        <div class="monograph-grid">
+          <SectionHeader eyebrow="05 / Notes" title="Recent Notes" />
+          <div class="monograph-body">
+            <NewsList entries={news} />
+          </div>
+        </div>
       </section>
     )
   }
 </BaseLayout>
+
+<style>
+  .archive-disclosure {
+    margin-block-start: 1.5rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .archive-compact {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: grid;
+    gap: 0.55rem;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+  }
+
+  .archive-compact strong {
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  .archive-compact a {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--heading);
+  }
+</style>

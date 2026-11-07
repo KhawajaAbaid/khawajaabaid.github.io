@@ -9,16 +9,57 @@ interface Props {
 const { eyebrow, title, description, href, linkLabel } = Astro.props;
 ---
 
-<div class="section-heading">
-  <div>
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}<h2>{title}</h2>{
-      description && <p>{description}</p>
-    }
-  </div>{
-    href && (
-      <a href={href}>
+<header class="section-rail">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2>{title}</h2>
+  {description && <p class="rail-note">{description}</p>}
+  {
+    href && linkLabel && (
+      <a class="rail-link" href={href}>
         {linkLabel} <span aria-hidden="true">→</span>
       </a>
     )
   }
-</div>
+</header>
+
+<style>
+  .section-rail {
+    min-inline-size: 0;
+  }
+
+  .section-rail .eyebrow {
+    margin-block-end: 0.4rem;
+  }
+
+  .rail-note {
+    margin-block-start: 0.55rem;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .rail-link {
+    margin-block-start: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-block-size: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    text-decoration-line: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 0.26em;
+  }
+
+  .rail-link:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  @media (pointer: coarse) {
+    .rail-link {
+      min-block-size: 2.75rem;
+    }
+  }
+</style>

@@ -1,21 +1,17 @@
 ---
 title: 'Reversing the Incentive to Distill: A Review of Test-Time Antidistillation Defenses for Classification'
-summary: 'Built a unified matched-cost benchmark and a method-agnostic top-1-preservation wrapper; directed perturbations drove distilled students 34.5 pp (CIFAR-10) and 47.7 pp (CIFAR-100) below the hard-label baseline. Reimplemented prior test-time defenses under a common threat model and matched-cost evaluation protocol to isolate which perturbation mechanisms genuinely suppress student learning.'
+summary: 'Unified matched-cost benchmark and method-agnostic top-1-preservation wrapper across test-time antidistillation defenses; directed perturbations drive distilled students 34.5 pp (CIFAR-10) and 47.7 pp (CIFAR-100) below the hard-label baseline.'
 date: 2026-08-01
 authors: ['Khawaja Abaid Ullah', 'Mohammad Javad Khojasteh']
 status: Under review
-venue: Manuscript under review (2026)
+venue: Manuscript under review
 public: true
 draft: false
 selected: true
 order: 2
-tags: ['Test-time defense', 'Antidistillation', 'Matched-cost benchmark', 'Model extraction']
-metric:
-  value: '−34.5 pp / −47.7 pp'
-  label: below hard-label baseline on CIFAR-10 and CIFAR-100
-  context: 'Unified matched-cost benchmark & method-agnostic top-1 wrapper'
+tags: ['Test-time defense', 'Antidistillation', 'Matched-cost benchmark']
 links:
-  - { label: Related ADS-C Folio, href: '/research/ads-c/' }
+  - { label: Companion Code (ADS-C), href: 'https://github.com/the-kas-lab/ADS-C' }
 bibtex: |
   @unpublished{ullah2026reversing,
     title = {Reversing the Incentive to Distill: A Review of Test-Time Antidistillation Defenses for Classification},
@@ -24,4 +20,3 @@ bibtex: |
     note = {Under review}
   }
 ---
-

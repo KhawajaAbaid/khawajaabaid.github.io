@@ -1,60 +1,82 @@
 @media print {
   html:root {
-    --bg: #fff;
-    --surface: #fff;
-    --text: #000;
-    --text-muted: #333;
-    --border: #bbb;
-    --accent: #000;
+    --bg: #ffffff;
+    --bg-subtle: #f7f7f7;
+    --surface: #ffffff;
+    --text: #111111;
+    --heading: #000000;
+    --text-muted: #333333;
+    --text-faint: #555555;
+    --border: #cccccc;
+    --border-strong: #888888;
+    --accent: #000000;
+    --teal: #000000;
+    --brass: #222222;
     color-scheme: light;
   }
+
   body {
-    background: #fff;
-    color: #000;
-    font-size: 11pt;
+    background: #ffffff !important;
+    color: #111111;
+    font-size: 10.5pt;
+    line-height: 1.5;
   }
+
   .site-header,
   .site-footer,
   .skip-link,
-  .theme-toggle,
-  .hero-visual {
+  .lamp-toggle,
+  .study-room-stage,
+  .room-plaque-tabs,
+  .copy-trigger,
+  .citation-details {
     display: none !important;
   }
+
   .container {
-    width: 100%;
-    max-width: none;
+    inline-size: 100%;
+    max-inline-size: none;
   }
-  .section {
-    padding-block: 1.5rem;
+
+  .monograph-section {
+    padding-block: 1.15rem;
   }
+
+  .monograph-grid {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
   .hero {
-    min-height: 0 !important;
-    padding: 1rem 0 2rem !important;
+    padding-block: 0.5rem 1.25rem !important;
+  }
+
+  .hero-main {
     display: block !important;
   }
-  .page-intro {
-    padding: 1rem 0 2rem;
-  }
+
   h1 {
-    font-size: 38pt;
+    font-size: 24pt;
   }
+
   h2 {
-    font-size: 25pt;
+    font-size: 14pt;
   }
+
   h3 {
-    font-size: 18pt;
+    font-size: 11.5pt;
   }
+
   a {
     text-decoration: underline;
   }
-  img,
-  figure,
-  .publication {
+
+  .publication-entry,
+  .ledger-row,
+  .project-entry {
     break-inside: avoid;
   }
-  pre {
-    white-space: pre-wrap;
-  }
+
   * {
     animation: none !important;
     transition: none !important;

@@ -1,108 +1,194 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
-import FeaturedResearch from "../../components/FeaturedResearch.astro";
 import PublicationItem from "../../components/PublicationItem.astro";
-import { publicEntries, byOrder, byDate } from "../../lib/content";
+import LinkList from "../../components/LinkList.astro";
+import { publicEntries, byOrder } from "../../lib/content";
 import { directions, profile } from "../../data/profile";
-const work = (await publicEntries("research")).sort(byOrder);
-const publications = (await publicEntries("publications")).sort(byDate);
+
+const researchEntries = (await publicEntries("research")).sort(byOrder);
+const publications = (await publicEntries("publications")).sort(byOrder);
 ---
 
 <BaseLayout
   title="Research"
-  description="Research at RIT's Khojasteh Autonomous Systems Laboratory (KAS Lab) on multi-agent robot coordination for disaster search-and-rescue and test-time antidistillation defenses against model extraction."
+  description="Research at RIT's Khojasteh Autonomous Systems Laboratory (KAS Lab) on cooperative multi-agent autonomy for disaster search-and-rescue and inference-time defenses against model extraction."
 >
   <header class="page-intro">
-    <p class="eyebrow">THE STUDY BOOKSHELF // KAS LAB · RIT RESEARCH PROGRAM</p>
-    <h1>
-      Multi-Agent Coordination for Search-and-Rescue &amp; Test-Time
-      Antidistillation
-    </h1>
+    <p class="eyebrow">KAS Lab · Rochester Institute of Technology</p>
+    <h1>Cooperative Multi-Agent Autonomy &amp; Secure Machine Learning</h1>
     <p>
       As a Ph.D. Graduate Research Assistant in the Khojasteh Autonomous Systems
-      Laboratory (advised by {profile.advisor}), I research multi-agent
-      coordination, dynamic resource allocation, constrained communication, and
-      compromised-agent containment for disaster search-and-rescue robot teams,
-      alongside inference-time defenses against unauthorized model distillation.
+      Laboratory (advised by {profile.advisor}), I study how autonomous robot
+      teams coordinate under constrained energy, communication, and trust for
+      disaster search-and-rescue, alongside inference-time defenses that protect
+      deployed classifiers from unauthorized distillation.
     </p>
   </header>
 
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="01 / Themes"
+        title="Research Agenda"
+        description="Core questions guiding current Ph.D. work and collaborative studies."
+      />
+      <div class="monograph-body">
+        <ol class="agenda-list" role="list">
+          {
+            directions.map((d) => (
+              <li id={d.id} class:list={["agenda-item", d.accent]}>
+                <p class="agenda-status">{d.status}</p>
+                <h3>{d.title}</h3>
+                <p class="agenda-question">{d.question}</p>
+                <p class="agenda-summary">{d.summary}</p>
+                <div class="agenda-foot">
+                  <ul class="tag-line" role="list">
+                    {d.tags.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                  {d.links.length > 0 && (
+                    <LinkList links={d.links} context={d.title} />
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
   {
-    directions.map((d, i) => (
-      <section id={d.id} class="direction-detail">
-        <div>
-          <p class="eyebrow">
-            VOLUME 0{i + 1} // {d.title}
-          </p>
-          <p class="tagline">{d.tags}</p>
-        </div>
-        <div>
-          <h2 class="direction-question">{d.question}</h2>
-          <p>{d.detail}</p>
-          {i === 0 && (
-            <div class="links">
-              <a href="/research/fontus/">
-                Inspect Fontus Study Plate (PettingZoo Parallel &amp; Ray RLlib) →
-              </a>
+    researchEntries.length > 0 && (
+      <section class="monograph-section">
+        <div class="monograph-grid">
+          <SectionHeader
+            eyebrow="02 / Highlights"
+            title="Active Systems"
+            description="Open-source environments and reproducible evaluation harnesses."
+          />
+          <div class="monograph-body">
+            <div class="highlights-stack">
+              {researchEntries.map(({ data, id }) => (
+                <article class="highlight-entry" id={`system-${id}`}>
+                  <p class="highlight-cat">{data.category}</p>
+                  <h3>{data.title}</h3>
+                  <p class="highlight-summary">{data.summary}</p>
+                  {data.links.length > 0 && (
+                    <div class="highlight-links">
+                      <LinkList links={data.links} context={data.title} />
+                    </div>
+                  )}
+                </article>
+              ))}
             </div>
-          )}
-          {i === 1 && (
-            <div class="links">
-              <a href="/research/ads-c/">
-                Inspect ADS-C Study Plate (arXiv:2607.15467) →
-              </a>
-            </div>
-          )}
-          {i === 2 && (
-            <div class="links">
-              <a href="/publications/#social-attraction">
-                LLM Social-Judgment Study (34 LLMs · 198 Humans) →
-              </a>
-            </div>
-          )}
+          </div>
         </div>
       </section>
-    ))
+    )
   }
 
-  <section class="section" aria-label="Research work">
-    <SectionHeader
-      eyebrow="FRAMED STUDY WALL PLATES"
-      title="Technical Case Studies &amp; Schematics"
-      description="Detailed problem formulations, per-input confidence margin bounds, and multi-agent reinforcement learning diagnostics."
-    />
-    {
-      work.map((entry, i) => (
-        <FeaturedResearch entry={entry} reverse={i % 2 === 1} />
-      ))
-    }
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="03 / Papers"
+        title="Publications"
+        href="/publications/"
+        linkLabel="All papers"
+      />
+      <div class="monograph-body">
+        {publications.map((entry) => <PublicationItem entry={entry} />)}
+      </div>
+    </div>
   </section>
 
-  <section class="section" aria-label="Research publications">
-    <SectionHeader
-      eyebrow="STUDY DESK MANUSCRIPTS"
-      title="Papers &amp; Preprints"
-      href="/publications/"
-      linkLabel="All Manuscripts"
-    />
-    {publications.map((entry) => <PublicationItem entry={entry} />)}
-  </section>
-
-  <div class="contact-line">
+  <div class="contact-strip">
     <p>
-      Interested in collaborating on multi-agent autonomy, ML security, or
-      open-source ML infrastructure?
+      Interested in collaborating on cooperative search-and-rescue autonomy, ML
+      security, or open-source ML systems?
     </p>
     <div class="links">
-      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
-      <a href="/cv.pdf">Curriculum Vitae (PDF) ↗</a>
+      <a href={`mailto:${profile.email}`}>
+        {profile.email} <span aria-hidden="true">↗</span>
+      </a>
+      <a href="/cv.pdf">
+        Curriculum Vitae (PDF) <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  .direction-question {
-    font-size: 1.95rem;
+  .agenda-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .agenda-item {
+    padding-inline-start: 1.15rem;
+    border-inline-start: 2px solid var(--border-strong);
+  }
+
+  .agenda-item.teal {
+    border-inline-start-color: var(--teal-vivid);
+  }
+
+  .agenda-item.peach {
+    border-inline-start-color: var(--accent-vivid);
+  }
+
+  .agenda-item.brass {
+    border-inline-start-color: var(--brass-vivid);
+  }
+
+  .agenda-status,
+  .highlight-cat {
+    font-family: var(--font-mono);
+    font-size: 0.71rem;
+    color: var(--brass);
+    margin-block-end: 0.25rem;
+  }
+
+  .agenda-question {
+    margin-block-start: 0.35rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--heading);
+  }
+
+  .agenda-summary,
+  .highlight-summary {
+    margin-block-start: 0.45rem;
+    font-size: 0.93rem;
+    color: var(--text-muted);
+  }
+
+  .agenda-foot {
+    margin-block-start: 0.65rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: safe center;
+    justify-content: space-between;
+    gap: 0.35rem 1.25rem;
+  }
+
+  .highlights-stack {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .highlight-entry + .highlight-entry {
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--border);
+  }
+
+  .highlight-links {
+    margin-block-start: 0.55rem;
   }
 </style>

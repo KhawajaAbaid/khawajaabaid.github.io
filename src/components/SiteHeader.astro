@@ -2,80 +2,100 @@
 import { profile, navigation } from "../data/profile";
 const path = Astro.url.pathname;
 const isHome = path === "/";
-const roman = ["I.", "II.", "III.", "IV."];
 ---
 
 {
-  isHome ? (
-    <div id="top" class="study-top-anchor" aria-hidden="true" />
-  ) : (
-    <header class="study-shelf-ledge container" id="top">
-      <div class="shelf-ledge-wood">
-        <a class="return-study-plaque" href="/">
-          <span class="plaque-kicker" aria-hidden="true">
-            ← RETURN TO STUDY ROOM
-          </span>
-          <span class="plaque-owner">{profile.name}</span>
+  !isHome && (
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="/">
+          <span class="wordmark-arrow" aria-hidden="true">←</span>
+          <span>Study Room · {profile.name}</span>
+          <span class="wordmark-dot" aria-hidden="true">.</span>
         </a>
 
-        <nav class="shelf-compartments" aria-label="Study Bookcase Shelves">
-          {navigation.map((item, idx) => (
-            <a
-              href={item.href}
-              class="shelf-compartment-link"
-              aria-current={path.startsWith(item.href) ? "page" : undefined}
-            >
-              {idx < roman.length && (
-                <span class="shelf-roman" aria-hidden="true">
-                  {roman[idx]}
-                </span>
-              )}
-              <span>{item.label}</span>
-            </a>
-          ))}
-        </nav>
+        <div class="header-right">
+          <nav aria-label="Primary">
+            {navigation.map((item) => {
+              const current = !item.external && path.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class="nav-link"
+                  aria-current={current ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
 
-        <!-- Pure Emeralite Lamp & Beaded Brass Pull-Chain (No Button Box or Text) -->
-        <button
-          class="lamp-chain-only"
-          type="button"
-          data-lamp-toggle
-          aria-label="Pull Banker's Lamp brass chain to switch room lighting"
-          aria-pressed="false"
-          title="Pull brass chain to switch room lighting"
-        >
-          <svg width="38" height="60" viewBox="0 0 38 60" fill="none" aria-hidden="true">
-            <path
-              d="M4 18 C6.5 7, 31.5 7, 34 18 Z"
-              fill="var(--teal)"
-              stroke="#241710"
-              stroke-width="1.5"
-            />
-            <line
-              x1="3"
-              y1="18"
-              x2="35"
-              y2="18"
-              stroke="var(--brass)"
-              stroke-width="2.4"
-              stroke-linecap="round"
-            />
-            <g class="pull-chain-cord">
-              <line x1="25" y1="18" x2="25" y2="43" stroke="#c49240" stroke-width="1.1" />
-              <circle cx="25" cy="22" r="1.7" fill="var(--brass)" stroke="#241710" stroke-width="0.5" />
-              <circle cx="25" cy="27" r="1.7" fill="var(--brass)" stroke="#241710" stroke-width="0.5" />
-              <circle cx="25" cy="32" r="1.7" fill="var(--brass)" stroke="#241710" stroke-width="0.5" />
-              <circle cx="25" cy="37" r="1.7" fill="var(--brass)" stroke="#241710" stroke-width="0.5" />
-              <circle cx="25" cy="42" r="1.7" fill="var(--brass)" stroke="#241710" stroke-width="0.5" />
+          <button
+            type="button"
+            class="lamp-toggle"
+            data-lamp-toggle
+            title="Toggle study lighting"
+          >
+            <span class="visually-hidden label-to-dark">
+              Switch to nocturnal lamplight theme
+            </span>
+            <span class="visually-hidden label-to-light">
+              Switch to sunlit daylight theme
+            </span>
+            <svg
+              width="20"
+              height="24"
+              viewBox="0 0 20 24"
+              fill="none"
+              aria-hidden="true"
+            >
               <path
-                d="M21.5 44.5 C21.5 42.2, 28.5 42.2, 28.5 44.5 L27.5 53 C27.2 55.2, 22.8 55.2, 22.5 53 Z"
-                fill="var(--brass)"
-                stroke="#241710"
-                stroke-width="1.1"
+                d="M3 9.5C4.2 4.6 15.8 4.6 17 9.5H3Z"
+                fill="var(--teal-vivid)"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linejoin="round"
               />
-            </g>
-          </svg>
-        </button>
+              <line
+                x1="2.2"
+                y1="9.5"
+                x2="17.8"
+                y2="9.5"
+                stroke="var(--brass-vivid)"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+              <line
+                x1="10"
+                y1="9.5"
+                x2="10"
+                y2="19.5"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <line
+                x1="6"
+                y1="19.5"
+                x2="14"
+                y2="19.5"
+                stroke="currentColor"
+                stroke-width="1.35"
+                stroke-linecap="round"
+              />
+              <g class="lamp-pull-cord">
+                <line
+                  x1="14"
+                  y1="9.8"
+                  x2="14"
+                  y2="15.5"
+                  stroke="var(--brass-vivid)"
+                  stroke-width="1.1"
+                />
+                <circle cx="14" cy="16.8" r="1.45" fill="var(--brass-vivid)" />
+              </g>
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
   )
@@ -86,7 +106,6 @@ const roman = ["I.", "II.", "III.", "IV."];
   const metaScheme = document.querySelector<HTMLMetaElement>(
     'meta[name="color-scheme"]',
   );
-  const toggles = document.querySelectorAll<Element>("[data-lamp-toggle]");
   const media = window.matchMedia("(prefers-color-scheme: dark)");
 
   function getStoredScheme(): "light" | "dark" | null {
@@ -107,7 +126,7 @@ const roman = ["I.", "II.", "III.", "IV."];
     return media.matches;
   }
 
-  function applySchemeState(stored: "light" | "dark" | null) {
+  function syncThemeDOM(stored: "light" | "dark" | null) {
     if (stored) {
       root.dataset.theme = stored;
       metaScheme?.setAttribute("content", stored);
@@ -116,26 +135,28 @@ const roman = ["I.", "II.", "III.", "IV."];
       metaScheme?.setAttribute("content", "light dark");
     }
     const dark = isDarkActive();
-    toggles.forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(dark));
-      btn.setAttribute(
-        "aria-label",
-        dark
-          ? "Pull Banker's Lamp brass chain for Golden-Hour Daylight study"
-          : "Pull Banker's Lamp brass chain for Nocturnal Lamplight study",
-      );
-    });
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", dark ? "#181924" : "#f4f1de");
+
+    document
+      .querySelectorAll<SVGElement>(".lamp-chain-interactive[data-lamp-toggle]")
+      .forEach((chain) => {
+        chain.setAttribute(
+          "aria-label",
+          dark
+            ? "Pull Banker's Lamp brass chain to switch to sunlit daylight"
+            : "Pull Banker's Lamp brass chain to switch to nocturnal lamplight",
+        );
+      });
   }
 
-  function toggleTheme(triggerEl?: Element) {
+  function toggleTheme(trigger?: Element | null) {
     const currentlyDark = isDarkActive();
     const target: "light" | "dark" = currentlyDark ? "light" : "dark";
     const systemScheme: "light" | "dark" = media.matches ? "dark" : "light";
 
-    /* Per modern-web-guidance `dark-mode-toggle`: check divergence at storage time only */
+    /* Check divergence from OS preference ONLY at storage time */
     const nextStored = target === systemScheme ? null : target;
     try {
       if (nextStored === null) {
@@ -143,209 +164,246 @@ const roman = ["I.", "II.", "III.", "IV."];
       } else {
         localStorage.setItem("theme", nextStored);
       }
-    } catch {
-      /* Storage blocked; still apply in-memory */
+    } catch {}
+
+    syncThemeDOM(nextStored);
+
+    if (trigger) {
+      trigger.classList.remove("cord-pulled");
+      void trigger.getBoundingClientRect();
+      trigger.classList.add("cord-pulled");
     }
 
-    if (nextStored === null) {
-      delete root.dataset.theme;
-      metaScheme?.setAttribute("content", "light dark");
-    } else {
-      root.dataset.theme = nextStored;
-      metaScheme?.setAttribute("content", nextStored);
+    const roomStage = document.querySelector<HTMLElement>(".study-room-stage");
+    if (roomStage) {
+      roomStage.classList.remove("lamp-switching");
+      void roomStage.getBoundingClientRect();
+      roomStage.classList.add("lamp-switching");
     }
-
-    if (triggerEl) {
-      triggerEl.classList.remove("chain-pulled");
-      void triggerEl.getBoundingClientRect();
-      triggerEl.classList.add("chain-pulled");
-    }
-
-    const roomScene = document.querySelector(".study-room-stage");
-    if (roomScene) {
-      roomScene.classList.remove("lamp-switching");
-      void roomScene.getBoundingClientRect();
-      roomScene.classList.add("lamp-switching");
-    }
-
-    applySchemeState(nextStored);
   }
 
-  applySchemeState(getStoredScheme());
+  syncThemeDOM(getStoredScheme());
 
-  toggles.forEach((btn) => {
-    btn.addEventListener("click", () => toggleTheme(btn));
-    btn.addEventListener("keydown", (e) => {
-      const evt = e as KeyboardEvent;
-      if (evt.key === "Enter" || evt.key === " ") {
-        evt.preventDefault();
-        toggleTheme(btn);
-      }
-    });
+  document.addEventListener("click", (event) => {
+    const toggle = (event.target as Element | null)?.closest(
+      "[data-lamp-toggle]",
+    );
+    if (toggle) {
+      toggleTheme(toggle);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const toggle = (event.target as Element | null)?.closest(
+      "[data-lamp-toggle]",
+    );
+    if (!toggle || toggle.tagName.toLowerCase() === "button") return;
+    event.preventDefault();
+    toggleTheme(toggle);
   });
 
   media.addEventListener("change", () => {
-    applySchemeState(getStoredScheme());
+    /* Never delete stored value on OS change; re-evaluate effective theme */
+    syncThemeDOM(getStoredScheme());
   });
 
-  window.addEventListener("storage", (e) => {
-    if (e.key === "theme" || e.key === null) {
-      applySchemeState(getStoredScheme());
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme" || event.key === null) {
+      syncThemeDOM(getStoredScheme());
     }
   });
 </script>
 
 <style>
-  .study-top-anchor {
-    height: 0;
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 50;
+    background-color: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-block-end: 1px solid var(--border);
   }
 
-  /* Interior Pages: Carved Mahogany Bookcase Shelf Ledge */
-  .study-shelf-ledge {
-    padding-top: 1rem;
-  }
-
-  .shelf-ledge-wood {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.65rem 1.25rem;
-    background: linear-gradient(180deg, #3b2518 0%, #26170e 100%);
-    border: 2px solid var(--wood-mid);
-    border-bottom: 4px solid var(--brass);
-    border-radius: 6px;
-    box-shadow: var(--card-shadow);
-  }
-
-  .return-study-plaque {
-    display: flex;
-    flex-direction: column;
-    gap: 0.08rem;
-    padding: 0.35rem 0.75rem;
-    background: linear-gradient(135deg, #d4a149 0%, #f5dba3 50%, #c28e38 100%);
-    border: 1px solid #1c110a;
-    border-radius: 3px;
-    text-decoration: none;
-    color: #1e140c !important;
-    flex-shrink: 0;
-  }
-
-  .return-study-plaque:hover {
-    filter: brightness(1.06);
-  }
-
-  .plaque-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #4a3020;
-  }
-
-  .plaque-owner {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.15;
-    color: #1e140c;
-  }
-
-  .shelf-compartments {
+  .header-inner {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem;
+    align-items: safe center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-block: 0.85rem;
   }
 
-  .shelf-compartment-link {
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--heading);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .wordmark:hover {
+    color: var(--accent);
+  }
+
+  .wordmark-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--brass);
+  }
+
+  .wordmark-dot {
+    color: var(--accent-vivid);
+    margin-inline-start: -0.25rem;
+  }
+
+  .header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: safe center;
+    gap: 0.35rem 1.2rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: safe center;
+    gap: 0.2rem 1.15rem;
+  }
+
+  .nav-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.32rem;
-    padding: 0.42rem 0.78rem;
-    background: #352013;
-    border: 1px solid rgba(242, 204, 143, 0.55);
-    border-left: 3px solid var(--accent);
-    border-radius: 3px;
+    min-block-size: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    color: var(--text-muted);
     text-decoration: none;
-    font-family: var(--font-display);
-    font-size: 0.94rem;
-    font-weight: 500;
-    color: #faf8ef !important;
-    transition:
-      transform 180ms ease,
-      background-color 180ms ease,
-      border-color 180ms ease;
+    transition: color 150ms ease;
   }
 
-  .shelf-compartment-link:hover,
-  .shelf-compartment-link[aria-current="page"] {
-    background: #4d2f1c;
-    border-color: #faf8ef;
-    transform: translateY(-2px);
+  .nav-link:hover,
+  .nav-link[aria-current="page"] {
+    color: var(--heading);
   }
 
-  .shelf-compartment-link[aria-current="page"] {
-    border-left-color: var(--brass-light);
-    box-shadow: 0 3px 10px rgba(242, 204, 143, 0.25);
+  .nav-link[aria-current="page"] {
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent-vivid);
+    text-underline-offset: 0.35em;
   }
 
-  .shelf-roman {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    color: var(--brass-light);
-  }
-
-  /* Pure Lamp & Chain Trigger (No Button Box) */
-  .lamp-chain-only {
-    background: transparent;
-    border: 0;
-    padding: 0 0.15rem;
-    margin-block: -6px;
-    display: grid;
+  .lamp-toggle {
+    display: inline-grid;
     place-items: center;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .pull-chain-cord {
+    min-inline-size: 2.25rem;
+    min-block-size: 2.25rem;
+    padding: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--heading);
     transition:
-      transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1),
-      filter 200ms ease;
+      border-color 150ms ease,
+      color 150ms ease;
   }
 
-  .lamp-chain-only:hover .pull-chain-cord,
-  .lamp-chain-only:focus-visible .pull-chain-cord {
-    transform: translateY(5px);
-    filter: drop-shadow(0 3px 8px rgba(242, 204, 143, 0.7));
+  .lamp-toggle:hover {
+    border-color: var(--border-strong);
+    color: var(--accent);
   }
 
-  .lamp-chain-only.chain-pulled .pull-chain-cord {
-    animation: pullChainSpring 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  .lamp-pull-cord {
+    transition: transform 200ms ease;
   }
 
-  @keyframes pullChainSpring {
+  .lamp-toggle:hover .lamp-pull-cord,
+  .lamp-toggle:focus-visible .lamp-pull-cord {
+    transform: translateY(1.8px);
+  }
+
+  .lamp-toggle.cord-pulled .lamp-pull-cord {
+    animation: cordDip 320ms ease;
+  }
+
+  @keyframes cordDip {
     0% {
       transform: translateY(0);
     }
-    40% {
-      transform: translateY(9px);
+    45% {
+      transform: translateY(3.5px);
     }
     100% {
       transform: translateY(0);
     }
   }
 
-  @media (max-width: 860px) {
-    .shelf-ledge-wood {
-      flex-wrap: wrap;
+  /* Dual state labels driven purely by effective scheme */
+  .label-to-light {
+    display: none;
+  }
+
+  :global(:root[data-theme="dark"]) .label-to-dark,
+  :global(:root:has(> head > meta[name="color-scheme"][content="dark"]))
+    .label-to-dark {
+    display: none;
+  }
+
+  :global(:root[data-theme="dark"]) .label-to-light,
+  :global(:root:has(> head > meta[name="color-scheme"][content="dark"]))
+    .label-to-light {
+    display: inline;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(
+        :root:not([data-theme="light"]):not(
+            :has(> head > meta[name="color-scheme"][content="light"])
+          )
+      )
+      .label-to-dark {
+      display: none;
     }
-    .shelf-compartments {
-      order: 3;
-      flex-basis: 100%;
-      padding-top: 0.45rem;
-      border-top: 1px solid rgba(242, 204, 143, 0.25);
+    :global(
+        :root:not([data-theme="light"]):not(
+            :has(> head > meta[name="color-scheme"][content="light"])
+          )
+      )
+      .label-to-light {
+      display: inline;
+    }
+  }
+
+  @media (pointer: coarse) {
+    .nav-link,
+    .lamp-toggle {
+      min-block-size: 2.75rem;
+    }
+    .lamp-toggle {
+      min-inline-size: 2.75rem;
+    }
+  }
+
+  @media (max-width: 42em) {
+    .header-inner {
+      padding-block: 0.65rem;
+    }
+    .header-right {
+      inline-size: 100%;
+      justify-content: space-between;
+      border-block-start: 1px solid var(--border);
+      padding-block-start: 0.45rem;
+    }
+    nav {
+      gap: 0.15rem 0.9rem;
+    }
+    .nav-link {
+      font-size: 0.82rem;
     }
   }
 </style>

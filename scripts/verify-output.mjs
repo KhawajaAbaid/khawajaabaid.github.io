@@ -16,8 +16,6 @@ const origin = "https://khawajaabaid.github.io";
 const required = [
   "index.html",
   "research/index.html",
-  "research/ads-c/index.html",
-  "research/fontus/index.html",
   "publications/index.html",
   "projects/index.html",
   "about/index.html",

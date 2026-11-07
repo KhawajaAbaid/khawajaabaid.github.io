@@ -1,10 +1,10 @@
 ---
 {
   "title": "Fontus — Multi-Agent RL for Aerial UAV Recharging",
-  "summary": "Built a custom PettingZoo Parallel multi-agent environment with vectorized NumPy dynamics, energy-aware transitions, and proximity-triggered charging; trained parameter-shared IPPO/PPO policies with PyTorch and Ray RLlib. Established an analytical no-charge baseline and diagnosed a reward-hacking ‘lazy agent’ local optimum.",
+  "summary": "Custom PettingZoo Parallel multi-agent environment with vectorized NumPy dynamics and proximity-triggered aerial battery charging; trained parameter-shared IPPO/PPO policies in PyTorch and Ray RLlib and diagnosed a reward-hacking local optimum against an analytical baseline.",
   "category": "research-system",
   "selected": true,
-  "order": 2,
+  "order": 3,
   "tags": [
     "PettingZoo Parallel",
     "PyTorch",
@@ -14,11 +14,7 @@
   ],
   "links": [
     {
-      "label": "Research Folio",
-      "href": "/research/fontus/"
-    },
-    {
-      "label": "GitHub Code",
+      "label": "GitHub",
       "href": "https://github.com/KhawajaAbaid/fontus2d"
     }
   ],

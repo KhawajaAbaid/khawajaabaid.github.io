@@ -1,34 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import PublicationItem from "../components/PublicationItem.astro";
-import { publicEntries, byDate } from "../lib/content";
-const publications = (await publicEntries("publications")).sort(byDate);
+import { publicEntries, byOrder } from "../lib/content";
+
+const publications = (await publicEntries("publications")).sort(byOrder);
 ---
 
 <BaseLayout
   title="Publications"
-  description="Papers and preprints by Khawaja Abaid Ullah on test-time antidistillation defenses (ADS-C, matched-cost review) and large-scale human-LLM social judgment alignment."
+  description="Papers and preprints by Khawaja Abaid Ullah on margin-aware antidistillation defenses against model extraction (ADS-C, matched-cost review) and large-scale human-LLM alignment."
 >
   <header class="page-intro">
-    <p class="eyebrow">THE STUDY READING TABLE // PAPERS &amp; PREPRINTS</p>
-    <h1>Selected Manuscripts &amp; Preprints</h1>
+    <p class="eyebrow">Papers &amp; Preprints</p>
+    <h1>Selected Manuscripts</h1>
     <p>
-      Research manuscripts on margin-aware inference-time antidistillation
-      defenses against model extraction (ADS-C and matched-cost benchmark review)
-      and theory-grounded evaluation across 34 LLMs and 198 human participants.
+      Concise summaries of first-author and collaborative research on
+      inference-time antidistillation defenses against model extraction and
+      theory-grounded evaluation across 34 LLMs and 198 human participants, with
+      direct links to arXiv, PDFs, and open-source code.
     </p>
   </header>
-  <div class="publication-index">
-    {
-      publications.map((entry) => (
-        <PublicationItem entry={entry} headingLevel="h2" />
-      ))
-    }
-  </div>
-</BaseLayout>
 
-<style>
-  .publication-index {
-    padding-bottom: 5rem;
-  }
-</style>
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="2026"
+        title="Preprints & Reviews"
+        description="Click any paper title or arXiv link for the full manuscript and experimental plots."
+      />
+      <div class="monograph-body">
+        {publications.map((entry) => <PublicationItem entry={entry} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

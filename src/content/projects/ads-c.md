@@ -1,27 +1,22 @@
 ---
 {
-  "title": "ADS-C — Antidistillation Sampling for Classification",
-  "summary": "Open-source PyTorch implementation and reproducible evaluation harness for ADS-C, preserving every served top-1 prediction while reducing distilled-student accuracy by 29.6 pp on CIFAR-10, 17.4 pp on CIFAR-100, and 13.3 pp on Tiny-ImageNet across multiple student architectures.",
+  "title": "ADS-C Evaluation Harness",
+  "summary": "Open-source PyTorch implementation and reproducible multi-architecture evaluation harness for margin-bounded antidistillation sampling across CIFAR-10, CIFAR-100, and Tiny-ImageNet.",
   "category": "research-system",
-  "selected": true,
-  "order": 1,
+  "selected": false,
+  "order": 6,
   "tags": [
     "PyTorch",
     "ML Security",
-    "Antidistillation",
-    "CIFAR-10 / CIFAR-100 / Tiny-ImageNet"
+    "Antidistillation"
   ],
   "links": [
     {
-      "label": "Research Folio",
-      "href": "/research/ads-c/"
-    },
-    {
-      "label": "arXiv Paper",
+      "label": "arXiv",
       "href": "https://arxiv.org/abs/2607.15467"
     },
     {
-      "label": "PyTorch Code",
+      "label": "GitHub",
       "href": "https://github.com/the-kas-lab/ADS-C"
     }
   ],
