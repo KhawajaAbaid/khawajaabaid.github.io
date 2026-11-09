@@ -4,48 +4,51 @@ import LinkList from "./LinkList.astro";
 
 interface Props {
   entry: CollectionEntry<"projects">;
+  idPrefix?: string;
 }
 
 const {
   entry: { data, id },
+  idPrefix = "",
 } = Astro.props;
 
 const primaryHref = data.links[0]?.href;
 const categoryLabel =
-  data.category === "research-system" ? "Research System" : "Open-Source ML";
+  data.kind ??
+  (data.category === "research-system"
+    ? "Research implementation"
+    : "ML engineering");
 ---
 
-<article class="project-entry" id={id}>
+<article class="project-entry" id={`${idPrefix}${id}`}>
   <div class="project-head">
     <div class="project-title-group">
       <h3>
-        {
-          primaryHref ? (
-            <a href={primaryHref} class="project-title-link">
-              {data.title}
-            </a>
-          ) : (
-            data.title
-          )
-        }
+        {primaryHref ? (
+          <a href={primaryHref} class="project-title-link">
+            {data.title}
+          </a>
+        ) : (
+          data.title
+        )}
       </h3>
       <span class="project-kind">{categoryLabel}</span>
     </div>
 
-    {data.links.length > 0 && <LinkList links={data.links} context={data.title} />}
+    {data.links.length > 0 && (
+      <LinkList links={data.links} context={data.title} />
+    )}
   </div>
 
   <p class="project-summary">{data.summary}</p>
 
-  {
-    data.tags.length > 0 && (
-      <ul class="tag-line project-tags" role="list">
-        {data.tags.map((tag) => (
-          <li>{tag}</li>
-        ))}
-      </ul>
-    )
-  }
+  {data.tags.length > 0 && (
+    <ul class="tag-line project-tags" role="list">
+      {data.tags.map((tag) => (
+        <li>{tag}</li>
+      ))}
+    </ul>
+  )}
 </article>
 
 <style>

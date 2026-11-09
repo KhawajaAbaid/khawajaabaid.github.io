@@ -10,16 +10,21 @@ const { entries } = Astro.props;
 ---
 
 <ul class="news-list" role="list">
-  {
-    entries.map(({ data }) => (
-      <li class="news-row">
-        <time datetime={data.date.toISOString().slice(0, 10)}>
-          {monthYear(data.date)}
-        </time>
-        <p>{data.href ? <a href={data.href}>{data.text}</a> : data.text}</p>
-      </li>
-    ))
-  }
+  {entries.map(({ data }) => (
+    <li class="news-row">
+      <time datetime={data.date.toISOString().slice(0, 10)}>
+        {data.datePrecision === "day"
+          ? data.date.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              timeZone: "UTC",
+            })
+          : monthYear(data.date)}
+      </time>
+      <p>{data.href ? <a href={data.href}>{data.text}</a> : data.text}</p>
+    </li>
+  ))}
 </ul>
 
 <style>
@@ -31,7 +36,7 @@ const { entries } = Astro.props;
 
   .news-row {
     display: grid;
-    grid-template-columns: 6.5rem minmax(0, 1fr);
+    grid-template-columns: 8rem minmax(0, 1fr);
     gap: 0.25rem 1.5rem;
     padding-block: 0.75rem;
     border-block-start: 1px solid var(--border);

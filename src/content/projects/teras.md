@@ -1,10 +1,10 @@
 ---
 {
   "title": "Teras",
-  "summary": "Created a Keras 3-based tabular deep-learning library supporting JAX, PyTorch, and TensorFlow backends. Implemented state-of-the-art research architectures (SAINT, TabNet, TabTransformer, FT-Transformer, CTGAN, TVAE, GAIN, PCGAIN) for classification, regression, data imputation, and synthetic-data generation.",
+  "summary": "Created a Keras 3 library implementing published tabular deep-learning architectures for classification, regression, data imputation and synthetic-data generation, with JAX, PyTorch and TensorFlow backends.",
   "category": "engineering",
   "selected": true,
-  "order": 1,
+  "order": 2,
   "tags": [
     "Keras 3",
     "JAX",
@@ -19,6 +19,7 @@
     }
   ],
   "public": true,
-  "draft": false
+  "draft": false,
+  "kind": "Independent open-source library"
 }
 ---

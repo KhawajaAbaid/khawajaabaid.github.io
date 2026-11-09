@@ -1,35 +1,22 @@
 export const profile = {
   name: "Khawaja Abaid Ullah",
   shortName: "K. Abaid Ullah",
-  role: "Ph.D. Researcher · Machine Learning & Autonomous Systems",
+  role: "PhD student in Electrical and Computer Engineering",
   institution: "Rochester Institute of Technology",
   lab: "Khojasteh Autonomous Systems Laboratory (KAS Lab)",
   location: "Rochester, NY",
   email: "khawaja.abaid@gmail.com",
   advisor: "Dr. Mohammad Javad Khojasteh",
   researchStatement:
-    "I research cooperative multi-agent autonomy—dynamic resource allocation, constrained communication, and aerial recharging for disaster search-and-rescue robot teams—alongside inference-time defenses that protect deployed machine learning models from unauthorized extraction.",
+    "I’m a first-year PhD student in Electrical and Computer Engineering at Rochester Institute of Technology, where I study multi-agent coordination and decision-making at the Khojasteh Autonomous Systems Laboratory. My current work focuses on decentralized task allocation and LLM-assisted planning for autonomous systems.",
   secondaryBio:
-    "Previously an AI/ML Software Development Engineer Intern at Amazon Web Services (full-time return offer) and a U.S. Fulbright Scholar at RIT (M.S. in AI, 4.0 GPA). Alongside research, I build open-source ML tools including Teras and contribute to Keras 3.",
+    "I also build machine-learning software, including Teras, a multi-backend tabular deep-learning library, and have contributed code and tests to Keras. Previously, I completed an SDE internship at AWS and earned my MS in Artificial Intelligence at RIT as a Fulbright Scholar.",
+  currentOverview:
+    "My research focuses on how autonomous agents coordinate decisions, share information, and allocate tasks under communication and resource constraints. I am particularly interested in decentralized coordination and in combining LLM-assisted planning with explicit coordination algorithms.",
+  futureOverview:
+    "I am beginning to explore LLM-guided algorithm discovery and optimization, where candidate solutions are improved using evaluation feedback. Longer term, I want to develop compact, computationally efficient reasoning models that can run directly on robots and edge devices, helping autonomous teams adapt and coordinate reliably. Multi-robot search and rescue is one application I hope to work toward.",
   description:
-    "Khawaja Abaid Ullah — Ph.D. researcher at RIT's KAS Lab working on cooperative multi-agent autonomy for disaster search-and-rescue and ML security. U.S. Fulbright Scholar (4.0 GPA), former AWS AI/ML SDE intern, creator of Teras, and Keras 3 contributor.",
-  proofStrip: [
-    {
-      label: "Fellowship & Academics",
-      title: "U.S. Fulbright Scholar",
-      detail: "M.S. in AI (4.0 / 4.0 GPA) · RIT · 1st in B.S. CS Class",
-    },
-    {
-      label: "Industry Engineering",
-      title: "Amazon Web Services",
-      detail: "AI/ML SDE Intern · East Palo Alto · Return Offer",
-    },
-    {
-      label: "Open-Source Ecosystems",
-      title: "Teras & Keras 3",
-      detail: "Creator of Teras · Official Keras 3 Contributor",
-    },
-  ],
+    "Khawaja Abaid Ullah is a PhD student at RIT’s KAS Lab studying multi-agent coordination, decentralized task allocation and LLM-assisted planning. Creator of Teras and contributor to Keras.",
   links: {
     rit: "https://www.rit.edu/kaslab/people/khawaja",
     github: "https://github.com/KhawajaAbaid",
@@ -49,75 +36,38 @@ export const directions = [
   {
     id: "multi-agent-systems",
     accent: "teal" as const,
-    title: "Cooperative Multi-Agent Autonomy & Search-and-Rescue",
-    status: "Primary Ph.D. Focus · KAS Lab",
+    title: "Multi-agent coordination & decision-making",
+    status: "Current research · KAS Lab",
     question:
-      "How can autonomous robot teams coordinate reliably when energy, bandwidth, and trust are constrained?",
-    summary:
-      "Developing multi-agent reinforcement learning and coordination methods for disaster search-and-rescue teams—spanning dynamic resource allocation, communication relays under bandwidth limits, aerial UAV battery recharging (Fontus), and containment of compromised agents.",
+      "How can autonomous teams allocate tasks and coordinate decisions with limited communication and resources?",
+    summary: profile.currentOverview,
     tags: [
-      "Multi-Agent RL",
-      "Search & Rescue",
-      "Resource Allocation",
-      "ROS 2",
-      "PettingZoo / RLlib",
+      "Decentralized task allocation",
+      "LLM-assisted planning",
+      "Autonomous systems",
     ],
-    links: [
-      {
-        label: "Decentralized Teams Preprint (arXiv)",
-        href: "https://arxiv.org/abs/2610.41044",
-      },
-      {
-        label: "Fontus Environment (GitHub)",
-        href: "https://github.com/KhawajaAbaid/fontus2d",
-      },
-    ],
-  },
-  {
-    id: "secure-learning",
-    accent: "peach" as const,
-    title: "ML Security & Inference-Time Antidistillation",
-    status: "ADS-C · Matched-Cost Benchmark",
-    question:
-      "How can deployed classifiers deter unauthorized model extraction without altering legitimate predictions?",
-    summary:
-      "Designing closed-form per-input confidence-margin perturbations (ADS-C) and matched-cost evaluation wrappers that preserve 100% of served top-1 predictions while substantially degrading surrogate student distillation.",
-    tags: [
-      "Model Extraction Defense",
-      "Antidistillation",
-      "Margin Bounds",
-      "PyTorch",
-    ],
-    links: [
-      {
-        label: "ADS-C Preprint (arXiv)",
-        href: "https://arxiv.org/abs/2607.15467",
-      },
-      {
-        label: "PyTorch Harness",
-        href: "https://github.com/the-kas-lab/ADS-C",
-      },
-    ],
+    links: [{ label: "Coordination testbed", href: "/research/coordination/" }],
   },
   {
     id: "machine-reasoning",
     accent: "brass" as const,
-    title: "LLM Distillation, Alignment & Optimization",
-    status: "JAX / Flax NNX · 34-LLM Study",
+    title: "Algorithm discovery & efficient reasoning",
+    status: "Emerging direction & long-term goals",
     question:
-      "How do we distill compact language models and evaluate alignment for structured decision-making?",
-    summary:
-      "Exploring two-stage knowledge distillation for compact local code-generation models in JAX/Flax NNX (codriver, 260M parameters) alongside theory-grounded behavioral alignment studies across 34 LLMs and 198 human participants.",
+      "How might evaluation feedback guide algorithm discovery, and how could compact reasoning models support autonomous teams?",
+    summary: profile.futureOverview,
     tags: [
-      "Knowledge Distillation",
-      "JAX / Flax NNX",
-      "LLM Evaluation",
-      "Combinatorial Optimization",
+      "Emerging: LLM-guided algorithm discovery",
+      "Goal: on-device reasoning",
     ],
     links: [
       {
-        label: "34-LLM Alignment Paper (arXiv)",
-        href: "https://arxiv.org/abs/2608.09717",
+        label: "Inspiration: AlphaEvolve",
+        href: "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      },
+      {
+        label: "Inspiration: Learning to Discover at Test Time",
+        href: "https://arxiv.org/abs/2601.16175",
       },
     ],
   },
@@ -129,10 +79,10 @@ export const experienceLedger = [
     role: "Graduate Research Assistant (Ph.D. in ECE)",
     organization: "Khojasteh Autonomous Systems Laboratory (KAS Lab), RIT",
     location: "Rochester, NY",
-    note: "Full GRA Fellowship",
+    note: "Fully funded graduate research assistantship",
     highlights: [
       "Advised by Dr. Mohammad Javad Khojasteh (expected graduation: May 2029).",
-      "Researching cooperative multi-agent decision-making, dynamic resource allocation, constrained communication, and compromised-agent containment for disaster search-and-rescue robot teams, alongside test-time antidistillation defenses.",
+      "Study multi-agent coordination and decision-making, particularly decentralized task allocation and LLM-assisted planning under communication and resource constraints.",
     ],
   },
   {
@@ -143,7 +93,7 @@ export const experienceLedger = [
     note: "Full-Time Return Offer",
     featured: true,
     highlights: [
-      "Engineered core Apache Spark testing and evaluation modules for a next-generation internal benchmarking platform, closing feature-parity gaps with its legacy predecessor.",
+      "Engineered core Apache Spark testing and evaluation modules for an internal benchmarking platform, closing feature-parity gaps with its legacy predecessor.",
       "Independently identified and delivered additional benchmarking capabilities beyond original project scope, earning team leadership recognition and a full-time return offer.",
     ],
   },
@@ -154,16 +104,7 @@ export const experienceLedger = [
     location: "Rochester, NY",
     note: "ROS 1 / ROS 2 / Docker",
     highlights: [
-      "Develop lecture and lab material for a combined undergraduate/graduate robotics course; designed reproducible ROS Docker containers and VM images replacing a brittle third-party setup.",
-    ],
-  },
-  {
-    period: "Jun 2026 – Present",
-    role: "Manuscript Reviewer",
-    organization: "IEEE Signal Processing Letters",
-    location: "Academic Service",
-    highlights: [
-      "Peer-review manuscripts in machine learning and signal processing for technical soundness, novelty, and experimental reproducibility.",
+      "Develop lecture and lab material for undergraduate and graduate robotics students; designed reproducible ROS Docker containers and VM images replacing a brittle third-party setup.",
     ],
   },
   {
@@ -177,18 +118,30 @@ export const experienceLedger = [
   },
 ];
 
+export const serviceLedger = [
+  {
+    period: "Jun 2026 – Present",
+    role: "Manuscript Reviewer",
+    organization: "IEEE Signal Processing Letters",
+    location: "Academic Service",
+    highlights: [
+      "Began reviewing manuscripts for IEEE Signal Processing Letters in June 2026.",
+    ],
+  },
+];
+
 export const educationLedger = [
   {
-    period: "2026 – 2029 (Exp.)",
+    period: "Jun 2026 – May 2029 (expected)",
     degree: "Ph.D. in Electrical and Computer Engineering",
     institution: "Rochester Institute of Technology",
     location: "Rochester, NY",
-    note: "Fully Funded GRA · KAS Lab",
+    note: "Fully funded graduate research assistantship",
     details:
       "Advised by Dr. Mohammad Javad Khojasteh in the Khojasteh Autonomous Systems Laboratory.",
   },
   {
-    period: "2024 – 2026",
+    period: "Aug 2024 – May 2026",
     degree: "M.S. in Artificial Intelligence",
     institution: "Rochester Institute of Technology",
     location: "Rochester, NY",
@@ -203,8 +156,7 @@ export const educationLedger = [
     institution: "University of Narowal",
     location: "Narowal, Pakistan",
     note: "Ranked 1st in Class of 2021",
-    details:
-      "Graduated first (Valedictorian) in the Computer Science class of 2021.",
+    details: "Graduated first in the Computer Science class of 2021.",
   },
 ];
 
@@ -235,10 +187,10 @@ export const apparatusSkills = [
     label: "Research Focus",
     items: [
       "Multi-Agent Reinforcement Learning",
-      "Cooperative Search & Rescue",
+      "Decentralized Task Allocation",
       "Antidistillation & ML Security",
       "Knowledge Distillation",
-      "LLM Evaluation & Optimization",
+      "LLM-Assisted Planning",
     ],
   },
 ];

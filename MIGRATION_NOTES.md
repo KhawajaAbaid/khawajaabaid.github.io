@@ -1,6 +1,9 @@
+> Historical migration record. For current content authority and November 2026 corrections, see `CONTENT_SOURCES.md`; for current local checks, see `QA_REPORT.md`. Earlier biographies and approvals below do not supersede the latest owner instructions.
+
 # Research website migration
 
 ## Baseline and preservation
+
 - Branch: `revamp/research-site`; original implementation: `35ff182` on `main`.
 - Plain HTML, SCSS/CSS and JavaScript, no package manifest/build. Main `/` uses hash sections; older experiments live under `old_work_in_progress_homepage/` and `random_stuff/`.
 - GitHub Pages user repository; no checked-in Actions workflow or CNAME. Remote Pages settings have not yet been verified.
@@ -9,6 +12,7 @@
 - Existing source/assets remain untouched until replacement verification. Only `public/` and Astro-generated assets ship in the new artifact.
 
 ## Sequence
+
 1. Foundation: current stable Astro, strict TypeScript, tokens, semantic layout, theme/navigation, SEO and Pages workflow.
 2. Content: validated public-only collections, verified paper metadata, profile and selected engineering; no confidential manuscript source.
 3. Homepage: editorial typography, sparse SVG motif, research directions, selected work, publications, engineering, bio and news.
@@ -16,6 +20,7 @@
 5. Verify: type/build checks, confidentiality and link checks, responsive/theme/keyboard/no-JS checks, performance and deployment configuration; document remaining external limitations.
 
 ## Content decisions
+
 - Specification directory is `khawaja-website-revamp-spec/`; read files 00–08 in order.
 - User-supplied current PhD identity supersedes the older institutional MS biography.
 - Existing CV is preserved exactly; it dates from October 2025 and should eventually be replaced by the owner.
@@ -25,6 +30,7 @@
 - Specification files and ZIP stay local and are excluded from deployment and new commits.
 
 ## Implementation outcome
+
 - Eight static pages, four validated collections, local fonts, native BibTeX, responsive navigation, system/manual themes, SVG figures, SEO, and a working CV URL.
 - Public ADS-C and LLM paper metadata/links verified; full author order retained. Only two selected publications are shown because only two independent papers were approved/verified.
 - Owner clarified that the full Fontus story is public. The expanded page covers the 3D-to-2D pivot, environment design, PPO setup, lazy-agent diagnosis, lessons, and proposed follow-ups. No report URL is fabricated.
@@ -36,7 +42,9 @@
 - Local verification is recorded in `QA_REPORT.md`. Official workflow validation passes. Pages was subsequently switched to GitHub Actions and published with owner authorization on September 7, 2026; see the production launch record below.
 
 ## Legacy cleanup
+
 After the replacement passed build, content/privacy, link, responsive, accessibility, and browser checks, the old root HTML, CSS/SCSS, JS, fonts/logo wall, construction image, and experiment folders were removed from the working tree. They remain recoverable at `35ff182`. Older substantive projects are preserved in the structured text archive. The résumé was copied byte-for-byte into the new public directory with its former URL retained.
 
 ## Production launch
+
 On September 7, 2026, the owner authorized publishing. Fast-forwarded `main` to the reviewed migration, set Pages `build_type` to `workflow`, and pushed to `origin/main`. The [first Actions deployment](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610) succeeded. Public routes, CV integrity, SEO assets, custom 404, mobile navigation, and theme behavior were verified on the live site. Future pushes to `main` deploy automatically.

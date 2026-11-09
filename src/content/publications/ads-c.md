@@ -1,21 +1,21 @@
 ---
-title: 'ADS-C: Antidistillation Sampling for Classification'
-summary: 'Margin-aware inference-time defense against soft-label model extraction that preserves 100% of served top-1 predictions while reducing distilled-student accuracy by 29.6 pp on CIFAR-10, 17.4 pp on CIFAR-100, and 13.3 pp on Tiny-ImageNet.'
+title: "ADS-C: Antidistillation Sampling for Classification"
+summary: "An inference-time defense that changes served probability outputs while provably preserving top-1 predictions. It reduced soft-label distilled-student accuracy in the evaluated image-classification experiments; unchanged labels remain available to hard-label attackers."
 date: 2026-07-16
-authors: ['Khawaja Abaid Ullah', 'Mohammad Javad Khojasteh']
-status: Under review · IEEE OJCS
+authors: ["Khawaja Abaid Ullah", "Mohammad Javad Khojasteh"]
+status: Preprint; under review, IEEE Open Journal of the Computer Society
 venue: arXiv:2607.15467
 public: true
 draft: false
 selected: true
 order: 2
-tags: ['ML security', 'Antidistillation', 'Model extraction', 'PyTorch']
-arxiv: '2607.15467'
+tags: ["ML security", "Antidistillation", "Model extraction", "PyTorch"]
+arxiv: "2607.15467"
 pdf: https://arxiv.org/pdf/2607.15467
 links:
-  - { label: arXiv, href: 'https://arxiv.org/abs/2607.15467' }
-  - { label: PDF, href: 'https://arxiv.org/pdf/2607.15467' }
-  - { label: Code, href: 'https://github.com/the-kas-lab/ADS-C' }
+  - { label: arXiv, href: "https://arxiv.org/abs/2607.15467" }
+  - { label: PDF, href: "https://arxiv.org/pdf/2607.15467" }
+  - { label: Code, href: "https://github.com/the-kas-lab/ADS-C" }
 bibtex: |
   @misc{ullah2026adsc,
     title = {ADS-C: Antidistillation Sampling for Classification},

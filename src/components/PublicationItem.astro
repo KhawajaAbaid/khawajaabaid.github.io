@@ -16,69 +16,65 @@ const {
 const primaryHref = data.arxiv
   ? `https://arxiv.org/abs/${data.arxiv}`
   : data.pdf;
-const metaParts = [data.venue, data.status, String(data.date.getUTCFullYear())]
+const metaParts = [
+  data.venue,
+  data.status,
+  String(data.date?.getUTCFullYear() ?? data.year),
+]
   .filter(Boolean)
   .filter((v, idx, arr) => arr.indexOf(v) === idx);
 ---
 
 <article class="publication-entry" id={id}>
-  <p class="pub-meta">
-    {metaParts.join(" · ")}
-  </p>
+  <p class="pub-meta">{metaParts.join(" · ")}</p>
 
   <Heading class="pub-title">
-    {
-      primaryHref ? (
-        <a href={primaryHref} class="pub-title-link">
-          {data.title}
-        </a>
-      ) : (
-        data.title
-      )
-    }
+    {primaryHref ? (
+      <a href={primaryHref} class="pub-title-link">
+        {data.title}
+      </a>
+    ) : (
+      data.title
+    )}
   </Heading>
 
   <p class="pub-authors">
-    {
-      data.authors.map((author, index) => (
-        <>
-          {index > 0 && ", "}
-          {author === profile.name ? <strong>{author}</strong> : author}
-        </>
-      ))
-    }
+    {data.authors.map((author, index) => (
+      <>
+        {index > 0 && ", "}
+        {author === profile.name ? <strong>{author}</strong> : author}
+      </>
+    ))}
   </p>
 
   <p class="pub-summary">{data.summary}</p>
 
   <div class="pub-actions">
-    {data.links.length > 0 && <LinkList links={data.links} context={data.title} />}
+    {data.links.length > 0 && (
+      <LinkList links={data.links} context={data.title} />
+    )}
 
-    {
-      data.bibtex && (
-        <button
-          type="button"
-          class="inline-action copy-trigger"
-          data-copy={data.bibtex.trim()}
-          data-copy-announce={`BibTeX copied for ${data.title}`}
-        >
-          <span data-copy-label>Copy BibTeX</span>
-        </button>
-      )
-    }
+    {data.bibtex && (
+      <button
+        type="button"
+        class="inline-action copy-trigger"
+        data-copy={data.bibtex.trim()}
+        data-copy-announce={`BibTeX copied for ${data.title}`}
+      >
+        <span data-copy-label>Copy BibTeX</span>
+      </button>
+    )}
   </div>
 
-  {
-    data.bibtex && (
-      <details class="citation-details">
-        <summary>
-          <span>BibTeX</span>
-          <span class="visually-hidden"> for {data.title}</span>
-        </summary>
-        <pre tabindex="0"><code>{data.bibtex.trim()}</code></pre>
-      </details>
-    )
-  }
+  {data.bibtex && (
+    <details class="citation-details">
+      <summary>
+        <span>BibTeX</span>
+        <span class="visually-hidden"> for {data.title}</span>
+      </summary>
+      <pre tabindex="0"><code>{data.bibtex.trim()}</code></pre>
+    </details>
+  )}
 </article>
 
 <style>

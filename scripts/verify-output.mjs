@@ -16,6 +16,9 @@ const origin = "https://khawajaabaid.com";
 const required = [
   "index.html",
   "research/index.html",
+  "research/coordination/index.html",
+  "research/ads-c/index.html",
+  "research/fontus/index.html",
   "publications/index.html",
   "projects/index.html",
   "about/index.html",
@@ -77,6 +80,23 @@ for (const file of html) {
     "Skip to content",
   ])
     if (!source.includes(marker)) fail.push(`Missing ${marker}: ${file}`);
+  const ids = [...source.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+  if (new Set(ids).size !== ids.length)
+    fail.push(`Duplicate HTML IDs: ${file}`);
+  const canonical = source.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  if (canonical !== base.href) fail.push(`Incorrect canonical URL: ${file}`);
+  const metaValue = (name) =>
+    source.match(
+      new RegExp(`<meta (?:name|property)="${name}" content="([^"]*)"`),
+    )?.[1];
+  for (const name of ["og:description", "twitter:description"])
+    if (!metaValue(name) || metaValue(name) !== metaValue("description"))
+      fail.push(`Inconsistent ${name}: ${file}`);
+  if (metaValue("og:url") !== canonical)
+    fail.push(`Inconsistent Open Graph URL: ${file}`);
+  for (const name of ["og:image", "twitter:image"])
+    if (metaValue(name) !== `${origin}/og/default.png`)
+      fail.push(`Incorrect ${name}: ${file}`);
   for (const match of source.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const value = decode(match[1]);
     if (/^(mailto:|data:)/.test(value)) continue;
@@ -105,6 +125,12 @@ for (const url of sitemap.matchAll(/<loc>(.*?)<\/loc>/g))
 for (const path of ["cv.pdf", "data/Web-Resume-KhawajaAbaidUllah.pdf"])
   if (readFileSync(join(root, path)).subarray(0, 5).toString() !== "%PDF-")
     fail.push(`Invalid PDF: ${path}`);
+if (
+  !readFileSync(join(root, "cv.pdf")).equals(
+    readFileSync(join(root, "data/Web-Resume-KhawajaAbaidUllah.pdf")),
+  )
+)
+  fail.push("CV aliases differ");
 const js = files.filter((path) => path.endsWith(".js"));
 const homeHTML = readFileSync(join(root, "index.html"), "utf8");
 const inlineJS = [...homeHTML.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)]

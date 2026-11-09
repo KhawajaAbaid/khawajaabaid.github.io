@@ -2,7 +2,7 @@
   <rect width="1200" height="630" fill="#f4f1de"/>
   <rect x="36" y="36" width="1128" height="558" rx="6" fill="#faf8ef" stroke="#c49240" stroke-width="2"/>
   <path d="M72 92H1128" stroke="#d4ccb0" stroke-width="1.5"/>
-  <text x="72" y="138" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" fill="#b8533a" font-size="16" font-weight="700" letter-spacing="3">THE STUDY OF // RIT · KAS LAB · U.S. FULBRIGHT · AWS AI/ML</text>
+  <text x="72" y="138" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" fill="#b8533a" font-size="16" font-weight="700" letter-spacing="3">THE STUDY OF // RIT · KAS LAB</text>
   <g stroke="#81b29a" stroke-width="1.5" fill="none" opacity="0.65">
     <path d="m850 200 95-53 85 110 85-75m-265 18 15 124 165-67 72 132m-157-242-80 177 99 106 66-173m-180-57 180 57 85-75m-250 142 237 65-138 41"/>
   </g>
@@ -17,8 +17,8 @@
     <text x="72" y="272">Khawaja Abaid</text>
     <text x="72" y="357">Ullah<tspan fill="#e07a5f">.</tspan></text>
   </g>
-  <text x="75" y="432" font-family="Georgia,serif" font-size="25" fill="#3d405b">Multi-Agent Autonomous Systems &amp; Antidistillation ML Security</text>
-  <text x="75" y="472" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="17" fill="#52556e">Ph.D. Researcher · RIT KAS Lab · U.S. Fulbright Scholar · AWS AI/ML</text>
+  <text x="75" y="432" font-family="Georgia,serif" font-size="25" fill="#3d405b">Multi-Agent Coordination &amp; ML Software</text>
+  <text x="75" y="472" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="16" fill="#52556e">PhD student · Decentralized Task Allocation · LLM-Assisted Planning</text>
   <path d="M72 542H1128" stroke="#d4ccb0" stroke-width="1.5"/>
   <text x="72" y="574" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="15" font-weight="600" fill="#3d405b">khawajaabaid.com</text>
 </svg>

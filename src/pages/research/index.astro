@@ -12,115 +12,106 @@ const publications = (await publicEntries("publications")).sort(byOrder);
 
 <BaseLayout
   title="Research"
-  description="Research at RIT's Khojasteh Autonomous Systems Laboratory (KAS Lab) on cooperative multi-agent autonomy for disaster search-and-rescue and inference-time defenses against model extraction."
+  description="Multi-agent coordination, decentralized task allocation and LLM-assisted planning at RIT’s KAS Lab, with emerging interests in LLM-guided algorithm discovery and prior contributions to antidistillation and LLM evaluation."
 >
   <header class="page-intro">
     <p class="eyebrow">KAS Lab · Rochester Institute of Technology</p>
-    <h1>Cooperative Multi-Agent Autonomy &amp; Secure Machine Learning</h1>
+    <h1>How autonomous teams coordinate</h1>
     <p>
-      As a Ph.D. Graduate Research Assistant in the Khojasteh Autonomous Systems
-      Laboratory (advised by {profile.advisor}), I study how autonomous robot
-      teams coordinate under constrained energy, communication, and trust for
-      disaster search-and-rescue, alongside inference-time defenses that protect
-      deployed classifiers from unauthorized distillation.
+      I study multi-agent coordination and decision-making as a PhD student and
+      Graduate Research Assistant, advised by {profile.advisor}.
     </p>
   </header>
-
   <section class="monograph-section">
     <div class="monograph-grid">
       <SectionHeader
-        eyebrow="01 / Themes"
-        title="Research Agenda"
-        description="Core questions guiding current Ph.D. work and collaborative studies."
+        eyebrow="01 / Questions"
+        title="Current research & future directions"
+        description="The questions I work on now, and the directions I hope to explore."
       />
       <div class="monograph-body">
         <ol class="agenda-list" role="list">
-          {
-            directions.map((d) => (
-              <li id={d.id} class:list={["agenda-item", d.accent]}>
-                <p class="agenda-status">{d.status}</p>
-                <h3>{d.title}</h3>
-                <p class="agenda-question">{d.question}</p>
-                <p class="agenda-summary">{d.summary}</p>
-                <div class="agenda-foot">
-                  <ul class="tag-line" role="list">
-                    {d.tags.map((tag) => (
-                      <li>{tag}</li>
-                    ))}
-                  </ul>
-                  {d.links.length > 0 && (
-                    <LinkList links={d.links} context={d.title} />
-                  )}
+          {directions.map((d) => (
+            <li id={d.id} class:list={["agenda-item", d.accent]}>
+              <p class="agenda-status">{d.status}</p>
+              <h3>{d.title}</h3>
+              <p class="agenda-question">{d.question}</p>
+              <p class="agenda-summary">{d.summary}</p>
+              {d.links.length > 0 && (
+                <div class="highlight-links">
+                  <LinkList links={d.links} context={d.title} />
                 </div>
-              </li>
-            ))
-          }
+              )}
+            </li>
+          ))}
         </ol>
       </div>
     </div>
   </section>
-
-  {
-    researchEntries.length > 0 && (
-      <section class="monograph-section">
-        <div class="monograph-grid">
-          <SectionHeader
-            eyebrow="02 / Highlights"
-            title="Active Systems"
-            description="Open-source environments and reproducible evaluation harnesses."
-          />
-          <div class="monograph-body">
-            <div class="highlights-stack">
-              {researchEntries.map(({ data, id }) => (
-                <article class="highlight-entry" id={`system-${id}`}>
-                  <p class="highlight-cat">{data.category}</p>
-                  <h3>{data.title}</h3>
-                  <p class="highlight-summary">{data.summary}</p>
-                  {data.links.length > 0 && (
-                    <div class="highlight-links">
-                      <LinkList links={data.links} context={data.title} />
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   <section class="monograph-section">
     <div class="monograph-grid">
       <SectionHeader
-        eyebrow="03 / Papers"
-        title="Publications"
+        eyebrow="02 / Contributions"
+        title="Papers & other research contributions"
+        description="Coordination work alongside classification defenses, knowledge distillation and collaborative LLM evaluation."
         href="/publications/"
-        linkLabel="All papers"
+        linkLabel="All papers & preprints"
       />
       <div class="monograph-body">
-        {publications.map((entry) => <PublicationItem entry={entry} />)}
+        <p class="contribution-intro">
+          Beyond my current coordination agenda, my work includes ADS-C, the
+          AntidistillBench manuscript, compact-model knowledge distillation in{" "}
+          <a href="/projects/#codriver">codriver</a>, and collaborative
+          evaluation of LLM judgments against human ratings.
+        </p>
+        {publications.map((entry) => (
+          <PublicationItem entry={entry} />
+        ))}
       </div>
     </div>
   </section>
-
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="03 / Projects"
+        title="Selected research & course projects"
+        description="Implementation details, experimental scope, and lessons from simulation."
+      />
+      <div class="monograph-body">
+        <div class="highlights-stack">
+          {researchEntries.map(({ data, id }) => (
+            <article class="highlight-entry" id={`system-${id}`}>
+              <p class="highlight-cat">
+                {data.category} · {data.status}
+              </p>
+              <h3>
+                <a href={`/research/${id}/`}>{data.shortTitle ?? data.title}</a>
+              </h3>
+              <p class="highlight-summary">{data.summary}</p>
+              <div class="highlight-links">
+                <a href={`/research/${id}/`}>Project details →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="contact-strip">
-    <p>
-      Interested in collaborating on cooperative search-and-rescue autonomy, ML
-      security, or open-source ML systems?
-    </p>
+    <p>Interested in autonomous-team coordination or ML software?</p>
     <div class="links">
-      <a href={`mailto:${profile.email}`}>
-        {profile.email} <span aria-hidden="true">↗</span>
-      </a>
-      <a href="/cv.pdf">
-        Curriculum Vitae (PDF) <span aria-hidden="true">↗</span>
-      </a>
+      <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+      <a href="/cv.pdf">CV (PDF) ↗</a>
     </div>
   </div>
 </BaseLayout>
 
 <style>
+  .contribution-intro {
+    margin-block-end: 1.5rem;
+    color: var(--text-muted);
+  }
+
   .agenda-list {
     list-style: none;
     padding: 0;

@@ -9,7 +9,9 @@ import CareerLedger from "../components/CareerLedger.astro";
 import NewsList from "../components/NewsList.astro";
 import { publicEntries, byDate, byOrder } from "../lib/content";
 
-const publications = (await publicEntries("publications")).sort(byOrder);
+const publications = (await publicEntries("publications"))
+  .sort(byOrder)
+  .slice(0, 3);
 const allProjects = (await publicEntries("projects")).sort(byOrder);
 const selectedProjects = allProjects.filter((p) => p.data.selected);
 const archiveProjects = allProjects.filter(
@@ -26,7 +28,7 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
       <SectionHeader
         eyebrow="01 / Research"
         title="Research Focus"
-        description="Cooperative search-and-rescue autonomy and inference-time ML security at RIT’s KAS Lab."
+        description="Decentralized coordination today; algorithm discovery as an emerging direction."
         href="/research/"
         linkLabel="Research overview"
       />
@@ -40,13 +42,15 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
     <div class="monograph-grid">
       <SectionHeader
         eyebrow="02 / Papers"
-        title="Publications"
-        description="Concise summaries with direct links to arXiv preprints, PDFs, code, and BibTeX."
+        title="Selected Papers and Preprints"
+        description="Current coordination research and contributions to classification defenses."
         href="/publications/"
-        linkLabel="Standalone list"
+        linkLabel="All papers & collaborative work"
       />
       <div class="monograph-body">
-        {publications.map((entry) => <PublicationItem entry={entry} />)}
+        {publications.map((entry) => (
+          <PublicationItem entry={entry} />
+        ))}
       </div>
     </div>
   </section>
@@ -56,15 +60,16 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
       <SectionHeader
         eyebrow="03 / Projects"
         title="Projects & Code"
-        description="Open-source libraries, official Keras 3 contributions, distilled models, and RL environments."
+        description="A coordination testbed, a multi-backend ML library, merged upstream contributions, and defense code."
         href="/projects/"
         linkLabel="All projects"
       />
       <div class="monograph-body">
         <div>
-          {selectedProjects.map((entry) => <ProjectRow entry={entry} />)}
+          {selectedProjects.map((entry) => (
+            <ProjectRow entry={entry} idPrefix="project-" />
+          ))}
         </div>
-
         {
           archiveProjects.length > 0 && (
             <details class="archive-disclosure">
@@ -101,9 +106,9 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
       <SectionHeader
         eyebrow="04 / Record"
         title="Experience & CV"
-        description="Appointments across RIT’s KAS Lab and AWS AI/ML, academic degrees, and technical stack."
+        description="Research, industry, teaching, academic service, and education."
         href="/about/"
-        linkLabel="Full CV dossier"
+        linkLabel="Full experience & education"
       />
       <div class="monograph-body">
         <CareerLedger />
@@ -111,18 +116,16 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
     </div>
   </section>
 
-  {
-    news.length > 0 && (
-      <section id="notes" class="monograph-section">
-        <div class="monograph-grid">
-          <SectionHeader eyebrow="05 / Notes" title="Recent Notes" />
-          <div class="monograph-body">
-            <NewsList entries={news} />
-          </div>
+  {news.length > 0 && (
+    <section id="notes" class="monograph-section">
+      <div class="monograph-grid">
+        <SectionHeader eyebrow="05 / Notes" title="Recent Notes" />
+        <div class="monograph-body">
+          <NewsList entries={news} />
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>

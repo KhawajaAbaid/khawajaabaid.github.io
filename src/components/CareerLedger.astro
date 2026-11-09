@@ -1,6 +1,7 @@
 ---
 import {
   experienceLedger,
+  serviceLedger,
   educationLedger,
   apparatusSkills,
 } from "../data/profile";
@@ -10,78 +11,84 @@ import {
   <div class="career-block">
     <p class="sub-eyebrow">Appointments &amp; Industry</p>
     <ol class="ledger-list" role="list">
-      {
-        experienceLedger.map((item) => (
-          <li class="ledger-row">
-            <time class="ledger-period">{item.period}</time>
-            <div class="ledger-content">
-              <div class="ledger-head">
-                <h3>{item.role}</h3>
-                {item.note && (
-                  <span
-                    class:list={["meta-note", item.featured ? "warm" : "teal"]}
-                  >
-                    {item.note}
-                  </span>
-                )}
-              </div>
-              <p class="ledger-org">
-                {item.organization} · <span>{item.location}</span>
-              </p>
-              <ul class="ledger-bullets">
-                {item.highlights.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
-  </div>
-
-  <div class="career-block">
-    <p class="sub-eyebrow">Education</p>
-    <ol class="ledger-list" role="list">
-      {
-        educationLedger.map((edu) => (
-          <li class="ledger-row">
-            <time class="ledger-period">{edu.period}</time>
-            <div class="ledger-content">
-              <div class="ledger-head">
-                <h3>{edu.degree}</h3>
-                <span class="meta-note warm">{edu.note}</span>
-              </div>
-              <p class="ledger-org">
-                {edu.institution} · <span>{edu.location}</span>
-              </p>
-              <p class="ledger-detail">{edu.details}</p>
-              {edu.thesisHref && (
-                <div class="links ledger-links">
-                  <a href={edu.thesisHref}>
-                    Master’s Thesis (RIT Repository){" "}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
+      {experienceLedger.map((item) => (
+        <li class="ledger-row">
+          <time class="ledger-period">{item.period}</time>
+          <div class="ledger-content">
+            <div class="ledger-head">
+              <h3>{item.role}</h3>
+              {item.note && (
+                <span
+                  class:list={["meta-note", item.featured ? "warm" : "teal"]}
+                >
+                  {item.note}
+                </span>
               )}
             </div>
-          </li>
-        ))
-      }
+            <p class="ledger-org">
+              {item.organization} · <span>{item.location}</span>
+            </p>
+            <ul class="ledger-bullets">
+              {item.highlights.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
     </ol>
   </div>
 
+  <div class="career-block" id="education">
+    <p class="sub-eyebrow">Education</p>
+    <ol class="ledger-list" role="list">
+      {educationLedger.map((edu) => (
+        <li class="ledger-row">
+          <time class="ledger-period">{edu.period}</time>
+          <div class="ledger-content">
+            <div class="ledger-head">
+              <h3>{edu.degree}</h3>
+              <span class="meta-note warm">{edu.note}</span>
+            </div>
+            <p class="ledger-org">
+              {edu.institution} · <span>{edu.location}</span>
+            </p>
+            <p class="ledger-detail">{edu.details}</p>
+            {edu.thesisHref && (
+              <div class="links ledger-links">
+                <a href={edu.thesisHref}>
+                  Master’s Thesis (RIT Repository){" "}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <div class="career-block" id="service">
+    <p class="sub-eyebrow">Academic Service</p>
+    {serviceLedger.map((item) => (
+      <div class="ledger-row">
+        <p class="ledger-period">{item.period}</p>
+        <div class="ledger-content">
+          <h3>{item.organization}</h3>
+          <p class="ledger-detail">{item.highlights.join(" ")}</p>
+        </div>
+      </div>
+    ))}
+  </div>
   <div class="career-block">
     <p class="sub-eyebrow">Technical Stack</p>
     <dl class="stack-dl">
-      {
-        apparatusSkills.map((group) => (
-          <div class="stack-row">
-            <dt>{group.label}</dt>
-            <dd>{group.items.join(" · ")}</dd>
-          </div>
-        ))
-      }
+      {apparatusSkills.map((group) => (
+        <div class="stack-row">
+          <dt>{group.label}</dt>
+          <dd>{group.items.join(" · ")}</dd>
+        </div>
+      ))}
     </dl>
   </div>
 </div>

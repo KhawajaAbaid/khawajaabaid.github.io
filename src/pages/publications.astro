@@ -9,16 +9,16 @@ const publications = (await publicEntries("publications")).sort(byOrder);
 
 <BaseLayout
   title="Publications"
-  description="Papers and preprints by Khawaja Abaid Ullah on margin-aware antidistillation defenses against model extraction (ADS-C, matched-cost review) and large-scale human-LLM alignment."
+  description="Papers and preprints by Khawaja Abaid Ullah on multi-agent coordination, decentralized LLM planning, antidistillation defenses, benchmark evaluation and LLM judgments."
 >
   <header class="page-intro">
     <p class="eyebrow">Papers &amp; Preprints</p>
-    <h1>Selected Manuscripts</h1>
+    <h1>Selected Papers and Preprints</h1>
     <p>
-      Concise summaries of first-author and collaborative research on
-      inference-time antidistillation defenses against model extraction and
-      theory-grounded evaluation across 34 LLMs and 198 human participants, with
-      direct links to arXiv, PDFs, and open-source code.
+      Research on multi-agent coordination and decentralized LLM planning,
+      classification defenses and their evaluation, and collaborative comparison
+      of LLM judgments with human ratings. Each entry distinguishes preprint
+      availability from review status.
     </p>
   </header>
 
@@ -26,11 +26,13 @@ const publications = (await publicEntries("publications")).sort(byOrder);
     <div class="monograph-grid">
       <SectionHeader
         eyebrow="2026"
-        title="Preprints & Reviews"
-        description="Click any paper title or arXiv link for the full manuscript and experimental plots."
+        title="Papers & Manuscripts"
+        description="Public manuscripts link to arXiv and code. AntidistillBench is under review; no public manuscript or benchmark release is linked."
       />
       <div class="monograph-body">
-        {publications.map((entry) => <PublicationItem entry={entry} />)}
+        {publications.map((entry) => (
+          <PublicationItem entry={entry} />
+        ))}
       </div>
     </div>
   </section>

@@ -1,10 +1,10 @@
 ---
 {
-  "title": "ADS-C Evaluation Harness",
-  "summary": "Open-source PyTorch implementation and reproducible multi-architecture evaluation harness for margin-bounded antidistillation sampling across CIFAR-10, CIFAR-100, and Tiny-ImageNet.",
+  "title": "ADS-C — Defense & Evaluation Pipeline",
+  "summary": "Released a PyTorch implementation of margin-bounded antidistillation sampling and an evaluation pipeline for CIFAR-10, CIFAR-100 and Tiny-ImageNet. Related benchmark work, AntidistillBench, compares classification defenses under a unified threat model and matched-cost protocol; its manuscript is under review.",
   "category": "research-system",
-  "selected": false,
-  "order": 6,
+  "selected": true,
+  "order": 4,
   "tags": [
     "PyTorch",
     "ML Security",
@@ -12,15 +12,16 @@
   ],
   "links": [
     {
-      "label": "arXiv",
-      "href": "https://arxiv.org/abs/2607.15467"
+      "label": "Method & results",
+      "href": "/research/ads-c/"
     },
     {
-      "label": "GitHub",
+      "label": "ADS-C code",
       "href": "https://github.com/the-kas-lab/ADS-C"
     }
   ],
   "public": true,
-  "draft": false
+  "draft": false,
+  "kind": "Research implementation"
 }
 ---

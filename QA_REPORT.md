@@ -1,96 +1,84 @@
-# Verification report
+# Local portfolio update — QA and handoff
 
-Browser/performance verification: September 6, 2026. Clean-install, build, privacy, and workflow checks repeated successfully September 7, 2026. Tested the local production build at `http://127.0.0.1:4322/`.
+Completed November 9, 2026 (America/New_York). All work is local. No commit, push, publication, remote write, or deployment was performed. The initial working tree was clean and there were no applicable AGENTS.md files.
 
-## Results
+## What changed and why
 
-| Check | Result |
-| --- | --- |
-| `npm run verify` | Pass: 24 source files, zero errors/warnings/hints; eight generated pages |
-| `npm run test:content` | Pass: private/draft text and images excluded; public-to-private content removed; invalid author/date metadata rejected |
-| Local routes, links, fragments, assets | Pass across all eight pages, including CV and legacy résumé URL |
-| External destinations | Paper, code, RIT, thesis, and GitHub links resolve; LinkedIn returns HTTP 999 to automated requests |
-| Workflow | `actionlint` passes; official Astro action inputs checked against v6 source |
-| Accessibility | Zero axe violations on all eight pages in Chromium; light/dark homepage checked |
-| Browser coverage | Chromium 153, Firefox 155, WebKit 26.6 via Playwright 1.63.0 |
-| Viewports | 1440, 1280, 1024, 768, 430, 390, 360 px on every route in each engine; no horizontal overflow |
-| Keyboard | Skip link, visible focus, mobile menu, Escape/focus return, native BibTeX details |
-| Themes | Manual toggle and persistence; OS initial preference and OS changes without override |
-| Reduced motion | Motif animation disabled; global transitions/animations disabled |
-| No JavaScript | Content and mobile navigation available; OS dark theme works; enhancement controls hidden |
-| Print / zoom | White print background with navigation hidden; 200% layout check passes |
-| Console / images | No console errors; research images load in all three engines |
-| SEO | Canonicals, unique titles/descriptions, OG PNG, favicon, Person JSON-LD, ADS-C academic metadata, sitemap and robots verified |
-| Initial JavaScript | Approximately 650 bytes gzip, inline menu/theme enhancement only |
+- Replaced unsupported current-research claims with the owner's current positioning: first-year ECE PhD student and GRA at RIT KAS Lab, studying multi-agent coordination, decentralized task allocation and LLM-assisted planning.
+- Separated current questions, emerging algorithm-discovery interests, long-term on-device reasoning/search-and-rescue goals, and other research contributions. Reading inspirations explicitly link to other researchers' work.
+- Per the owner’s latest correction, preserved the live landing layout: full-width room panorama above the connected desk-blotter panel, four original tabs, bookshelf navigation and original spacing. Updated the information inside these components and restored the original homepage experience ledger/archive and About-page structure. No side-by-side hero or added homepage header remains.
+- Put the coordination testbed first, followed by Teras, merged Keras samplers/tests, ADS-C code, codriver, and the December 2025 Fontus simulation. Earlier student projects remain in a collapsed archive. Independent contributions and employment have separate descriptions.
+- Corrected publication statuses, scoped coordination findings to tested simulations, distinguished unchanged ADS-C top-1 labels from changed probabilities, moved metrics into a contextual project page, and relabelled ADS-C as related implementation for AntidistillBench. The benchmark stores only its verified year; no day-level submission date or public artifact is invented. Verified the collaborative paper's title and author order, retaining it as LLM evaluation rather than alignment-training specialization.
+- Corrected assistantship terminology, first-in-class wording, AWS engineering scope, MS/Fulbright/GPA chronology, robotics TA materials, and academic reviewing service.
+- Added a verified October 29, 2026 coordination announcement, using the arXiv posting date. Exact public posting dates and month-only CV milestones have distinct display precision.
+- Updated descriptions, titles, Open Graph/Twitter metadata, Person structured data, accessible illustration labels, visible portrait/bookshelf labels, and the generated share image.
 
-WebKit uses macOS's Option–Tab behavior to include links when full keyboard access is not enabled. The test uses that native shortcut rather than changing system preferences or modifying normal link semantics.
+See `CONTENT_SOURCES.md` for the concise claim/evidence/correction audit and source links.
 
-## Lighthouse
+## Validation completed
 
-Lighthouse 13.4.1, default mobile simulation against the production preview:
+- `npm run verify`: Astro/TypeScript check passed with **0 errors, 0 warnings, 0 hints**; static build passed for **9 routes**.
+- `npm run test:content`: private/draft text, routes and images stay excluded; revoking visibility removes previously public material; invalid author/date data fails validation; final clean output rebuild passed.
+- `node scripts/verify-output.mjs`: internal links/fragments, unique HTML IDs and page titles, canonical URLs, matching description/Open Graph/Twitter metadata, sitemap, required files, PDF signatures/aliases, source exclusion and JS budget passed. Homepage project anchors have a prefix to prevent duplicate publication/project IDs. Client JavaScript is **2,166 bytes gzipped**, below the existing 30 KB budget.
+- `QA_PACKAGE_DIR=/tmp/portfolio-qa node scripts/browser-qa.cjs`: passed in installed **Google Chrome (Playwright Chromium driver)** for all 9 routes at **7 widths (360, 390, 430, 768, 1024, 1280, 1440)** in **both themes**. WCAG A/AA automated axe checks at desktop/mobile sizes reported no violations.
+- Browser interactions passed: keyboard skip link, room hotspots and four-tab arrow/Home/End navigation, theme switching/persistence/system changes, motion pause and live reduced-motion preference changes, static reduced-motion scene, keyboard BibTeX/archive disclosures, print, 200% zoom, no-JavaScript reading/navigation, and no console/page errors.
+- Compared live and local landing geometry at 1280px and 390px: room position/dimensions, tab position/dimensions and connected panel position/width match exactly. The panel height adjusts naturally to the corrected copy. Comparison data and screenshots are in `artifacts/landing-layout-comparison.json` and `artifacts/restored-top-*.png`. Visually reviewed desktop and mobile screenshots in both themes, plus research/project layouts and the regenerated 1200×630 social preview. No overlap or horizontal clipping was found. Screenshots and machine-readable results are in ignored `artifacts/`.
+- The live homepage returned HTTP 200 (read-only availability check). All **15 existing publication/PDF/code URLs** checked returned HTTP 200; redirects were recorded in `artifacts/link-check.json`. Primary arXiv records verified public dates, titles and author order. The Keras PR is merged and documents all four backends plus unit tests. ADS-C's README documents ADS-C rather than a separate benchmark release.
+- Reviewed current source/generated copy for stale wording and for emerging interests or long-term goals being represented as completed contributions.
+- Both CV aliases remain byte-for-byte identical to their original versions: SHA-256 `d29a814d509fe4449fe9828e7a92627ae2f07b6eaaf0bbe3a8e1641df1197f30`.
+- `git diff --check` passed. Application dependency files and hosting/deployment configuration were unchanged. QA dependencies were installed outside the checkout.
 
-- Performance: **100**
-- Accessibility: **100**
-- Best Practices: **100**
-- SEO: **100**
-- Largest Contentful Paint: **1.6 s**
-- Cumulative Layout Shift: **0**
-- Total Blocking Time: **0 ms**
+## Limits and remaining facts
 
-These are local lab measurements, not a guarantee of real-user performance after deployment.
+- Browser checks used Chrome. Matching Playwright Firefox/WebKit runtimes were unavailable; no claim of cross-engine verification is made. Automated accessibility checks do not replace testing with a screen reader.
+- No editable CV source was found. Its old github.io portfolio URL remains inside the unmodified PDFs, preserving the supplied layout. An editable source or updated PDF is needed to change it.
+- No public codriver repository/model was verified. FineWebEdu, CodeContests, fill-in-the-middle and 8× H100 details were omitted pending evidence.
+- AntidistillBench's exact submission date, detailed matched-cost budget definitions and public-release links remain unverified. Only the supported threat-model overview, comparison protocol and manuscript-under-review status are used.
+- The collaborative social-attraction paper's review status/venue was not confirmed; it is labelled preprint.
 
-## Privacy regression details
+These gaps do not block the narrower supported site copy. The earlier September migration record remains in `MIGRATION_NOTES.md` and is explicitly historical.
 
-The initial standard glob-loader implementation passed text exclusion but emitted a draft image. It was replaced with an early public-content loader that gates entries before Markdown and image processing. The regression suite now tests image content, asset names, rendered text, metadata, generated routes, and sitemap; it also tests revoking a previously public entry. No real confidential manuscript content was used or copied into the repository.
+## Files changed
 
-## Repeating browser QA
-
-Browser tooling is intentionally separate from site dependencies:
-
-```sh
-npm install --prefix /tmp/research-site-qa playwright@1.63.0 @axe-core/playwright@4.13.0
-/tmp/research-site-qa/node_modules/.bin/playwright install chromium firefox webkit
-npm run build
-npm run preview -- --host 127.0.0.1 --port 4322
-# In a second terminal:
-QA_PACKAGE_DIR=/tmp/research-site-qa node scripts/browser-qa.cjs
-```
-
-`QA_URL` may override the preview origin. The browser script saves screenshots and results to ignored `artifacts/`. Lighthouse can be run separately using its CLI against the same production preview. The original local Lighthouse HTML/JSON reports and screenshots are in `artifacts/`.
-
-## Launch limitations
-
-- Production was published September 7, 2026 using GitHub Actions; live checks passed as recorded below.
-- The CV is the supplied October 2025 PDF, preserved byte-for-byte; the owner should provide a current academic CV.
-- LinkedIn blocks automated link verification; the preserved owner-supplied URL needs a normal-browser check if its profile slug changes.
-- These are browser-engine and viewport checks, not physical iPhone/Android testing or a full screen-reader audit.
-
-## Fontus expansion — September 7, 2026
-
-After the owner clarified that the full story is public, the Fontus page was expanded with the modeling pivot, environment/PPO setup, qualitative lazy-agent diagnosis, lessons, and proposed follow-ups. Homepage and project summaries were updated. The two Fontus-specific prohibited-phrase checks were removed; the public-content gate and anonymous-manuscript protections remain intact.
-
-`npm run verify` and `npm run test:content` pass. Targeted Chromium checks on the homepage, projects page, and Fontus page pass at 1440/390 px in light/dark mode, with no overflow, console errors, or axe violations. Updated Fontus screenshots are saved in `artifacts/`. A technical-report URL has not been supplied, so no report link is fabricated.
-
-## Production launch — September 7, 2026
-
-User authorized publication. `main` was fast-forwarded to the reviewed code commit `d409cb7`, and GitHub Pages was switched from legacy branch deployment to Actions. [The launch workflow](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610) completed both build and deploy successfully.
-
-Verified at https://khawajaabaid.github.io:
-
-- All eight HTML routes, both CV URLs, robots, both sitemap files, and OG image return HTTP 200.
-- An unknown route returns HTTP 404 with the custom “Nothing here.” page.
-- Both served PDFs match the supplied CV byte-for-byte by SHA-256.
-- The homepage metric and expanded Fontus story are present; synthetic private markers are absent.
-- Live Chromium smoke checks pass for desktop/mobile, theme persistence, menu navigation, layout overflow, and console errors.
-
-Local evidence is saved in `artifacts/live-verification.json` and live-site screenshots. No unapproved manuscript material or specification files were published.
-
-## Hero credentials — September 7, 2026
-
-At the owner's request, Fulbright Scholar and Former AWS AI/ML Intern are now emphasized directly below the PhD role in the hero. `npm run verify` passes. Chromium checks confirm both credentials are in the initial viewport at 1440, 768, 390, and 360 px in light/dark mode, with no overflow, console errors, or axe violations. No additional JavaScript or dependencies were added.
-
-## Research biography — September 7, 2026
-
-Replaced the abstract hero statement with machine learning security, model extraction defense, and coordinated multi-agent robots for search-and-rescue. Aligned homepage, About, and Research copy with the owner's supplied RIT biography; kept the credentials as text. Restored the research-direction questions and descriptions in the overview template.
-
-`npm run verify` passes. Targeted Chromium checks cover all three changed pages at 1440, 768, 390, and 360 px in light/dark mode, with no horizontal overflow, console errors, or axe violations. Checks also confirm the advisor's name and all three research-direction headings. Desktop and mobile hero screenshots were visually reviewed.
+- `CONTENT_SOURCES.md`
+- `MIGRATION_NOTES.md`
+- `QA_REPORT.md`
+- `README.md`
+- `public/og/default.png`
+- `scripts/browser-qa.cjs`
+- `scripts/verify-output.mjs`
+- `src/assets/og-default.svg`
+- `src/components/CareerLedger.astro`
+- `src/components/Hero.astro`
+- `src/components/NewsList.astro`
+- `src/components/ProjectRow.astro`
+- `src/components/PublicationItem.astro`
+- `src/components/StudyRoomScene.astro`
+- `src/content.config.ts`
+- `src/content/news/2026-05-01.md`
+- `src/content/news/2026-06-01.md`
+- `src/content/news/2026-07-16.md`
+- `src/content/news/2026-08-10.md`
+- `src/content/news/2026-10-29.md`
+- `src/content/projects/ads-c.md`
+- `src/content/projects/codriver.md`
+- `src/content/projects/coordination.md`
+- `src/content/projects/fontus.md`
+- `src/content/projects/keras.md`
+- `src/content/projects/micrograd-c.md`
+- `src/content/projects/teras.md`
+- `src/content/publications/ads-c.md`
+- `src/content/publications/consensus-within-competition-between.md`
+- `src/content/publications/reversing-incentive.md`
+- `src/content/publications/social-attraction.md`
+- `src/content/research/ads-c.md`
+- `src/content/research/coordination.md`
+- `src/content/research/fontus.md`
+- `src/data/profile.ts`
+- `src/layouts/BaseLayout.astro`
+- `src/pages/about.astro`
+- `src/pages/index.astro`
+- `src/pages/projects.astro`
+- `src/pages/publications.astro`
+- `src/pages/research/[id].astro`
+- `src/pages/research/index.astro`

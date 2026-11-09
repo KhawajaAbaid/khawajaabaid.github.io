@@ -44,6 +44,8 @@ const publications = defineCollection({
     z
       .object({
         ...common,
+        date: z.coerce.date().optional(),
+        year: z.number().int().min(1900).optional(),
         image: image().optional(),
         imageAlt: z.string().optional(),
         bibtex: z.string().optional(),
@@ -53,6 +55,10 @@ const publications = defineCollection({
           .optional(),
         pdf: z.url().optional(),
       })
+      .refine(
+        (d) => !!d.date || !!d.year,
+        "Papers require a verified date or known year",
+      )
       .refine((d) => !d.image || !!d.imageAlt, "Images require alt text"),
 });
 const research = defineCollection({
@@ -79,6 +85,7 @@ const projects = defineCollection({
         summary: z.string(),
         ...visibility,
         category: z.enum(["research-system", "engineering", "archive"]),
+        kind: z.string().optional(),
         tags: z.array(z.string()).default([]),
         links,
         order: z.number().default(99),
@@ -93,6 +100,7 @@ const news = defineCollection({
     ...visibility,
     date: z.coerce.date(),
     text: z.string().min(1),
+    datePrecision: z.enum(["day", "month"]).default("month"),
     href: link.optional(),
   }),
 });

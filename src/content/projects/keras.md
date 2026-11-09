@@ -1,16 +1,17 @@
 ---
 {
-  "title": "Keras 3 (Official Contributions)",
-  "summary": "Contributed Beta and Binomial random-sampling functionality (keras.random.beta, keras.random.binomial) and multi-backend consistency fixes to the official Keras 3 API across JAX, PyTorch, and TensorFlow.",
+  "title": "Keras contributions",
+  "summary": "Implemented Beta and Binomial random samplers and unit tests across JAX, PyTorch, TensorFlow and NumPy. Merged upstream in Keras 3.",
   "category": "engineering",
   "selected": true,
-  "order": 2,
+  "order": 3,
   "tags": [
     "Keras 3",
     "JAX",
     "PyTorch",
     "TensorFlow",
-    "Random Sampling APIs"
+    "NumPy",
+    "Unit tests"
   ],
   "links": [
     {
@@ -19,6 +20,7 @@
     }
   ],
   "public": true,
-  "draft": false
+  "draft": false,
+  "kind": "Independent upstream contributions"
 }
 ---

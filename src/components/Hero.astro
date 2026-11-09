@@ -4,7 +4,7 @@ import StudyRoomScene from "./StudyRoomScene.astro";
 ---
 
 <section class="study-hero" aria-labelledby="hero-name">
-  <!-- Illustrated Study Room & Wall Panorama (Search-and-Rescue Window View, Bookcase, Portraits, Desk & Emeralite Lamp) -->
+  <!-- Illustrated Study Room & Wall Panorama (Conceptual Autonomous-Team Window View, Bookcase, Portraits, Desk & Emeralite Lamp) -->
   <StudyRoomScene />
 
   <!-- Connected Desk Blotter Console -->
@@ -39,7 +39,7 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         data-hotspot-tab="fulbright"
       >
         <span class="tab-kicker">Wall Portrait I</span>
-        <span class="tab-label">U.S. Fulbright · 4.0 GPA</span>
+        <span class="tab-label">M.S. · Fulbright · 4.0 GPA</span>
       </button>
 
       <button
@@ -67,7 +67,7 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         data-hotspot-tab="kaslab"
       >
         <span class="tab-kicker">Wall Portrait III</span>
-        <span class="tab-label">KAS Lab &amp; Open ML</span>
+        <span class="tab-label">KAS Lab &amp; ML Software</span>
       </button>
     </div>
 
@@ -81,7 +81,7 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         data-hotspot-panel="identity"
       >
         <p class="eyebrow">
-          Ph.D. Researcher in ECE · {profile.institution}
+          First-year PhD student in ECE · {profile.institution}
         </p>
         <h1 id="hero-name">
           {profile.name}<span class="hero-dot" aria-hidden="true">.</span>
@@ -100,12 +100,12 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         hidden
       >
         <p class="eyebrow">Wall Portrait I · Academic Distinction</p>
-        <h2 class="panel-heading">U.S. Fulbright Scholar · 4.0 GPA</h2>
+        <h2 class="panel-heading">M.S. in AI · Fulbright Scholar · 4.0 GPA</h2>
         <p class="blotter-lead">
-          Selected through the U.S. Department of State’s flagship international
-          academic exchange program to complete my M.S. in Artificial
-          Intelligence at Rochester Institute of Technology (4.0 / 4.0 GPA),
-          following a 1st-in-class B.S. in Computer Science.
+          Completed my M.S. in Artificial Intelligence at Rochester Institute of
+          Technology in May 2026 with a 4.0 / 4.0 GPA, supported by the U.S.
+          Department of State Fulbright Scholarship. Previously, I graduated first
+          in the University of Narowal Computer Science class of 2021.
         </p>
         <div class="links panel-links">
           <a href="https://repository.rit.edu/theses/12584/">
@@ -132,9 +132,9 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         <p class="eyebrow">Wall Portrait II · Industry Engineering</p>
         <h2 class="panel-heading">Amazon Web Services · AI/ML SDE Intern</h2>
         <p class="blotter-lead">
-          Engineered core Apache Spark testing and evaluation modules for a
-          next-generation internal benchmarking platform in East Palo Alto
-          (Summer 2025), independently delivering benchmarking capabilities
+          Engineered core Apache Spark testing and evaluation modules for an
+          internal benchmarking platform in East Palo Alto
+          (May–August 2025), independently delivering benchmarking capabilities
           beyond project scope and earning a full-time return offer.
         </p>
         <div class="links panel-links">
@@ -160,13 +160,14 @@ import StudyRoomScene from "./StudyRoomScene.astro";
         hidden
       >
         <p class="eyebrow">Wall Portrait III · Research &amp; Open Source</p>
-        <h2 class="panel-heading">RIT KAS Lab · Teras &amp; Keras 3</h2>
+        <h2 class="panel-heading">KAS Lab · Coordination &amp; ML Software</h2>
         <p class="blotter-lead">
-          Ph.D. Graduate Research Assistant advised by {profile.advisor},
-          researching cooperative search-and-rescue robot teams—including
-          constrained communication relays and aerial recharging via
-          <em>Fontus</em>—alongside ML security, while creating
-          <strong>Teras</strong> and contributing to <strong>Keras 3</strong>.
+          Graduate Research Assistant advised by {profile.advisor}, studying
+          multi-agent coordination, decentralized task allocation and LLM-assisted
+          planning. My independent software work includes creating
+          <strong>Teras</strong> and contributing code and tests to
+          <strong>Keras</strong>. Search and rescue is a long-term application
+          goal; the room’s window imagines a future autonomous team.
         </p>
         <div class="links panel-links">
           <a href="#research">

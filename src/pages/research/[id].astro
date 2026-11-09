@@ -1,0 +1,62 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LinkList from "../../components/LinkList.astro";
+import { publicEntries } from "../../lib/content";
+
+export async function getStaticPaths() {
+  return (await publicEntries("research")).map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+interface Props {
+  entry: CollectionEntry<"research">;
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  title={entry.data.shortTitle ?? entry.data.title}
+  description={entry.data.summary}
+>
+  <header class="page-intro">
+    <p class="eyebrow">
+      {entry.data.category} · {entry.data.status}
+    </p>
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.summary}</p>
+    <p class="authors">{entry.data.authors.join(", ")}</p>
+    <LinkList links={entry.data.links} context={entry.data.title} />
+  </header>
+  <article class="research-body">
+    <Content />
+  </article>
+  <p class="back-link">
+    <a href="/research/">← Research overview</a> ·{" "}
+    <a href="/projects/">Projects &amp; code →</a>
+  </p>
+</BaseLayout>
+<style>
+  .research-body {
+    max-inline-size: 72ch;
+    padding-block-end: 2rem;
+  }
+  .research-body :global(h2) {
+    margin-block: 2rem 0.75rem;
+  }
+  .research-body :global(p + p) {
+    margin-block-start: 1rem;
+  }
+  .authors {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .back-link {
+    padding-block: 1.5rem 3rem;
+    border-block-start: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+</style>

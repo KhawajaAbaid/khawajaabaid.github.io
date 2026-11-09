@@ -19,7 +19,7 @@ const {
 
 const pageTitle = title
   ? `${title} — ${profile.name}`
-  : `${profile.name} — Machine Learning & Autonomous Systems`;
+  : `${profile.name} — Multi-Agent Coordination & ML Software`;
 
 const canonical = new URL(
   noindex ? "/404.html" : Astro.url.pathname,
@@ -32,6 +32,13 @@ const person = {
   name: profile.name,
   url: Astro.site?.href,
   jobTitle: profile.role,
+  description: profile.description,
+  knowsAbout: [
+    "Multi-agent coordination",
+    "Decentralized task allocation",
+    "LLM-assisted planning",
+    "Machine-learning software",
+  ],
   affiliation: { "@type": "CollegeOrUniversity", name: profile.institution },
   alumniOf: [
     {
@@ -94,23 +101,33 @@ const person = {
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Khawaja Abaid Ullah — Machine Learning & Autonomous Systems, RIT / KAS Lab"
+      content="Khawaja Abaid Ullah — PhD student at RIT KAS Lab; multi-agent coordination and ML software"
     />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content={new URL("/og/default.png", Astro.site)}
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Khawaja Abaid Ullah — Multi-Agent Coordination & ML Software, RIT KAS Lab"
+    />
     {noindex && <meta name="robots" content="noindex" />}
-    {
-      Astro.url.pathname === "/" && (
-        <script
-          type="application/ld+json"
-          is:inline
-          set:html={JSON.stringify(person).replace(/</g, "\\u003c")}
-        />
-      )
-    }
+    {Astro.url.pathname === "/" && (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(person).replace(/</g, "\\u003c")}
+      />
+    )}
     <slot name="head" />
   </head>
   <body id="top">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">
+      Skip to content
+    </a>
     <SiteHeader />
     <main id="main-content" class="container" tabindex="-1">
       <slot />
@@ -121,8 +138,7 @@ const person = {
       class="visually-hidden"
       aria-live="polite"
       aria-atomic="true"
-    >
-    </div>
+    ></div>
     <script>
       const announcer = document.getElementById("site-announcer");
       document.addEventListener("click", async (event) => {
@@ -134,7 +150,8 @@ const person = {
         if (!value) return;
         const labelEl = target.querySelector<HTMLElement>("[data-copy-label]");
         const original = labelEl?.textContent ?? "";
-        const announceText = target.dataset.copyAnnounce ?? "Copied to clipboard";
+        const announceText =
+          target.dataset.copyAnnounce ?? "Copied to clipboard";
         try {
           await navigator.clipboard.writeText(value);
           if (labelEl) labelEl.textContent = "Copied";

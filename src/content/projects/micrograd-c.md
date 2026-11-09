@@ -3,8 +3,8 @@
   "title": "micrograd_c",
   "summary": "Implemented Andrej Karpathy’s micrograd from scratch in pure C: a scalar reverse-mode autograd engine and neural-network library exposing a PyTorch-like API.",
   "category": "engineering",
-  "selected": true,
-  "order": 5,
+  "selected": false,
+  "order": 7,
   "tags": [
     "C",
     "Autograd Engine",
@@ -18,7 +18,7 @@
     }
   ],
   "public": true,
-  "draft": false
+  "draft": false,
+  "kind": "Independent open-source project"
 }
 ---
-

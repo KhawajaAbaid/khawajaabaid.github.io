@@ -1,19 +1,19 @@
 ---
 {
-  "title": "codriver (260M Distilled Code LLM)",
-  "summary": "Inspired by GitHub Copilot, built a custom 260M-parameter contextual code-generation model based on Google DeepMind’s Gemma LLMs. Ported Gemma 2 from Flax Linen to the NNX API and applied staged knowledge distillation—first using Gemma 2 2B on text (FineWebEdu) and then CodeGemma 2B on fill-in-the-middle code (CodeContests) across 8× H100 GPUs.",
+  "title": "codriver — Contextual Code Generation",
+  "summary": "Built a custom 260M-parameter contextual code-generation model with staged knowledge distillation from Gemma 2 2B on text and CodeGemma 2B on code. Ported the Gemma 2 implementation from Flax Linen to Flax NNX to support the student model and training pipeline.",
   "category": "engineering",
-  "selected": true,
-  "order": 4,
+  "selected": false,
+  "order": 5,
   "tags": [
     "JAX",
-    "Flax (Linen → NNX)",
-    "Gemma 2 / CodeGemma",
-    "Staged Knowledge Distillation",
-    "8× H100 GPUs"
+    "Flax Linen → NNX",
+    "Staged knowledge distillation",
+    "260M parameters"
   ],
   "links": [],
   "public": true,
-  "draft": false
+  "draft": false,
+  "kind": "ML project · December 2024"
 }
 ---

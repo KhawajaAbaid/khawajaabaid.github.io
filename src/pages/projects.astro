@@ -5,76 +5,53 @@ import ProjectRow from "../components/ProjectRow.astro";
 import { publicEntries, byOrder } from "../lib/content";
 
 const projects = (await publicEntries("projects")).sort(byOrder);
-const engineering = projects.filter((p) => p.data.category === "engineering");
-const systems = projects.filter((p) => p.data.category === "research-system");
+const featured = projects.filter((p) => p.data.category !== "archive");
 const archive = projects.filter((p) => p.data.category === "archive");
 ---
 
 <BaseLayout
   title="Projects"
-  description="Open-source machine learning libraries and research systems by Khawaja Abaid Ullah: Teras, official Keras 3 contributions, codriver (260M Gemma 2 Flax NNX), micrograd_c, Fontus, and ADS-C."
+  description="ML software and research implementations by Khawaja Abaid Ullah: decentralized LLM coordination testbed, Teras, merged Keras contributions, ADS-C, codriver and the Fontus simulation project."
 >
   <header class="page-intro">
-    <p class="eyebrow">Systems &amp; Open-Source Engineering</p>
-    <h1>Libraries, Distilled Models &amp; Multi-Agent Environments</h1>
+    <p class="eyebrow">Research &amp; software</p>
+    <h1>Coordination testbeds &amp; ML engineering</h1>
     <p>
-      From creating <strong>Teras</strong> (multi-backend tabular deep learning
-      across JAX, PyTorch, and TensorFlow) and contributing random-sampling APIs
-      to official <strong>Keras 3</strong>, to building <strong>Fontus</strong>
-      for multi-agent UAV recharging, porting <strong>Gemma 2</strong> to Flax
-      NNX (<strong>codriver</strong>), and writing a scalar autograd engine in
-      pure C (<strong>micrograd_c</strong>).
+      I build research implementations and machine-learning software, from
+      decentralized LLM teams and a multi-backend tabular library to upstream
+      samplers and compact code-generation models. Independent open-source
+      contributions, research implementations and dated course projects are
+      labelled below.
     </p>
   </header>
+  <section class="monograph-section">
+    <div class="monograph-grid">
+      <SectionHeader
+        eyebrow="01 / Selected work"
+        title="Projects & Code"
+        description="Current coordination research, independent ML software, and earlier research and course projects."
+      />
+      <div class="monograph-body">
+        {featured.map((entry) => (
+          <ProjectRow entry={entry} />
+        ))}
+      </div>
+    </div>
+  </section>
 
-  {
-    engineering.length > 0 && (
-      <section class="monograph-section">
-        <div class="monograph-grid">
-          <SectionHeader
-            eyebrow="01 / Open Source"
-            title="ML Libraries & Engines"
-            description="Multi-backend frameworks, upstream contributions, distilled models, and low-level engines."
-          />
-          <div class="monograph-body">
-            {engineering.map((entry) => (
-              <ProjectRow entry={entry} />
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    systems.length > 0 && (
-      <section class="monograph-section">
-        <div class="monograph-grid">
-          <SectionHeader
-            eyebrow="02 / Research"
-            title="Environments & Harnesses"
-            description="Multi-agent reinforcement learning simulation environments and PyTorch evaluation code."
-          />
-          <div class="monograph-body">
-            {systems.map((entry) => (
-              <ProjectRow entry={entry} />
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    archive.length > 0 && (
-      <section class="monograph-section">
-        <div class="monograph-grid">
-          <SectionHeader
-            eyebrow="03 / Archive"
-            title="Earlier Work"
-            description="Student and personal projects in computer vision, forecasting, and NLP (2021–2023)."
-          />
-          <div class="monograph-body">
+  {archive.length > 0 && (
+    <section class="monograph-section">
+      <div class="monograph-grid">
+        <SectionHeader
+          eyebrow="02 / Archive"
+          title="Earlier Work"
+          description="Student and personal projects in computer vision, forecasting, and NLP (2021–2023)."
+        />
+        <div class="monograph-body">
+          <details>
+            <summary>
+              Earlier student &amp; personal projects ({archive.length})
+            </summary>
             <ul class="archive-list" role="list">
               {archive.map(({ data }) => (
                 <li>
@@ -93,18 +70,18 @@ const archive = projects.filter((p) => p.data.category === "archive");
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
   .archive-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 1rem 0 0;
     display: grid;
     gap: 0.75rem;
   }

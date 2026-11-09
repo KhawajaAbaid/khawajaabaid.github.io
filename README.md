@@ -25,19 +25,19 @@ Do not run `test:content` concurrently with another build or development server.
 
 ## Content editing
 
-| Location | Purpose |
-| --- | --- |
-| `src/data/profile.ts` | Identity, contact/profile URLs, navigation, research directions |
-| `src/content/publications/` | Publication metadata and BibTeX |
-| `src/content/research/` | Markdown research pages and feature metadata |
-| `src/content/projects/` | Research software, engineering, and text-only archive |
-| `src/content/news/` | Dated news entries |
-| `src/assets/research/` | Approved public diagrams/images |
-| `src/styles/tokens.css` | Theme, fonts, design tokens |
-| `src/styles/global.css` | Shared layout and responsive rules |
-| `public/cv.pdf` | Downloadable CV |
+| Location                    | Purpose                                                         |
+| --------------------------- | --------------------------------------------------------------- |
+| `src/data/profile.ts`       | Identity, contact/profile URLs, navigation, research directions |
+| `src/content/publications/` | Publication metadata and BibTeX                                 |
+| `src/content/research/`     | Markdown research pages and feature metadata                    |
+| `src/content/projects/`     | Research software, engineering, and text-only archive           |
+| `src/content/news/`         | Dated news entries                                              |
+| `src/assets/research/`      | Approved public diagrams/images                                 |
+| `src/styles/tokens.css`     | Theme, fonts, design tokens                                     |
+| `src/styles/global.css`     | Shared layout and responsive rules                              |
+| `public/cv.pdf`             | Downloadable CV                                                 |
 
-Add a Markdown file to the appropriate collection; no component change is needed. File names become IDs. A research entry named `new-study.md` generates `/research/new-study/`. IDs should use lowercase letters, digits, and hyphens. News and publications sort by date; featured research and projects sort by `order`.
+Add a Markdown file to the appropriate collection; no component change is needed. File names become IDs. A research entry named `new-study.md` generates `/research/new-study/`. IDs should use lowercase letters, digits, and hyphens. News sorts by date; publications, research and projects sort by `order`.
 
 Every visible entry must explicitly contain both `public: true` and `draft: false`. `selected: true` enables homepage selection, subject to the specified limits. Projects use `category: research-system`, `engineering`, or `archive`.
 
@@ -49,13 +49,13 @@ title: A descriptive research title
 category: Machine Learning Security
 summary: One concrete sentence about the contribution.
 date: 2026-09-01
-authors: ['Khawaja Abaid Ullah']
+authors: ["Khawaja Abaid Ullah"]
 status: Preprint
 public: true
 draft: false
 selected: false
 order: 3
-tags: ['ML security']
+tags: ["ML security"]
 links:
   - label: Paper
     href: https://example.org/public-paper
@@ -65,9 +65,9 @@ relatedPublications: []
 Explain the problem and evidence here.
 ```
 
-Publications additionally support `venue`, `arxiv`, `pdf`, and `bibtex`. Research and publication schemas both support authors, status, date, venue, tags, links, images, and an optional `metric` (`value`, `label`, optional `context`). Use `image: ../../assets/research/example.svg` and descriptive `imageAlt`; missing images or alt text fail the build. Prefer small, legible figures over full paper screenshots. Use actual metrics only with public supporting evidence.
+Publications use a verified `date`, or a known `year` when the precise date is unverified. They additionally support `venue`, `arxiv`, `pdf`, and `bibtex`. Research and publication schemas both support authors, status, date, venue, tags, links, images, and an optional `metric` (`value`, `label`, optional `context`). Use `image: ../../assets/research/example.svg` and descriptive `imageAlt`; missing images or alt text fail the build. Prefer small, legible figures over full paper screenshots. Use actual metrics only with public supporting evidence.
 
-News files need `date`, `text`, optional `href`, and the visibility fields. Use ISO dates; month-only events use day 01 for sorting and display only the month/year. Teaching, service, hobbies, and Scholar links are intentionally omitted until supplied.
+News files need `date`, `text`, optional `href`, and the visibility fields. Use `datePrecision: day` for verified posting dates. Month-only CV events use day 01 for sorting and display only month/year. Teaching and academic service follow the November CV; no hobbies or Scholar profile are invented. Projects may specify `kind` to distinguish independent software, research implementations and dated course projects.
 
 ## Confidentiality
 
@@ -77,15 +77,15 @@ News files need `date`, `text`, optional `href`, and the visibility fields. Use 
 
 The regression test checks private entries, drafts marked selected, private images, public-to-private transitions, and invalid publication metadata. The normal build checks generated pages, local links/fragments, required assets, sitemap, metadata, CV signatures, excluded strings, and a 30 KB compressed JS budget. These tests support careful content review; they cannot identify an unknown confidential phrase that someone manually pastes into a public page.
 
-The owner has approved the full Fontus story for public use, including the 3D-to-2D pivot and lazy-agent/reward-hacking analysis. Keep the class-project status, distinguish observed behavior from causal diagnosis, and do not present proposed follow-ups as completed results. Add a technical-report link when its URL is available. The separate anonymous-review manuscript remains excluded. See `CONTENT_SOURCES.md`.
+Fontus is a December 2025 course simulation, predating the PhD. Keep the reward-exploitation diagnosis and analytical no-charge baseline distinct from successful refueling or physical deployment. Current research, emerging directions and long-term goals follow the November 2026 owner corrections and CV. See `CONTENT_SOURCES.md` for the claim audit and outstanding evidence.
 
 ## CV
 
-The supplied October 2025 résumé is retained without edits. To update it, replace `public/cv.pdf` and copy the same file to `public/data/Web-Resume-KhawajaAbaidUllah.pdf` so older résumé links remain valid. An up-to-date academic CV should be supplied by the owner; no résumé facts were invented during migration.
+The November 2026 résumé is retained byte-for-byte. Its old github.io portfolio URL cannot be updated from an editable source in this checkout; do not reflow or reconstruct the PDF just to change that link. When an updated PDF is supplied, replace `public/cv.pdf` and copy the same file to `public/data/Web-Resume-KhawajaAbaidUllah.pdf` so older résumé links remain valid. The website follows the current résumé and explicit owner corrections.
 
 ## GitHub Pages
 
-The configured site is `https://khawajaabaid.github.io`, with no `base` because this is a GitHub user-site repository. The workflow uses official `actions/checkout@v7`, `withastro/action@v6`, and `actions/deploy-pages@v5`. Node 24 builds, checks, runs privacy regressions, and uploads only `dist/`. Deployments run only from `main`; manual runs from other branches can build without publishing.
+The configured site is `https://khawajaabaid.com`, with no `base` because this is a GitHub user-site repository. The workflow uses official `actions/checkout@v7`, `withastro/action@v6`, and `actions/deploy-pages@v5`. Node 24 builds, checks, runs privacy regressions, and uploads only `dist/`. Deployments run only from `main`; manual runs from other branches can build without publishing.
 
 The site was published on September 7, 2026. Pages is configured to use **GitHub Actions**. The first production deployment passed its build, content/privacy checks, and deployment jobs: [launch workflow](https://github.com/KhawajaAbaid/khawajaabaid.github.io/actions/runs/34143942610).
 
@@ -96,12 +96,22 @@ For future updates:
 3. The Pages workflow checks, builds, tests content privacy, and deploys automatically.
 4. Verify the affected live pages after the workflow succeeds.
 
-Local development commands do not publish changes. A future custom domain requires updating `site`, robots/sitemap URLs, the output-check origin, and the domain configuration together.
+Local development commands do not publish changes. The custom domain is configured consistently in Astro, robots.txt, CNAME and output checks. No push or deployment was performed during the November 2026 content update.
+
+## Browser checks
+
+Serve the production build locally (for example, `python3 -m http.server 4322 --bind 127.0.0.1 --directory dist`). Browser QA uses `playwright` and `@axe-core/playwright` installed in an external QA directory, avoiding changes to the application dependency lockfile:
+
+```sh
+QA_PACKAGE_DIR=/path/to/qa/dependencies node scripts/browser-qa.cjs
+```
+
+The default uses installed Google Chrome. Set `QA_BROWSERS=chromium,firefox,webkit` only when the matching Playwright browser runtimes are installed. The script checks all nine routes, seven widths, both themes, accessibility, keyboard interactions, motion, the original room-first layout and no-JS behavior. It saves screenshots and results under ignored `artifacts/`.
 
 ## Design and maintenance
 
-The homepage keeps research above engineering. Content remains available without JavaScript; JS only enhances the mobile menu and theme toggle. The menu supports Escape, focus is visible, BibTeX uses native details, reduced motion disables animation/transitions, and print uses white/black.
+The homepage preserves the live site's full-width study-room panorama, bookshelf navigation, four portrait/nameplate tabs and connected desk-blotter panel. Factual updates live inside those existing components; the June 2026 PhD role, completed MS/Fulbright history and independent software work stay distinct. The original navigation and layout are retained, with conventional navigation on standalone pages. Tabs and illustrated objects support keyboard navigation, BibTeX and archives use native details, reduced motion pauses room animation and disables transitions, and print uses white/black.
 
-The default social-sharing image is `public/og/default.png`; its editable source is `src/assets/og-default.svg`. Fonts retain their OFL licenses in `public/fonts/`. Research figures are original schematic SVGs, not measured plots.
+The default social-sharing image is `public/og/default.png`; its editable source is `src/assets/og-default.svg`. Fonts retain their OFL licenses in `public/fonts/`. The room window is an explicitly imagined future autonomous-team scene, not a demonstrated system. The preview PNG is rendered from the editable SVG.
 
-See `MIGRATION_NOTES.md` for the baseline and decisions, `CONTENT_SOURCES.md` for evidence, and `QA_REPORT.md` for verification and launch limitations.
+See `MIGRATION_NOTES.md` for the baseline and decisions, `CONTENT_SOURCES.md` for evidence, and `QA_REPORT.md` for current local verification and limitations.
