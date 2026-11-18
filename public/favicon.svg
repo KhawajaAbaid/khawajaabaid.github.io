@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <rect width="48" height="48" rx="8" fill="#3d405b"/>
-  <rect x="3.5" y="3.5" width="41" height="41" rx="5.5" fill="none" stroke="#f2cc8f" stroke-width="1" opacity="0.65"/>
-  <path d="M13 22 C15 13, 33 13, 35 22 Z" fill="#81b29a" stroke="#f4f1de" stroke-width="1.4" stroke-linejoin="round"/>
-  <path d="M24 22 V35 M17 35 H31" stroke="#f2cc8f" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="29" y1="22" x2="29" y2="30" stroke="#e07a5f" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="29" cy="31" r="1.8" fill="#e07a5f"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><clipPath id="g"><path d="M15 56 V29 C15 16 22 9 32 9 C42 9 49 16 49 29 V56 Z"/></clipPath></defs>
+  <rect width="64" height="64" rx="12" fill="#3d405b"/>
+  <g clip-path="url(#g)">
+    <rect x="10" y="5" width="44" height="52" fill="#81b29a"/>
+    <circle cx="41" cy="22" r="5" fill="#f2cc8f"/>
+    <path d="M10 56 L10 44 L22 34 L30 42 L38 36 L54 48 V56 Z" fill="#3d405b" opacity="0.9"/>
+  </g>
+  <path d="M15 56 V29 C15 16 22 9 32 9 C42 9 49 16 49 29 V56 Z" fill="none" stroke="#f2cc8f" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M23 45 V20 M23 33 L33 20 M26.4 30.5 L35 45" stroke="#f4f1de" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="11" y="55" width="42" height="4" rx="1.5" fill="#f2cc8f"/>
 </svg>
