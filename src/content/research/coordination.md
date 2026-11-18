@@ -5,7 +5,7 @@ category: Current research · Multi-agent coordination
 summary: "Reproducible perimeter-defense simulations comparing centralized, auction-based consensus and independent LLM teams under communication constraints."
 date: 2026-10-29
 authors: ["Khawaja Abaid Ullah", "Ananya Acharya", "Mohammad Javad Khojasteh"]
-status: Preprint; under review
+status: Preprint; under review, npj Artificial Intelligence
 public: true
 draft: false
 selected: true

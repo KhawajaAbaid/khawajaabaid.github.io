@@ -3,7 +3,7 @@ title: "Consensus Within, Competition Between: Decentralized LLM Teams for Perim
 summary: "In the evaluated perimeter-defense simulations, decentralized LLM teams with external auction-based conflict resolution (CBAA) had lower breach rates than centralized or independent teams. The reproducible testbed examines communication constraints, decision authority and multimodal visual deception."
 date: 2026-10-29
 authors: ["Khawaja Abaid Ullah", "Ananya Acharya", "Mohammad Javad Khojasteh"]
-status: Preprint; under review
+status: Preprint; under review, npj Artificial Intelligence
 venue: arXiv:2610.41044
 public: true
 draft: false
