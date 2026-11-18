@@ -11,7 +11,7 @@ import { publicEntries, byDate, byOrder } from "../lib/content";
 
 const publications = (await publicEntries("publications"))
   .sort(byOrder)
-  .slice(0, 3);
+  .slice(0, 4);
 const allProjects = (await publicEntries("projects")).sort(byOrder);
 const selectedProjects = allProjects.filter((p) => p.data.selected);
 const archiveProjects = allProjects.filter(
@@ -43,7 +43,7 @@ const news = (await publicEntries("news")).sort(byDate).slice(0, 5);
       <SectionHeader
         eyebrow="02 / Papers"
         title="Selected Papers and Preprints"
-        description="Current coordination research and contributions to classification defenses."
+        description="Current coordination research, classification defenses and multimodal sensing."
         href="/publications/"
         linkLabel="All papers & collaborative work"
       />
